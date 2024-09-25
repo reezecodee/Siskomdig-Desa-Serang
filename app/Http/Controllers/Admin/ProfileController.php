@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class ProfileController extends Controller
+{
+    public function profilePage()
+    {
+        $title = 'Profile Saya';
+
+        return view('admin.profile.index', compact('title'));
+    }
+}
