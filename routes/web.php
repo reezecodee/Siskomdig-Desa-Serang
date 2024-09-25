@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\SearchResultController;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,5 +28,9 @@ Route::prefix('admin')->group(function () {
 
     Route::controller(ChangePasswordController::class)->group(function(){
         Route::get('/ganti-password', 'chPasswordPage')->name('show.chPassword');
+    });
+
+    Route::controller(SearchResultController::class)->group(function(){
+        Route::get('/hasil-pencarian', 'searchResultPage')->name('show.searchResult');
     });
 });
