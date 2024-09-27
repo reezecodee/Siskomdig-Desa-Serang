@@ -22,7 +22,15 @@
         body {
             font-feature-settings: "cv03", "cv04", "cv11";
         }
+
+        #fr-logo{
+            display: none;
+        }
     </style>
+
+    <!-- CDN CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.7/css/froala_editor.pkgd.min.css">
 </head>
 
 <body>
@@ -50,6 +58,14 @@
     <script src="/dist/libs/jsvectormap/dist/js/jsvectormap.min.js?1684106062" defer></script>
     <script src="/dist/libs/jsvectormap/dist/maps/world.js?1684106062" defer></script>
     <script src="/dist/libs/jsvectormap/dist/maps/world-merc.js?1684106062" defer></script>
+    <!-- CDN JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.7/js/froala_editor.pkgd.min.js"></script>
+
+    <!-- Inisialisasi -->
+    <script>
+         new FroalaEditor('#editor');
+    </script>
     <!-- Tabler Core -->
     <script src="/dist/js/tabler.min.js?1684106062" defer></script>
     <script src="/dist/js/demo.min.js?1684106062" defer></script>

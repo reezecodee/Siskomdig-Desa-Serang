@@ -6,7 +6,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                <a href=".">
+                <a href="">
                     <img src="./static/logo.svg" width="110" height="32" alt="Tabler"
                         class="navbar-brand-image">
                 </a>
@@ -14,12 +14,25 @@
             <div class="navbar-nav flex-row order-md-last">
                 <div class="nav-item d-none d-md-flex me-3">
                     <div class="btn-list">
-                        <a href="https://github.com/tabler/tabler" class="btn" target="_blank" rel="noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                        <a href="{{ route('show.application') }}" class="btn" rel="noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="icon">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path
+                                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                                </path>
+                            </svg>
                             Pengaturan aplikasi
                         </a>
-                        <a href="https://github.com/sponsors/codecalm" class="btn" target="_blank" rel="noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-yellow"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                        <a href="{{ route('show.storage') }}" class="btn" rel="noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="icon text-yellow">
+                                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                            </svg>
                             Penyimpanan
                         </a>
                     </div>
@@ -88,8 +101,8 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">
+                        <li class="nav-item {{ Request::is('admin/visi-misi*') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('show.visiMisi') }}">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -120,8 +133,8 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">
+                        <li class="nav-item {{ Request::is('admin/struktur-organisasi*') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('show.organizationStructure') }}">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                                     <span class="nav-link-icon d-md-none d-lg-inline-block">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
@@ -139,8 +152,9 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                        <li
+                            class="nav-item dropdown {{ Request::is('admin/agenda-kegiatan*') || Request::is('admin/arsip-kegiatan*') ? 'active' : '' }}">
+                            <a class="nav-link dropdown-toggle" href="" data-bs-toggle="dropdown"
                                 data-bs-auto-close="outside" role="button" aria-expanded="false">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block"><svg
                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -161,17 +175,19 @@
                             <div class="dropdown-menu">
                                 <div class="dropdown-menu-columns">
                                     <div class="dropdown-menu-column">
-                                        <a class="dropdown-item" href="">
+                                        <a class="dropdown-item {{ Request::is('admin/agenda-kegiatan*') ? 'active' : '' }}"
+                                            href="{{ route('show.activityAgenda') }}">
                                             Agenda Kegiatan
                                         </a>
-                                        <a class="dropdown-item" href="">
+                                        <a class="dropdown-item {{ Request::is('admin/arsip-kegiatan*') ? 'active' : '' }}"
+                                            href="{{ route('show.activityArchive') }}">
                                             Arsip Kegiatan
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown {{ Request::is('admin/anggota-umkm*') || Request::is('admin/produk-umkm*') ? 'active' : '' }}">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
                                 data-bs-auto-close="outside" role="button" aria-expanded="false">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block"><svg
@@ -191,18 +207,18 @@
                             <div class="dropdown-menu">
                                 <div class="dropdown-menu-columns">
                                     <div class="dropdown-menu-column">
-                                        <a class="dropdown-item" href="">
+                                        <a class="dropdown-item {{ Request::is('admin/anggota-umkm*' ? 'active' : '') }}" href="{{ route('show.memberUMKM') }}">
                                             Anggota UMKM
                                         </a>
-                                        <a class="dropdown-item" href="">
+                                        <a class="dropdown-item {{ Request::is('admin/produk-umkm*' ? 'active' : '') }}" href="{{ route('show.productUMKM') }}">
                                             Produk UMKM
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">
+                        <li class="nav-item {{ Request::is('admin/kategori-produk') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('show.category') }}">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                                     <span class="nav-link-icon d-md-none d-lg-inline-block">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -235,8 +251,8 @@
                                         <path d="M21 21l-6 -6" />
                                     </svg>
                                 </span>
-                                <input type="text" value="" class="form-control" placeholder="Cari anggota UMKM..."
-                                    aria-label="Search in website">
+                                <input type="text" value="" class="form-control"
+                                    placeholder="Cari anggota UMKM..." aria-label="Search in website">
                             </div>
                         </form>
                     </div>
