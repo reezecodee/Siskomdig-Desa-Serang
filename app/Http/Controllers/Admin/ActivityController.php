@@ -15,13 +15,6 @@ class ActivityController extends Controller
         return view('admin.agenda.index', compact('title'));
     }
 
-    public function activityArchivePage()
-    {
-        $title = 'Arsip Kegiatan Komunitas';
-
-        return view('admin.archive.index', compact('title'));
-    }
-
     public function activityAgendaAPI(Request $request)
     {
         if ($request->ajax()) {
@@ -40,8 +33,9 @@ class ActivityController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($user) {
                     return '
-            <button class="btn btn-primary btn-sm edit" data-id="' . $user['id'] . '">Edit</button>
-            <button class="btn btn-danger btn-sm delete" data-id="' . $user['id'] . '">Hapus</button>
+            <button class="btn btn-primary edit" data-id="' . $user['id'] . '">Edit</button>
+            <button class="btn btn-danger delete" data-id="' . $user['id'] . '">Hapus</button>
+            <button class="btn btn-success show" data-id="' . $user['id'] . '">Detail</button>
         ';
                 })
                 ->editColumn('created_at', function ($user) {
@@ -50,5 +44,42 @@ class ActivityController extends Controller
                 ->rawColumns(['action']) // Pastikan kolom action dapat di-render sebagai HTML
                 ->make(true);
         }
+    }
+
+    public function addActivityAgendaPage()
+    {
+        $title = 'Buat Agenda Baru';
+
+        return view('admin.agenda.create', compact('title'));
+    }
+
+    public function editActivityAgendaPage($id)
+    {
+        $title = 'Edit Agenda';
+
+        return view('admin.agenda.edit', compact('title'));
+    }
+
+    public function detailActivityAgendaPage($year, $month)
+    {
+        $title = "Detail Agenda Bulan $month $year";
+
+        return view('admin.agenda.detail', compact('title'));
+    }
+
+
+
+    public function activityArchivePage()
+    {
+        $title = 'Arsip Kegiatan Komunitas';
+
+        return view('admin.archive.index', compact('title'));
+    }
+
+    public function addActivityArchivePage()
+    {
+        $title = 'Buat Arsip Kegiatan Komunitas';
+
+        return view('admin.archive.create', compact('title'));
     }
 }

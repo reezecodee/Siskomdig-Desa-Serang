@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('agendas', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('judul_agenda');
+            $table->string('bulan');
+            $table->string('tahun');
             $table->date('tgl_pelaksanaan');
-            $table->text('deskripsi');
+            $table->text('keterangan');
             $table->timestamps();
         });
     }

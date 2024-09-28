@@ -35,9 +35,18 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::controller(ActivityController::class)->group(function () {
-        Route::get('/agenda-kegiatan', 'activityAgendaPage')->name('show.activityAgenda');
-        Route::get('/agenda-kegiatan/api', 'activityAgendaAPI')->name('api.activityAgendaAPI');
-        Route::get('/arsip-kegiatan', 'activityArchivePage')->name('show.activityArchive');
+        Route::prefix('agenda-kegiatan')->group(function(){
+            Route::get('/', 'activityAgendaPage')->name('show.activityAgenda');
+            Route::get('/api', 'activityAgendaAPI')->name('api.activityAgendaAPI');
+            Route::get('/tambah', 'addActivityAgendaPage')->name('show.addActivityAgenda');
+            Route::get('/{id}/edit', 'editActivityAgendaPage')->name('show.editActivityAgenda');
+            Route::get('/{year}/{month}/detail', 'detailActivityAgendaPage')->name('show.editActivityAgenda');
+        });
+
+        Route::prefix('arsip-kegiatan')->group(function(){
+            Route::get('/', 'activityArchivePage')->name('show.activityArchive');
+            Route::get('/tambah', 'addActivityArchivePage')->name('show.addActivityArchive');
+        });
     });
 
     Route::controller(MitraController::class)->group(function () {
