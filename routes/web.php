@@ -36,6 +36,7 @@ Route::prefix('admin')->group(function () {
 
     Route::controller(ActivityController::class)->group(function () {
         Route::get('/agenda-kegiatan', 'activityAgendaPage')->name('show.activityAgenda');
+        Route::get('/agenda-kegiatan/api', 'activityAgendaAPI')->name('api.activityAgendaAPI');
         Route::get('/arsip-kegiatan', 'activityArchivePage')->name('show.activityArchive');
     });
 
@@ -62,6 +63,8 @@ Route::prefix('admin')->group(function () {
 
     Route::controller(StorageController::class)->group(function(){
         Route::get('/penyimpanan', 'storagePage')->name('show.storage');
+        Route::get('/penyimpanan/{fileType}', 'storageImagesPage')->name('show.images');
+        Route::get('/penyimpanan/arsip/zip-arsip', 'storageArchivesPage')->name('show.archives');
     });
 
     Route::controller(ApplicationController::class)->group(function(){

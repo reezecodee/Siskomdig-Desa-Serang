@@ -13,4 +13,18 @@ class StorageController extends Controller
 
         return view('admin.storage.index', compact('title'));
     }
+
+    public function storageImagesPage($fileType)
+    {
+        $title = 'Semua Gambar Yang di Upload';
+
+        return view('admin.storage.images', compact('title'));
+    }
+
+    public function storageArchivesPage()
+    {
+        $title = 'Semua Arsip Yang di Simpan';
+
+        return view('admin.storage.archives', compact('title'));
+    }
 }

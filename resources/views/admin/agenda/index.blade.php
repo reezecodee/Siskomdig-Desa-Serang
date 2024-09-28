@@ -45,11 +45,60 @@
     </div>
 @endsection
 @section('content')
-    <form action="" method="POST">
-        <div class="card">
-            <div class="card-body">
-
-            </div>
+    <div class="card">
+        <div class="card-body">
+            <table id="user-table" class="display">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
-    </form>
+    </div>
+@endsection
+@section('script-datatables')
+    <script>
+        $(document).ready(function() {
+            $('#user-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('api.activityAgendaAPI') }}",
+                columns: [{
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex',
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: 'name',
+                        name: 'name'
+                    },
+                    {
+                        data: 'email',
+                        name: 'email'
+                    },
+                    {
+                        data: 'created_at',
+                        name: 'created_at'
+                    },
+                    {
+                        data: 'updated_at',
+                        name: 'updated_at'
+                    },
+                    {
+                        data: 'action', // Pastikan ini benar
+                        name: 'action',
+                        orderable: false,
+                        searchable: false
+                    },
+                ]
+            });
+        });
+    </script>
 @endsection
