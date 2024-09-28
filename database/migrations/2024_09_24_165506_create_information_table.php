@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('admin_id')->constrained('users');
             $table->string('judul');
+            $table->string('thumbnail')->nullable();
             $table->text('konten_informasi');
             $table->date('tgl_publish');
             $table->enum('visibilitas', ['Publik', 'Privasi']);

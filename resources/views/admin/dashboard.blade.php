@@ -16,12 +16,12 @@
                 <div class="col-auto ms-auto d-print-none">
                     <div class="btn-list">
                         <span class="d-none d-sm-inline">
-                            <a href="#" class="btn">
-                                New view
+                            <a href="{{ route('show.allInformation') }}" class="btn">
+                                Lihat semua informasi
                             </a>
                         </span>
                         <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal"
-                            data-bs-target="#modal-report">
+                            data-bs-target="#modal-information">
                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -30,18 +30,7 @@
                                 <path d="M12 5l0 14" />
                                 <path d="M5 12l14 0" />
                             </svg>
-                            Create new report
-                        </a>
-                        <a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal"
-                            data-bs-target="#modal-report" aria-label="Create new report">
-                            <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M12 5l0 14" />
-                                <path d="M5 12l14 0" />
-                            </svg>
+                            Buat informasi
                         </a>
                     </div>
                 </div>
@@ -389,117 +378,108 @@
         </div>
     </div>
 
-    <div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal modal-blur fade" id="modal-information" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">New report</h5>
+                    <h5 class="modal-title">Buat Informasi Baru</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label">Name</label>
-                        <input type="text" class="form-control" name="example-text-input"
-                            placeholder="Your report name">
+                        <label class="form-label">Thumbnail</label>
+                        <img src="" class="my-2" style="display: none" id="previewImage" alt=""
+                            srcset="">
+                        <input type="file" class="form-control" name="thumbnail" id="inputImage">
                     </div>
-                    <label class="form-label">Report type</label>
+                    <div class="mb-3">
+                        <label class="form-label">Judul informasi</label>
+                        <input type="text" class="form-control" name="judul_informasi"
+                            placeholder="Masukkan judul informasi" autocomplete="off" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Konten informasi</label>
+                        <textarea id="editor" name="konten_informasi" required></textarea>
+                    </div>
+                    <label class="form-label">Visibilitas</label>
                     <div class="form-selectgroup-boxes row mb-3">
                         <div class="col-lg-6">
                             <label class="form-selectgroup-item">
-                                <input type="radio" name="report-type" value="1" class="form-selectgroup-input"
+                                <input type="radio" name="visibilitas" value="Publik" class="form-selectgroup-input"
                                     checked>
                                 <span class="form-selectgroup-label d-flex align-items-center p-3">
                                     <span class="me-3">
                                         <span class="form-selectgroup-check"></span>
                                     </span>
                                     <span class="form-selectgroup-label-content">
-                                        <span class="form-selectgroup-title strong mb-1">Simple</span>
-                                        <span class="d-block text-muted">Provide only basic data needed for the
-                                            report</span>
+                                        <span class="form-selectgroup-title strong mb-1">Publik</span>
+                                        <span class="d-block text-muted">Informasi yang kamu buat akan bisa langsung di
+                                            lihat pengguna.</span>
                                     </span>
                                 </span>
                             </label>
                         </div>
                         <div class="col-lg-6">
                             <label class="form-selectgroup-item">
-                                <input type="radio" name="report-type" value="1" class="form-selectgroup-input">
+                                <input type="radio" name="visibilitas" value="Privasi" class="form-selectgroup-input">
                                 <span class="form-selectgroup-label d-flex align-items-center p-3">
                                     <span class="me-3">
                                         <span class="form-selectgroup-check"></span>
                                     </span>
                                     <span class="form-selectgroup-label-content">
-                                        <span class="form-selectgroup-title strong mb-1">Advanced</span>
-                                        <span class="d-block text-muted">Insert charts and additional advanced
-                                            analyses to be inserted in the report</span>
+                                        <span class="form-selectgroup-title strong mb-1">Privasi</span>
+                                        <span class="d-block text-muted">Informasi yang kamu buat hanya dapat di lihat oleh
+                                            Anda seorang.</span>
                                     </span>
                                 </span>
                             </label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="mb-3">
-                                <label class="form-label">Report url</label>
-                                <div class="input-group input-group-flat">
-                                    <span class="input-group-text">
-                                        https://tabler.io/reports/
-                                    </span>
-                                    <input type="text" class="form-control ps-0" value="report-01"
-                                        autocomplete="off">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="mb-3">
-                                <label class="form-label">Visibility</label>
-                                <select class="form-select">
-                                    <option value="1" selected>Private</option>
-                                    <option value="2">Public</option>
-                                    <option value="3">Hidden</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label class="form-label">Client name</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label class="form-label">Reporting period</label>
-                                <input type="date" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div>
-                                <label class="form-label">Additional information</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
-                        Cancel
+                        Batalkan
                     </a>
-                    <a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
-                        <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 5l0 14" />
-                            <path d="M5 12l14 0" />
-                        </svg>
-                        Create new report
-                    </a>
+                    <button type="submit" class="btn btn-primary"><svg class="icon"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-upload-cloud">
+                            <polyline points="16 16 12 12 8 16"></polyline>
+                            <line x1="12" y1="12" x2="12" y2="21"></line>
+                            <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path>
+                            <polyline points="16 16 12 12 8 16"></polyline>
+                        </svg> Buat informasi baru</button>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        // Ambil elemen dari DOM
+        const inputImage = document.getElementById('inputImage');
+        const previewImage = document.getElementById('previewImage');
+
+        // Event listener untuk saat pengguna memilih file gambar
+        inputImage.addEventListener('change', function() {
+            const file = this.files[0]; // Mendapatkan file yang dipilih
+
+            if (file) {
+                const reader = new FileReader(); // Buat objek FileReader
+
+                reader.onload = function(e) {
+                    // Saat file telah dibaca, masukkan hasilnya ke elemen img
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block'; // Tampilkan elemen img
+                }
+
+                // Baca file yang dipilih sebagai URL data
+                reader.readAsDataURL(file);
+            } else {
+                // Jika tidak ada file yang dipilih, sembunyikan gambar
+                previewImage.style.display = 'none';
+                previewImage.src = '';
+            }
+        });
+    </script>
 @endsection

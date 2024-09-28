@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ApplicationController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\InformationController;
 use App\Http\Controllers\Admin\MitraController;
 use App\Http\Controllers\Admin\OrganizationStructureController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -24,6 +25,14 @@ Route::controller(AuthController::class)->group(function () {
 Route::prefix('admin')->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/dashboard', 'dashboardPage')->name('show.dashboardAdmin');
+    });
+
+    Route::controller(InformationController::class)->group(function(){
+        Route::prefix('informasi')->group(function(){
+            Route::get('/semua', 'informationPage')->name('show.allInformation');
+            Route::get('/milik-saya', 'myInformationPage')->name('show.myInformation');
+            Route::get('/{id}/edit', 'editMyInformationPage')->name('show.editMyInformation');
+        });
     });
 
     Route::controller(VisiMisionController::class)->group(function () {
