@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nama_produk');
             $table->text('deskripsi');
             $table->string('harga');
+            $table->string('foto_produk')->nullable();
             $table->timestamps();
         });
     }

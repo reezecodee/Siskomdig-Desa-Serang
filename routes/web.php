@@ -50,8 +50,17 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::controller(MitraController::class)->group(function () {
-        Route::get('/anggota-umkm', 'memberPage')->name('show.memberUMKM');
-        Route::get('/produk-umkm', 'productPage')->name('show.productUMKM');
+        Route::prefix('anggota-umkm')->group(function(){
+            Route::get('/', 'memberPage')->name('show.memberUMKM');
+            Route::get('/{id}/edit', 'editMemberPage')->name('show.editMemberUMKM');
+            Route::get('/{id}/detail', 'detailMemberPage')->name('show.detailMemberUMKM');
+        });
+
+        Route::prefix('produk-umkm')->group(function(){
+            Route::get('/', 'productPage')->name('show.productUMKM');
+            Route::get('/{id}/edit', 'editProductPage')->name('show.editProductUMKM');
+            Route::get('/{id}/detail', 'detailProductPage')->name('show.detailProductUMKM');
+        });
     });
 
     Route::controller(CategoryController::class)->group(function () {

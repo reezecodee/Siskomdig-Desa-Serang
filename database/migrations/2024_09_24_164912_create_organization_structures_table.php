@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('organization_structures', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('nama');
-            $table->string('jabatan');
-            $table->string('avatar');
+            $table->string('gambar');
             $table->timestamps();
         });
     }

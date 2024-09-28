@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('pendapatan');
             $table->string('pendapatan_tertinggi');
             $table->text('deskripsi');
+            $table->string('avatar')->nullable();
             $table->timestamps();
         });
     }

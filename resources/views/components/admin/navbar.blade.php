@@ -207,10 +207,10 @@
                             <div class="dropdown-menu">
                                 <div class="dropdown-menu-columns">
                                     <div class="dropdown-menu-column">
-                                        <a class="dropdown-item {{ Request::is('admin/anggota-umkm*' ? 'active' : '') }}" href="{{ route('show.memberUMKM') }}">
+                                        <a class="dropdown-item {{ Request::is('admin/anggota-umkm*') ? 'active' : '' }}" href="{{ route('show.memberUMKM') }}">
                                             Anggota UMKM
                                         </a>
-                                        <a class="dropdown-item {{ Request::is('admin/produk-umkm*' ? 'active' : '') }}" href="{{ route('show.productUMKM') }}">
+                                        <a class="dropdown-item {{ Request::is('admin/produk-umkm*') ? 'active' : '' }}" href="{{ route('show.productUMKM') }}">
                                             Produk UMKM
                                         </a>
                                     </div>
