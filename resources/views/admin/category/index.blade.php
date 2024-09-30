@@ -51,10 +51,9 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
+                        <th>Nama kategori</th>
+                        <th>Ditambahkan pada</th>
+                        <th>Terakhir diperbarui</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -71,20 +70,23 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label">Nama kategori</label>
-                        <input type="text" class="form-control" name="nama_kategori"
-                            placeholder="Masukkan nama kategori">
+                        <form action="" method="post" id="category-store">
+                            @csrf
+                            <label class="form-label">Nama kategori</label>
+                            <input type="text" class="form-control" name="nama_kategori"
+                                placeholder="Masukkan nama kategori">
+                        </form>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
                         Batalkan
                     </a>
-                    <a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
+                    <a href="#" class="btn btn-primary ms-auto" onclick="confirmAlert('category-store')">
                         <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
+                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                            stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M12 5l0 14" />
                             <path d="M5 12l14 0" />
@@ -102,7 +104,7 @@
             $('#user-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('api.activityAgendaAPI') }}",
+                ajax: "{{ route('api.categories') }}",
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex',
@@ -110,12 +112,8 @@
                         searchable: false
                     },
                     {
-                        data: 'name',
-                        name: 'name'
-                    },
-                    {
-                        data: 'email',
-                        name: 'email'
+                        data: 'nama_kategori',
+                        name: 'nama_kategori'
                     },
                     {
                         data: 'created_at',
@@ -136,4 +134,3 @@
         });
     </script>
 @endsection
-

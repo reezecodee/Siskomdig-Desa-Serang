@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class ChangePasswordController extends Controller
 {
-    public function chPasswordPage(){
+    public function chPasswordPage()
+    {
         $title = 'Ganti Password';
 
         return view('admin.change-password.index', compact('title'));

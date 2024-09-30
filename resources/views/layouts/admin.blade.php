@@ -34,6 +34,9 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.7/css/froala_editor.pkgd.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" />
+
+    <!-- CDN JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -73,6 +76,7 @@
     <script>
          new FroalaEditor('#editor');
     </script>
+    <script src="/js/sweetalert.js"></script>
     <!-- Tabler Core -->
     <script src="/dist/js/tabler.min.js?1684106062" defer></script>
     <script src="/dist/js/demo.min.js?1684106062" defer></script>

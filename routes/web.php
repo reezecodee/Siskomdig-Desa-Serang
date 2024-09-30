@@ -113,3 +113,5 @@ Route::controller(SiteController::class)->group(function () {
         Route::get('/produk-umkm', 'productUMKM')->name('site.produkUMKM');
     });
 });
+
+require __DIR__ . '/api.php';
