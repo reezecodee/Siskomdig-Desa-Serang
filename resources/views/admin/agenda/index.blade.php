@@ -34,14 +34,12 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <table id="user-table" class="display">
+            <table id="agenda-table" class="display">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
+                        <th>Bulan</th>
+                        <th>Tahun</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -52,10 +50,10 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            $('#user-table').DataTable({
+            $('#agenda-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('api.activityAgendaAPI') }}",
+                ajax: "{{ route('api.agendas') }}",
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex',
@@ -63,20 +61,12 @@
                         searchable: false
                     },
                     {
-                        data: 'name',
-                        name: 'name'
+                        data: 'bulan',
+                        name: 'bulan'
                     },
                     {
-                        data: 'email',
-                        name: 'email'
-                    },
-                    {
-                        data: 'created_at',
-                        name: 'created_at'
-                    },
-                    {
-                        data: 'updated_at',
-                        name: 'updated_at'
+                        data: 'tahun',
+                        name: 'tahun'
                     },
                     {
                         data: 'action', // Pastikan ini benar

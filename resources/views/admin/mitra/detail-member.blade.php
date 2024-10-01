@@ -40,37 +40,38 @@
                         <div class="col-md-6">
                             <div class="form-group mb-2">
                                 <label for="" class="form-label">Nama anggota UMKM</label>
-                                <input type="text" value="" class="form-control" readonly>
+                                <input type="text" value="{{ $data->nama }}" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
                                 <label for="" class="form-label">Usia</label>
-                                <input type="text" value="" class="form-control" readonly>
+                                <input type="text" value="{{ $data->usia }}" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
                                 <label for="" class="form-label">Pendapatan</label>
-                                <input type="text" value="" class="form-control" readonly>
+                                <input type="text" value="{{ idr($data->pendapatan) }}" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
                                 <label for="" class="form-label">Pendapatan tertinggi</label>
-                                <input type="text" value="" class="form-control" readonly>
+                                <input type="text" value="{{ idr($data->pendapatan_tertinggi) }}" class="form-control"
+                                    readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
-                                <label for="" class="form-label">Jenis pekerjaan</label>
-                                <input type="text" value="" class="form-control" readonly>
+                                <label for="" class="form-label">Jenis usaha</label>
+                                <input type="text" value="{{ $data->jenis_usaha }}" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group mb-2">
                                 <label for="" class="form-label">Deskripsi pekerjaan</label>
-                                <textarea rows="7" value="" class="form-control" readonly></textarea>
+                                <textarea rows="7" class="form-control" readonly>{{ $data->deskripsi }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -82,19 +83,20 @@
         <div class="card-body">
             <p class="fw-bold">Produk anggota</p>
             <div class="row">
-                <div class="col-md-3">
-                    <a href="{{ route('show.detailProductUMKM', 1) }}">
-                        <div class="text-center">
-                            <div class="d-flex justify-content-center mb-2">
-                                <img src="https://images.unsplash.com/photo-1727112658582-fdb2e08878d4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                    alt="" srcset="" class="rounded" loading="lazy">
+                @foreach ($products as $item)
+                    <div class="col-md-3">
+                        <a href="{{ route('show.detailProductUMKM', $item->id) }}">
+                            <div class="text-center">
+                                <div class="d-flex justify-content-center mb-2">
+                                    <img src="https://images.unsplash.com/photo-1727112658582-fdb2e08878d4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                        alt="" srcset="" class="rounded" loading="lazy">
+                                </div>
+                                <p>{{ $item->nama_produk }}</p>
                             </div>
-                            <p>acumalaka.jpg</p>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
 @endsection
-

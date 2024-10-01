@@ -34,14 +34,13 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <table id="user-table" class="display">
+            <table id="archives-table" class="display">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
+                        <th>Judul arsip</th>
+                        <th>File zip arsip</th>
+                        <th>Diarsipkan pada</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -52,10 +51,10 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            $('#user-table').DataTable({
+            $('#archives-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('api.activityAgendaAPI') }}",
+                ajax: "{{ route('api.archives') }}",
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex',
@@ -63,20 +62,16 @@
                         searchable: false
                     },
                     {
-                        data: 'name',
-                        name: 'name'
+                        data: 'judul_arsip',
+                        name: 'judul_arsip'
                     },
                     {
-                        data: 'email',
-                        name: 'email'
+                        data: 'file_zip',
+                        name: 'file_zip'
                     },
                     {
                         data: 'created_at',
                         name: 'created_at'
-                    },
-                    {
-                        data: 'updated_at',
-                        name: 'updated_at'
                     },
                     {
                         data: 'action', // Pastikan ini benar

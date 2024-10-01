@@ -40,7 +40,7 @@
     </div>
 @endsection
 @section('content')
-    <form action="" method="POST">
+    <form action="" method="POST" id="form-store">
         @csrf
         <div class="card">
             <div class="card-body">
@@ -48,22 +48,39 @@
                     <div class="col-md-12">
                         <div class="form-group mb-2">
                             <label for="" class="form-label">Judul arsip</label>
-                            <input type="text" name="judul_arsip" class="form-control" autocomplete="off"
-                                placeholder="Masukkan judul arsip kegiatan" required>
+                            <input type="text" name="judul_arsip"
+                                class="form-control @error('judul_arsip') is-invalid
+                            @enderror"
+                                autocomplete="off" placeholder="Masukkan judul arsip kegiatan" required>
+                            @error('judul_arsip')
+                                <span class="invalid-feedback">{{ $error }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group mb-2">
                             <label for="" class="form-label">Deskripsi arsip</label>
-                            <textarea rows="7" name="deskripsi" class="form-control" autocomplete="off"
+                            <textarea rows="7" name="deskripsi"
+                                class="form-control @error('deskripsi') is-invalid
+                            @enderror" autocomplete="off"
                                 placeholder="Masukkan deskripsi arsip kegiatan" required></textarea>
+                            @error('deskripsi')
+                                <span class="invalid-feedback">{{ $error }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group mb-2">
                             <label for="" class="form-label">Thumbnail arsip</label>
-                            <img src="" id="imagePreview" alt="" srcset="" class="my-2" style="display: none">
-                            <input type="file" class="form-control" name="thumbnail_arsip" id="imageInput">
+                            <img src="" id="imagePreview" alt="" srcset="" class="my-2"
+                                style="display: none">
+                            <input type="file"
+                                class="form-control @error('thumbnail_arsip') is-invalid
+                            @enderror"
+                                name="thumbnail_arsip" id="imageInput">
+                            @error('thumbnail_arsip')
+                                <span class="invalid-feedback">{{ $error }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -80,7 +97,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button class="btn btn-primary"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24"
+                    <button class="btn btn-primary" type="button" onclick="confirmAlert('form-store')"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24"
                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload-cloud">
                             <polyline points="16 16 12 12 8 16"></polyline>

@@ -40,31 +40,31 @@
                         <div class="col-md-6">
                             <div class="form-group mb-2">
                                 <label for="" class="form-label">Kategori produk</label>
-                                <input type="text" class="form-control" value="" name="" id="" readonly>
+                                <input type="text" class="form-control" value="{{ $data->categories->nama_kategori }}" name="" id="" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
                                 <label for="" class="form-label">Pemilik produk</label>
-                                <input type="text" class="form-control" value="" name="" id="" readonly>
+                                <input type="text" class="form-control" value="{{ $data->umkmMembers->nama }}" name="" id="" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
                                 <label for="" class="form-label">Nama produk</label>
-                                <input type="text" class="form-control" value="" name="" id="" readonly>
+                                <input type="text" class="form-control" value="{{ $data->nama_produk }}" name="" id="" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
                                 <label for="" class="form-label">Harga</label>
-                                <input type="text" class="form-control" value="" name="" id="" readonly>
+                                <input type="text" class="form-control" value="{{ idr($data->harga) }}" name="" id="" readonly>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group mb-2">
                                 <label for="" class="form-label">Deskripsi produk</label>
-                                <textarea rows="7" class="form-control" readonly></textarea>
+                                <textarea rows="7" class="form-control" readonly>{{ $data->deskripsi }}</textarea>
                             </div>
                         </div>
                     </div>

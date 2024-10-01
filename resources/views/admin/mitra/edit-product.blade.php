@@ -25,7 +25,7 @@
     </div>
 @endsection
 @section('content')
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data" id="form-edit">
         @csrf
         @method('PUT')
         <div class="card mb-3">
@@ -48,45 +48,68 @@
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Kategori produk</label>
-                                    <select name="kategori_id" class="form-select" required>
+                                    <select name="kategori_id"
+                                        class="form-select @error('kategori_id') is-invalid @enderror" required>
                                         <option selected>--Pilih kategori--</option>
-                                        <option value="">Acumalaka</option>
+                                        @foreach ($categories as $item)
+                                            <option value="{{ $item->id }}">{{ $item->nama_kategori }}</option>
+                                        @endforeach
                                     </select>
+                                    @error('kategori_id')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Pemilik produk</label>
-                                    <select name="anggota_id" class="form-select" required>
+                                    <select name="anggota_id" class="form-select @error('anggota_id') is-invalid @enderror"
+                                        required>
                                         <option selected>--Pilih anggota pemilik--</option>
-                                        <option value="">Acumalaka</option>
+                                        @foreach ($members as $item)
+                                            <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                        @endforeach
                                     </select>
+                                    @error('kategori_id')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Nama produk</label>
                                     <input type="text" name="nama_produk" autocomplete="off"
-                                        placeholder="Masukkan nama produk" class="form-control" required>
+                                        placeholder="Masukkan nama produk"
+                                        class="form-control @error('nama_produk') is-invalid @enderror" value="{{ old('nama_produk', $data->nama_produk) }}" required>
+                                    @error('nama_produk')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Harga</label>
                                     <input type="number" name="harga" autocomplete="off"
-                                        placeholder="Masukkan harga produk" class="form-control" required>
+                                        placeholder="Masukkan harga produk"
+                                        class="form-control @error('harga') is-invalid @enderror" value="{{ old('harga', $data->harga) }}" required>
+                                    @error('harga')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Deskripsi produk</label>
                                     <textarea rows="7" name="deskripsi" autocomplete="off" placeholder="Masukkan deskripsi produk"
-                                        class="form-control" required></textarea>
+                                        class="form-control @error('deskripsi') is-invalid @enderror" required>{{ old('deskripsi', $data->deskripsi) }}</textarea>
+                                    @error('deskripsi')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-primary">
+                            <button class="btn btn-primary" type="button" onclick="confirmAlert('form-edit')">
                                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload-cloud">

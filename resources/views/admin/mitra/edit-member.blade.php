@@ -25,7 +25,7 @@
     </div>
 @endsection
 @section('content')
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data" id="form-edit">
         @csrf
         @method('PUT')
         <div class="card mb-3">
@@ -48,48 +48,70 @@
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Nama anggota UMKM</label>
-                                    <input type="text" value="" name="nama"
-                                        placeholder="Masukkan nama anggota UMKM" class="form-control">
+                                    <input type="text" value="{{ old('nama', $data->nama) }}" name="nama"
+                                        placeholder="Masukkan nama anggota UMKM"
+                                        class="form-control @error('nama') is-invalid @enderror">
+                                    @error('nama')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Usia</label>
-                                    <input type="text" value="" name="usia" placeholder="Masukkan usia anggota"
-                                        class="form-control">
+                                    <input type="text" value="{{ old('usia', $data->usia) }}" name="usia" placeholder="Masukkan usia anggota"
+                                        class="form-control @error('usia') is-invalid @enderror">
+                                    @error('usia')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Pendapatan</label>
-                                    <input type="number" value="" name="pendapatan"
-                                        placeholder="Masukkan pendapatan anggota" class="form-control">
+                                    <input type="number" value="{{ old('pendapatan', $data->pendapatan) }}" name="pendapatan"
+                                        placeholder="Masukkan pendapatan anggota"
+                                        class="form-control @error('pendapatan') is-invalid @enderror">
+                                    @error('pendapatan')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Pendapatan tertinggi</label>
-                                    <input type="number" value="" name="pendapatan_tertinggi"
-                                        placeholder="Masukkan pendapatan tertinggi anggota" class="form-control">
+                                    <input type="number" value="{{ old('pendapatan_tertinggi', $data->pendapatan_tertinggi) }}" name="pendapatan_tertinggi"
+                                        placeholder="Masukkan pendapatan tertinggi anggota"
+                                        class="form-control @error('pendapatan_tertinggi') is-invalid @enderror">
+                                    @error('pendapatan_tertinggi')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">Jenis pekerjaan</label>
-                                    <input type="text" value="" name="jenis_pekerjaan"
-                                        placeholder="Masukkan jenis pekerjaan anggota" class="form-control">
+                                    <label for="" class="form-label">Jenis usaha</label>
+                                    <input type="text" value="{{ old('jenis_usaha', $data->jenis_usaha) }}" name="jenis_usaha"
+                                        placeholder="Masukkan jenis usaha anggota"
+                                        class="form-control @error('jenis_usaha') is-invalid @enderror">
+                                    @error('jenis_usaha')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Deskripsi pekerjaan</label>
-                                    <textarea rows="7" value="" name="deskripsi" placeholder="Masukkan deskripsi tentang pekerjaan anggota"
-                                        class="form-control"></textarea>
+                                    <textarea rows="7" name="deskripsi" placeholder="Masukkan deskripsi tentang pekerjaan anggota"
+                                        class="form-control @error('deskripsi') is-invalid @enderror">{{ old('deskripsi', $data->deskripsi) }}</textarea>
+                                    @error('deskripsi')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-primary">
+                            <button class="btn btn-primary" type="button" onclick="confirmAlert('form-edit')">
                                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload-cloud">

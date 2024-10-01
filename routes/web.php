@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\ActivityController;
+use App\Http\Controllers\Admin\AgendaController;
 use App\Http\Controllers\Admin\ApplicationController;
+use App\Http\Controllers\Admin\ArchiveController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -27,8 +29,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/dashboard', 'dashboardPage')->name('show.dashboardAdmin');
     });
 
-    Route::controller(InformationController::class)->group(function(){
-        Route::prefix('informasi')->group(function(){
+    Route::controller(InformationController::class)->group(function () {
+        Route::prefix('informasi')->group(function () {
             Route::get('/semua', 'informationPage')->name('show.allInformation');
             Route::get('/milik-saya', 'myInformationPage')->name('show.myInformation');
             Route::get('/{id}/edit', 'editMyInformationPage')->name('show.editMyInformation');
@@ -43,29 +45,32 @@ Route::prefix('admin')->group(function () {
         Route::get('/struktur-organisasi', 'organizationStructurePage')->name('show.organizationStructure');
     });
 
-    Route::controller(ActivityController::class)->group(function () {
-        Route::prefix('agenda-kegiatan')->group(function(){
+    Route::controller(AgendaController::class)->group(function () {
+        Route::prefix('agenda-kegiatan')->group(function () {
             Route::get('/', 'activityAgendaPage')->name('show.activityAgenda');
             Route::get('/api', 'activityAgendaAPI')->name('api.activityAgendaAPI');
             Route::get('/tambah', 'addActivityAgendaPage')->name('show.addActivityAgenda');
             Route::get('/{id}/edit', 'editActivityAgendaPage')->name('show.editActivityAgenda');
-            Route::get('/{year}/{month}/detail', 'detailActivityAgendaPage')->name('show.editActivityAgenda');
+            Route::get('/{year}/{month}/detail', 'detailActivityAgendaPage')->name('show.detailActivityAgenda');
+            Route::get('/export/{year}/{month}', 'exportAgenda')->name('export.agenda');
         });
+    });
 
-        Route::prefix('arsip-kegiatan')->group(function(){
+    Route::controller(ArchiveController::class)->group(function () {
+        Route::prefix('arsip-kegiatan')->group(function () {
             Route::get('/', 'activityArchivePage')->name('show.activityArchive');
             Route::get('/tambah', 'addActivityArchivePage')->name('show.addActivityArchive');
         });
     });
 
     Route::controller(MitraController::class)->group(function () {
-        Route::prefix('anggota-umkm')->group(function(){
+        Route::prefix('anggota-umkm')->group(function () {
             Route::get('/', 'memberPage')->name('show.memberUMKM');
             Route::get('/{id}/edit', 'editMemberPage')->name('show.editMemberUMKM');
             Route::get('/{id}/detail', 'detailMemberPage')->name('show.detailMemberUMKM');
         });
 
-        Route::prefix('produk-umkm')->group(function(){
+        Route::prefix('produk-umkm')->group(function () {
             Route::get('/', 'productPage')->name('show.productUMKM');
             Route::get('/{id}/edit', 'editProductPage')->name('show.editProductUMKM');
             Route::get('/{id}/detail', 'detailProductPage')->name('show.detailProductUMKM');
@@ -74,6 +79,7 @@ Route::prefix('admin')->group(function () {
 
     Route::controller(CategoryController::class)->group(function () {
         Route::get('/kategori-produk', 'categoryPage')->name('show.category');
+        Route::get('/detail-kategori/{id}', 'detailCategoryPage')->name('show.detailCategory');
     });
 
     Route::controller(ProfileController::class)->group(function () {
@@ -88,13 +94,13 @@ Route::prefix('admin')->group(function () {
         Route::get('/hasil-pencarian', 'searchResultPage')->name('show.searchResult');
     });
 
-    Route::controller(StorageController::class)->group(function(){
+    Route::controller(StorageController::class)->group(function () {
         Route::get('/penyimpanan', 'storagePage')->name('show.storage');
         Route::get('/penyimpanan/{fileType}', 'storageImagesPage')->name('show.images');
         Route::get('/penyimpanan/arsip/zip-arsip', 'storageArchivesPage')->name('show.archives');
     });
 
-    Route::controller(ApplicationController::class)->group(function(){
+    Route::controller(ApplicationController::class)->group(function () {
         Route::get('/pengaturan-aplikasi', 'applicationPage')->name('show.application');
     });
 });

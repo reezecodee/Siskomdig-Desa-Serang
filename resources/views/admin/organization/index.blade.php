@@ -17,13 +17,14 @@
     </div>
 @endsection
 @section('content')
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data" id="form-store">
+        @csrf
         <div class="card">
             <div class="card-body">
                 <img id="imagePreview" src="/unknown/unknown-structure.png" class="w-full mb-3" alt="Preview Image">
-                <input type="file" class="form-control mb-3" id="imageInput" accept=".png, .jpg, .jpeg" required>
+                <input type="file" name="gambar" class="form-control mb-3" id="imageInput" accept=".png, .jpg, .jpeg" required>
                 <div class="d-flex justify-content-end">
-                    <button class="btn btn-primary"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24"
+                    <button class="btn btn-primary" type="button" onclick="confirmAlert('form-store')"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24"
                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload-cloud">
                             <polyline points="16 16 12 12 8 16"></polyline>

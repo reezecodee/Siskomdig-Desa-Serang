@@ -36,14 +36,14 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <table id="user-table" class="display">
+            <table id="products-table" class="display">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
+                        <th>Kategori</th>
+                        <th>Pemilik</th>
+                        <th>Nama produk</th>
+                        <th>Harga</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -59,61 +59,93 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="text-center mb-3">
-                        <div class="d-flex justify-content-center mx-auto mb-3">
-                            <img src="https://images.unsplash.com/photo-1727112658582-fdb2e08878d4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="rounded"
-                                width="200" id="imagePreview" alt="">
-                            <input type="file" name="" id="inputImage" style="display: none" accept=".png, .jpg, .jpeg" name="foto_produk">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="text-center mb-3">
+                            <div class="d-flex justify-content-center mx-auto mb-3">
+                                <img src="https://images.unsplash.com/photo-1727112658582-fdb2e08878d4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    class="rounded" width="200" id="imagePreview" alt="">
+                                <input type="file" name="" id="inputImage" style="display: none"
+                                    accept=".png, .jpg, .jpeg" name="foto_produk">
+                            </div>
+                            <button class="btn btn-primary mb-1" id="btn-upload">Upload foto produk</button>
+                            @error('avatar')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
-                        <button class="btn btn-primary" id="btn-upload">Upload foto produk</button>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group mb-2">
-                                <label for="" class="form-label">Kategori produk</label>
-                                <select name="kategori_id" class="form-select" required>
-                                    <option selected>--Pilih kategori--</option>
-                                    <option value="">Acumalaka</option>
-                                </select>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="" class="form-label">Kategori produk</label>
+                                    <select name="kategori_id"
+                                        class="form-select @error('kategori_id') is-invalid @enderror" required>
+                                        <option selected>--Pilih kategori--</option>
+                                        @foreach ($categories as $item)
+                                            <option value="{{ $item->id }}">{{ $item->nama_kategori }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('kategori_id')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="" class="form-label">Pemilik produk</label>
+                                    <select name="anggota_id" class="form-select @error('anggota_id') is-invalid @enderror"
+                                        required>
+                                        <option selected>--Pilih anggota pemilik--</option>
+                                        @foreach ($members as $item)
+                                            <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('anggota_id')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="" class="form-label">Nama produk</label>
+                                    <input type="text" name="nama_produk" autocomplete="off"
+                                        placeholder="Masukkan nama produk"
+                                        class="form-control @error('nama_produk') is-invalid @enderror"
+                                        value="{{ old('nama_produk') }}" required>
+                                    @error('nama_produk')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="" class="form-label">Harga</label>
+                                    <input type="number" name="harga" autocomplete="off"
+                                        placeholder="Masukkan harga produk"
+                                        class="form-control @error('harga') is-invalid @enderror"
+                                        value="{{ old('harga') }}" required>
+                                    @error('harga')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group mb-2">
+                                    <label for="" class="form-label">Deskripsi produk</label>
+                                    <textarea rows="7" name="deskripsi" autocomplete="off" placeholder="Masukkan deskripsi produk"
+                                        class="form-control @error('deskripsi') is-invalid @enderror" required>{{ old('deskripsi') }}</textarea>
+                                    @error('deskripsi')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group mb-2">
-                                <label for="" class="form-label">Pemilik produk</label>
-                                <select name="anggota_id" class="form-select" required>
-                                    <option selected>--Pilih anggota pemilik--</option>
-                                    <option value="">Acumalaka</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group mb-2">
-                                <label for="" class="form-label">Nama produk</label>
-                                <input type="text" name="nama_produk" autocomplete="off" placeholder="Masukkan nama produk"
-                                    class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group mb-2">
-                                <label for="" class="form-label">Harga</label>
-                                <input type="number" name="harga" autocomplete="off"
-                                    placeholder="Masukkan harga produk" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group mb-2">
-                                <label for="" class="form-label">Deskripsi produk</label>
-                                <textarea rows="7" name="deskripsi" autocomplete="off" placeholder="Masukkan deskripsi produk"
-                                    class="form-control" required></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
                         Batalkan
                     </a>
-                    <a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
+                    <a href="#" class="btn btn-primary ms-auto" onclick="confirmAlert('form-store')">
                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload-cloud">
@@ -132,10 +164,10 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            $('#user-table').DataTable({
+            $('#products-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('api.activityAgendaAPI') }}",
+                ajax: "{{ route('api.products') }}",
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex',
@@ -143,20 +175,20 @@
                         searchable: false
                     },
                     {
-                        data: 'name',
-                        name: 'name'
+                        data: 'category_name',
+                        name: 'category_name'
                     },
                     {
-                        data: 'email',
-                        name: 'email'
+                        data: 'member_name',
+                        name: 'member_name'
                     },
                     {
-                        data: 'created_at',
-                        name: 'created_at'
+                        data: 'nama_produk',
+                        name: 'nama_produk'
                     },
                     {
-                        data: 'updated_at',
-                        name: 'updated_at'
+                        data: 'harga',
+                        name: 'harga'
                     },
                     {
                         data: 'action', // Pastikan ini benar

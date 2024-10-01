@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\AgendaExport;
 use App\Http\Controllers\Controller;
+use App\Models\Agenda;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Facades\DataTables;
 
-class ActivityController extends Controller
+class AgendaController extends Controller
 {
     public function activityAgendaPage()
     {
@@ -26,7 +29,6 @@ class ActivityController extends Controller
                     'created_at' => '2024-05-05 07:00:00',
                     'updated_at' => '2024-05-05 07:00:00',
                 ],
-                // Data lainnya...
             ]);
 
             return DataTables::of($users)
@@ -56,30 +58,20 @@ class ActivityController extends Controller
     public function editActivityAgendaPage($id)
     {
         $title = 'Edit Agenda';
+        $data = Agenda::findOrFail($id);
 
-        return view('admin.agenda.edit', compact('title'));
+        return view('admin.agenda.edit', compact('title', 'data'));
     }
 
     public function detailActivityAgendaPage($year, $month)
     {
-        $title = "Detail Agenda Bulan $month $year";
+        $title = "Detail Agenda: Bulan $month $year";
 
-        return view('admin.agenda.detail', compact('title'));
+        return view('admin.agenda.detail', compact('title', 'year', 'month'));
     }
 
-
-
-    public function activityArchivePage()
+    public function exportAgenda($year, $month)
     {
-        $title = 'Arsip Kegiatan Komunitas';
-
-        return view('admin.archive.index', compact('title'));
-    }
-
-    public function addActivityArchivePage()
-    {
-        $title = 'Buat Arsip Kegiatan Komunitas';
-
-        return view('admin.archive.create', compact('title'));
+        return Excel::download(new AgendaExport($year, $month), "Agenda-$month-$year.xlsx");
     }
 }

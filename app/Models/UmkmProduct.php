@@ -14,11 +14,11 @@ class UmkmProduct extends Model
 
     public function categories()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'kategori_id');
     }
 
     public function umkmMembers()
     {
-        return $this->belongsTo(UmkmMember::class);
+        return $this->belongsTo(UmkmMember::class, 'anggota_id');
     }
 }

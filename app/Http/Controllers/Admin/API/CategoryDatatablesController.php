@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\UmkmProduct;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -13,7 +14,7 @@ class CategoryDatatablesController extends Controller
     {
         if ($request->ajax()) {
             // Mengambil data menggunakan pagination untuk server-side processing
-            $categories = Category::query();
+            $categories = Category::query()->latest();
 
             // Menggunakan DataTables untuk memproses data server-side
             return DataTables::eloquent($categories)
@@ -21,13 +22,20 @@ class CategoryDatatablesController extends Controller
                 ->addColumn('action', function ($category) {
                     return '
                     <div class="d-flex gap-2">
-                    <button class="btn btn-primary edit" data-id="' . $category->id . '">Edit</button>
+                    <form id="edit-form-' . $category->id .'" method="POST" action="" style="display: none;">
+                    ' . method_field("PUT") .'
+                    '. csrf_field() .'
+                        <input type="hidden" name="nama_kategori" value="'. $category->nama_kategori .'" id="name-input-'. $category->id .'">
+                    </form>
+                    <button type="button" class="btn btn-primary" onclick="editAlert(\'' . $category->id . '\')">Edit</button>
                     <form method="POST" action="" id="delete-form-' . $category->id . '">
                         ' . csrf_field() . '
                         ' . method_field("DELETE") . '
-                        <button type="button" class="btn btn-danger" onclick="deleteAlert(\''. $category->id .'\')">Hapus</button>
+                        <button type="button" class="btn btn-danger" onclick="deleteAlert(\'' . $category->id . '\')">Hapus</button>
                     </form>
+                    <a href="'. route('show.detailCategory', $category->id) .'">
                     <button class="btn btn-success show" data-id="' . $category->id . '">Detail</button>
+                    </a>
                     </div>
                     ';
                 })
@@ -36,6 +44,33 @@ class CategoryDatatablesController extends Controller
                 })
                 ->editColumn('updated_at', function ($category) {
                     return $category->updated_at->format('d M Y');
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return back();
+    }
+
+    public function products(Request $request, $id)
+    {
+        if ($request->ajax()) {
+            // Mengambil data menggunakan pagination untuk server-side processing
+            $product = UmkmProduct::where('kategori_id', $id)->with('umkmMembers')->latest();
+
+            // Menggunakan DataTables untuk memproses data server-side
+            return DataTables::eloquent($product)
+                ->addIndexColumn()
+                ->addColumn('member_name', function ($product) {
+                    // Mengakses data dari relasi 'umkmMembers'
+                    return $product->umkmMembers ? $product->umkmMembers->nama : '-';
+                })
+                ->addColumn('action', function ($product) {
+                    return '
+                    <a href="' . route('show.detailProductUMKM', $product->id) . '">
+                    <button class="btn btn-success show" data-id="' . $product->id . '">Lihat produk</button>
+                    </a>
+                    ';
                 })
                 ->rawColumns(['action'])
                 ->make(true);

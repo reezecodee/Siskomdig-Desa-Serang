@@ -33,3 +33,35 @@ function deleteAlert(formID) {
         }
     });
 }
+
+function editAlert(formID) {
+    // Ambil data awal dari elemen tabel
+    const currentName = document.getElementById('name-input-' + formID).value;
+
+    // Tampilkan SweetAlert dengan input field
+    Swal.fire({
+        title: 'Edit nama kategori',
+        input: 'text',
+        inputValue: currentName,
+        showCancelButton: true,
+        confirmButtonText: 'Ganti nama kategori',
+        cancelButtonText: 'Batalkan',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        preConfirm: (newName) => {
+            if (newName) {
+                return newName;
+            } else {
+                Swal.showValidationMessage('Nama kategori tidak boleh kosong');
+            }
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Masukkan data baru ke input hidden di form
+            document.getElementById('name-input-' + formID).value = result.value;
+
+            // Submit form untuk mengirim data baru ke server
+            document.getElementById('edit-form-' + formID).submit();
+        }
+    });
+}
