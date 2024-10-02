@@ -51,6 +51,6 @@ class User extends Authenticatable
 
     public function informations()
     {
-        return $this->hasMany(Information::class, 'admin_id');
+        return $this->hasMany(Information::class, 'id');
     }
 }

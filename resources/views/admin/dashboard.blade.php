@@ -321,37 +321,32 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <p class="mb-3">Using Storage <strong>6854.45 MB </strong>of 8 GB</p>
-                            <div class="progress progress-separated mb-3">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 44%"
-                                    aria-label="Regular"></div>
-                                <div class="progress-bar bg-info" role="progressbar" style="width: 19%"
-                                    aria-label="System"></div>
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 9%"
-                                    aria-label="Shared"></div>
+                            <h3 class="card-title">Daftar admin</h3>
+                            <div class="d-flex justify-content-end mb-3">
+                                <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal"
+                                    data-bs-target="#modal-admin">
+                                    <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M12 5l0 14" />
+                                        <path d="M5 12l14 0" />
+                                    </svg>
+                                    Tambah admin
+                                </a>
                             </div>
-                            <div class="row">
-                                <div class="col-auto d-flex align-items-center pe-2">
-                                    <span class="legend me-2 bg-primary"></span>
-                                    <span>Regular</span>
-                                    <span class="d-none d-md-inline d-lg-none d-xxl-inline ms-2 text-muted">915MB</span>
-                                </div>
-                                <div class="col-auto d-flex align-items-center px-2">
-                                    <span class="legend me-2 bg-info"></span>
-                                    <span>System</span>
-                                    <span class="d-none d-md-inline d-lg-none d-xxl-inline ms-2 text-muted">415MB</span>
-                                </div>
-                                <div class="col-auto d-flex align-items-center px-2">
-                                    <span class="legend me-2 bg-success"></span>
-                                    <span>Shared</span>
-                                    <span class="d-none d-md-inline d-lg-none d-xxl-inline ms-2 text-muted">201MB</span>
-                                </div>
-                                <div class="col-auto d-flex align-items-center ps-2">
-                                    <span class="legend me-2"></span>
-                                    <span>Free</span>
-                                    <span class="d-none d-md-inline d-lg-none d-xxl-inline ms-2 text-muted">612MB</span>
-                                </div>
-                            </div>
+                            <table id="admin-table" class="display">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Email</th>
+                                        <th>Telepon</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -386,69 +381,198 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="mb-3">
-                        <label class="form-label">Thumbnail</label>
-                        <img src="" class="my-2" style="display: none" id="previewImage" alt=""
-                            srcset="">
-                        <input type="file" class="form-control" name="thumbnail" id="inputImage">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Judul informasi</label>
-                        <input type="text" class="form-control" name="judul_informasi"
-                            placeholder="Masukkan judul informasi" autocomplete="off" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Konten informasi</label>
-                        <textarea id="editor" name="konten_informasi" required></textarea>
-                    </div>
-                    <label class="form-label">Visibilitas</label>
-                    <div class="form-selectgroup-boxes row mb-3">
-                        <div class="col-lg-6">
-                            <label class="form-selectgroup-item">
-                                <input type="radio" name="visibilitas" value="Publik" class="form-selectgroup-input"
-                                    checked>
-                                <span class="form-selectgroup-label d-flex align-items-center p-3">
-                                    <span class="me-3">
-                                        <span class="form-selectgroup-check"></span>
-                                    </span>
-                                    <span class="form-selectgroup-label-content">
-                                        <span class="form-selectgroup-title strong mb-1">Publik</span>
-                                        <span class="d-block text-muted">Informasi yang kamu buat akan bisa langsung di
-                                            lihat pengguna.</span>
-                                    </span>
-                                </span>
-                            </label>
+                    <form action="" enctype="multipart/form-data" method="post" id="form-store">
+                        @csrf
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Thumbnail</label>
+                                <img src="" class="my-2" style="display: none" id="previewImage"
+                                    alt="" srcset="">
+                                <input type="file"
+                                    class="form-control @error('thumbnail') is-invalid
+                            @enderror"
+                                    accept=".jpg, .png, .jpeg" name="thumbnail" id="inputImage">
+                                @error('thumbnail')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
-                        <div class="col-lg-6">
-                            <label class="form-selectgroup-item">
-                                <input type="radio" name="visibilitas" value="Privasi" class="form-selectgroup-input">
-                                <span class="form-selectgroup-label d-flex align-items-center p-3">
-                                    <span class="me-3">
-                                        <span class="form-selectgroup-check"></span>
-                                    </span>
-                                    <span class="form-selectgroup-label-content">
-                                        <span class="form-selectgroup-title strong mb-1">Privasi</span>
-                                        <span class="d-block text-muted">Informasi yang kamu buat hanya dapat di lihat oleh
-                                            Anda seorang.</span>
-                                    </span>
-                                </span>
-                            </label>
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Judul informasi</label>
+                                <input type="text" class="form-control @error('judul_informasi') is-invalid @enderror"
+                                    name="judul_informasi" placeholder="Masukkan judul informasi"
+                                    value="{{ old('judul_informasi') }}" autocomplete="off" required>
+                                @error('judul_informasi')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label class="form-label">Konten informasi</label>
+                                <textarea id="editor" name="konten_informasi" required>{{ old('konten_informasi') }}</textarea>
+                                @error('konten_informasi')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <label class="form-label">Visibilitas</label>
+                        <div class="form-selectgroup-boxes row mb-3">
+                            <div class="col-lg-6">
+                                <label class="form-selectgroup-item">
+                                    <input type="radio" name="visibilitas" value="Publik"
+                                        class="form-selectgroup-input" checked>
+                                    <span class="form-selectgroup-label d-flex align-items-center p-3">
+                                        <span class="me-3">
+                                            <span class="form-selectgroup-check"></span>
+                                        </span>
+                                        <span class="form-selectgroup-label-content">
+                                            <span class="form-selectgroup-title strong mb-1">Publik</span>
+                                            <span class="d-block text-muted">Informasi yang kamu buat akan bisa langsung di
+                                                lihat pengguna.</span>
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="form-selectgroup-item">
+                                    <input type="radio" name="visibilitas" value="Privasi"
+                                        class="form-selectgroup-input">
+                                    <span class="form-selectgroup-label d-flex align-items-center p-3">
+                                        <span class="me-3">
+                                            <span class="form-selectgroup-check"></span>
+                                        </span>
+                                        <span class="form-selectgroup-label-content">
+                                            <span class="form-selectgroup-title strong mb-1">Privasi</span>
+                                            <span class="d-block text-muted">Informasi yang kamu buat hanya dapat di lihat
+                                                oleh
+                                                Anda seorang.</span>
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                            @error('visibilitas')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
                         Batalkan
                     </a>
-                    <button type="submit" class="btn btn-primary"><svg class="icon"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="feather feather-upload-cloud">
+                    <button type="button" onclick="confirmAlert('form-store')" class="btn btn-primary"><svg
+                            class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload-cloud">
                             <polyline points="16 16 12 12 8 16"></polyline>
                             <line x1="12" y1="12" x2="12" y2="21"></line>
                             <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path>
                             <polyline points="16 16 12 12 8 16"></polyline>
                         </svg> Buat informasi baru</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-blur fade" id="modal-admin" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Daftarkan admin baru</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post" id="form-store-admin">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Username</label>
+                                        <input type="text"
+                                            class="form-control @error('username') is-invalid @enderror"
+                                            name="username" placeholder="Masukkan username"
+                                            value="{{ old('username') }}" autocomplete="off" required>
+                                        @error('username')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Nama</label>
+                                        <input type="text"
+                                            class="form-control @error('nama') is-invalid @enderror"
+                                            name="nama" placeholder="Masukkan nama lengkap"
+                                            value="{{ old('nama') }}" autocomplete="off" required>
+                                        @error('nama')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Telepon</label>
+                                        <input type="number"
+                                            class="form-control @error('telepon') is-invalid @enderror"
+                                            name="telepon" placeholder="Masukkan nomor telepon"
+                                            value="{{ old('telepon') }}" autocomplete="off" required>
+                                        @error('telepon')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Email</label>
+                                        <input type="email"
+                                            class="form-control @error('email') is-invalid @enderror"
+                                            name="email" placeholder="Masukkan email aktif"
+                                            value="{{ old('email') }}" autocomplete="off" required>
+                                        @error('email')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Password sementara</label>
+                                        <input type="password"
+                                            class="form-control @error('password') is-invalid @enderror"
+                                            name="password" placeholder="Masukkan password sementara"
+                                            value="{{ old('password') }}" autocomplete="off" required>
+                                        @error('password')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+                        Batalkan
+                    </a>
+                    <button type="button" onclick="confirmAlert('form-store-admin')" class="btn btn-primary"><svg
+                            class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload-cloud">
+                            <polyline points="16 16 12 12 8 16"></polyline>
+                            <line x1="12" y1="12" x2="12" y2="21"></line>
+                            <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path>
+                            <polyline points="16 16 12 12 8 16"></polyline>
+                        </svg> Tambah admin</button>
                 </div>
             </div>
         </div>
@@ -480,6 +604,39 @@
                 previewImage.style.display = 'none';
                 previewImage.src = '';
             }
+        });
+
+        $(document).ready(function() {
+            $('#admin-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('api.allAdmin') }}",
+                columns: [{
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex',
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: 'nama',
+                        name: 'nama'
+                    },
+                    {
+                        data: 'email',
+                        name: 'email'
+                    },
+                    {
+                        data: 'telepon',
+                        name: 'telepon'
+                    },
+                    {
+                        data: 'action', // Pastikan ini benar
+                        name: 'action',
+                        orderable: false,
+                        searchable: false
+                    },
+                ]
+            });
         });
     </script>
 @endsection

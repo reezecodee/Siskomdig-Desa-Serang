@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\API\AdminDatatablesController;
 use App\Http\Controllers\Admin\API\AgendaDatatablesController;
 use App\Http\Controllers\Admin\API\ArchiveDatatablesController;
 use App\Http\Controllers\Admin\API\CategoryDatatablesController;
+use App\Http\Controllers\Admin\API\InformationDatatablesController;
 use App\Http\Controllers\Admin\API\MemberDatatablesController;
 use App\Http\Controllers\Admin\API\ProductDatatablesController;
 use Illuminate\Support\Facades\Route;
@@ -27,4 +29,13 @@ Route::controller(MemberDatatablesController::class)->group(function () {
 
 Route::controller(ProductDatatablesController::class)->group(function () {
     Route::get('/api/products', 'index')->name('api.products');
+});
+
+Route::controller(InformationDatatablesController::class)->group(function () {
+    Route::get('/api/all-informations', 'index')->name('api.allInformations');
+    Route::get('/api/my-informations', 'myInformations')->name('api.myInformations');
+});
+
+Route::controller(AdminDatatablesController::class)->group(function () {
+    Route::get('/api/all-admin', 'index')->name('api.allAdmin');
 });

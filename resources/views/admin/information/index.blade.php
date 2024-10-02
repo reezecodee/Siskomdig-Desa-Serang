@@ -31,14 +31,13 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <table id="user-table" class="display">
+            <table id="information-table" class="display">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
+                        <th>Judul</th>
+                        <th>Tanggal publish</th>
+                        <th>Author</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -50,10 +49,10 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            $('#user-table').DataTable({
+            $('#information-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('api.activityAgendaAPI') }}",
+                ajax: "{{ route('api.allInformations') }}",
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex',
@@ -61,20 +60,16 @@
                         searchable: false
                     },
                     {
-                        data: 'name',
-                        name: 'name'
+                        data: 'judul',
+                        name: 'judul'
                     },
                     {
-                        data: 'email',
-                        name: 'email'
+                        data: 'tgl_publish',
+                        name: 'tgl_publish'
                     },
                     {
-                        data: 'created_at',
-                        name: 'created_at'
-                    },
-                    {
-                        data: 'updated_at',
-                        name: 'updated_at'
+                        data: 'author_name',
+                        name: 'author_name'
                     },
                     {
                         data: 'action', // Pastikan ini benar

@@ -24,31 +24,46 @@
     </div>
 @endsection
 @section('content')
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data" id="form-edit">
         @csrf
         @method('PUT')
         <div class="card">
             <div class="card-body">
-                <div class="mb-3">
+                <div class="form-group mb-3">
                     <label class="form-label">Thumbnail</label>
                     <img src="" class="my-2" style="display: none" id="previewImage" alt=""
                         srcset="">
-                    <input type="file" class="form-control" name="thumbnail" id="inputImage">
+                    <input type="file"
+                        class="form-control @error('thumbnail')
+                        is-invalid
+                    @enderror"
+                        name="thumbnail" id="inputImage">
+                    @error('thumbnail')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
                 </div>
-                <div class="mb-3">
+                <div class="form-group mb-3">
                     <label class="form-label">Judul informasi</label>
-                    <input type="text" class="form-control" name="judul_informasi" placeholder="Masukkan judul informasi"
-                        autocomplete="off" required>
+                    <input type="text"
+                        class="form-control @error('judul')
+                        is-invalid @enderror"
+                        name="judul" value="{{ old('judul', $data->judul) }}" placeholder="Masukkan judul informasi" autocomplete="off" required>
+                    @error('judul')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
                 </div>
-                <div class="mb-3">
+                <div class="form-group mb-3">
                     <label class="form-label">Konten informasi</label>
-                    <textarea id="editor" name="konten_informasi" required></textarea>
+                    <textarea id="editor" name="konten_informasi" required>{{ old('konten_informasi', $data->konten_informasi) }}</textarea>
+                    @error('judul')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <label class="form-label">Visibilitas</label>
                 <div class="form-selectgroup-boxes row mb-3">
                     <div class="col-lg-6">
                         <label class="form-selectgroup-item">
-                            <input type="radio" name="visibilitas" value="Publik" class="form-selectgroup-input" checked>
+                            <input type="radio" name="visibilitas" value="Publik" class="form-selectgroup-input" {{ old('visibilitas') == 'Publik' ? 'checked' : 'checked' }}>
                             <span class="form-selectgroup-label d-flex align-items-center p-3">
                                 <span class="me-3">
                                     <span class="form-selectgroup-check"></span>
@@ -63,7 +78,7 @@
                     </div>
                     <div class="col-lg-6">
                         <label class="form-selectgroup-item">
-                            <input type="radio" name="visibilitas" value="Privasi" class="form-selectgroup-input">
+                            <input type="radio" name="visibilitas" value="Privasi" class="form-selectgroup-input" {{ old('visibilitas') == 'Privasi' ? 'checked' : '' }}>
                             <span class="form-selectgroup-label d-flex align-items-center p-3">
                                 <span class="me-3">
                                     <span class="form-selectgroup-check"></span>
@@ -78,7 +93,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary"><svg class="icon" xmlns="http://www.w3.org/2000/svg"
+                    <button type="button" onclick="confirmAlert('form-edit')" class="btn btn-primary"><svg class="icon" xmlns="http://www.w3.org/2000/svg"
                             width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="feather feather-upload-cloud">
