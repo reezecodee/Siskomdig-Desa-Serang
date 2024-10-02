@@ -87,9 +87,9 @@
                         <li class="nav-item {{ Request::is('admin/dashboard*') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('show.dashboardAdmin') }}">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
-                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                         <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
                                         <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
@@ -187,7 +187,8 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item dropdown {{ Request::is('admin/anggota-umkm*') || Request::is('admin/produk-umkm*') ? 'active' : '' }}">
+                        <li
+                            class="nav-item dropdown {{ Request::is('admin/anggota-umkm*') || Request::is('admin/produk-umkm*') ? 'active' : '' }}">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
                                 data-bs-auto-close="outside" role="button" aria-expanded="false">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block"><svg
@@ -207,10 +208,12 @@
                             <div class="dropdown-menu">
                                 <div class="dropdown-menu-columns">
                                     <div class="dropdown-menu-column">
-                                        <a class="dropdown-item {{ Request::is('admin/anggota-umkm*') ? 'active' : '' }}" href="{{ route('show.memberUMKM') }}">
+                                        <a class="dropdown-item {{ Request::is('admin/anggota-umkm*') ? 'active' : '' }}"
+                                            href="{{ route('show.memberUMKM') }}">
                                             Anggota UMKM
                                         </a>
-                                        <a class="dropdown-item {{ Request::is('admin/produk-umkm*') ? 'active' : '' }}" href="{{ route('show.productUMKM') }}">
+                                        <a class="dropdown-item {{ Request::is('admin/produk-umkm*') ? 'active' : '' }}"
+                                            href="{{ route('show.productUMKM') }}">
                                             Produk UMKM
                                         </a>
                                     </div>
@@ -240,7 +243,9 @@
                         </li>
                     </ul>
                     <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
-                        <form action="./" method="get" autocomplete="off" novalidate>
+                        <form action="{{ route('show.searchResult') }}" method="get" autocomplete="off"
+                            novalidate>
+                            @csrf
                             <div class="input-icon">
                                 <span class="input-icon-addon">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
@@ -251,7 +256,7 @@
                                         <path d="M21 21l-6 -6" />
                                     </svg>
                                 </span>
-                                <input type="text" value="" class="form-control"
+                                <input type="search" value="{{ $search }}" class="form-control" name="s"
                                     placeholder="Cari anggota UMKM..." aria-label="Search in website">
                             </div>
                         </form>

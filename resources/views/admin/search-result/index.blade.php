@@ -5,69 +5,42 @@
             <div class="row g-2 align-items-center">
                 <div class="col">
                     <h2 class="page-title">
-                        Hasil Pencarian: ""
+                        Hasil Pencarian: "{{ $search }}"
                     </h2>
-                    <div class="text-muted mt-1">About 2,410 result (0.19 seconds)</div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
 @section('content')
-    <div class="row g-4">
-        <div class="col-12">
-            <div class="row row-cards">
-                <div class="col-sm-6 col-lg-4">
-                    <div class="card card-sm">
-                        <a href="#" class="d-block"><img
-                                src="./static/photos/beautiful-blonde-woman-relaxing-with-a-can-of-coke-on-a-tree-stump-by-the-beach.jpg"
-                                class="card-img-top"></a>
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <span class="avatar me-3 rounded"
-                                    style="background-image: url(./static/avatars/000m.jpg)"></span>
-                                <div>
-                                    <div>Paweł Kuna</div>
-                                    <div class="text-muted">3 days ago</div>
+    @if ($members->isNotEmpty())
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="row row-cards">
+                    @foreach ($members as $item)
+                        <div class="col-sm-6 col-lg-4">
+                            <a href="{{ route('show.detailMemberUMKM', $item->id) }}">
+                                <div class="card card-sm">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <span class="avatar me-3 rounded"
+                                                style="background-image: url(https://avatars.githubusercontent.com/u/159593076?v=4)"></span>
+                                            <div>
+                                                <div>{{ $item->nama }}</div>
+                                                <div class="text-muted small">Jenis usaha: {{ $item->jenis_usaha }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <div class="card card-sm">
-                        <a href="#" class="d-block"><img
-                                src="./static/photos/brainstorming-session-with-creative-designers.jpg"
-                                class="card-img-top"></a>
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <span class="avatar me-3 rounded">JL</span>
-                                <div>
-                                    <div>Jeffie Lewzey</div>
-                                    <div class="text-muted">5 days ago</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <div class="card card-sm">
-                        <a href="#" class="d-block"><img
-                                src="./static/photos/finances-us-dollars-and-bitcoins-currency-money.jpg"
-                                class="card-img-top"></a>
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <span class="avatar me-3 rounded"
-                                    style="background-image: url(./static/avatars/002m.jpg)"></span>
-                                <div>
-                                    <div>Mallory Hulme</div>
-                                    <div class="text-muted">yesterday</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
+
+            {{ $members->links('pagination::bootstrap-5') }}
         </div>
-    </div>
+    @else
+        <p>Tidak ada data yang ditemukan.</p>
+    @endif
 @endsection

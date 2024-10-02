@@ -43,7 +43,7 @@
     <script src="/dist/js/demo-theme.min.js?1684106062"></script>
     <div class="page">
         <!-- Navbar -->
-        <x-admin.navbar />
+        <x-admin.navbar :search="$search ?? ''" />
 
         <div class="page-wrapper">
             <!-- Page header -->

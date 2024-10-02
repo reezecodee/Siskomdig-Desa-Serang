@@ -34,26 +34,27 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <p class="mb-3">Digunakan <strong>6854.45 MB </strong>dari 8 GB penyimpanan server</p>
+                            <p class="mb-3">Digunakan <strong>{{ $totalUsedSpace }} GB </strong>dari {{ $totalSpace }} GB penyimpanan server</p>
                             <div class="progress progress-separated mb-3">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 44%"
-                                    aria-label="Regular">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: {{ $percentage['percentageFile'] }}%"
+                                    aria-label="file">
                                 </div>
-                                <div class="progress-bar bg-info" role="progressbar" style="width: 19%" aria-label="System">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: {{ $percentage['percentageDB'] }}%" aria-label="database">
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-auto d-flex align-items-center pe-2">
                                     <span class="legend me-2 bg-primary"></span>
-                                    <span>File (200MB)</span>
+                                    <span>File ({{ $storageSize }}GB)</span>
                                 </div>
                                 <div class="col-auto d-flex align-items-center px-2">
                                     <span class="legend me-2 bg-info"></span>
-                                    <span>Database (10MB)</span>
+                                    <span>Database ({{ $databaseSize }}MB)</span>
                                 </div>
                                 <div class="col-auto d-flex align-items-center ps-2">
                                     <span class="legend me-2"></span>
-                                    <span>Free (10MB)</span>
+                                    <span>Free ({{ $freeSpace }}GB)</span>
                                 </div>
                             </div>
                         </div>
@@ -66,7 +67,7 @@
                                 <div class="subheader">Total file di storage</div>
                             </div>
                             <div class="d-flex align-items-baseline">
-                                <div class="h1 mb-0 me-2">30</div>
+                                <div class="h1 mb-0 me-2">{{ $count['countFiles'] }}</div>
                             </div>
                         </div>
                     </div>
@@ -75,10 +76,10 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
-                                <div class="subheader">Total database</div>
+                                <div class="subheader">Total tabel database</div>
                             </div>
                             <div class="d-flex align-items-baseline">
-                                <div class="h1 mb-0 me-2">1</div>
+                                <div class="h1 mb-0 me-2">{{ $count['countTables'] }}</div>
                             </div>
                         </div>
                     </div>
