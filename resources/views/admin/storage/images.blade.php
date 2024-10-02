@@ -30,16 +30,32 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="text-center">
-                        <div class="d-flex justify-content-center mb-2">
-                            <img src="https://images.unsplash.com/photo-1727112658582-fdb2e08878d4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="" srcset="" class="rounded" loading="lazy">
-                        </div>
-                        <p>acumalaka.jpg</p>
+                @foreach ($paginatedFiles as $index => $file)
+                    <div class="col-md-3">
+                        <a href="{{ asset('storage/images/' . $file) }}" download title="Klik untuk mendownload">
+                            <div class="text-center" style="cursor: pointer">
+                                <div class="d-flex justify-content-center mb-2">
+                                    <img src="{{ asset('storage/images/' . $file) }}" alt="" srcset=""
+                                        class="rounded" loading="lazy">
+                                </div>
+                                <p>{{ truncateText($file) }}</p>
+                            </div>
+                        </a>
                     </div>
-                </div>
+                @endforeach
             </div>
+            <div class="d-flex justify-content-end">
+                {{ $paginatedFiles->links('pagination::bootstrap-5') }}
+            </div>
+            @if ($paginatedFiles->isEmpty())
+                <div class="text-center">
+                    <div class="d-flex justify-content-center">
+                        <img src="https://www.svgrepo.com/show/87468/empty-box.svg" width="70" alt=""
+                            srcset="">
+                    </div>
+                    <h3>Belum ada file yang di upload</h3>
+                </div>
+            @endif
         </div>
     </div>
 @endsection

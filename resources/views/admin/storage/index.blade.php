@@ -98,8 +98,8 @@
                                 <div class="d-flex justify-content-center">
                                     <div>
                                         <div class="d-flex justify-content-center">
-                                            <img src="https://www.svgrepo.com/show/522624/photo.svg" alt=""
-                                                class="w-50" srcset="">
+                                            <img src="https://www.svgrepo.com/show/362099/folder-picture.svg" alt=""
+                                                class="w-50" srcset="" loading="lazy">
                                         </div>
                                         <p class="text-center">Semua gambar</p>
                                     </div>
@@ -115,8 +115,8 @@
                                 <div class="d-flex justify-content-center">
                                     <div>
                                         <div class="d-flex justify-content-center">
-                                            <img src="https://www.svgrepo.com/show/522440/profile.svg" alt=""
-                                                class="w-50" srcset="">
+                                            <img src="https://www.svgrepo.com/show/446526/avatar-portrait.svg" alt=""
+                                                class="w-50" srcset="" loading="lazy">
                                         </div>
                                         <p class="text-center">Gambar foto</p>
                                     </div>
@@ -132,8 +132,8 @@
                                 <div class="d-flex justify-content-center">
                                     <div>
                                         <div class="d-flex justify-content-center">
-                                            <img src="https://www.svgrepo.com/show/449565/zip.svg" alt=""
-                                                class="w-50" srcset="">
+                                            <img src="https://www.svgrepo.com/show/301070/folder.svg" alt=""
+                                                class="w-50" srcset="" loading="lazy">
                                         </div>
                                         <p class="text-center">Arsip kegiatan</p>
                                     </div>
@@ -143,14 +143,14 @@
                     </a>
                 </div>
                 <div class="col-md-3">
-                    <a href="">
+                    <a href="{{ url('/') . '/cpanel' }}">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex justify-content-center">
                                     <div>
                                         <div class="d-flex justify-content-center">
-                                            <img src="https://www.svgrepo.com/show/524492/database.svg" alt=""
-                                                class="w-50" srcset="">
+                                            <img src="https://www.svgrepo.com/show/286859/database.svg" alt=""
+                                                class="w-50" srcset="" loading="lazy">
                                         </div>
                                         <p class="text-center">Buka database</p>
                                     </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -38,15 +40,76 @@ class StorageController extends Controller
     public function storageImagesPage($fileType)
     {
         $title = 'Semua Gambar Yang di Upload';
+        if ($fileType === 'semua-gambar') {
+            $directory = storage_path('app/public/images');
+        } else if ($fileType === 'photo') {
+            $directory = storage_path('app/public/profiles');
+        } else {
+            abort(404);
+        }
 
-        return view('admin.storage.images', compact('title'));
+        $files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($directory));
+
+        $allFiles = [];
+
+        // Looping setiap file dalam folder images dan subfolder-nya
+        foreach ($files as $file) {
+            if ($file->isFile()) {
+                // Masukkan ke array allFiles
+                $allFiles[] = $file->getFilename();
+            }
+        }
+
+        $perPage = 10; // Menentukan jumlah item per halaman
+        $currentPage = Paginator::resolveCurrentPage() ?: 1; // Menentukan halaman saat ini
+
+        // Menggunakan fungsi array_slice untuk mengambil data sesuai halaman
+        $currentPageFiles = array_slice($allFiles, ($currentPage - 1) * $perPage, $perPage);
+
+        // Membuat paginasi manual menggunakan LengthAwarePaginator
+        $paginatedFiles = new LengthAwarePaginator(
+            $currentPageFiles, // Data file untuk halaman saat ini
+            count($allFiles),  // Total data
+            $perPage,          // Jumlah item per halaman
+            $currentPage,      // Halaman saat ini
+            ['path' => Paginator::resolveCurrentPath()] // Path untuk URL paginasi
+        );
+
+        return view('admin.storage.images', compact('title', 'paginatedFiles'));
     }
 
     public function storageArchivesPage()
     {
         $title = 'Semua Arsip Yang di Simpan';
+        $directory = storage_path('app/public/archives');
+        $files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($directory));
 
-        return view('admin.storage.archives', compact('title'));
+        $allFiles = [];
+
+        // Looping setiap file dalam folder images dan subfolder-nya
+        foreach ($files as $file) {
+            if ($file->isFile()) {
+                // Masukkan ke array allFiles
+                $allFiles[] = $file->getFilename();
+            }
+        }
+
+        $perPage = 10; // Menentukan jumlah item per halaman
+        $currentPage = Paginator::resolveCurrentPage() ?: 1; // Menentukan halaman saat ini
+
+        // Menggunakan fungsi array_slice untuk mengambil data sesuai halaman
+        $currentPageFiles = array_slice($allFiles, ($currentPage - 1) * $perPage, $perPage);
+
+        // Membuat paginasi manual menggunakan LengthAwarePaginator
+        $paginatedFiles = new LengthAwarePaginator(
+            $currentPageFiles, // Data file untuk halaman saat ini
+            count($allFiles),  // Total data
+            $perPage,          // Jumlah item per halaman
+            $currentPage,      // Halaman saat ini
+            ['path' => Paginator::resolveCurrentPath()] // Path untuk URL paginasi
+        );
+
+        return view('admin.storage.archives', compact('title', 'paginatedFiles'));
     }
 
 
@@ -81,19 +144,20 @@ class StorageController extends Controller
     public function getStorageUsage()
     {
         // Menghitung ukuran file di direktori storage
-        $directory = storage_path(); // Mendapatkan path ke direktori storage
-        $files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($directory));
-        $usedSpace = 0;
+        // $directory = public_path('storage'); // Mendapatkan path ke direktori storage
+        // $directory = base_path(); // Mendapatkan path ke direktori storage
+        // $files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($directory));
+        // $usedSpace = 0;
 
-        foreach ($files as $file) {
-            if ($file->isFile()) {
-                $usedSpace += $file->getSize(); // Menambahkan ukuran file
-            }
-        }
+        // foreach ($files as $file) {
+        //     if ($file->isFile()) {
+        //         $usedSpace += $file->getSize(); // Menambahkan ukuran file
+        //     }
+        // }
 
-        $usedSpaceGB = round($usedSpace / 1024 / 1024 / 1024, 2); // Menghitung ukuran dalam GB
+        // $usedSpaceGB = round($usedSpace / 1024 / 1024 / 1024, 2); // Menghitung ukuran dalam GB
 
-        return $usedSpaceGB;
+        return $this->deviceStorageGB()['totalSpace'] - $this->deviceStorageGB()['freeSpace'];
     }
 
 
@@ -119,14 +183,16 @@ class StorageController extends Controller
     private function countPartials()
     {
         $fileCount = 0;
+        $directoryPath = public_path('storage');
 
         // Membuka direktori
-        $files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator(storage_path()));
+        $files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($directoryPath));
 
         // Menghitung setiap file
         foreach ($files as $file) {
             // Pastikan ini adalah file dan bukan direktori
-            if ($file->isFile()) {
+            // Dan bukan file .gitignore
+            if ($file->isFile() && $file->getFilename() !== '.gitignore') {
                 $fileCount++; // Menambahkan 1 untuk setiap file
             }
         }

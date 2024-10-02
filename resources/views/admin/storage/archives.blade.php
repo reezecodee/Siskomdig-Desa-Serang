@@ -30,18 +30,32 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
+                @foreach ($paginatedFiles as $index => $file)
                 <div class="col-md-3">
-                    <a href="" download="" title="Klik untuk mendownload">
+                    <a href="{{ asset('storage/archives/' . $file) }}" download title="Klik untuk mendownload">
                         <div class="text-center">
                             <div class="d-flex justify-content-center mb-1">
-                                <img src="https://www.svgrepo.com/show/382229/file-folder-zip.svg" alt=""
+                                <img src="https://www.svgrepo.com/show/474852/folder.svg" alt=""
                                     srcset="" width="150" class="rounded" loading="lazy">
                             </div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                            <p>{{ truncateText($file) }}</p>
                         </div>
                     </a>
                 </div>
+                @endforeach
             </div>
+            <div class="d-flex justify-content-end">
+                {{ $paginatedFiles->links('pagination::bootstrap-5') }}
+            </div>
+            @if ($paginatedFiles->isEmpty())
+                <div class="text-center">
+                    <div class="d-flex justify-content-center">
+                        <img src="https://www.svgrepo.com/show/87468/empty-box.svg" width="70" alt=""
+                            srcset="">
+                    </div>
+                    <h3>Belum ada file yang di upload</h3>
+                </div>
+            @endif
         </div>
     </div>
 @endsection
