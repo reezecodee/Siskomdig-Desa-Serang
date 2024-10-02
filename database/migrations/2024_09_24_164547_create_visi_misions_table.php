@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('visi_misions', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->text('visi');
-            $table->text('misi');
+            $table->text('visi')->nullable();
+            $table->text('misi')->nullable();
             $table->timestamps();
         });
     }
