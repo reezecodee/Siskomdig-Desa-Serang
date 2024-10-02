@@ -27,8 +27,10 @@
     </div>
 @endsection
 @section('content')
-    <form action="" method="POST" enctype="multipart/form-data">
+    <x-admin.alert.success :success="session('success')" />
+    <form action="{{ route('update.application') }}" method="POST" enctype="multipart/form-data" id="form-edit">
         @csrf
+        @method('PUT')
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -37,18 +39,21 @@
                         <div class="text-center">
                             <div class="d-flex flex-column justify-content-center align-items-center">
                                 <img src="https://www.svgrepo.com/show/532809/file-zipper.svg" class="w-25 mx-auto"
-                                    alt="" id="previewExample" style="display: none">
+                                    alt="" id="previewExample"
+                                    style="display: {{ $data->favicon ? 'block' : 'none' }};">
                             </div>
-                            <div id="fileName" class="file-name mb-3" style="display: none;"></div>
+                            <div id="fileName" class="file-name mb-3"
+                                style="display: {{ $data->favicon ? 'block' : 'none' }};">{{ $data->favicon }}</div>
                         </div>
                         <div class="form-group">
                             <div class="d-flex justify-content-center">
-                                <input type="file" id="fileInput" style="display: none;" accept=".ico" name="favicon">
+                                <input type="file" id="fileInput" style="display: none;" accept=".ico" name="favicon"
+                                    value="{{ old('favicon', $data->favicon) }}">
                                 <button type="button" class="btn btn-primary" id="uploadButton">Pilih favicon</button>
                             </div>
                             <div id="error-message" style="display:none; color: red;"></div>
                             @error('favicon')
-                                <div style="display:none; color: red;">{{ $message }}</div>
+                                <div style="color: red;">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
@@ -61,7 +66,7 @@
                                     <input type="text" name="nama_aplikasi"
                                         class="form-control @error('nama_aplikasi') is-invalid
                                     @enderror"
-                                        autocomplete="off" value="{{ old('nama_aplikasi') }}"
+                                        autocomplete="off" value="{{ old('nama_aplikasi', $data->nama_aplikasi) }}"
                                         placeholder="Masukkan nama aplikasi">
                                     @error('nama_aplikasi')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -74,7 +79,7 @@
                                     <input type="text" name="keyword"
                                         class="form-control @error('keyword') is-invalid
                                     @enderror"
-                                        autocomplete="off" value="{{ old('keyword') }}"
+                                        autocomplete="off" value="{{ old('keyword', $data->keyword) }}"
                                         placeholder="Masukkan keyword pencarian">
                                     @error('keyword')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -87,7 +92,7 @@
                                     <textarea rows="7" type="text" name="deskripsi"
                                         class="form-control @error('deskripsi') is-invalid
                                     @enderror" autocomplete="off"
-                                        placeholder="Masukkan deskripsi singkat tentang aplikasi">{{ old('deskripsi') }}</textarea>
+                                        placeholder="Masukkan deskripsi singkat tentang aplikasi">{{ old('deskripsi', $data->deskripsi) }}</textarea>
                                     @error('deskripsi')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -102,7 +107,7 @@
                                     <input type="text" name="telepon"
                                         class="form-control @error('telepon') is-invalid
                                     @enderror"
-                                        autocomplete="off" value="{{ old('telepon') }}"
+                                        autocomplete="off" value="{{ old('telepon', $data->telepon) }}"
                                         placeholder="Masukkan telepon layanan aplikasi">
                                     @error('telepon')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -115,7 +120,7 @@
                                     <input type="text" name="email"
                                         class="form-control @error('email') is-invalid
                                     @enderror"
-                                        autocomplete="off" value="{{ old('email') }}"
+                                        autocomplete="off" value="{{ old('email', $data->email) }}"
                                         placeholder="Masukkan email layanan aplikasi">
                                     @error('email')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -128,7 +133,7 @@
                                     <input type="text" name="alamat"
                                         class="form-control @error('alamat') is-invalid
                                     @enderror"
-                                        autocomplete="off" value="{{ old('alamat') }}"
+                                        autocomplete="off" value="{{ old('alamat', $data->alamat) }}"
                                         placeholder="Masukkan alamat komunitas">
                                     @error('alamat')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -140,8 +145,8 @@
                                     <label for="" class="form-label">HTML Google Maps</label>
                                     <textarea rows="7" type="text" name="google_maps"
                                         class="form-control @error('google_maps') is-invalid
-                                    @enderror" autocomplete="off"
-                                        placeholder="Masukkan kode iframe HTML Google Maps">{{ old('google_maps') }}</textarea>
+                                    @enderror"
+                                        autocomplete="off" placeholder="Masukkan kode iframe HTML Google Maps">{{ old('google_maps', $data->google_maps) }}</textarea>
                                     @error('google_maps')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -149,10 +154,10 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-primary"><svg class="icon" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                    class="feather feather-upload-cloud">
+                            <button class="btn btn-primary" type="button" onclick="confirmAlert('form-edit')"><svg
+                                    class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload-cloud">
                                     <polyline points="16 16 12 12 8 16"></polyline>
                                     <line x1="12" y1="12" x2="12" y2="21"></line>
                                     <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path>

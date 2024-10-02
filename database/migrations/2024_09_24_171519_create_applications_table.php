@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama_aplikasi');
             $table->string('keyword');
             $table->text('deskripsi');
-            $table->string('favicon');
+            $table->string('favicon')->nullable();
             $table->string('telepon');
             $table->string('email');
             $table->text('alamat');

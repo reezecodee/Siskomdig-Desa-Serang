@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\ActivityController;
 use App\Http\Controllers\Admin\AgendaController;
 use App\Http\Controllers\Admin\ApplicationController;
 use App\Http\Controllers\Admin\ArchiveController;
@@ -121,3 +120,4 @@ Route::controller(SiteController::class)->group(function () {
 });
 
 require __DIR__ . '/api.php';
+require __DIR__ . '/backend.php';
