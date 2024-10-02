@@ -17,16 +17,26 @@
     </div>
 @endsection
 @section('content')
-    <form action="" method="POST" enctype="multipart/form-data" id="form-store">
+    <form action="{{ route('update.organization') }}" method="POST" enctype="multipart/form-data" id="form-store">
         @csrf
+        @method('PUT')
         <div class="card">
             <div class="card-body">
-                <img id="imagePreview" src="/unknown/unknown-structure.png" class="w-full mb-3" alt="Preview Image">
-                <input type="file" name="gambar" class="form-control mb-3" id="imageInput" accept=".png, .jpg, .jpeg" required>
-                <div class="d-flex justify-content-end">
-                    <button class="btn btn-primary" type="button" onclick="confirmAlert('form-store')"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload-cloud">
+                <img id="imagePreview" src="{{ $data->gambar ? asset('storage/images/'.$data->gambar) : '/unknown/unknown-structure.png' }}" class="w-full mb-3" alt="Preview Image">
+                <div class="form-group">
+                    <input type="file" name="gambar"
+                        class="form-control @error('gambar') is-invalid
+                @enderror mb-1" id="imageInput"
+                        accept=".png, .jpg, .jpeg" value="{{ old('gambar', $data->gambar) }}" required>
+                    @error('gambar')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="d-flex justify-content-end mt-2">
+                    <button class="btn btn-primary" type="button" onclick="confirmAlert('form-store')"><svg class="icon"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-upload-cloud">
                             <polyline points="16 16 12 12 8 16"></polyline>
                             <line x1="12" y1="12" x2="12" y2="21"></line>
                             <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path>

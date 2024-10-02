@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('organization_structures', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('gambar');
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }

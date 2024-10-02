@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Backend\ManageApplicationController;
 use App\Http\Controllers\Admin\Backend\ManageCategoryController;
+use App\Http\Controllers\Admin\Backend\ManageOrganizationController;
 use App\Http\Controllers\Admin\Backend\ManageVisiMisionController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,7 @@ Route::controller(ManageVisiMisionController::class)->group(function(){
     Route::put('/update-visi-misi', 'editVisiMision')->name('update.visiMision');
 });
 
+
+Route::controller(ManageOrganizationController::class)->group(function(){
+    Route::put('/update-struktur-organisasi', 'editOrganization')->name('update.organization');
+});
