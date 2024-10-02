@@ -45,6 +45,7 @@
     </div>
 @endsection
 @section('content')
+    <x-admin.alert.success :success="session('success')" />
     <div class="card">
         <div class="card-body">
             <table id="user-table" class="display">
@@ -70,11 +71,17 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <form action="" method="post" id="category-store">
+                        <form action="{{ route('store.category') }}" method="post" id="category-store">
                             @csrf
                             <label class="form-label">Nama kategori</label>
-                            <input type="text" class="form-control" name="nama_kategori"
-                                placeholder="Masukkan nama kategori">
+                            <input type="text"
+                                class="form-control @error('nama_kategori') is-invalid
+                            @enderror"
+                                name="nama_kategori" placeholder="Masukkan nama kategori"
+                                value="{{ old('nama_kategori') }}">
+                            @error('nama_kategori')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
                         </form>
                     </div>
                 </div>

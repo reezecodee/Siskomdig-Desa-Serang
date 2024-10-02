@@ -22,18 +22,18 @@ class CategoryDatatablesController extends Controller
                 ->addColumn('action', function ($category) {
                     return '
                     <div class="d-flex gap-2">
-                    <form id="edit-form-' . $category->id .'" method="POST" action="" style="display: none;">
-                    ' . method_field("PUT") .'
-                    '. csrf_field() .'
-                        <input type="hidden" name="nama_kategori" value="'. $category->nama_kategori .'" id="name-input-'. $category->id .'">
+                    <form id="edit-form-' . $category->id . '" method="POST" action="' . route('update.category', $category->id) . '" style="display: none;">
+                    ' . method_field("PUT") . '
+                    ' . csrf_field() . '
+                        <input type="hidden" name="nama_kategori" value="' . $category->nama_kategori . '" id="name-input-' . $category->id . '">
                     </form>
                     <button type="button" class="btn btn-primary" onclick="editAlert(\'' . $category->id . '\')">Edit</button>
-                    <form method="POST" action="" id="delete-form-' . $category->id . '">
+                    <form method="POST" action="' . route('destroy.category', $category->id) . '" id="delete-form-' . $category->id . '">
                         ' . csrf_field() . '
                         ' . method_field("DELETE") . '
                         <button type="button" class="btn btn-danger" onclick="deleteAlert(\'' . $category->id . '\')">Hapus</button>
                     </form>
-                    <a href="'. route('show.detailCategory', $category->id) .'">
+                    <a href="' . route('show.detailCategory', $category->id) . '">
                     <button class="btn btn-success show" data-id="' . $category->id . '">Detail</button>
                     </a>
                     </div>
