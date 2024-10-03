@@ -25,7 +25,8 @@
     </div>
 @endsection
 @section('content')
-    <form action="" method="post" enctype="multipart/form-data" id="form-edit">
+    <x-admin.alert.success :success="session('success')" />
+    <form action="{{ route('update.member', $data->id) }}" method="post" enctype="multipart/form-data" id="form-edit">
         @csrf
         @method('PUT')
         <div class="card mb-3">
@@ -34,8 +35,8 @@
                     <div class="col-md-4">
                         <p class="form-label">Foto anggota</p>
                         <div class="d-flex justify-content-center mb-3">
-                            <img src="https://avatars.githubusercontent.com/u/159593076?v=4" class="rounded-circle"
-                                width="200" id="imagePreview" alt="">
+                            <img src="{{ $data->avatar ? asset('storage/profiles/' . $data->avatar) : 'https://avatars.githubusercontent.com/u/159593076?v=4' }}"
+                                class="rounded-circle" width="200" height="200" id="imagePreview" alt="">
                             <input type="file" accept=".jpg, .png, .jpeg" name="avatar" id="inputImage"
                                 style="display: none">
                         </div>
@@ -59,7 +60,8 @@
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Usia</label>
-                                    <input type="text" value="{{ old('usia', $data->usia) }}" name="usia" placeholder="Masukkan usia anggota"
+                                    <input type="text" value="{{ old('usia', $data->usia) }}" name="usia"
+                                        placeholder="Masukkan usia anggota"
                                         class="form-control @error('usia') is-invalid @enderror">
                                     @error('usia')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -69,8 +71,8 @@
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Pendapatan</label>
-                                    <input type="number" value="{{ old('pendapatan', $data->pendapatan) }}" name="pendapatan"
-                                        placeholder="Masukkan pendapatan anggota"
+                                    <input type="number" value="{{ old('pendapatan', $data->pendapatan) }}"
+                                        name="pendapatan" placeholder="Masukkan pendapatan anggota"
                                         class="form-control @error('pendapatan') is-invalid @enderror">
                                     @error('pendapatan')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -80,8 +82,9 @@
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Pendapatan tertinggi</label>
-                                    <input type="number" value="{{ old('pendapatan_tertinggi', $data->pendapatan_tertinggi) }}" name="pendapatan_tertinggi"
-                                        placeholder="Masukkan pendapatan tertinggi anggota"
+                                    <input type="number"
+                                        value="{{ old('pendapatan_tertinggi', $data->pendapatan_tertinggi) }}"
+                                        name="pendapatan_tertinggi" placeholder="Masukkan pendapatan tertinggi anggota"
                                         class="form-control @error('pendapatan_tertinggi') is-invalid @enderror">
                                     @error('pendapatan_tertinggi')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -91,8 +94,8 @@
                             <div class="col-md-12">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Jenis usaha</label>
-                                    <input type="text" value="{{ old('jenis_usaha', $data->jenis_usaha) }}" name="jenis_usaha"
-                                        placeholder="Masukkan jenis usaha anggota"
+                                    <input type="text" value="{{ old('jenis_usaha', $data->jenis_usaha) }}"
+                                        name="jenis_usaha" placeholder="Masukkan jenis usaha anggota"
                                         class="form-control @error('jenis_usaha') is-invalid @enderror">
                                     @error('jenis_usaha')
                                         <span class="invalid-feedback">{{ $message }}</span>

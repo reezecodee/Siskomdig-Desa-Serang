@@ -12,33 +12,33 @@ class MemberDatatablesController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $archives = UmkmMember::query()->latest();
+            $members = UmkmMember::query()->latest();
 
             // Menggunakan DataTables untuk memproses data server-side
-            return DataTables::of($archives)
+            return DataTables::of($members)
                 ->addIndexColumn()
-                ->addColumn('action', function ($archive) {
+                ->addColumn('action', function ($member) {
                     return '
                     <div class="d-flex gap-2">
-                        <a href="' . route('show.editMemberUMKM', $archive->id) . '">
-                        <button class="btn btn-primary show" data-id="' . $archive->id . '">Edit</button>
+                        <a href="' . route('show.editMemberUMKM', $member->id) . '">
+                        <button class="btn btn-primary show" data-id="' . $member->id . '">Edit</button>
                         </a>
-                        <form method="POST" action="" id="delete-form-' . $archive->id . '">
+                        <form method="POST" action="' . route('destroy.member', $member->id) . '" id="delete-form-' . $member->id . '">
                             ' . csrf_field() . '
                             ' . method_field("DELETE") . '
-                            <button type="button" class="btn btn-danger" onclick="deleteAlert(\'' . $archive->id . '\')">Hapus</button>
+                            <button type="button" class="btn btn-danger" onclick="deleteAlert(\'' . $member->id . '\')">Hapus</button>
                         </form>
-                        <a href="' . route('show.detailMemberUMKM', $archive->id) . '">
-                        <button class="btn btn-success show" data-id="' . $archive->id . '">Detail</button>
+                        <a href="' . route('show.detailMemberUMKM', $member->id) . '">
+                        <button class="btn btn-success show" data-id="' . $member->id . '">Detail</button>
                         </a>
                     </div>
                     ';
                 })
-                ->editColumn('pendapatan', function($archive){
-                    return idr($archive->pendapatan);
+                ->editColumn('pendapatan', function($member){
+                    return idr($member->pendapatan);
                 })
-                ->editColumn('pendapatan_tertinggi', function($archive){
-                    return idr($archive->pendapatan_tertinggi);
+                ->editColumn('pendapatan_tertinggi', function($member){
+                    return idr($member->pendapatan_tertinggi);
                 })
                 ->rawColumns(['action'])
                 ->make(true);

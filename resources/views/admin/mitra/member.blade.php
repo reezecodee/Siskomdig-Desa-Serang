@@ -33,6 +33,7 @@
     </div>
 @endsection
 @section('content')
+    <x-admin.alert.success :success="session('success')" />
     <div class="card">
         <div class="card-body">
             <table id="user-table" class="display">
@@ -58,16 +59,16 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="" enctype="multipart/form-data" method="post" id="form-store">
+                    <form action="{{ route('store.member') }}" enctype="multipart/form-data" method="post" id="form-store">
                         @csrf
                         <div class="text-center mb-3">
                             <div class="d-flex justify-content-center mx-auto mb-3">
                                 <img src="https://avatars.githubusercontent.com/u/159593076?v=4" class="rounded-circle"
-                                    width="150" id="imagePreview" alt="">
+                                    width="150" height="150" id="imagePreview" alt="">
                                 <input type="file" id="inputImage" style="display: none" accept=".png, .jpg, .jpeg"
                                     name="avatar">
                             </div>
-                            <button class="btn btn-primary mb-1" id="btn-upload">Upload avatar</button>
+                            <button class="btn btn-primary mb-1" type="button" id="btn-upload">Upload avatar</button>
                             @error('avatar')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -78,7 +79,8 @@
                                     <label for="" class="form-label">Nama pelaku UMKM</label>
                                     <input type="text" name="nama" autocomplete="off"
                                         placeholder="Masukkan nama pelaku UMKM"
-                                        class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}" required>
+                                        class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}"
+                                        required>
                                     @error('nama')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -89,7 +91,8 @@
                                     <label for="" class="form-label">Usia</label>
                                     <input type="number" name="usia" autocomplete="off"
                                         placeholder="Masukkan usia pelaku UMKM"
-                                        class="form-control @error('usia') is-invalid @enderror" value="{{ old('usia') }}" required>
+                                        class="form-control @error('usia') is-invalid @enderror" value="{{ old('usia') }}"
+                                        required>
                                     @error('usia')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -100,7 +103,8 @@
                                     <label for="" class="form-label">Pendapatan</label>
                                     <input type="number" name="pendapatan" autocomplete="off"
                                         placeholder="Masukkan pendapatan"
-                                        class="form-control @error('pendapatan') is-invalid @enderror" value="{{ old('pendapatan') }}" required>
+                                        class="form-control @error('pendapatan') is-invalid @enderror"
+                                        value="{{ old('pendapatan') }}" required>
                                     @error('pendapatan')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -111,7 +115,8 @@
                                     <label for="" class="form-label">Pendapatan tertinggi</label>
                                     <input type="number" name="pendapatan_tertinggi" autocomplete="off"
                                         placeholder="Masukkan pendapatan tertinggi"
-                                        class="form-control @error('pendapatan_tertinggi') is-invalid @enderror" value="{{ old('pendapatan_tertinggi') }}"  required>
+                                        class="form-control @error('pendapatan_tertinggi') is-invalid @enderror"
+                                        value="{{ old('pendapatan_tertinggi') }}" required>
                                     @error('pendapatan_tertinggi')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -122,7 +127,8 @@
                                     <label for="" class="form-label">Jenis usaha</label>
                                     <input type="text" name="jenis_usaha" autocomplete="off"
                                         placeholder="Masukkan jenis usaha anggota"
-                                        class="form-control @error('jenis_usaha') is-invalid @enderror" value="{{ old('jenis_usaha') }}"  required>
+                                        class="form-control @error('jenis_usaha') is-invalid @enderror"
+                                        value="{{ old('jenis_usaha') }}" required>
                                     @error('jenis_usaha')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror

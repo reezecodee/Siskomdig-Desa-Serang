@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Backend\ManageAdminController;
 use App\Http\Controllers\Admin\Backend\ManageAgendaController;
 use App\Http\Controllers\Admin\Backend\ManageApplicationController;
 use App\Http\Controllers\Admin\Backend\ManageCategoryController;
+use App\Http\Controllers\Admin\Backend\ManageMemberController;
 use App\Http\Controllers\Admin\Backend\ManageOrganizationController;
 use App\Http\Controllers\Admin\Backend\ManageVisiMisionController;
 use Illuminate\Support\Facades\Route;
@@ -36,4 +37,10 @@ Route::controller(ManageAgendaController::class)->group(function(){
 Route::controller(ManageAdminController::class)->group(function(){
     Route::post('/add-admin-baru', 'addAdmin')->name('store.admin');
     Route::delete('/delete-admin/{id}', 'deleteAdmin')->name('destroy.admin');
+});
+
+Route::controller(ManageMemberController::class)->group(function(){
+    Route::post('/add-member', 'addMember')->name('store.member');
+    Route::put('/update-member/{id}', 'editMember')->name('update.member');
+    Route::delete('/delete-member/{id}', 'deleteMember')->name('destroy.member');
 });
