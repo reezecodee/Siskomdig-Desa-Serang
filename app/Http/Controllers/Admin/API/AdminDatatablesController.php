@@ -19,11 +19,11 @@ class AdminDatatablesController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($admin) {
                     // Memeriksa apakah email belum diverifikasi
-                    if ($admin->email_verified_at) {
+                    if (is_null($admin->email_verified_at)) {
                         // Jika belum diverifikasi, tampilkan tombol hapus
                         return '
                         <div class="d-flex gap-2">
-                        <form method="POST" action="" id="delete-form-' . $admin->id . '">
+                        <form method="POST" action="' . route('destroy.admin', $admin->id) . '" id="delete-form-' . $admin->id . '">
                             ' . csrf_field() . '
                             ' . method_field("DELETE") . '
                             <button type="button" class="btn btn-danger" onclick="deleteAlert(\'' . $admin->id . '\')">Hapus</button>

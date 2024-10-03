@@ -39,6 +39,7 @@
     </div>
 @endsection
 @section('content')
+    <x-admin.alert.success :success="session('success')" />
     <div class="row row-deck row-cards">
         <div class="col-sm-6 col-lg-3">
             <div class="card">
@@ -484,17 +485,16 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="post" id="form-store-admin">
+                    <form action="{{ route('store.admin') }}" method="post" id="form-store-admin">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <div class="form-group">
                                         <label class="form-label">Username</label>
-                                        <input type="text"
-                                            class="form-control @error('username') is-invalid @enderror"
-                                            name="username" placeholder="Masukkan username"
-                                            value="{{ old('username') }}" autocomplete="off" required>
+                                        <input type="text" class="form-control @error('username') is-invalid @enderror"
+                                            name="username" placeholder="Masukkan username" value="{{ old('username') }}"
+                                            autocomplete="off" required>
                                         @error('username')
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
@@ -505,8 +505,7 @@
                                 <div class="mb-3">
                                     <div class="form-group">
                                         <label class="form-label">Nama</label>
-                                        <input type="text"
-                                            class="form-control @error('nama') is-invalid @enderror"
+                                        <input type="text" class="form-control @error('nama') is-invalid @enderror"
                                             name="nama" placeholder="Masukkan nama lengkap"
                                             value="{{ old('nama') }}" autocomplete="off" required>
                                         @error('nama')
@@ -519,8 +518,7 @@
                                 <div class="mb-3">
                                     <div class="form-group">
                                         <label class="form-label">Telepon</label>
-                                        <input type="number"
-                                            class="form-control @error('telepon') is-invalid @enderror"
+                                        <input type="number" class="form-control @error('telepon') is-invalid @enderror"
                                             name="telepon" placeholder="Masukkan nomor telepon"
                                             value="{{ old('telepon') }}" autocomplete="off" required>
                                         @error('telepon')
@@ -533,8 +531,7 @@
                                 <div class="mb-3">
                                     <div class="form-group">
                                         <label class="form-label">Email</label>
-                                        <input type="email"
-                                            class="form-control @error('email') is-invalid @enderror"
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror"
                                             name="email" placeholder="Masukkan email aktif"
                                             value="{{ old('email') }}" autocomplete="off" required>
                                         @error('email')
@@ -548,9 +545,9 @@
                                     <div class="form-group">
                                         <label class="form-label">Password sementara</label>
                                         <input type="password"
-                                            class="form-control @error('password') is-invalid @enderror"
-                                            name="password" placeholder="Masukkan password sementara"
-                                            value="{{ old('password') }}" autocomplete="off" required>
+                                            class="form-control @error('password') is-invalid @enderror" name="password"
+                                            placeholder="Masukkan password sementara" value="{{ old('password') }}"
+                                            autocomplete="off" required>
                                         @error('password')
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror

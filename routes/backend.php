@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Backend\ManageAdminController;
 use App\Http\Controllers\Admin\Backend\ManageAgendaController;
 use App\Http\Controllers\Admin\Backend\ManageApplicationController;
 use App\Http\Controllers\Admin\Backend\ManageCategoryController;
@@ -28,6 +29,11 @@ Route::controller(ManageOrganizationController::class)->group(function(){
 Route::controller(ManageAgendaController::class)->group(function(){
     Route::post('add-agenda-baru', 'addAgenda')->name('store.agenda');
     Route::put('/update-agenda/{id}', 'editAgenda')->name('update.agenda');
-    Route::delete('/delete-agenda/{id}', 'deleteAgenda')->name('delete.agenda');
-    Route::delete('/delete-grup-agenda/{month}/{year}', 'deleteGroupAgenda')->name('delete.groupAgenda');
+    Route::delete('/delete-agenda/{id}', 'deleteAgenda')->name('destroy.agenda');
+    Route::delete('/delete-grup-agenda/{month}/{year}', 'deleteGroupAgenda')->name('destroy.groupAgenda');
+});
+
+Route::controller(ManageAdminController::class)->group(function(){
+    Route::post('/add-admin-baru', 'addAdmin')->name('store.admin');
+    Route::delete('/delete-admin/{id}', 'deleteAdmin')->name('destroy.admin');
 });
