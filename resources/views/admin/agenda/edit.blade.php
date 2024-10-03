@@ -28,7 +28,8 @@
     </div>
 @endsection
 @section('content')
-    <form action="" method="POST" id="{{ $data->id }}">
+    <x-admin.alert.success :success="session('success')" />
+    <form action="{{ route('update.agenda', $data->id) }}" method="POST" id="{{ $data->id }}">
         @csrf
         @method('PUT')
         <div class="card">
@@ -55,7 +56,7 @@
                             @enderror"
                                 autocomplete="off" required>
                                 @if (old('bulan') || $data->bulan)
-                                    <option value="{{ old('bulan', $data->bulan) }}" disabled selected>
+                                    <option value="{{ old('bulan', $data->bulan) }}" selected>
                                         {{ old('bulan', $data->bulan) }}</option>
                                 @else
                                     <option selected>--Pilih bulan--</option>
@@ -93,7 +94,8 @@
                     <div class="col-md-4">
                         <div class="form-group mb-2">
                             <label for="" class="form-label">Tanggal pelaksanaan</label>
-                            <input type="date" value="{{ old('tgl_pelaksanaan', $data->tgl_pelaksanaan) }}" name="tgl_pelaksanaan"
+                            <input type="date" value="{{ old('tgl_pelaksanaan', $data->tgl_pelaksanaan) }}"
+                                name="tgl_pelaksanaan"
                                 class="form-control @error('tgl_pelaksanaan') is-invalid
                             @enderror"
                                 autocomplete="off" placeholder="Masukkan tanggal pelaksanaan agenda kegiatan" required>
@@ -116,9 +118,10 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button class="btn btn-primary" type="button" onclick="confirmAlert('{{ $data->id }}')"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload-cloud">
+                    <button class="btn btn-primary" type="button" onclick="confirmAlert('{{ $data->id }}')"><svg
+                            class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-upload-cloud">
                             <polyline points="16 16 12 12 8 16"></polyline>
                             <line x1="12" y1="12" x2="12" y2="21"></line>
                             <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path>

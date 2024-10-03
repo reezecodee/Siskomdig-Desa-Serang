@@ -23,7 +23,7 @@ class AgendaDatatablesController extends Controller
                 ->addColumn('action', function ($agenda) {
                     return '
                     <div class="d-flex gap-2">
-                        <form method="POST" action="" id="delete-form-' . $agenda->id . '">
+                        <form method="POST" action="'. route('delete.groupAgenda', ['month' => $agenda->bulan, 'year' => $agenda->tahun]) .'" id="delete-form-' . $agenda->id . '">
                             ' . csrf_field() . '
                             ' . method_field("DELETE") . '
                             <button type="button" class="btn btn-danger" onclick="deleteAlert(\'' . $agenda->id . '\')">Hapus</button>
@@ -56,7 +56,7 @@ class AgendaDatatablesController extends Controller
                     <a href="' . route('show.editActivityAgenda', $agenda->id) . '">
                     <button class="btn btn-success show" data-id="' . $agenda->id . '">Edit</button>
                     </a>
-                    <form method="POST" action="" id="delete-form-' . $agenda->id . '">
+                    <form method="POST" action="'. route('delete.agenda', $agenda->id) .'" id="delete-form-' . $agenda->id . '">
                         ' . csrf_field() . '
                         ' . method_field("DELETE") . '
                         <button type="button" class="btn btn-danger" onclick="deleteAlert(\'' . $agenda->id . '\')">Hapus</button>

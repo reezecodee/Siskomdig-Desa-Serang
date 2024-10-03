@@ -27,7 +27,7 @@
     </div>
 @endsection
 @section('content')
-    <form action="" method="POST" id="form-create">
+    <form action="{{ route('store.agenda') }}" method="POST" id="form-create">
         @csrf
         <div class="card">
             <div class="card-body">
@@ -53,7 +53,7 @@
                             @enderror"
                                 autocomplete="off" required>
                                 @if (old('bulan'))
-                                    <option value="{{ old('bulan') }}" disabled selected>
+                                    <option value="{{ old('bulan') }}" selected>
                                         {{ old('bulan') }}</option>
                                 @else
                                     <option selected>--Pilih bulan--</option>

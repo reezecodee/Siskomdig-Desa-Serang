@@ -66,6 +66,11 @@ class AgendaController extends Controller
     public function detailActivityAgendaPage($year, $month)
     {
         $title = "Detail Agenda: Bulan $month $year";
+        $agenda = Agenda::where('bulan', $month)->where('tahun', $year);
+
+        if ($agenda->doesntExist()) {
+            return redirect()->route('show.activityAgenda');
+        }
 
         return view('admin.agenda.detail', compact('title', 'year', 'month'));
     }
