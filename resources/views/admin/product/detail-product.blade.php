@@ -31,7 +31,7 @@
                 <div class="col-md-4">
                     <p class="form-label">Foto produk</p>
                     <div class="d-flex justify-content-center mb-3">
-                        <img src="https://images.unsplash.com/photo-1727112658582-fdb2e08878d4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        <img src="{{ $data->foto_produk ? asset('storage/images/'. $data->foto_produk) : 'https://images.unsplash.com/photo-1727112658582-fdb2e08878d4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}"
                             class="rounded" width="200" id="imagePreview" alt="">
                     </div>
                 </div>

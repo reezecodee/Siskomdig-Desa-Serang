@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Backend\ManageApplicationController;
 use App\Http\Controllers\Admin\Backend\ManageCategoryController;
 use App\Http\Controllers\Admin\Backend\ManageMemberController;
 use App\Http\Controllers\Admin\Backend\ManageOrganizationController;
+use App\Http\Controllers\Admin\Backend\ManageProductController;
 use App\Http\Controllers\Admin\Backend\ManageVisiMisionController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,7 +41,13 @@ Route::controller(ManageAdminController::class)->group(function(){
 });
 
 Route::controller(ManageMemberController::class)->group(function(){
-    Route::post('/add-member', 'addMember')->name('store.member');
-    Route::put('/update-member/{id}', 'editMember')->name('update.member');
-    Route::delete('/delete-member/{id}', 'deleteMember')->name('destroy.member');
+    Route::post('/add-anggota-baru', 'addMember')->name('store.member');
+    Route::put('/update-anggota/{id}', 'editMember')->name('update.member');
+    Route::delete('/delete-anggota/{id}', 'deleteMember')->name('destroy.member');
+});
+
+Route::controller(ManageProductController::class)->group(function(){
+    Route::post('/add-produk', 'addProduct')->name('store.product');
+    Route::put('/update-produk/{id}', 'editProduct')->name('update.product');
+    Route::delete('/delete-produk/{id}', 'deleteProduct')->name('destroy.product');
 });

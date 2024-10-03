@@ -23,7 +23,7 @@ class ProductDatatablesController extends Controller
                         <a href="' . route('show.editProductUMKM', $product->id) . '">
                         <button class="btn btn-primary show" data-id="' . $product->id . '">Edit</button>
                         </a>
-                        <form method="POST" action="" id="delete-form-' . $product->id . '">
+                        <form method="POST" action="' . route('destroy.product', $product->id) . '" id="delete-form-' . $product->id . '">
                             ' . csrf_field() . '
                             ' . method_field("DELETE") . '
                             <button type="button" class="btn btn-danger" onclick="deleteAlert(\'' . $product->id . '\')">Hapus</button>

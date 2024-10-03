@@ -7,8 +7,9 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InformationController;
-use App\Http\Controllers\Admin\MitraController;
+use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\OrganizationStructureController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SearchResultController;
 use App\Http\Controllers\Admin\StorageController;
@@ -62,13 +63,15 @@ Route::prefix('admin')->group(function () {
         });
     });
 
-    Route::controller(MitraController::class)->group(function () {
+    Route::controller(MemberController::class)->group(function () {
         Route::prefix('anggota-umkm')->group(function () {
             Route::get('/', 'memberPage')->name('show.memberUMKM');
             Route::get('/{id}/edit', 'editMemberPage')->name('show.editMemberUMKM');
             Route::get('/{id}/detail', 'detailMemberPage')->name('show.detailMemberUMKM');
         });
+    });
 
+    Route::controller(ProductController::class)->group(function () {
         Route::prefix('produk-umkm')->group(function () {
             Route::get('/', 'productPage')->name('show.productUMKM');
             Route::get('/{id}/edit', 'editProductPage')->name('show.editProductUMKM');

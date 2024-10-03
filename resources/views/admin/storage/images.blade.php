@@ -6,7 +6,7 @@
                 <div class="col">
                     <!-- Page pre-title -->
                     <div class="page-pretitle">
-                        Storage Semua Gambar
+                        Storage Gambar
                     </div>
                     <h2 class="page-title">
                         {{ $title }}
@@ -32,10 +32,10 @@
             <div class="row">
                 @foreach ($paginatedFiles as $index => $file)
                     <div class="col-md-3">
-                        <a href="{{ asset('storage/images/' . $file) }}" download title="Klik untuk mendownload">
+                        <a href="{{ asset("storage/{$type}/" . $file) }}" download title="Klik untuk mendownload">
                             <div class="text-center" style="cursor: pointer">
                                 <div class="d-flex justify-content-center mb-2">
-                                    <img src="{{ asset('storage/images/' . $file) }}" alt="" srcset=""
+                                    <img src="{{ asset("storage/{$type}/" . $file) }}" alt="" srcset=""
                                         class="rounded" loading="lazy">
                                 </div>
                                 <p>{{ truncateText($file) }}</p>

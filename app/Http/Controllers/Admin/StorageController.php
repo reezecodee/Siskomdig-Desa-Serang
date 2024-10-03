@@ -42,8 +42,10 @@ class StorageController extends Controller
         $title = 'Semua Gambar Yang di Upload';
         if ($fileType === 'semua-gambar') {
             $directory = storage_path('app/public/images');
+            $type = 'images';
         } else if ($fileType === 'photo') {
             $directory = storage_path('app/public/profiles');
+            $type = 'profiles';
         } else {
             abort(404);
         }
@@ -75,7 +77,7 @@ class StorageController extends Controller
             ['path' => Paginator::resolveCurrentPath()] // Path untuk URL paginasi
         );
 
-        return view('admin.storage.images', compact('title', 'paginatedFiles'));
+        return view('admin.storage.images', compact('title', 'paginatedFiles', 'type'));
     }
 
     public function storageArchivesPage()

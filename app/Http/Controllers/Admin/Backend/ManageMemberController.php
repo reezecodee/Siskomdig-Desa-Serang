@@ -30,6 +30,10 @@ class ManageMemberController extends Controller
         $member = UmkmMember::findOrFail($id);
 
         if ($request->hasFile('avatar')) {
+            if ($member->avatar && Storage::disk('public')->exists('profiles/' . $member->avatar)) {
+                Storage::disk('public')->delete('profiles/' . $member->avatar);
+            }
+            
             $avatarFile = $request->file('avatar');
             $avatarFileName = uniqid() . '.' . $avatarFile->getClientOriginalExtension();
             $avatarFile->storeAs('profiles', $avatarFileName, 'public');

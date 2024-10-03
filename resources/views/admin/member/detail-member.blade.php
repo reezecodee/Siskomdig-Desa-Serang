@@ -31,7 +31,7 @@
                 <div class="col-md-4">
                     <p class="form-label">Foto anggota</p>
                     <div class="d-flex justify-content-center">
-                        <img src="https://avatars.githubusercontent.com/u/159593076?v=4" class="rounded-circle"
+                        <img src="{{ $data->avatar ? asset('storage/profiles/' . $data->avatar) : 'https://avatars.githubusercontent.com/u/159593076?v=4' }}" class="rounded-circle"
                             width="200" id="imagePreview" alt="">
                     </div>
                 </div>
