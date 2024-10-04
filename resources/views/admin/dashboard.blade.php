@@ -382,13 +382,16 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="" enctype="multipart/form-data" method="post" id="form-store">
+                    <form action="{{ route('store.information') }}" enctype="multipart/form-data" method="post"
+                        id="form-store">
                         @csrf
                         <div class="mb-3">
                             <div class="form-group">
                                 <label class="form-label">Thumbnail</label>
-                                <img src="" class="my-2" style="display: none" id="previewImage"
-                                    alt="" srcset="">
+                                <div class="d-flex justify-content-center">
+                                    <img src="" class="my-2" style="display: none" id="previewImage"
+                                        alt="" srcset="">
+                                </div>
                                 <input type="file"
                                     class="form-control @error('thumbnail') is-invalid
                             @enderror"
@@ -401,10 +404,10 @@
                         <div class="mb-3">
                             <div class="form-group">
                                 <label class="form-label">Judul informasi</label>
-                                <input type="text" class="form-control @error('judul_informasi') is-invalid @enderror"
-                                    name="judul_informasi" placeholder="Masukkan judul informasi"
-                                    value="{{ old('judul_informasi') }}" autocomplete="off" required>
-                                @error('judul_informasi')
+                                <input type="text" class="form-control @error('judul') is-invalid @enderror"
+                                    name="judul" placeholder="Masukkan judul informasi" value="{{ old('judul') }}"
+                                    autocomplete="off" required>
+                                @error('judul')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -493,8 +496,8 @@
                                     <div class="form-group">
                                         <label class="form-label">Username</label>
                                         <input type="text" class="form-control @error('username') is-invalid @enderror"
-                                            name="username" placeholder="Masukkan username" value="{{ old('username') }}"
-                                            autocomplete="off" required>
+                                            name="username" placeholder="Masukkan username"
+                                            value="{{ old('username') }}" autocomplete="off" required>
                                         @error('username')
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror

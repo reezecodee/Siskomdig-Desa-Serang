@@ -24,15 +24,18 @@
     </div>
 @endsection
 @section('content')
-    <form action="" method="POST" enctype="multipart/form-data" id="form-edit">
+    <x-admin.alert.success :success="session('success')" />
+    <form action="{{ route('update.information', $data->id) }}" method="POST" enctype="multipart/form-data" id="form-edit">
         @csrf
         @method('PUT')
         <div class="card">
             <div class="card-body">
                 <div class="form-group mb-3">
                     <label class="form-label">Thumbnail</label>
-                    <img src="" class="my-2" style="display: none" id="previewImage" alt=""
-                        srcset="">
+                    <div class="d-flex justify-content-center">
+                        <img src="{{ $data->thumbnail ? asset('storage/images/' . $data->thumbnail) : '' }}" class="my-2"
+                            id="previewImage" alt="" srcset="">
+                    </div>
                     <input type="file"
                         class="form-control @error('thumbnail')
                         is-invalid
@@ -44,10 +47,10 @@
                 </div>
                 <div class="form-group mb-3">
                     <label class="form-label">Judul informasi</label>
-                    <input type="text"
-                        class="form-control @error('judul')
+                    <input type="text" class="form-control @error('judul')
                         is-invalid @enderror"
-                        name="judul" value="{{ old('judul', $data->judul) }}" placeholder="Masukkan judul informasi" autocomplete="off" required>
+                        name="judul" value="{{ old('judul', $data->judul) }}" placeholder="Masukkan judul informasi"
+                        autocomplete="off" required>
                     @error('judul')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
@@ -63,7 +66,8 @@
                 <div class="form-selectgroup-boxes row mb-3">
                     <div class="col-lg-6">
                         <label class="form-selectgroup-item">
-                            <input type="radio" name="visibilitas" value="Publik" class="form-selectgroup-input" {{ old('visibilitas') == 'Publik' ? 'checked' : 'checked' }}>
+                            <input type="radio" name="visibilitas" value="Publik" class="form-selectgroup-input"
+                                {{ old('visibilitas', $data->visibilitas) == 'Publik' ? 'checked' : 'checked' }}>
                             <span class="form-selectgroup-label d-flex align-items-center p-3">
                                 <span class="me-3">
                                     <span class="form-selectgroup-check"></span>
@@ -78,7 +82,8 @@
                     </div>
                     <div class="col-lg-6">
                         <label class="form-selectgroup-item">
-                            <input type="radio" name="visibilitas" value="Privasi" class="form-selectgroup-input" {{ old('visibilitas') == 'Privasi' ? 'checked' : '' }}>
+                            <input type="radio" name="visibilitas" value="Privasi" class="form-selectgroup-input"
+                                {{ old('visibilitas', $data->visibilitas) == 'Privasi' ? 'checked' : '' }}>
                             <span class="form-selectgroup-label d-flex align-items-center p-3">
                                 <span class="me-3">
                                     <span class="form-selectgroup-check"></span>
@@ -93,10 +98,10 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button type="button" onclick="confirmAlert('form-edit')" class="btn btn-primary"><svg class="icon" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-upload-cloud">
+                    <button type="button" onclick="confirmAlert('form-edit')" class="btn btn-primary"><svg class="icon"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-upload-cloud">
                             <polyline points="16 16 12 12 8 16"></polyline>
                             <line x1="12" y1="12" x2="12" y2="21"></line>
                             <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path>

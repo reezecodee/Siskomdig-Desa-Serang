@@ -36,7 +36,7 @@
                     <tr>
                         <th>No</th>
                         <th>Judul</th>
-                        <th>Tanggal publish</th>
+                        <th>Ditambahkan pada</th>
                         <th>Author</th>
                         <th>Action</th>
                     </tr>
@@ -64,8 +64,8 @@
                         name: 'judul'
                     },
                     {
-                        data: 'tgl_publish',
-                        name: 'tgl_publish'
+                        data: 'created_at',
+                        name: 'created_at'
                     },
                     {
                         data: 'author_name',

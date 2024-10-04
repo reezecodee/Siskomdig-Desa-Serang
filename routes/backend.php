@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Backend\ManageAdminController;
 use App\Http\Controllers\Admin\Backend\ManageAgendaController;
 use App\Http\Controllers\Admin\Backend\ManageApplicationController;
 use App\Http\Controllers\Admin\Backend\ManageCategoryController;
+use App\Http\Controllers\Admin\Backend\ManageInformationController;
 use App\Http\Controllers\Admin\Backend\ManageMemberController;
 use App\Http\Controllers\Admin\Backend\ManageOrganizationController;
 use App\Http\Controllers\Admin\Backend\ManageProductController;
@@ -50,4 +51,10 @@ Route::controller(ManageProductController::class)->group(function(){
     Route::post('/add-produk', 'addProduct')->name('store.product');
     Route::put('/update-produk/{id}', 'editProduct')->name('update.product');
     Route::delete('/delete-produk/{id}', 'deleteProduct')->name('destroy.product');
+});
+
+Route::controller(ManageInformationController::class)->group(function(){
+    Route::post('/add-informasi', 'addInformation')->name('store.information');
+    Route::put('/update-informasi/{id}', 'editInformation')->name('update.information');
+    Route::delete('/delete-informasi/{id}', 'deleteInformation')->name('destroy.information');
 });

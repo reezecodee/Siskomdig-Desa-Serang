@@ -29,6 +29,9 @@ class InformationDatatablesController extends Controller
                 ->addColumn('author_name', function ($information) {
                     return $information->users->nama;
                 })
+                ->editColumn('created_at', function ($information) {
+                    return $information->created_at->format('d M Y');
+                })
                 ->rawColumns(['action'])
                 ->make(true);
         }
@@ -50,7 +53,7 @@ class InformationDatatablesController extends Controller
                         <a href="' . route('show.editMyInformation', $information->id) . '">
                         <button class="btn btn-primary show" data-id="' . $information->id . '">Edit</button>
                         </a>
-                        <form method="POST" action="" id="delete-form-' . $information->id . '">
+                        <form method="POST" action="'. route('destroy.information', $information->id) .'" id="delete-form-' . $information->id . '">
                         ' . csrf_field() . '
                         ' . method_field("DELETE") . '
                         <button type="button" class="btn btn-danger" onclick="deleteAlert(\'' . $information->id . '\')">Hapus</button>
@@ -63,6 +66,9 @@ class InformationDatatablesController extends Controller
                 })
                 ->addColumn('author_name', function ($information) {
                     return $information->users->nama;
+                })
+                ->editColumn('created_at', function ($information) {
+                    return $information->created_at->format('d M Y');
                 })
                 ->rawColumns(['action'])
                 ->make(true);
