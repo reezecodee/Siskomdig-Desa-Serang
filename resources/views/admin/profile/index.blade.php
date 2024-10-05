@@ -47,7 +47,7 @@
                                         class="form-control @error('username')
                                          is-invalid
                                     @enderror"
-                                        name="username" value="{{ old('username') }}" placeholder="Masukkan username" required>
+                                        name="username" value="{{ old('username', auth()->user()->username) }}" placeholder="Masukkan username" required>
                                     @error('username')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -60,7 +60,7 @@
                                         class="form-control @error('nama')
                                          is-invalid
                                     @enderror"
-                                        name="nama" value="{{ old('nama') }}" placeholder="Masukkan nama lengkap" required>
+                                        name="nama" value="{{ old('nama', auth()->user()->nama) }}" placeholder="Masukkan nama lengkap" required>
                                     @error('nama')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -73,7 +73,7 @@
                                         class="form-control @error('telepon')
                                          is-invalid
                                     @enderror"
-                                        name="telepon" value="{{ old('telepon') }}" placeholder="Masukkan nomor telepon" required>
+                                        name="telepon" value="{{ old('telepon', auth()->user()->telepon) }}" placeholder="Masukkan nomor telepon" required>
                                     @error('telepon')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -86,7 +86,7 @@
                                         class="form-control @error('email')
                                          is-invalid
                                     @enderror"
-                                        name="email" value="{{ old('email') }}" placeholder="Masukkan email aktif" required>
+                                        name="email" value="{{ old('email', auth()->user()->email) }}" placeholder="Masukkan email aktif" required>
                                     @error('email')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror

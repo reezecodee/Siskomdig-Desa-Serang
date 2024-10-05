@@ -19,15 +19,14 @@ use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::controller(AuthController::class)->middleware('guest')->group(function () {
+Route::controller(AuthController::class)->middleware(['guest', 'web'])->group(function () {
     Route::get('/login', 'loginPage')->name('show.login');
-});
-Route::controller(AuthController::class)->group(function () {
     Route::post('/login-handler', 'loginHandler')->name('login.handler');
-    Route::post('/logout', 'logoutHandler')->name('logout');
 });
 
 Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logoutHandler'])->name('logout');
+
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/dashboard', 'dashboardPage')->name('show.dashboardAdmin');
     });
@@ -125,6 +124,6 @@ Route::controller(SiteController::class)->group(function () {
     });
 });
 
-require __DIR__ . '/api.php';
+require __DIR__ . '/datatables.php';
 require __DIR__ . '/backend.php';
 require __DIR__ . '/auth.php';

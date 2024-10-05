@@ -23,14 +23,13 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        // Untuk debugging, tambahkan ini sementara
         // dd([
         //     'credentials' => $credentials,
         //     'user_exists' => \App\Models\User::where('email', $credentials['email'])->exists(),
         //     'auth_attempt' => Auth::attempt($credentials)
         // ]);
 
-        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']])) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('/admin/dashboard');
         }
@@ -44,10 +43,8 @@ class AuthController extends Controller
     public function logoutHandler(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
         return redirect('/');
     }
 }
