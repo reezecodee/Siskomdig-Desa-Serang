@@ -65,3 +65,21 @@ function editAlert(formID) {
         }
     });
 }
+
+function confirmLogoutAlert(formID) {
+    Swal.fire({
+        title: 'Apakah kamu yakin?',
+        text: "Apakah kamu benar-benar ingin logout dari aplikasi?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, logout!',
+        cancelButtonText: 'Tidak, batalkan!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Jika pengguna mengkonfirmasi, submit form
+            document.getElementById(formID).submit(); // Submit form dengan ID yang sesuai
+        }
+    });
+}

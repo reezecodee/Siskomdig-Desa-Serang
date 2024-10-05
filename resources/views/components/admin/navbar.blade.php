@@ -64,16 +64,20 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
                         aria-label="Open user menu">
-                        <span class="avatar avatar-sm" style="background-image: url('/unknown/unknown_profile.webp')"></span>
+                        <span class="avatar avatar-sm"
+                            style="background-image: url('/unknown/unknown_profile.webp')"></span>
                         <div class="d-none d-xl-block ps-2">
-                            <div>Paweł Kuna</div>
+                            <div>{{ auth()->user()->username }}</div>
                             <div class="mt-1 small text-muted">Admin</div>
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                         <a href="{{ route('show.profile') }}"
                             class="dropdown-item {{ Request::is('admin/profile-saya*') || Request::is('admin/ganti-password*') ? 'active' : '' }}">Profile</a>
-                        <a href="{{ route('logout') }}" class="dropdown-item">Logout</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        <a href="javascript:void(0)" onclick="confirmLogoutAlert('logout-form')" class="dropdown-item">Logout</a>
                     </div>
                 </div>
             </div>
@@ -256,8 +260,8 @@
                                         <path d="M21 21l-6 -6" />
                                     </svg>
                                 </span>
-                                <input type="search" value="{{ $search }}" class="form-control" name="s"
-                                    placeholder="Cari anggota UMKM..." aria-label="Search in website">
+                                <input type="search" value="{{ $search }}" class="form-control"
+                                    name="s" placeholder="Cari anggota UMKM..." aria-label="Search in website">
                             </div>
                         </form>
                     </div>
