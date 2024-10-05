@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\RegisterRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,9 +13,9 @@ class AuthController extends Controller
     public function loginPage()
     {
         $title = 'Login Ke Aplikasi';
-        $bcrypt = bcrypt('12345678');
+        $userCount = User::count();
 
-        return view('auth.login', compact('title', 'bcrypt'));
+        return view('auth.login', compact('title', 'userCount'));
     }
 
     public function loginHandler(Request $request)
@@ -23,20 +25,33 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        // dd([
-        //     'credentials' => $credentials,
-        //     'user_exists' => \App\Models\User::where('email', $credentials['email'])->exists(),
-        //     'auth_attempt' => Auth::attempt($credentials)
-        // ]);
+        $remember = $request->remember ? true : false;
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
-            return redirect()->intended('/admin/dashboard');
+            return redirect()->route('show.dashboardAdmin')->withSuccess('Login berhasi! selamat datang Admin.');
         }
 
         return back()->withErrors([
-            'email' => 'Email atau password tidak sesuai.',
+            'error' => 'Email atau password tidak sesuai.',
         ])->onlyInput('email');
+    }
+
+    public function registerPage()
+    {
+        $title = 'Buat Akun Admin Pertama';
+
+        return view('auth.register', compact('title'));
+    }
+
+    public function registerHandler(RegisterRequest $request)
+    {
+        $validatedData = $request->validated();
+
+        $validatedData['password'] = bcrypt($validatedData['password']);
+
+        User::create($validatedData);
+        return redirect()->route('show.login')->withSuccess('Berhasil membuat akun, silahkan login.');
     }
 
 

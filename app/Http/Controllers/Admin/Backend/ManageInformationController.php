@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Information\EditInformationRequest;
 use App\Http\Requests\Information\InformationRequest;
 use App\Models\Information;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ManageInformationController extends Controller
@@ -17,7 +18,7 @@ class ManageInformationController extends Controller
         $thumbnailFileName = uniqid() . '.' . $thumbnailFile->getClientOriginalExtension();
         $thumbnailFile->storeAs('images', $thumbnailFileName, 'public');
         $validatedData['thumbnail'] = $thumbnailFileName;
-        $validatedData['admin_id'] = '622b6392-8270-11ef-a5cc-6c64b14d6c35';
+        $validatedData['admin_id'] = Auth::user()->id;
 
         Information::create($validatedData);
         return back()->withSuccess('Berhasil menambahkan informasi baru.');

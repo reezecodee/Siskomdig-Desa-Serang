@@ -24,13 +24,15 @@
                                 @csrf
                                 <input
                                     class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                    type="email" value="{{ old('email') }}" placeholder="Email" name="email" autocomplete="off" required />
+                                    type="email" value="{{ old('email') }}" placeholder="Email" name="email"
+                                    autocomplete="off" required />
                                 @error('email')
                                     <span class="text-red-600 font-medium mt-2 text-xs">{{ $message }}</span>
                                 @enderror
                                 <input
                                     class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                                    type="password" value="{{ old('password') }}" placeholder="Password" name="password" required />
+                                    type="password" value="{{ old('password') }}" placeholder="Password" name="password"
+                                    required />
                                 @error('password')
                                     <span class="text-red-600 font-medium mt-2 text-xs">{{ $message }}</span>
                                 @enderror
@@ -66,6 +68,17 @@
                                         Login
                                     </span>
                                 </button>
+                                <hr class="border-t-2 mt-4">
+                                @if ($userCount == 0)
+                                    <a href="{{ route('show.register') }}">
+                                        <button type="button"
+                                            class="mt-3 tracking-wide font-semibold bg-[#45DFB1] text-white-500 w-full py-4 rounded-lg hover:bg-green-300 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                                            <span class="ml-">
+                                                Register akun
+                                            </span>
+                                        </button>
+                                    </a>
+                                @endif
                             </form>
                             <p class="mt-6 text-xs text-gray-600 text-center">
                                 Dengan melakukan login saya setuju terhadap

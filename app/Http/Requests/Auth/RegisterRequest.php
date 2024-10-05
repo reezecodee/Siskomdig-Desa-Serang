@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,8 @@ class AdminRequest extends FormRequest
             'nama' => 'required|string|max:255',
             'telepon' => 'required|unique:users,telepon|min:12|max:15',
             'email' => 'required|email|unique:users,email|max:255',
-            'password' => 'required|string|min:8|max:255'
+            'password' => 'required|string|min:8|max:255',
+            'confirm_password' => 'required|string|same:password'
         ];
     }
 
@@ -55,6 +56,10 @@ class AdminRequest extends FormRequest
             'password.string' => 'Password harus berupa teks.',
             'password.min' => 'Password harus minimal 8 karakter.',
             'password.max' => 'Password tidak boleh lebih dari 255 karakter.',
+
+            'confirm_password.required' => 'Konfirmasi password wajib diisi.',
+            'confirm_password.string' => 'Konfirmasi password harus berupa teks.',
+            'confirm_password.same' => 'Konfirmasi password harus sama dengan password.',
         ];
     }
 }

@@ -12,9 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // $middleware->alias([
-        //     'auth' => App\Http\Middleware\Authenticate::class
-        // ]);
+        $middleware->alias([
+            'checkUser' => App\Http\Middleware\CheckAdminMiddleware::class
+        ]);
         $middleware->redirectGuestsTo(fn() => route('show.login'));
     })
     ->withExceptions(function (Exceptions $exceptions) {

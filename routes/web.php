@@ -22,6 +22,11 @@ use Illuminate\Support\Facades\Route;
 Route::controller(AuthController::class)->middleware(['guest', 'web'])->group(function () {
     Route::get('/login', 'loginPage')->name('show.login');
     Route::post('/login-handler', 'loginHandler')->name('login.handler');
+    
+    Route::middleware('checkUser')->group(function () {
+        Route::get('/register', 'registerPage')->name('show.register');
+        Route::post('register-handler', 'registerHandler')->name('register.handler');
+    });
 });
 
 Route::prefix('admin')->middleware('auth')->group(function () {
@@ -126,4 +131,3 @@ Route::controller(SiteController::class)->group(function () {
 
 require __DIR__ . '/datatables.php';
 require __DIR__ . '/backend.php';
-require __DIR__ . '/auth.php';

@@ -2,6 +2,7 @@
 
 return [
     App\Providers\AppServiceProvider::class,
-    Yajra\DataTables\DataTablesServiceProvider::class,
+    App\Providers\AuthServiceProvider::class,
     Maatwebsite\Excel\ExcelServiceProvider::class,
+    Yajra\DataTables\DataTablesServiceProvider::class,
 ];
