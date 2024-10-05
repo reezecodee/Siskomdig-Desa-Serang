@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Backend\ManageCategoryController;
 use App\Http\Controllers\Admin\Backend\ManageInformationController;
 use App\Http\Controllers\Admin\Backend\ManageMemberController;
 use App\Http\Controllers\Admin\Backend\ManageOrganizationController;
+use App\Http\Controllers\Admin\Backend\ManagePasswordController;
 use App\Http\Controllers\Admin\Backend\ManageProductController;
 use App\Http\Controllers\Admin\Backend\ManageProfileController;
 use App\Http\Controllers\Admin\Backend\ManageVisiMisionController;
@@ -70,5 +71,9 @@ Route::middleware('auth')->group(function () {
     Route::controller(ManageProfileController::class)->group(function () {
         Route::put('/update-profile/{id}', 'editProfile')->name('update.profile');
         Route::delete('/delete-avatar/{id}', 'deleteAvatar')->name('destroy.avatar');
+    });
+
+    Route::controller(ManagePasswordController::class)->group(function () {
+        Route::post('/change-password', 'changePassword')->name('change.password');
     });
 });

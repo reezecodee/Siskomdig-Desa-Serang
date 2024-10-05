@@ -17,9 +17,10 @@
     </div>
 @endsection
 @section('content')
-    <form action="" method="post" id="form-edit">
+    <x-admin.alert.success :success="session('success')" />
+    <x-admin.alert.failed :failed="session('error')" />
+    <form action="{{ route('change.password') }}" method="post" id="form-edit">
         @csrf
-        @method('PUT')
         <div class="card">
             <div class="row g-0">
                 <x-admin.profile-sidebar />
@@ -51,9 +52,9 @@
                             <div class="col-md">
                                 <div class="form-group">
                                     <div class="form-label">Konfirmasi password baru</div>
-                                    <input type="password" class="form-control" name="confirm_new_password"
-                                        value="{{ old('confirm_new_password') }}">
-                                    @error('confirm_new_password')
+                                    <input type="password" class="form-control" name="new_password_confirmation"
+                                        value="{{ old('new_password_confirmation') }}">
+                                    @error('new_password_confirmation')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
