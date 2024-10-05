@@ -17,7 +17,15 @@
     </div>
 @endsection
 @section('content')
-    <form action="" method="POST" enctype="multipart/form-data" id="form-edit">
+    <x-admin.alert.success :success="session('success')" />
+    @if (auth()->check() && auth()->user()->avatar)
+        <form action="{{ route('destroy.avatar', auth()->user()->id) }}" method="POST" id="delete-form-avatar">
+            @csrf
+            @method('DELETE')
+        </form>
+    @endif
+    <form action="{{ route('update.profile', auth()->user()->id) }}" method="POST" enctype="multipart/form-data"
+        id="form-edit">
         @csrf
         @method('PUT')
         <div class="card">
@@ -28,16 +36,21 @@
                         <h3 class="card-title">Detail Profile</h3>
                         <div class="row align-items-center">
                             <div class="col-auto">
-                                <img src="/unknown/unknown_profile.webp" class="avatar avatar-xl" srcset="" id="imagePreview">
+                                <img src="{{ auth()->user()->avatar ? asset('storage/profiles/' . auth()->user()->avatar) : '/unknown/unknown_profile.webp' }}"
+                                    class="avatar avatar-xl" srcset="" id="imagePreview">
                             </div>
                             <input type="file" style="display: none" accept=".jpg, .png, .jpeg" name="avatar"
                                 id="inputImage">
                             <div class="col-auto"><a href="#" class="btn" id="btn-upload">
                                     Ganti avatar
                                 </a></div>
-                            <div class="col-auto"><a href="#" class="btn btn-ghost-danger">
-                                    Hapus avatar
-                                </a></div>
+                            @if (auth()->check() && auth()->user()->avatar)
+                                <div class="col-auto">
+                                    <button type="button" onclick="deleteAlert('avatar')" class="btn btn-ghost-danger">
+                                        Hapus avatar
+                                    </button>
+                                </div>
+                            @endif
                         </div>
                         <div class="row g-3 my-3">
                             <div class="col-md-6">
@@ -47,7 +60,8 @@
                                         class="form-control @error('username')
                                          is-invalid
                                     @enderror"
-                                        name="username" value="{{ old('username', auth()->user()->username) }}" placeholder="Masukkan username" required>
+                                        name="username" value="{{ old('username', auth()->user()->username) }}"
+                                        placeholder="Masukkan username" required>
                                     @error('username')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -60,7 +74,8 @@
                                         class="form-control @error('nama')
                                          is-invalid
                                     @enderror"
-                                        name="nama" value="{{ old('nama', auth()->user()->nama) }}" placeholder="Masukkan nama lengkap" required>
+                                        name="nama" value="{{ old('nama', auth()->user()->nama) }}"
+                                        placeholder="Masukkan nama lengkap" required>
                                     @error('nama')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -73,7 +88,8 @@
                                         class="form-control @error('telepon')
                                          is-invalid
                                     @enderror"
-                                        name="telepon" value="{{ old('telepon', auth()->user()->telepon) }}" placeholder="Masukkan nomor telepon" required>
+                                        name="telepon" value="{{ old('telepon', auth()->user()->telepon) }}"
+                                        placeholder="Masukkan nomor telepon" required>
                                     @error('telepon')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -86,7 +102,8 @@
                                         class="form-control @error('email')
                                          is-invalid
                                     @enderror"
-                                        name="email" value="{{ old('email', auth()->user()->email) }}" placeholder="Masukkan email aktif" required>
+                                        name="email" value="{{ old('email', auth()->user()->email) }}"
+                                        placeholder="Masukkan email aktif" required>
                                     @error('email')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Backend\ManageInformationController;
 use App\Http\Controllers\Admin\Backend\ManageMemberController;
 use App\Http\Controllers\Admin\Backend\ManageOrganizationController;
 use App\Http\Controllers\Admin\Backend\ManageProductController;
+use App\Http\Controllers\Admin\Backend\ManageProfileController;
 use App\Http\Controllers\Admin\Backend\ManageVisiMisionController;
 use Illuminate\Support\Facades\Route;
 
@@ -64,5 +65,10 @@ Route::middleware('auth')->group(function () {
     Route::controller(ManageArchiveController::class)->group(function () {
         Route::post('/add-arsip', 'addArchive')->name('store.archive');
         ROute::delete('/delete-arsip/{id}', 'deleteArchive')->name('destroy.archive');
+    });
+
+    Route::controller(ManageProfileController::class)->group(function () {
+        Route::put('/update-profile/{id}', 'editProfile')->name('update.profile');
+        Route::delete('/delete-avatar/{id}', 'deleteAvatar')->name('destroy.avatar');
     });
 });

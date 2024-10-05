@@ -65,7 +65,7 @@
                     <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
                         aria-label="Open user menu">
                         <span class="avatar avatar-sm"
-                            style="background-image: url('/unknown/unknown_profile.webp')"></span>
+                            style="background-image: url({{ auth()->user()->avatar ? asset('storage/profiles/'.auth()->user()->avatar) : '/unknown/unknown_profile.webp' }})"></span>
                         <div class="d-none d-xl-block ps-2">
                             <div>{{ auth()->user()->username }}</div>
                             <div class="mt-1 small text-muted">Admin</div>
