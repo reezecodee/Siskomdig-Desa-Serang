@@ -24,7 +24,7 @@ class ArchiveDatatablesController extends Controller
                         <a href="">
                         <button class="btn btn-warning show" data-id="' . $archive->id . '">Download</button>
                         </a>
-                        <form method="POST" action="" id="delete-form-' . $archive->id . '">
+                        <form method="POST" action="' . route('destroy.archive', $archive->id) . '" id="delete-form-' . $archive->id . '">
                             ' . csrf_field() . '
                             ' . method_field("DELETE") . '
                             <button type="button" class="btn btn-danger" onclick="deleteAlert(\'' . $archive->id . '\')">Hapus</button>

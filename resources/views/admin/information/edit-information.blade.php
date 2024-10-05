@@ -40,7 +40,7 @@
                         class="form-control @error('thumbnail')
                         is-invalid
                     @enderror"
-                        name="thumbnail" id="inputImage">
+                        name="thumbnail" id="inputImage" accept=".jpg, .png, .jpeg">
                     @error('thumbnail')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
