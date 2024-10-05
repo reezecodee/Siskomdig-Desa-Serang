@@ -21,9 +21,11 @@ class MemberRequest extends FormRequest
      */
     public function rules(): array
     {
+        $memberID = $this->route('id');
         return [
             'nama' => 'required|string|max:255',
-            'usia' => 'required|max:3',
+            'telepon' => 'required|unique:umkm_members,telepon,'.$memberID,
+            'email' => 'required|unique:umkm_members,email,'.$memberID,
             'jenis_usaha' => 'required|string|max:255',
             'pendapatan' => 'required|max:255',
             'pendapatan_tertinggi' => 'required|max:255',
@@ -38,6 +40,12 @@ class MemberRequest extends FormRequest
             'nama.required' => 'Nama wajib diisi.',
             'nama.string' => 'Nama harus berupa teks.',
             'nama.max' => 'Nama tidak boleh lebih dari 255 karakter.',
+
+            'telepon.required' => 'Nomor telepon harus diisi.',
+            'telepon.unique' => 'Nomor telepon ini sudah terdaftar, silakan gunakan nomor yang berbeda.',
+
+            'email.required' => 'Alamat email harus diisi.',
+            'email.unique' => 'Alamat email ini sudah terdaftar, silakan gunakan email yang berbeda.',
 
             'usia.required' => 'Usia wajib diisi.',
             'usia.integer' => 'Usia harus berupa angka.',

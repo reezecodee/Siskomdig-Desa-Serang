@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('umkm_members', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('nama');
-            $table->integer('usia');
+            $table->string('telepon')->unique();
+            $table->string('email')->unique();
             $table->string('jenis_usaha');
             $table->string('pendapatan');
             $table->string('pendapatan_tertinggi');

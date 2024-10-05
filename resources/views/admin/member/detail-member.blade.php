@@ -45,8 +45,14 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
-                                <label for="" class="form-label">Usia</label>
-                                <input type="text" value="{{ $data->usia }}" class="form-control" readonly>
+                                <label for="" class="form-label">Telepon (WhatsApp)</label>
+                                <input type="text" value="{{ $data->telepon }}" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-2">
+                                <label for="" class="form-label">Email</label>
+                                <input type="text" value="{{ $data->email }}" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -97,6 +103,15 @@
                     </div>
                 @endforeach
             </div>
+            @if ($products->isEmpty())
+                <div class="text-center">
+                    <div class="d-flex justify-content-center">
+                        <img src="https://www.svgrepo.com/show/87468/empty-box.svg" width="70" alt=""
+                            srcset="">
+                    </div>
+                    <h3>Anggota ini belum memiliki produk</h3>
+                </div>
+            @endif
         </div>
     </div>
 @endsection

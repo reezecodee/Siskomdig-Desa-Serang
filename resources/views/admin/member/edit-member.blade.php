@@ -59,11 +59,22 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">Usia</label>
-                                    <input type="text" value="{{ old('usia', $data->usia) }}" name="usia"
-                                        placeholder="Masukkan usia anggota"
-                                        class="form-control @error('usia') is-invalid @enderror">
-                                    @error('usia')
+                                    <label for="" class="form-label">Telepon (WhatsApp)</label>
+                                    <input type="text" value="{{ old('telepon', $data->telepon) }}" name="telepon"
+                                        placeholder="Masukkan nomor telepon pelaku UMKM (WhatsApp)"
+                                        class="form-control @error('telepon') is-invalid @enderror">
+                                    @error('telepon')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="" class="form-label">Email</label>
+                                    <input type="email" value="{{ old('email', $data->email) }}" name="email"
+                                        placeholder="Masukkan email pelaku UMKM"
+                                        class="form-control @error('email') is-invalid @enderror">
+                                    @error('email')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -91,7 +102,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Jenis usaha</label>
                                     <input type="text" value="{{ old('jenis_usaha', $data->jenis_usaha) }}"

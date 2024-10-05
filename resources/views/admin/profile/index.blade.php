@@ -28,7 +28,7 @@
                         <h3 class="card-title">Detail Profile</h3>
                         <div class="row align-items-center">
                             <div class="col-auto">
-                                <img src="" class="avatar avatar-xl" srcset="" id="imagePreview">
+                                <img src="/unknown/unknown_profile.webp" class="avatar avatar-xl" srcset="" id="imagePreview">
                             </div>
                             <input type="file" style="display: none" accept=".jpg, .png, .jpeg" name="avatar"
                                 id="inputImage">

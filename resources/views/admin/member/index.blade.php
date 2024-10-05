@@ -63,7 +63,7 @@
                         @csrf
                         <div class="text-center mb-3">
                             <div class="d-flex justify-content-center mx-auto mb-3">
-                                <img src="https://avatars.githubusercontent.com/u/159593076?v=4" class="rounded-circle"
+                                <img src="/unknown/unknown_profile.webp" class="rounded-circle"
                                     width="150" height="150" id="imagePreview" alt="">
                                 <input type="file" id="inputImage" style="display: none" accept=".png, .jpg, .jpeg"
                                     name="avatar">
@@ -88,12 +88,24 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">Usia</label>
-                                    <input type="number" name="usia" autocomplete="off"
-                                        placeholder="Masukkan usia pelaku UMKM"
-                                        class="form-control @error('usia') is-invalid @enderror" value="{{ old('usia') }}"
+                                    <label for="" class="form-label">Telepon (WhatsApp)</label>
+                                    <input type="number" name="telepon" autocomplete="off"
+                                        placeholder="Masukkan nomor telepon pelaku UMKM (WhatsApp)"
+                                        class="form-control @error('telepon') is-invalid @enderror" value="{{ old('telepon') }}"
                                         required>
-                                    @error('usia')
+                                    @error('telepon')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="" class="form-label">Email</label>
+                                    <input type="email" name="email" autocomplete="off"
+                                        placeholder="Masukkan email pelaku UMKM"
+                                        class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}"
+                                        required>
+                                    @error('email')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -122,7 +134,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Jenis usaha</label>
                                     <input type="text" name="jenis_usaha" autocomplete="off"
