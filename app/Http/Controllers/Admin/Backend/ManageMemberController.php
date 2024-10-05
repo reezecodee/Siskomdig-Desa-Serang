@@ -21,7 +21,7 @@ class ManageMemberController extends Controller
         }
 
         UmkmMember::create($validatedData);
-        return back()->withSuccess('Berhasil menambahkan member UMKM baru.');
+        return back()->withSuccess('Berhasil menambahkan anggota UMKM baru.');
     }
 
     public function editMember(MemberRequest $request, $id)
@@ -33,7 +33,7 @@ class ManageMemberController extends Controller
             if ($member->avatar && Storage::disk('public')->exists('profiles/' . $member->avatar)) {
                 Storage::disk('public')->delete('profiles/' . $member->avatar);
             }
-            
+
             $avatarFile = $request->file('avatar');
             $avatarFileName = uniqid() . '.' . $avatarFile->getClientOriginalExtension();
             $avatarFile->storeAs('profiles', $avatarFileName, 'public');
@@ -41,7 +41,7 @@ class ManageMemberController extends Controller
         }
 
         $member->update($validatedData);
-        return back()->withSuccess('Berhasil memperbarui data member UMKM.');
+        return back()->withSuccess('Berhasil memperbarui data anggota UMKM.');
     }
 
     public function deleteMember($id)
@@ -54,6 +54,6 @@ class ManageMemberController extends Controller
 
         $member->delete();
 
-        return back()->withSuccess('Member dan avatar berhasil dihapus.');
+        return back()->withSuccess('Berhasil menghapus anggota UMKM.');
     }
 }

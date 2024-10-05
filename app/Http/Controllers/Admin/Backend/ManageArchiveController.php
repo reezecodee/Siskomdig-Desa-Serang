@@ -22,16 +22,32 @@ class ManageArchiveController extends Controller
         $validatedData['thumbnail_arsip'] = $thumbnailFileName;
 
         $slug = Str::slug($validatedData['judul_arsip'] ?? uniqid(), '-');
-        $validatedData['file_zip'] = $this->generateZIPFile($validatedData->file('files'), $slug);
+        $validatedData['file_zip'] = $this->generateZIPFile($validatedData['files'], $slug);
 
         Archive::create($validatedData);
-        return back()->withSuccess('Berhasil menambahkan arsip baru baru.');
+        return redirect()->route('show.activityArchive')->withSuccess('Berhasil menambahkan arsip baru baru.');
+    }
+
+    public function deleteArchive($id)
+    {
+        $archive = Archive::findOrFail($id);
+
+        if ($archive->thumbnail_arsip && Storage::disk('public')->exists('images/' . $archive->thumbnail_arsip)) {
+            Storage::disk('public')->delete('images/' . $archive->thumbnail_arsip);
+        }
+
+        if ($archive->file_zip && Storage::disk('public')->exists('archives/' . $archive->file_zip)) {
+            Storage::disk('public')->delete('archives/' . $archive->file_zip);
+        }
+
+        $archive->delete();
+        return back()->withSuccess('Berhasil menghapus data arsip');
     }
 
     private function generateZIPFile($files, $zipName)
     {
         // Nama file ZIP yang akan dibuat
-        $zipFileName = "{$zipName}.zip";
+        $zipFileName = "{$zipName}-" . uniqid() . ".zip";
 
         // Lokasi penyimpanan file ZIP di storage/app/public/archives
         $zipFilePath = Storage::disk('public')->path('archives/' . $zipFileName);

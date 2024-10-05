@@ -21,7 +21,7 @@ class ArchiveDatatablesController extends Controller
                 ->addColumn('action', function ($archive) {
                     return '
                     <div class="d-flex gap-2">
-                        <a href="">
+                        <a href="' . asset('storage/archives/'.$archive->file_zip) . '" download>
                         <button class="btn btn-warning show" data-id="' . $archive->id . '">Download</button>
                         </a>
                         <form method="POST" action="' . route('destroy.archive', $archive->id) . '" id="delete-form-' . $archive->id . '">

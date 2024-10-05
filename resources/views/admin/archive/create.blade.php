@@ -44,6 +44,8 @@
     </div>
 @endsection
 @section('content')
+    <x-admin.alert.success :success="session('success')" />
+    <x-admin.alert.failed :failed="session('failed')" />
     <form action="{{ route('store.archive') }}" method="POST" id="form-store" enctype="multipart/form-data">
         @csrf
         <div class="card">
