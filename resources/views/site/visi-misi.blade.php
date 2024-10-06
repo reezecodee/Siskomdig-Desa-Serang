@@ -30,27 +30,15 @@
         <div class="container py-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
                 <h4 class="text-primary">VISI</h4>
-                <p class="mb-0">Menjadi wadah digital terdepan yang mendukung pertumbuhan dan pemberdayaan pengusaha
-                    UMKM di Desa Serang, menuju desa yang mandiri, inovatif, dan berdaya saing di tingkat regional
-                    maupun nasional.
+                <p class="mb-0">
+                    {{ $visi }}
                 </p>
             </div>
         </div>
         <div class="container py-5">
             <div class="mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
                 <h4 class="text-primary text-center">MISI</h4>
-                <ol class="mb-0">
-                    <li>Meningkatkan akses informasi dan teknologi bagi pengusaha UMKM agar dapat memanfaatkan peluang
-                        digital dalam memperluas pasar dan mengembangkan usaha.</li>
-                    <li>Mendorong kolaborasi antar pelaku usaha, pemerintah, dan mitra strategis untuk memperkuat
-                        ekosistem UMKM di Desa Serang.</li>
-                    <li>Menyediakan pelatihan dan pendampingan secara berkelanjutan untuk meningkatkan kompetensi,
-                        inovasi, dan daya saing pengusaha lokal.</li>
-                    <li>Memfasilitasi promosi produk-produk lokal melalui platform digital, sehingga dapat menjangkau
-                        konsumen yang lebih luas di luar batas desa.</li>
-                    <li>Mengembangkan jaringan dan kemitraan untuk membuka akses terhadap pembiayaan, sumber daya, dan
-                        pasar baru bagi UMKM Desa Serang.</li>
-                </ol>
+                {{ $mision }}
             </div>
         </div>
     </div>

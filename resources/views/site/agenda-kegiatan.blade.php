@@ -29,63 +29,48 @@
 
     <div class="container-fluid blog py-5">
         <div class="container py-5">
-            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <h4 class="text-primary">STRUKTUR KEORGANISASIAN</h4>
-            </div>
-            <div class="mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col-12">
-                            <img src="https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8"
-                                width="80" class="rounded-circle" alt="" srcset="">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6 right-line"></div>
-                        <div class="col-6"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3 right-line"></div>
-                        <div class="col-3 right-line top-line"></div>
-                        <div class="col-3 right-line top-line"></div>
-                        <div class="col-3"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2"></div>
-                        <div class="col-2">Child</div>
-                        <div class="col-4">Bigger Child</div>
-                        <div class="col-2">Child</div>
-                        <div class="col-2"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6 right-line"></div>
-                        <div class="col-6"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3 p-0">
-                            <div class="halved right-line"></div>
-                            <div class="halved top-line"></div>
-                        </div>
-                        <div class="col-3 p-0">
-                            <div class="halved right-line top-line"></div>
-                            <div class="halved top-line"></div>
-                        </div>
-                        <div class="col-3 p-0">
-                            <div class="halved right-line top-line"></div>
-                            <div class="halved top-line"></div>
-                        </div>
-                        <div class="col-3 p-0">
-                            <div class="halved right-line top-line"></div>
-                            <div class="halved"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3">GrandChild</div>
-                        <div class="col-3">GrandChild</div>
-                        <div class="col-3">GrandChild</div>
-                        <div class="col-3">GrandChild</div>
-                    </div>
+            <div class="mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 1100px;">
+                <div class="d-flex justify-content-between align-items-center w-full">
+                    <span class="d-block fw-bold">Agenda Kegiatan: {{ $month }} {{ $year }}</span>
+                    <form action="" method="GET" class="d-flex gap-2 mb-3">
+                        @csrf
+                        <input type="month" class="form-control w-100" value="{{ $search }}" name="s"
+                            id="month" placeholder="Pilih bulan">
+                        <button type="submit" class="btn btn-primary">Cari</button>
+                    </form>
                 </div>
+                @if (!$agendas->isEmpty())
+                    <div class="table-container">
+                        <table class="bordered-table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Judul agenda</th>
+                                    <th>Tanggal pelaksanaan</th>
+                                    <th>Keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($agendas as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->judul_agenda }}</td>
+                                        <td>{{ $item->tgl_pelaksanaan }}</td>
+                                        <td>{{ $item->keterangan }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @else
+                    <div class="text-center">
+                        <div class="d-flex justify-content-center">
+                            <img src="https://www.svgrepo.com/show/87468/empty-box.svg" width="70" alt=""
+                                srcset="">
+                        </div>
+                        <h6>Data agenda kegiatan tidak ditemukan</h6>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

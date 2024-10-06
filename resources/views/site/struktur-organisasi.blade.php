@@ -33,59 +33,7 @@
                 <h4 class="text-primary">STRUKTUR KEORGANISASIAN</h4>
             </div>
             <div class="mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col-12">
-                            <img src="https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8"
-                                width="80" class="rounded-circle" alt="" srcset="">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6 right-line"></div>
-                        <div class="col-6"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3 right-line"></div>
-                        <div class="col-3 right-line top-line"></div>
-                        <div class="col-3 right-line top-line"></div>
-                        <div class="col-3"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2"></div>
-                        <div class="col-2">Child</div>
-                        <div class="col-4">Bigger Child</div>
-                        <div class="col-2">Child</div>
-                        <div class="col-2"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6 right-line"></div>
-                        <div class="col-6"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3 p-0">
-                            <div class="halved right-line"></div>
-                            <div class="halved top-line"></div>
-                        </div>
-                        <div class="col-3 p-0">
-                            <div class="halved right-line top-line"></div>
-                            <div class="halved top-line"></div>
-                        </div>
-                        <div class="col-3 p-0">
-                            <div class="halved right-line top-line"></div>
-                            <div class="halved top-line"></div>
-                        </div>
-                        <div class="col-3 p-0">
-                            <div class="halved right-line top-line"></div>
-                            <div class="halved"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3">GrandChild</div>
-                        <div class="col-3">GrandChild</div>
-                        <div class="col-3">GrandChild</div>
-                        <div class="col-3">GrandChild</div>
-                    </div>
-                </div>
+                <img src="{{ $image ? asset('storage/images/'.$image) : '' }}" class="w-full" alt="" srcset="">
             </div>
         </div>
     </div>
