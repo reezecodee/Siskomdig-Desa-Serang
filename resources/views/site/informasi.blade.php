@@ -32,23 +32,116 @@
             <div class="text-start mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 1100px;">
                 <h4 class="fw-bold mb-4">INFORMASI TERBARU</h4>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="card p-3" style="width: 18rem;">
-                            <img src="https://images.hukumonline.com/frontend/lt66a8b8eeed1c0/lt66de7726807f1.jpg"
-                                class="rounded mb-3" alt="...">
-                            <div class="card-body p-0">
-                                <h5>Lorem ipsum dolor sit amet consectetur, adipisicing elit</h5>
-                                <p class="mb-3 small">Some quick example text to build on the card title and make up the
-                                    bulk of
-                                    the card's
-                                    content.</p>
-                                <div class="d-flex gap-2 align-items-center">
-                                    <img src="https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8"
-                                        width="50" class="rounded-circle" alt="" srcset="">
-                                    <div>
-                                        <span class="d-block fw-bold">Jane Doe</span>
-                                        <span class="d-block small">Oktober 16, 2024</span>
-                                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="blog-item p-4">
+                            <div class="blog-img mb-4">
+                                <img src="https://images.unsplash.com/photo-1726809448984-2e7f60cc6e97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="img-fluid w-100 rounded" alt="">
+                            </div>
+                            <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
+                            <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut
+                                aliquam suscipit error corporis accusamus labore....
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <img src="img/testimonial-1.jpg" class="img-fluid rounded-circle"
+                                    style="width: 60px; height: 60px;" alt="">
+                                <div class="ms-3">
+                                    <h5>Admin</h5>
+                                    <p class="mb-0">October 9, 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="blog-item p-4">
+                            <div class="blog-img mb-4">
+                                <img src="https://images.unsplash.com/photo-1726809448984-2e7f60cc6e97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="img-fluid w-100 rounded" alt="">
+                            </div>
+                            <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
+                            <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut
+                                aliquam suscipit error corporis accusamus labore....
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <img src="img/testimonial-1.jpg" class="img-fluid rounded-circle"
+                                    style="width: 60px; height: 60px;" alt="">
+                                <div class="ms-3">
+                                    <h5>Admin</h5>
+                                    <p class="mb-0">October 9, 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="blog-item p-4">
+                            <div class="blog-img mb-4">
+                                <img src="https://images.unsplash.com/photo-1726809448984-2e7f60cc6e97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="img-fluid w-100 rounded" alt="">
+                            </div>
+                            <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
+                            <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut
+                                aliquam suscipit error corporis accusamus labore....
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <img src="img/testimonial-1.jpg" class="img-fluid rounded-circle"
+                                    style="width: 60px; height: 60px;" alt="">
+                                <div class="ms-3">
+                                    <h5>Admin</h5>
+                                    <p class="mb-0">October 9, 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="blog-item p-4">
+                            <div class="blog-img mb-4">
+                                <img src="https://images.unsplash.com/photo-1726809448984-2e7f60cc6e97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="img-fluid w-100 rounded" alt="">
+                            </div>
+                            <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
+                            <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut
+                                aliquam suscipit error corporis accusamus labore....
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <img src="img/testimonial-1.jpg" class="img-fluid rounded-circle"
+                                    style="width: 60px; height: 60px;" alt="">
+                                <div class="ms-3">
+                                    <h5>Admin</h5>
+                                    <p class="mb-0">October 9, 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="blog-item p-4">
+                            <div class="blog-img mb-4">
+                                <img src="https://images.unsplash.com/photo-1726809448984-2e7f60cc6e97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="img-fluid w-100 rounded" alt="">
+                            </div>
+                            <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
+                            <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut
+                                aliquam suscipit error corporis accusamus labore....
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <img src="img/testimonial-1.jpg" class="img-fluid rounded-circle"
+                                    style="width: 60px; height: 60px;" alt="">
+                                <div class="ms-3">
+                                    <h5>Admin</h5>
+                                    <p class="mb-0">October 9, 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="blog-item p-4">
+                            <div class="blog-img mb-4">
+                                <img src="https://images.unsplash.com/photo-1726809448984-2e7f60cc6e97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="img-fluid w-100 rounded" alt="" loading="lazy">
+                            </div>
+                            <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
+                            <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut
+                                aliquam suscipit error corporis accusamus labore....
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <img src="img/testimonial-1.jpg" class="img-fluid rounded-circle"
+                                    style="width: 60px; height: 60px;" alt="">
+                                <div class="ms-3">
+                                    <h5>Admin</h5>
+                                    <p class="mb-0">October 9, 2025</p>
                                 </div>
                             </div>
                         </div>
@@ -56,14 +149,5 @@
                 </div>
             </div>
         </div>
-        <nav aria-label="...">
-            <ul class="pagination pagination-lg justify-content-end">
-                <li class="page-item active">
-                    <a class="page-link" href="#" tabindex="-1">1</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-            </ul>
-        </nav>
     </div>
 @endsection

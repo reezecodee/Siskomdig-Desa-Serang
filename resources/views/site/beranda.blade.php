@@ -15,13 +15,13 @@
                                 <div class="text-center">
                                     <h1 class="display-3 text-uppercase text-white mb-4 dropshadow-welcome">SELAMAT
                                         DATANG DI KOMUNITAS DIGITAL DESA SERANG</h1>
-                                    <p class="mb-5 fs-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod tempor incididunt ut labore et dolore
+                                    <p class="mb-5 fs-6">Membangun Masa Depan Desa yang Cerdas dan Berdaya
+                                        Karena Kemajuan Digital adalah Hak Seluruh Anak Bangsa!
                                     </p>
                                     <div class="d-flex justify-content-center flex-shrink-0 mb-4">
                                         <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="{{ route('show.login') }}"><i
                                                 class="fas fa-play-circle me-2"></i> Ayo Mulai!</a>
-                                        <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Explore
+                                        <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="{{ route('site.strukturOrganisasi') }}">Struktur
                                             Komunitas</a>
                                     </div>
                                 </div>

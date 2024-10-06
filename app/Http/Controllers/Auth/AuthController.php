@@ -54,6 +54,12 @@ class AuthController extends Controller
         return redirect()->route('show.login')->withSuccess('Berhasil membuat akun, silahkan login.');
     }
 
+    public function forgotPasswordPage()
+    {
+        $title = 'Lupa Password Akun';
+
+        return view('auth.forgot-password', compact('title'));
+    }
 
     public function logoutHandler(Request $request)
     {

@@ -60,7 +60,7 @@
                                             <span class="text-red-600 font-medium mt-2 text-xs">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <a href="" class="text-sm hover:text-[#45DFB1]">Lupa password?</a>
+                                    <a href="{{ route('show.forgotPassword') }}" class="text-sm hover:text-[#45DFB1]">Lupa password?</a>
                                 </div>
                                 <button type="submit"
                                     class="mt-5 tracking-wide font-semibold bg-[#45DFB1] text-white-500 w-full py-4 rounded-lg hover:bg-green-300 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">

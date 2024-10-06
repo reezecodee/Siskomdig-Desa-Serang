@@ -30,56 +30,181 @@
     <div class="container-fluid blog py-5">
         <div class="container py-5">
             <div class="text-start mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 1100px;">
-                <h4 class="fw-bold mb-4">SAYUR MAYUR</h4>
-                <div class="row justify-content-between">
-                    <div class="col-md-4">
-                        <div class="card p-3" style="width: 18rem;">
-                            <img src="https://plus.unsplash.com/premium_photo-1667052359640-4b3b56e52f49?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D"
-                                class="rounded mb-3" alt="...">
-                            <div class="card-body p-0">
-                                <h5>Lorem ipsum dolor sit amet consectetur, adipisicing elit</h5>
+                <h4 class="fw-bold mb-4">PRODUK UMKM DESA SERANG</h4>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <!-- Gambar Produk -->
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
+                            <!-- Body Card -->
+                            <div class="card-body">
+                                <h5 class="card-title">Nama Produk</h5>
+                                <p class="card-text text-muted">Rp. 150,000</p>
+                                <p class="card-text">
+                                    Ini adalah deskripsi singkat produk. Anda bisa memberikan informasi singkat tentang fitur produk di sini.
+                                </p>
+                                <!-- Tombol Beli dan Tambah ke Keranjang -->
+                                <div class="d-grid gap-2">
+                                    <a href="#" class="btn btn-primary">Hubungi penjual</a>
+                                    <a href="#" class="btn btn-outline-secondary">Lihat detail</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card p-3" style="width: 18rem;">
-                            <img src="https://plus.unsplash.com/premium_photo-1667052359640-4b3b56e52f49?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D"
-                                class="rounded mb-3" alt="...">
-                            <div class="card-body p-0">
-                                <h5>Lorem ipsum dolor sit amet consectetur, adipisicing elit</h5>
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <!-- Gambar Produk -->
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
+                            <!-- Body Card -->
+                            <div class="card-body">
+                                <h5 class="card-title">Nama Produk</h5>
+                                <p class="card-text text-muted">Rp. 150,000</p>
+                                <p class="card-text">
+                                    Ini adalah deskripsi singkat produk. Anda bisa memberikan informasi singkat tentang fitur produk di sini.
+                                </p>
+                                <!-- Tombol Beli dan Tambah ke Keranjang -->
+                                <div class="d-grid gap-2">
+                                    <a href="#" class="btn btn-primary">Hubungi penjual</a>
+                                    <a href="#" class="btn btn-outline-secondary">Lihat detail</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card p-3" style="width: 18rem;">
-                            <img src="https://plus.unsplash.com/premium_photo-1667052359640-4b3b56e52f49?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D"
-                                class="rounded mb-3" alt="...">
-                            <div class="card-body p-0">
-                                <h5>Lorem ipsum dolor sit amet consectetur, adipisicing elit</h5>
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <!-- Gambar Produk -->
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
+                            <!-- Body Card -->
+                            <div class="card-body">
+                                <h5 class="card-title">Nama Produk</h5>
+                                <p class="card-text text-muted">Rp. 150,000</p>
+                                <p class="card-text">
+                                    Ini adalah deskripsi singkat produk. Anda bisa memberikan informasi singkat tentang fitur produk di sini.
+                                </p>
+                                <!-- Tombol Beli dan Tambah ke Keranjang -->
+                                <div class="d-grid gap-2">
+                                    <a href="#" class="btn btn-primary">Hubungi penjual</a>
+                                    <a href="#" class="btn btn-outline-secondary">Lihat detail</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card p-3" style="width: 18rem;">
-                            <img src="https://plus.unsplash.com/premium_photo-1667052359640-4b3b56e52f49?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D"
-                                class="rounded mb-3" alt="...">
-                            <div class="card-body p-0">
-                                <h5>Lorem ipsum dolor sit amet consectetur, adipisicing elit</h5>
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <!-- Gambar Produk -->
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
+                            <!-- Body Card -->
+                            <div class="card-body">
+                                <h5 class="card-title">Nama Produk</h5>
+                                <p class="card-text text-muted">Rp. 150,000</p>
+                                <p class="card-text">
+                                    Ini adalah deskripsi singkat produk. Anda bisa memberikan informasi singkat tentang fitur produk di sini.
+                                </p>
+                                <!-- Tombol Beli dan Tambah ke Keranjang -->
+                                <div class="d-grid gap-2">
+                                    <a href="#" class="btn btn-primary">Hubungi penjual</a>
+                                    <a href="#" class="btn btn-outline-secondary">Lihat detail</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <!-- Gambar Produk -->
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
+                            <!-- Body Card -->
+                            <div class="card-body">
+                                <h5 class="card-title">Nama Produk</h5>
+                                <p class="card-text text-muted">Rp. 150,000</p>
+                                <p class="card-text">
+                                    Ini adalah deskripsi singkat produk. Anda bisa memberikan informasi singkat tentang fitur produk di sini.
+                                </p>
+                                <!-- Tombol Beli dan Tambah ke Keranjang -->
+                                <div class="d-grid gap-2">
+                                    <a href="#" class="btn btn-primary">Hubungi penjual</a>
+                                    <a href="#" class="btn btn-outline-secondary">Lihat detail</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <!-- Gambar Produk -->
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
+                            <!-- Body Card -->
+                            <div class="card-body">
+                                <h5 class="card-title">Nama Produk</h5>
+                                <p class="card-text text-muted">Rp. 150,000</p>
+                                <p class="card-text">
+                                    Ini adalah deskripsi singkat produk. Anda bisa memberikan informasi singkat tentang fitur produk di sini.
+                                </p>
+                                <!-- Tombol Beli dan Tambah ke Keranjang -->
+                                <div class="d-grid gap-2">
+                                    <a href="#" class="btn btn-primary">Hubungi penjual</a>
+                                    <a href="#" class="btn btn-outline-secondary">Lihat detail</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <!-- Gambar Produk -->
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
+                            <!-- Body Card -->
+                            <div class="card-body">
+                                <h5 class="card-title">Nama Produk</h5>
+                                <p class="card-text text-muted">Rp. 150,000</p>
+                                <p class="card-text">
+                                    Ini adalah deskripsi singkat produk. Anda bisa memberikan informasi singkat tentang fitur produk di sini.
+                                </p>
+                                <!-- Tombol Beli dan Tambah ke Keranjang -->
+                                <div class="d-grid gap-2">
+                                    <a href="#" class="btn btn-primary">Hubungi penjual</a>
+                                    <a href="#" class="btn btn-outline-secondary">Lihat detail</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <!-- Gambar Produk -->
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
+                            <!-- Body Card -->
+                            <div class="card-body">
+                                <h5 class="card-title">Nama Produk</h5>
+                                <p class="card-text text-muted">Rp. 150,000</p>
+                                <p class="card-text">
+                                    Ini adalah deskripsi singkat produk. Anda bisa memberikan informasi singkat tentang fitur produk di sini.
+                                </p>
+                                <!-- Tombol Beli dan Tambah ke Keranjang -->
+                                <div class="d-grid gap-2">
+                                    <a href="#" class="btn btn-primary">Hubungi penjual</a>
+                                    <a href="#" class="btn btn-outline-secondary">Lihat detail</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <!-- Gambar Produk -->
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
+                            <!-- Body Card -->
+                            <div class="card-body">
+                                <h5 class="card-title">Nama Produk</h5>
+                                <p class="card-text text-muted">Rp. 150,000</p>
+                                <p class="card-text">
+                                    Ini adalah deskripsi singkat produk. Anda bisa memberikan informasi singkat tentang fitur produk di sini.
+                                </p>
+                                <!-- Tombol Beli dan Tambah ke Keranjang -->
+                                <div class="d-grid gap-2">
+                                    <a href="#" class="btn btn-primary">Hubungi penjual</a>
+                                    <a href="#" class="btn btn-outline-secondary">Lihat detail</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <nav aria-label="...">
-                <ul class="pagination pagination-lg justify-content-end">
-                    <li class="page-item active">
-                        <a class="page-link" href="#" tabindex="-1">1</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                </ul>
-            </nav>
         </div>
     </div>
 @endsection

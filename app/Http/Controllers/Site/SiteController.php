@@ -73,7 +73,6 @@ class SiteController extends Controller
         return view('site.agenda-kegiatan', compact('title', 'month', 'year', 'agendas', 'search'));
     }
 
-
     public function activityArchivePage()
     {
         $title = 'Arsip Kegiatan Komunitas Digital Desa Serang';
@@ -83,11 +82,25 @@ class SiteController extends Controller
         return view('site.arsip-kegiatan', compact('title', 'archives'));
     }
 
+    public function detailArchivePage($id)
+    {
+        $title = 'Detail Arsip Kegiatan';
+
+        return view('site.detail-arsip', compact('title'));
+    }
+
     public function informationPage()
     {
         $title = 'Informasi Terbaru Komunitas Digital Desa Serang';
 
         return view('site.informasi', compact('title'));
+    }
+
+    public function readInformationPage($id)
+    {
+        $title = 'Baca Informasi';
+
+        return view('site.baca-informasi', compact('title'));
     }
 
     // Mitra Komunitas
@@ -99,10 +112,24 @@ class SiteController extends Controller
         return view('site.anggota-umkm', compact('title'));
     }
 
+    public function detailMemberUMKM($id)
+    {
+        $title = 'Detail Anggota UMKM Komunitas Digital Desa Serang';
+
+        return view('site.detail-anggota', compact('title'));
+    }
+
     public function productUMKM()
     {
         $title = 'Produk Pelaku UMKM Komunitas Digital Desa Serang';
 
         return view('site.produk-umkm', compact('title'));
+    }
+
+    public function detailProductUMKM($id)
+    {
+        $title = 'Detail Produk Pelaku UMKM Komunitas Digital Desa Serang';
+
+        return view('site.detail-produk', compact('title'));
     }
 }

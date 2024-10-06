@@ -31,48 +31,26 @@
         <div class="container py-5">
             <div class="text-start mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 1100px;">
                 <h4 class="fw-bold mb-4">ANGGOTA UMKM TERDAFTAR</h4>
-                <div class="d-flex justify-content-between gap-4 align-items-center mb-4">
-                    <div class="w-50 rounded border p-3">
-                        <div class="d-flex gap-2 align-items-center">
-                            <img src="https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8"
-                                width="50" class="rounded-circle" alt="" srcset="">
-                            <div>
-                                <span class="d-block fw-bold">Jane Doe</span>
-                                <span class="d-block small">Oktober 16, 2024</span>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 text-center">
+                            <!-- Foto Member (Rounded Circle) -->
+                            <img src="https://via.placeholder.com/150" class="rounded-circle mx-auto mt-3 w-50 img-fluid" alt="Foto Member UMKM">
+                            <div class="card-body">
+                                <!-- Nama dan Pekerjaan -->
+                                <h5 class="card-title">Nama Member 1</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Pekerjaan: Pengusaha Kecil</h6>
+                                <!-- Deskripsi Singkat -->
+                                <p class="card-text">
+                                    Deskripsi singkat tentang member dan UMKM yang mereka jalankan. Informasi ini akan membantu orang lain untuk lebih mengenal usaha yang dikelola.
+                                </p>
+                                <!-- Tombol Lihat Detail -->
+                                <a href="#" class="btn btn-primary">Lihat Detail</a>
                             </div>
                         </div>
-                        <hr class="border">
-                        <p>Jenis usaha: Pertanian</p>
-                        <p>Pendapatan: Rp.3.000.000 - 5.000.000</p>
-                        <p>Deskripsi pekerjaan: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde sed sit
-                            pariatur illo aperiam, odit aspernatur voluptatem quos neque odio.</p>
-                    </div>
-                    <div class="w-50 rounded border p-3">
-                        <div class="d-flex gap-2 align-items-center">
-                            <img src="https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8"
-                                width="50" class="rounded-circle" alt="" srcset="">
-                            <div>
-                                <span class="d-block fw-bold">Jane Doe</span>
-                                <span class="d-block small">Oktober 16, 2024</span>
-                            </div>
-                        </div>
-                        <hr class="border">
-                        <p>Jenis usaha: Pertanian</p>
-                        <p>Pendapatan: Rp.3.000.000 - 5.000.000</p>
-                        <p>Deskripsi pekerjaan: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde sed sit
-                            pariatur illo aperiam, odit aspernatur voluptatem quos neque odio.</p>
                     </div>
                 </div>
             </div>
-            <nav aria-label="...">
-                <ul class="pagination pagination-lg justify-content-end">
-                    <li class="page-item active">
-                        <a class="page-link" href="#" tabindex="-1">1</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                </ul>
-            </nav>
         </div>
     </div>
 @endsection
