@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Models\Agenda;
 use App\Models\Archive;
+use App\Models\Information;
 use App\Models\OrganizationStructure;
+use App\Models\UmkmMember;
+use App\Models\UmkmProduct;
 use App\Models\VisiMision;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -85,22 +88,25 @@ class SiteController extends Controller
     public function detailArchivePage($id)
     {
         $title = 'Detail Arsip Kegiatan';
+        $data = Archive::findOrFail($id);
 
-        return view('site.detail-arsip', compact('title'));
+        return view('site.detail-arsip', compact('title', 'data'));
     }
 
     public function informationPage()
     {
         $title = 'Informasi Terbaru Komunitas Digital Desa Serang';
+        $informations = Information::with('users')->latest()->paginate(12);
 
-        return view('site.informasi', compact('title'));
+        return view('site.informasi', compact('title', 'informations'));
     }
 
     public function readInformationPage($id)
     {
         $title = 'Baca Informasi';
+        $data = Information::with('users')->findOrFail($id);
 
-        return view('site.baca-informasi', compact('title'));
+        return view('site.baca-informasi', compact('title', 'data'));
     }
 
     // Mitra Komunitas
@@ -108,28 +114,33 @@ class SiteController extends Controller
     public function memberUMKM()
     {
         $title = 'Anggota UMKM Komunitas Digital Desa Serang';
+        $members = UmkmMember::latest()->paginate(12);
 
-        return view('site.anggota-umkm', compact('title'));
+        return view('site.anggota-umkm', compact('title', 'members'));
     }
 
     public function detailMemberUMKM($id)
     {
         $title = 'Detail Anggota UMKM Komunitas Digital Desa Serang';
+        $data = UmkmMember::findOrFail($id);
+        $products = UmkmProduct::with('umkmMembers')->where('anggota_id', $id)->latest()->get();
 
-        return view('site.detail-anggota', compact('title'));
+        return view('site.detail-anggota', compact('title', 'data', 'products'));
     }
 
     public function productUMKM()
     {
         $title = 'Produk Pelaku UMKM Komunitas Digital Desa Serang';
+        $products = UmkmProduct::with('umkmMembers')->latest()->get();
 
-        return view('site.produk-umkm', compact('title'));
+        return view('site.produk-umkm', compact('title', 'products'));
     }
 
     public function detailProductUMKM($id)
     {
         $title = 'Detail Produk Pelaku UMKM Komunitas Digital Desa Serang';
+        $data = UmkmProduct::with(['umkmMembers', 'categories'])->findOrFail($id);
 
-        return view('site.detail-produk', compact('title'));
+        return view('site.detail-produk', compact('title', 'data'));
     }
 }

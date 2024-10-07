@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\ForgotPasswordRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -59,6 +60,21 @@ class AuthController extends Controller
         $title = 'Lupa Password Akun';
 
         return view('auth.forgot-password', compact('title'));
+    }
+
+    public function changePassword(ForgotPasswordRequest $request)
+    {
+        $validatedData = $request->validated();
+        // Cari pengguna berdasarkan email atau username
+        $user = User::where('email', $validatedData['email'])
+            ->orWhere('username', $validatedData['username'])
+            ->first();
+
+        // Update password baru
+        $user->password = bcrypt($validatedData['new_password']);
+        $user->save();
+
+        return redirect()->route('show.login')->withSuccess('Berhasil mengatur ulang password');
     }
 
     public function logoutHandler(Request $request)

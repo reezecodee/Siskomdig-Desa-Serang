@@ -33,11 +33,13 @@
                 <h4 class="fw-bold mb-4">ARSIP KEGIATAN</h4>
                 @forelse ($archives as $item)
                     <div class="d-flex gap-4 align-items-center mb-4">
-                        <img src="{{ asset('storage/images/' . $item->thumbnail_arsip) }}" class="w-25 rounded" alt=""
-                            srcset="">
+                        <img src="{{ asset('storage/images/' . $item->thumbnail_arsip) }}" class="w-25 rounded"
+                            alt="" srcset="">
                         <div>
-                            <h4 class="fw-bold">{{ $item->judul_arsip }}</h4>
-                            <p class="fw-light">{{ truncateText($item->deskripsi) }}</p>
+                            <a href="{{ route('site.detailArsipKegiatan', $item->id) }}">
+                                <h4 class="fw-bold">{{ $item->judul_arsip }}</h4>
+                                <p class="fw-light">{{ truncateText($item->deskripsi) }}</p>
+                            </a>
                             <a href="{{ asset('storage/archives/' . $item->file_zip) }}" download>
                                 <button class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg" width="23" height="23">

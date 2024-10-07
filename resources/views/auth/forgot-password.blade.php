@@ -20,7 +20,7 @@
                         <x-auth.alert.failed :failed="$errors->has('error')" />
 
                         <div class="mx-auto">
-                            <form action="" method="POST">
+                            <form action="{{ route('password.changePassword') }}" method="POST">
                                 @csrf
                                 <input
                                     class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
@@ -38,9 +38,9 @@
                                 @enderror
                                 <input
                                     class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                                    type="password" value="{{ old('password') }}" placeholder="Password" name="password"
+                                    type="password" value="{{ old('new_password') }}" placeholder="Password baru" name="new_password"
                                     required />
-                                @error('password')
+                                @error('new_password')
                                     <span class="text-red-600 font-medium mt-2 text-xs">{{ $message }}</span>
                                 @enderror
                                 <input

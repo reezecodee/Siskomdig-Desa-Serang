@@ -35,27 +35,23 @@
                     <div class="row g-4">
                         <!-- Gambar Produk -->
                         <div class="col-md-6 text-center">
-                            <img src="https://via.placeholder.com/400x400" alt="Gambar Produk"
-                                class="img-fluid rounded mb-3">
+                            <img src="{{ $data->foto_produk ? asset('storage/images/' . $data->foto_produk) : 'https://via.placeholder.com/300x200' }}"
+                                alt="Gambar Produk" class="img-fluid rounded mb-3">
                         </div>
                         <!-- Detail Informasi Produk -->
                         <div class="col-md-6">
-                            <h2 class="mb-2">Nama Produk</h2>
-                            <p class="text-muted">Kategori: Elektronik</p>
-                            <h4 class="text-danger mb-3">Rp 1.500.000</h4>
+                            <h2 class="mb-2">{{ $data->nama_produk }}</h2>
+                            <p class="text-muted">Kategori: {{ $data->categories->nama_kategori }}</p>
+                            <h4 class="text-danger mb-3">{{ idr($data->harga) }}</h4>
 
                             <!-- Deskripsi Produk -->
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor lacus non lorem
-                                vehicula
-                                fringilla. Suspendisse potenti. Mauris eget venenatis justo. Integer mollis nunc ut tortor
-                                fermentum,
-                                at malesuada dui tempus.
-                            </p>
+                            {{ $data->deskripsi }}
 
                             <!-- Tombol Tindakan -->
                             <div class="mt-4 d-flex gap-2">
-                                <button class="btn btn-primary flex-fill">Hubungi penjual</button>
+                                <a href="">
+                                    <button class="btn btn-primary flex-fill">Hubungi penjual</button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -65,18 +61,18 @@
                     <div class="row g-4 align-items-center">
                         <!-- Foto Profil -->
                         <div class="col-md-4 text-center">
-                            <img src="https://via.placeholder.com/150" alt="Foto Profil"
-                                class="img-fluid rounded-circle mb-3">
+                            <img src="{{ $data->umkmMembers->avatar ? asset('storage/profiles/' . $data->umkmMembers->avatar) : 'https://via.placeholder.com/150' }}"
+                                alt="Foto Profil" class="img-fluid rounded-circle mb-3">
                         </div>
                         <!-- Detail Informasi Pengguna -->
                         <div class="col-md-8">
-                            <h2 class="mb-2">Nama Pengguna</h2>
+                            <h2 class="mb-2">{{ $data->umkmMembers->nama }}</h2>
                             <div class="row gap-3">
                                 <div class="col-md-4">
-                                    <p class="text-muted">Email: user@example.com</p>
+                                    <p class="text-muted">Email: {{ $data->umkmMembers->email }}</p>
                                 </div>
                                 <div class="col-md-4">
-                                    <p class="text-muted">Telepon: +62 81231231231</p>
+                                    <p class="text-muted">Telepon: {{ $data->umkmMembers->telepon }}</p>
                                 </div>
                             </div>
                         </div>
@@ -84,6 +80,5 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection

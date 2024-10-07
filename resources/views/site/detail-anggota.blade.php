@@ -40,17 +40,13 @@
                         </div>
                         <!-- Detail Informasi Pengguna -->
                         <div class="col-md-8">
-                            <h2 class="mb-2">Nama Pengguna</h2>
-                            <p class="text-muted">Email: user@example.com</p>
-                            <p class="text-muted">Pekerjaan: Software Developer</p>
+                            <h2 class="mb-2">{{ $data->nama }}</h2>
+                            <p class="text-muted">Email: {{ $data->email }}</p>
+                            <p class="text-muted">Pekerjaan: {{ $data->jenis_usaha }}</p>
 
                             <!-- Deskripsi Singkat -->
                             <p class="mt-3">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor lacus non lorem
-                                vehicula
-                                fringilla. Suspendisse potenti. Mauris eget venenatis justo. Integer mollis nunc ut tortor
-                                fermentum,
-                                at malesuada dui tempus.
+                                {{ $data->deskripsi }}
                             </p>
 
                             <div class="mt-3">
@@ -63,80 +59,39 @@
                 </div>
                 <div class="card shadow p-4 mt-3">
                     <h4 class="fw-bold mb-4">Produk yang dijual</h4>
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <!-- Gambar Produk -->
-                                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
-                                <!-- Body Card -->
-                                <div class="card-body">
-                                    <h5 class="card-title">Nama Produk</h5>
-                                    <p class="card-text text-muted">Rp. 150,000</p>
-                                    <p class="card-text">
-                                        Ini adalah deskripsi singkat produk. Anda bisa memberikan informasi singkat tentang
-                                        fitur produk di sini.
-                                    </p>
-                                    <div class="d-grid gap-2">
-                                        <a href="#" class="btn btn-outline-secondary">Lihat detail</a>
+                    @if (!$products->isEmpty())
+                        <div class="row">
+                            @foreach ($products as $item)
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <!-- Gambar Produk -->
+                                        <img src="{{ $item->foto_produk ? asset('storage/images/' . $item->foto_produk) : 'https://via.placeholder.com/300x200' }}"
+                                            class="card-img-top" alt="Product Image">
+                                        <!-- Body Card -->
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $item->nama_produk }}</h5>
+                                            <p class="card-text text-muted">{{ idr($item->harga) }}</p>
+                                            <p class="card-text">
+                                                {{ truncateText($item->deskripsi) }}
+                                            </p>
+                                            <div class="d-grid gap-2">
+                                                <a href="{{ route('site.detailProdukUMKM', $item->id) }}"
+                                                    class="btn btn-outline-secondary">Lihat detail</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <!-- Gambar Produk -->
-                                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
-                                <!-- Body Card -->
-                                <div class="card-body">
-                                    <h5 class="card-title">Nama Produk</h5>
-                                    <p class="card-text text-muted">Rp. 150,000</p>
-                                    <p class="card-text">
-                                        Ini adalah deskripsi singkat produk. Anda bisa memberikan informasi singkat tentang
-                                        fitur produk di sini.
-                                    </p>
-                                    <div class="d-grid gap-2">
-                                        <a href="#" class="btn btn-outline-secondary">Lihat detail</a>
-                                    </div>
-                                </div>
+                    @else
+                        <div class="text-center">
+                            <div class="d-flex justify-content-center">
+                                <img src="https://www.svgrepo.com/show/87468/empty-box.svg" width="70" alt=""
+                                    srcset="">
                             </div>
+                            <h6>Data produk milik anggota UMKM tidak ditemukan</h6>
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <!-- Gambar Produk -->
-                                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
-                                <!-- Body Card -->
-                                <div class="card-body">
-                                    <h5 class="card-title">Nama Produk</h5>
-                                    <p class="card-text text-muted">Rp. 150,000</p>
-                                    <p class="card-text">
-                                        Ini adalah deskripsi singkat produk. Anda bisa memberikan informasi singkat tentang
-                                        fitur produk di sini.
-                                    </p>
-                                    <div class="d-grid gap-2">
-                                        <a href="#" class="btn btn-outline-secondary">Lihat detail</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <!-- Gambar Produk -->
-                                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product Image">
-                                <!-- Body Card -->
-                                <div class="card-body">
-                                    <h5 class="card-title">Nama Produk</h5>
-                                    <p class="card-text text-muted">Rp. 150,000</p>
-                                    <p class="card-text">
-                                        Ini adalah deskripsi singkat produk. Anda bisa memberikan informasi singkat tentang
-                                        fitur produk di sini.
-                                    </p>
-                                    <div class="d-grid gap-2">
-                                        <a href="#" class="btn btn-outline-secondary">Lihat detail</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>

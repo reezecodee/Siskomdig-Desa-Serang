@@ -31,25 +31,42 @@
         <div class="container py-5">
             <div class="text-start mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 1100px;">
                 <h4 class="fw-bold mb-4">ANGGOTA UMKM TERDAFTAR</h4>
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100 text-center">
-                            <!-- Foto Member (Rounded Circle) -->
-                            <img src="https://via.placeholder.com/150" class="rounded-circle mx-auto mt-3 w-50 img-fluid" alt="Foto Member UMKM">
-                            <div class="card-body">
-                                <!-- Nama dan Pekerjaan -->
-                                <h5 class="card-title">Nama Member 1</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Pekerjaan: Pengusaha Kecil</h6>
-                                <!-- Deskripsi Singkat -->
-                                <p class="card-text">
-                                    Deskripsi singkat tentang member dan UMKM yang mereka jalankan. Informasi ini akan membantu orang lain untuk lebih mengenal usaha yang dikelola.
-                                </p>
-                                <!-- Tombol Lihat Detail -->
-                                <a href="#" class="btn btn-primary">Lihat Detail</a>
+                @if (!$members->isEmpty())
+                    <div class="row">
+                        @foreach ($members as $item)
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100 text-center">
+                                    <!-- Foto Member (Rounded Circle) -->
+                                    <img src="{{ $item->avatar ? asset('storage/profiles/' . $item->avatar) : 'https://via.placeholder.com/150' }}"
+                                        class="rounded-circle mx-auto mt-3 w-50 img-fluid" alt="Foto Member UMKM">
+                                    <div class="card-body">
+                                        <!-- Nama dan Pekerjaan -->
+                                        <h5 class="card-title">{{ $item->nama }}</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Pekerjaan: {{ $item->jenis_usaha }}</h6>
+                                        <!-- Deskripsi Singkat -->
+                                        <p class="card-text" style="text-align: justify">
+                                            {{ truncateText($item->deskripsi) }}
+                                        </p>
+                                        <!-- Tombol Lihat Detail -->
+                                        <a href="{{ route('site.detailAnggotaUMKM', $item->id) }}"
+                                            class="btn btn-primary">Lihat Detail</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                </div>
+                @else
+                    <div class="text-center">
+                        <div class="d-flex justify-content-center">
+                            <img src="https://www.svgrepo.com/show/87468/empty-box.svg" width="70" alt=""
+                                srcset="">
+                        </div>
+                        <h6>Data anggota UMKM tidak ditemukan</h6>
+                    </div>
+                @endif
+            </div>
+            <div class="d-flex justify-content-end">
+                {{ $members->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </div>

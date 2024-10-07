@@ -23,6 +23,7 @@ Route::controller(AuthController::class)->middleware(['guest', 'web'])->group(fu
     Route::get('/login', 'loginPage')->name('show.login');
     Route::post('/login-handler', 'loginHandler')->name('login.handler');
     Route::get('/lupa-password', 'forgotPasswordPage')->name('show.forgotPassword');
+    Route::post('/perbarui-password', 'changePassword')->name('password.changePassword');
 
     Route::middleware('checkUser')->group(function () {
         Route::get('/register', 'registerPage')->name('show.register');

@@ -32,47 +32,25 @@
             <div class="mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 1100px;">
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
-                        <!-- Judul Artikel -->
-                        <h1 class="mb-3">Judul Arsip Menarik</h1>
+                        <!-- Judul Arsip -->
+                        <h1 class="mb-3">{{ $data->judul_arsip }}</h1>
 
                         <!-- Gambar Utama -->
-                        <img src="https://via.placeholder.com/800x400" class="img-fluid rounded mb-4" alt="Gambar Artikel">
+                        <img src="{{ $data->thumbnail_arsip ? asset('storage/images/' . $data->thumbnail_arsip) : 'https://via.placeholder.com/800x400' }}"
+                            class="img-fluid rounded mb-4" alt="Gambar">
 
-                        <!-- Konten Artikel -->
+                        <!-- Konten Arsip -->
                         <article>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet lacus a mauris
-                                malesuada malesuada.
-                                Sed et magna a arcu vehicula malesuada. Etiam in justo in sapien auctor tincidunt.
-                                Proin non ultricies risus, in mollis arcu. Nam in sollicitudin justo. Sed dapibus ante vel
-                                lectus faucibus, id fermentum augue iaculis.
-                            </p>
-                            <p>
-                                Donec tincidunt nisi a tortor ornare, vel vehicula ipsum vehicula. Nam venenatis interdum
-                                neque eget consequat.
-                                Quisque volutpat, arcu ac pellentesque dapibus, est urna hendrerit orci, at cursus erat
-                                ligula sit amet nibh.
-                                Nam dictum, tortor nec rutrum feugiat, magna eros viverra purus, ac scelerisque ex dolor at
-                                risus.
-                                Morbi facilisis odio neque, eget bibendum ligula gravida in.
-                            </p>
-                            <p>
-                                Aenean non risus in turpis luctus tempor. In ac sollicitudin velit. Donec sit amet leo at
-                                nisi iaculis lacinia.
-                                Suspendisse sed lorem nec libero sollicitudin tempus. Suspendisse dapibus ligula ut sem
-                                gravida, vel tempus erat fermentum.
-                                Ut nec ex sed risus vehicula luctus vel ut lacus. Sed porta dapibus turpis, vitae vehicula
-                                ligula luctus nec.
-                            </p>
+                            {{ $data->deskripsi }}
 
                             <div class="d-flex justify-content-center">
-                                <a href="" download>
+                                <a href="{{ asset('storage/archives/' . $data->file_zip) }}" download>
                                     <button class="btn btn-primary rounded-pill py-3 px-4 px-md-5">Download arsip</button>
                                 </a>
                             </div>
                         </article>
 
-                        <!-- Tombol Kembali ke Daftar Artikel -->
+                        <!-- Tombol Kembali ke Daftar Arsip -->
                         <div class="mt-5">
                             <a href="{{ route('show.activityArchive') }}" class="btn btn-secondary">
                                 <i class="fas fa-arrow-left"></i> Kembali ke Daftar Artikel
@@ -82,6 +60,5 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection
