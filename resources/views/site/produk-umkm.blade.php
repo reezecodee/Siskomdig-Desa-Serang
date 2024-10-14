@@ -1,68 +1,110 @@
 @extends('layouts.site')
 @section('content')
-    <style>
-        .bg-breadcrumb {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/images/banner/produk-umkm.webp);
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            padding: 140px 0 60px 0;
-            transition: 0.5s;
-        }
-    </style>
-    <div class="container-fluid position-relative p-0">
-        <x-site.navbar />
-        <!-- Header Start -->
-        <div class="container-fluid bg-breadcrumb">
-            <div class="container text-center py-5" style="max-width: 900px;">
-                <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">PRODUK UMKM</h4>
-                <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
-                    <li class="breadcrumb-item"><a href="index.html">Mita Komunitas</a></li>
-                    <li class="breadcrumb-item active text-primary">Produk UMKM</li>
-                </ol>
-            </div>
-        </div>
-        <!-- Header End -->
-    </div>
+<style>
+    .page-header {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.05)), url(/images/banner/produk-umkm.webp);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
 
-    <div class="container-fluid blog py-5">
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container text-center py-5">
+        <h1 class="display-2 text-white mb-4">Produk UMKM</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a href="#">Profile Komunitas</a></li>
+                <li class="breadcrumb-item text-white" aria-current="page">Produk UMKM</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+
+    <div class="container-fluid py-5">
         <div class="container py-5">
-            <div class="text-start mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 1100px;">
-                <h4 class="fw-bold mb-4">PRODUK UMKM DESA SERANG</h4>
-                @if (!$products->isEmpty())
-                    <div class="row">
-                        @foreach ($products as $item)
-                            <div class="col-md-4 mb-3">
-                                <div class="card">
-                                    <!-- Gambar Produk -->
-                                    <img src="{{ $item->foto_produk ? asset('storage/images/'.$item->foto_produk) : 'https://via.placeholder.com/300x200' }}" class="card-img-top" alt="Product Image">
-                                    <!-- Body Card -->
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ $item->nama_produk }}</h5>
-                                        <p class="card-text text-muted">{{ idr($item->harga) }}</p>
-                                        <p class="card-text">
-                                            {{ truncateText($item->deskripsi) }}
-                                        </p>
-                                        <div class="d-grid gap-2">
-                                            <a href="#" class="btn btn-primary">Hubungi penjual</a>
-                                            <a href="{{ route('site.detailProdukUMKM', $item->id) }}" class="btn btn-outline-secondary">Lihat detail</a>
-                                        </div>
-                                    </div>
+            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
+                    Produk UMKM</h4>
+            </div>
+            <div class="row g-5 justify-content-center">
+                <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="events-item bg-primary rounded">
+                        <div class="events-inner position-relative">
+                            <div class="events-img overflow-hidden rounded-circle position-relative">
+                                <img src="img/event-1.jpg" class="img-fluid w-100 rounded-circle" alt="Image">
+                                <div class="event-overlay">
+                                    <a href="img/event-1.jpg" data-lightbox="event-1"><i
+                                            class="fas fa-search-plus text-white fa-2x"></i></a>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
-                @else
-                    <div class="text-center">
-                        <div class="d-flex justify-content-center">
-                            <img src="https://www.svgrepo.com/show/87468/empty-box.svg" width="70" alt=""
-                                srcset="">
+                            <div class="px-4 py-2 bg-secondary text-white text-center events-rate">29 Nov</div>
+                            <div class="d-flex justify-content-between px-4 py-2 bg-secondary">
+                                <small class="text-white"><i class="fas fa-calendar me-1 text-primary"></i> 10:00am -
+                                    12:00pm</small>
+                                <small class="text-white"><i class="fas fa-map-marker-alt me-1 text-primary"></i> New
+                                    York</small>
+                            </div>
                         </div>
-                        <h6>Data produk UMKM tidak ditemukan</h6>
+                        <div class="events-text p-4 border border-primary bg-white border-top-0 rounded-bottom">
+                            <a href="#" class="h4">Music & drawing workshop</a>
+                            <p class="mb-0 mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed
+                                purus consectetur,</p>
+                        </div>
                     </div>
-                @endif
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="events-item bg-primary rounded">
+                        <div class="events-inner position-relative">
+                            <div class="events-img overflow-hidden rounded-circle position-relative">
+                                <img src="img/event-2.jpg" class="img-fluid w-100 rounded-circle" alt="Image">
+                                <div class="event-overlay">
+                                    <a href="img/event-3.jpg" data-lightbox="event-1"><i
+                                            class="fas fa-search-plus text-white fa-2x"></i></a>
+                                </div>
+                            </div>
+                            <div class="px-4 py-2 bg-secondary text-white text-center events-rate">29 Nov</div>
+                            <div class="d-flex justify-content-between px-4 py-2 bg-secondary">
+                                <small class="text-white"><i class="fas fa-calendar me-1 text-primary"></i> 10:00am -
+                                    12:00pm</small>
+                                <small class="text-white"><i class="fas fa-map-marker-alt me-1 text-primary"></i> New
+                                    York</small>
+                            </div>
+                        </div>
+                        <div class="events-text p-4 border border-primary bg-white border-top-0 rounded-bottom">
+                            <a href="#" class="h4">Why need study</a>
+                            <p class="mb-0 mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed
+                                purus consectetur,</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="events-item bg-primary rounded">
+                        <div class="events-inner position-relative">
+                            <div class="events-img overflow-hidden rounded-circle position-relative">
+                                <img src="img/event-3.jpg" class="img-fluid w-100 rounded-circle" alt="Image">
+                                <div class="event-overlay">
+                                    <a href="img/event-3.jpg" data-lightbox="event-1"><i
+                                            class="fas fa-search-plus text-white fa-2x"></i></a>
+                                </div>
+                            </div>
+                            <div class="px-4 py-2 bg-secondary text-white text-center events-rate">29 Nov</div>
+                            <div class="d-flex justify-content-between px-4 py-2 bg-secondary">
+                                <small class="text-white"><i class="fas fa-calendar me-1 text-primary"></i> 10:00am -
+                                    12:00pm</small>
+                                <small class="text-white"><i class="fas fa-map-marker-alt me-1 text-primary"></i> New
+                                    York</small>
+                            </div>
+                        </div>
+                        <div class="events-text p-4 border border-primary bg-white border-top-0 rounded-bottom">
+                            <a href="#" class="h4">Child health consciousness</a>
+                            <p class="mb-0 mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed
+                                purus consectetur,</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

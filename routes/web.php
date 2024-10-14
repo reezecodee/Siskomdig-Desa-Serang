@@ -120,16 +120,15 @@ Route::controller(SiteController::class)->group(function () {
     Route::get('/', 'berandaPage')->name('site.beranda');
     Route::get('/visi-dan-misi', 'visiMisiPage')->name('site.visiMisi');
 
-    Route::prefix('profile-komunitas')->group(function () {
-        Route::get('/struktur-organisasi', 'organizationStructurePage')->name('site.strukturOrganisasi');
+    Route::prefix('agenda')->group(function () {
         Route::get('/agenda-kegiatan', 'activityAgendaPage')->name('site.agendaKegiatan');
-
         Route::get('/arsip-kegiatan', 'activityArchivePage')->name('site.arsipKegiatan');
         Route::get('/arsip-kegiatan/{id}/detail', 'detailArchivePage')->name('site.detailArsipKegiatan');
-
-        Route::get('/informasi', 'informationPage')->name('site.informasi');
-        Route::get('/informasi/{id}/baca', 'readInformationPage')->name('site.bacaInformasi');
     });
+
+    Route::get('/struktur-organisasi', 'organizationStructurePage')->name('site.strukturOrganisasi');
+    Route::get('/informasi', 'informationPage')->name('site.informasi');
+    Route::get('/informasi/{id}/baca', 'readInformationPage')->name('site.bacaInformasi');
 
     Route::prefix('mitra-komunitas')->group(function () {
         Route::get('/anggota-umkm', 'memberUMKM')->name('site.anggotaUMKM');

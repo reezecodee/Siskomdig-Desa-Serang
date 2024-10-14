@@ -1,76 +1,125 @@
-<div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
-    <div class="container py-5 border-start-0 border-end-0"
-        style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
+ <!-- Footer Start -->
+ <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
         <div class="row g-5">
-            <div class="col-md-6 col-lg-6 col-xl-4">
+            <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="footer-item">
-                    <a href="index.html" class="p-0">
-                        <h4 class="text-white"><i class="fas fa-search-dollar me-3"></i>Stocker</h4>
-                        <!-- <img src="img/logo.png" alt="Logo"> -->
-                    </a>
-                    <p class="mb-4">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit
-                        amet, consectetur adipiscing...</p>
+                    <h2 class="fw-bold mb-3"><span class="text-primary mb-0">Baby</span><span
+                            class="text-secondary">Care</span></h2>
+                    <p class="mb-4">There cursus massa at urnaaculis estieSed aliquamellus vitae ultrs condmentum
+                        leo massamollis its estiegittis miristum.</p>
+                    <div class="border border-primary p-3 rounded bg-light">
+                        <h5 class="mb-3">Newsletter</h5>
+                        <div class="position-relative mx-auto border border-primary rounded"
+                            style="max-width: 400px;">
+                            <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text"
+                                placeholder="Your email">
+                            <button type="button"
+                                class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2 text-white">SignUp</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-6 col-xl-2">
+            <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="footer-item">
-                    <h4 class="text-white mb-4">Quick Links</h4>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Feature</a>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Attractions</a>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Tickets</a>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Blog</a>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Contact us</a>
+                    <div class="d-flex flex-column p-4 ps-5 text-dark border border-primary"
+                        style="border-radius: 50% 20% / 10% 40%;">
+                        <p>Monday: 8am to 5pm</p>
+                        <p>Tuesday: 8am to 5pm</p>
+                        <p>Wednes: 8am to 5pm</p>
+                        <p>Thursday: 8am to 5pm</p>
+                        <p>Friday: 8am to 5pm</p>
+                        <p>Saturday: 8am to 5pm</p>
+                        <p class="mb-0">Sunday: Closed</p>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
+            <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="footer-item">
-                    <h4 class="text-white mb-4">Support</h4>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Disclaimer</a>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Support</a>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ</a>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Help</a>
+                    <h4
+                        class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
+                        LOCATION</h4>
+                    <div class="d-flex flex-column align-items-start">
+                        <a href="" class="text-body mb-4"><i class="fa fa-map-marker-alt text-primary me-2"></i> 104
+                            North tower New York, USA</a>
+                        <a href="" class="text-start rounded-0 text-body mb-4"><i
+                                class="fa fa-phone-alt text-primary me-2"></i> (+012) 3456 7890 123</a>
+                        <a href="" class="text-start rounded-0 text-body mb-4"><i
+                                class="fas fa-envelope text-primary me-2"></i> exampleemail@gmail.com</a>
+                        <a href="" class="text-start rounded-0 text-body mb-4"><i
+                                class="fa fa-clock text-primary me-2"></i> 26/7 Hours Service</a>
+                        <div class="footer-icon d-flex">
+                            <a class="btn btn-primary btn-sm-square me-3 rounded-circle text-white" href=""><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-sm-square me-3 rounded-circle text-white" href=""><i
+                                    class="fab fa-twitter"></i></a>
+                            <a href="#" class="btn btn-primary btn-sm-square me-3 rounded-circle text-white"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a href="#" class="btn btn-primary btn-sm-square rounded-circle text-white"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
+            <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="footer-item">
-                    <h4 class="text-white mb-4">Contact Info</h4>
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-map-marker-alt text-primary me-3"></i>
-                        <p class="text-white mb-0">123 Street New York.USA</p>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-envelope text-primary me-3"></i>
-                        <p class="text-white mb-0">info@example.com</p>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <i class="fa fa-phone-alt text-primary me-3"></i>
-                        <p class="text-white mb-0">(+012) 3456 7890</p>
-                    </div>
-                    <div class="d-flex align-items-center mb-4">
-                        <i class="fab fa-firefox-browser text-primary me-3"></i>
-                        <p class="text-white mb-0">Yoursite@ex.com</p>
+                    <h4
+                        class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
+                        OUR GALLARY</h4>
+                    <div class="row g-3">
+                        <div class="col-4">
+                            <div class="footer-galary-img rounded-circle border border-primary">
+                                <img src="img/galary-1.jpg" class="img-fluid rounded-circle p-2" alt="">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="footer-galary-img rounded-circle border border-primary">
+                                <img src="img/galary-2.jpg" class="img-fluid rounded-circle p-2" alt="">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="footer-galary-img rounded-circle border border-primary">
+                                <img src="img/galary-3.jpg" class="img-fluid rounded-circle p-2" alt="">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="footer-galary-img rounded-circle border border-primary">
+                                <img src="img/galary-4.jpg" class="img-fluid rounded-circle p-2" alt="">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="footer-galary-img rounded-circle border border-primary">
+                                <img src="img/galary-5.jpg" class="img-fluid rounded-circle p-2" alt="">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="footer-galary-img rounded-circle border border-primary">
+                                <img src="img/galary-6.jpg" class="img-fluid rounded-circle p-2" alt="">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- Footer End -->
+
 
 <!-- Copyright Start -->
-<div class="container-fluid copyright py-4">
+<div class="container-fluid copyright bg-dark py-4">
     <div class="container">
-        <div class="row g-4 align-items-center">
-            <div class="col-md-6 text-center text-md-start mb-md-0">
-                <span class="text-body"><a href="#" class="border-bottom text-white"><i
-                            class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right
-                    reserved.</span>
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Your Site
+                        Name</a>, All right reserved.</span>
             </div>
-            <div class="col-md-6 text-center text-md-end text-body">
-                Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a>
-                Distributed By <a class="border-bottom text-white" href="https://themewagon.com">ThemeWagon</a>
+            <div class="col-md-6 my-auto text-center text-md-end text-white">
+                <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a
+                    clas="border-bottom" href="https://themewagon.com">ThemeWagon</a>
             </div>
         </div>
     </div>

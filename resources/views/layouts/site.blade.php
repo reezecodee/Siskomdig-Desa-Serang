@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Montserrat:wght@200;400;600&display=swap"
         rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
@@ -20,37 +20,37 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link rel="stylesheet" href="/site-assets/lib/animate/animate.min.css" />
+    <link href="/site-assets/lib/animate/animate.min.css" rel="stylesheet">
     <link href="/site-assets/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
     <link href="/site-assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css">
-
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="/site-assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/site-assets/css/bootstrap.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <link href="/site-assets/css/style.css" rel="stylesheet">
+
+
+
 </head>
 
 <body>
-
+    <x-site.navbar />
     <!-- Spinner Start -->
     <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
+        class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
     </div>
     <!-- Spinner End -->
 
     @yield('content')
 
-    <x-site.footer/>
+    <x-site.footer />
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
+            class="fa fa-arrow-up"></i></a>
 
 
     <!-- JavaScript Libraries -->
@@ -59,10 +59,8 @@
     <script src="/site-assets/lib/wow/wow.min.js"></script>
     <script src="/site-assets/lib/easing/easing.min.js"></script>
     <script src="/site-assets/lib/waypoints/waypoints.min.js"></script>
-    <script src="/site-assets/lib/counterup/counterup.min.js"></script>
     <script src="/site-assets/lib/lightbox/js/lightbox.min.js"></script>
     <script src="/site-assets/lib/owlcarousel/owl.carousel.min.js"></script>
-
 
     <!-- Template Javascript -->
     <script src="/site-assets/js/main.js"></script>
