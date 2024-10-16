@@ -25,11 +25,11 @@
 
     <div class="container-fluid py-5">
         <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+            <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 700px;">
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
                     Struktur Organisasi</h4>
             </div>
-            <div class="w-full">
+            <div class="w-full wow fadeInUp" data-wow-delay="0.3s">
                 <img src="{{ asset('storage/images/') }}" alt="" srcset="" class="w-full">
             </div>
         </div>

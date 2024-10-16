@@ -5,9 +5,12 @@
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-7 col-md-12">
-                    <h1 class="mb-5 display-2 text-white drop-shadow-header">Selamat Datang di Komunitas Digital Desa Serang</h1>
-                    <a href="{{ route('show.login') }}" class="btn btn-primary px-4 py-3 px-md-5  me-4 btn-border-radius">Ayo mulai!</a>
-                    <a href="{{ route('site.anggotaUMKM') }}" class="btn btn-primary px-4 py-3 px-md-5 btn-border-radius">Explore anggota</a>
+                    <h1 class="mb-5 display-2 text-white drop-shadow-header">Selamat Datang di Komunitas Digital Desa Serang
+                    </h1>
+                    <a href="{{ route('show.login') }}" class="btn btn-primary px-4 py-3 px-md-5 me-4 btn-border-radius mb-3 mb-sm-0">Ayo
+                        mulai!</a>
+                    <a href="{{ route('site.anggotaUMKM') }}"
+                        class="btn btn-primary px-4 py-3 px-md-5 btn-border-radius">Explore anggota</a>
                 </div>
             </div>
         </div>
@@ -21,7 +24,8 @@
                 <div class="col-lg-5 wow fadeIn" data-wow-delay="0.1s">
                     <div class="video border">
                         <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                            data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
+                            data-src="https://www.youtube.com/embed/o3x0idBuLT8?si=t4jBB70rlr1qWjpS"
+                            data-bs-target="#videoModal">
                             <span></span>
                         </button>
                     </div>
@@ -29,19 +33,20 @@
                 <div class="col-lg-7 wow fadeIn" data-wow-delay="0.3s">
                     <h4
                         class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
-                        Sejarah Singkat</h4>
-                    <h1 class="text-dark mb-4 display-6">SISKOMDES merupakan platform komunitas yang berbasis di Desa
-                        Serang, Kabupaten Tasikmalaya</h1>
-                    <p class="text-dark mb-4">Diluncurkan pada tahun 2024, SISKOMDES (Sistem Informasi Komunitas Digital
-                        Desa Serang) merupakan platform digital yang dirancang khusus untuk mendukung komunitas
-                        pengusaha UMKM di Desa Serang, Kabupaten Tasikmalaya. Platform ini hadir dengan tujuan
-                        memfasilitasi pertumbuhan ekonomi lokal melalui akses informasi, promosi, dan kolaborasi antar
-                        pelaku usaha. Dengan SISKOMDES, kami percaya bahwa pengusaha UMKM dapat lebih mudah memperluas
-                        jaringan, meningkatkan pemasaran produk secara digital, serta memperoleh dukungan dari berbagai
-                        pihak untuk pengembangan usaha mereka. Kami optimis, melalui inovasi ini, Desa Serang akan
-                        menjadi contoh desa yang mandiri dan berdaya saing di era digital.
+                        Tentang Desa Serang</h4>
+                    <h1 class="text-dark mb-4 display-6">Detail informasi tentang Desa Serang</h1>
+                    <p class="text-dark mb-4">Desa Serang adalah desa yang terletak di kecamatan Salawu Kabupaten
+                        Tasikmalaya. Desa Serang memiliki sumber daya alam yang melimpah dan pemandangan yang indah serta
+                        masyarakatnya yang Harmoni aman dan tentram. Jumlah penduduk desa Serang 4632 jiwa 1468 kepala
+                        keluarga. Batas Desa Serang sebelah utara dengan Kecamatan Cigalontang sebelah barat dengan desa
+                        karyamukti sebelah selatan dengan Desta margalaksana dan sebelah timur dengan Desa salebu. Mayoritas
+                        penduduk desa Serang bermata pencaharian sebagai petani. Selain itu ada juga yang berprofesi sebagai
+                        pedagang dan peternak seperti ikan ayam sapi atau kerbau dan domba. Desa Serang memiliki usaha di
+                        bidang sewa ke internet dan Pamsimas yang disebar ke masyarakatnya sehingga dapat membantu Aktivitas
+                        keseharian masyarakat desa.
                     </p>
-                    <a href="" class="btn btn-primary px-5 py-3 btn-border-radius">Eksplor Komunitas</a>
+                    <a href="{{ route('site.informasi') }}" class="btn btn-primary px-5 py-3 btn-border-radius">Lihat
+                        informasi</a>
                 </div>
             </div>
         </div>
@@ -77,27 +82,27 @@
                     nilai-nilai seperti Inovasi, Kolaborasi, dan Digitalisasi.</p>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3 wow fadeIn" data-wow-delay="0.3s">
                     <div class="card w-full">
-                        <img src="http://127.0.0.1:8000/images/action/inovasi.webp" class="card-img-top" alt="...">
+                        <img src="/images/action/inovasi.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">Kami memberikan informasi inovasi bagaimana cara memajukan UMKM di
                                 berbagai sektor.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3 wow fadeIn" data-wow-delay="0.5s">
                     <div class="card w-full">
-                        <img src="http://127.0.0.1:8000/images/action/inovasi.webp" class="card-img-top" alt="...">
+                        <img src="/images/action/kolaborasi.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">Berkolaborasi dengan Universitas Bina Sarana Informatika, guna belajar
                                 informasi akademik dan dunia informatika.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3 wow fadeIn" data-wow-delay="0.7s">
                     <div class="card w-full">
-                        <img src="http://127.0.0.1:8000/images/action/inovasi.webp" class="card-img-top" alt="...">
+                        <img src="/images/action/digitalisasi.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">Membimbing pelaku UMKM untuk memanfaatkan E-commerce sebagai sarana
                                 perluasan jangkauan pasar.</p>
@@ -120,7 +125,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-10 col-12">
                         <div class="timeline timeline-line-solid">
-                            <div class="timeline-item">
+                            <div class="timeline-item wow fadeIn" data-wow-delay="0.3s">
                                 <div class="timeline-point"></div>
                                 <div class="timeline-event">
                                     <div class="widget has-shadow">
@@ -132,7 +137,7 @@
                                 </div>
                             </div>
 
-                            <div class="timeline-item">
+                            <div class="timeline-item wow fadeIn" data-wow-delay="0.3s">
                                 <div class="timeline-event">
                                     <div class="widget has-shadow">
                                         <div class="widget-body">
@@ -146,7 +151,7 @@
                                 </div>
                             </div>
 
-                            <div class="timeline-item">
+                            <div class="timeline-item wow fadeIn" data-wow-delay="0.5s">
                                 <div class="timeline-point"></div>
                                 <div class="timeline-event">
                                     <div class="widget has-shadow">
@@ -158,7 +163,7 @@
                                 </div>
                             </div>
 
-                            <div class="timeline-item">
+                            <div class="timeline-item wow fadeIn" data-wow-delay="0.5s">
                                 <div class="timeline-event">
                                     <div class="widget has-shadow">
                                         <div class="widget-body">
@@ -173,7 +178,7 @@
                                 </div>
                             </div>
 
-                            <div class="timeline-item">
+                            <div class="timeline-item wow fadeIn" data-wow-delay="0.7s">
                                 <div class="timeline-point"></div>
                                 <div class="timeline-event">
                                     <div class="widget has-shadow">
@@ -185,7 +190,7 @@
                                 </div>
                             </div>
 
-                            <div class="timeline-item">
+                            <div class="timeline-item wow fadeIn" data-wow-delay="0.7s">
                                 <div class="timeline-event">
                                     <div class="widget has-shadow">
                                         <div class="widget-body">
@@ -239,9 +244,9 @@
                     </p>
                 </div>
                 <div class="row g-5 align-items-center">
-                    <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.2s"
+                    <div class="col-lg-6 order-2 order-md-1 wow fadeInLeft" data-wow-delay="0.2s"
                         style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
-                        <div class="accordion accordion-flush bg-light rounded p-5" id="accordionFlushSection">
+                        <div class="accordion accordion-flush bg-light rounded p-0 p-sm-5" id="accordionFlushSection">
                             <div class="accordion-item rounded-top">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button rounded-top collapsed" type="button"
@@ -343,10 +348,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.2s"
+                    <div class="col-lg-6 order-1 order-md-2 wow fadeInRight" data-wow-delay="0.2s"
                         style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInRight;">
-                        <div class="bg-primary rounded">
-                            <img src="img/about-2.png" class="img-fluid w-100" alt="">
+                        <div class="">
+                            <img src="/images/any/faq.png" class="img-fluid w-100" alt="">
                         </div>
                     </div>
                 </div>
@@ -369,6 +374,38 @@
                         lokasi kantor kami.
                     </p>
                 </div>
+                <div class="row g-5 mb-5">
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s"
+                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <div class="d-flex w-100 border border-primary p-4 rounded bg-white">
+                            <i class="fas fa-map-marker-alt fa-2x text-primary me-4"></i>
+                            <div class="">
+                                <h4>Alamat</h4>
+                                <p class="mb-2">104 North tower New York, USA</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s"
+                        style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                        <div class="d-flex w-100 border border-primary p-4 rounded bg-white">
+                            <i class="fas fa-envelope fa-2x text-primary me-4"></i>
+                            <div class="">
+                                <h4>Email</h4>
+                                <p class="mb-2">info@example.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.7s"
+                        style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+                        <div class="d-flex w-100 border border-primary p-4 rounded bg-white">
+                            <i class="fa fa-phone-alt fa-2x text-primary me-4"></i>
+                            <div class="">
+                                <h4>Telepon</h4>
+                                <p class="mb-2">(+012) 3456 7890 123</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.2s"
                         style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
@@ -384,6 +421,9 @@
                             <div class="form-group mb-3">
                                 <label for="" class="form-label">Alamat</label>
                                 <textarea rows="7" name="" class="form-control" id=""></textarea>
+                            </div>
+                            <div class="form-group mb-3">
+                                <button type="submit" class="btn btn-primary">Kirim pesan</button>
                             </div>
                         </div>
                     </div>
@@ -408,17 +448,11 @@
                 <h4 class="text-primary mb-5 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
                     Terimakasih Kepada</h4>
             </div>
-            <div class="container">
-                <div class="d-flex gap-5 justify-content-around align-items-center">
-                    <img src="/images/partner/kabupaten-tasikmalaya.webp" alt=""
-                        srcset="" width="60">
-                    <img src="/images/partner/kementrian-desa.webp" alt=""
-                        srcset="" width="60">
-                    <img src="/images/partner/univ-bsi.webp" alt=""
-                        srcset="" width="60">
-                    <img src="/images/partner/smart-village.webp" alt=""
-                        srcset="" width="60">
-                </div>
+            <div class="d-flex gap-5 justify-content-around align-items-center">
+                <img src="/images/partner/kabupaten-tasikmalaya.webp" class="wow fadeInUp" data-wow-delay="0.3s" alt="" srcset="" width="50">
+                <img src="/images/partner/kementrian-desa.webp" class="wow fadeInUp" data-wow-delay="0.5s" alt="" srcset="" width="50">
+                <img src="/images/partner/univ-bsi.webp" class="wow fadeInUp" data-wow-delay="0.7s" alt="" srcset="" width="50">
+                <img src="/images/partner/smart-village.webp" class="wow fadeInUp" data-wow-delay="0.9s" alt="" srcset="" width="50">
             </div>
         </div>
     </div>

@@ -25,12 +25,12 @@
 
     <div class="container-fluid py-5">
         <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+            <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 700px;">
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
                     Arsip Kegiatan</h4>
             </div>
             <div class="container">
-                <div class="text-start mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 1100px;">
+                <div class="text-start mx-auto pb-5 wow fadeInUp" data-wow-delay="0.3s" style="max-width: 1100px;">
                     @forelse ($archives as $item)
                         <div class="d-flex gap-4 align-items-center mb-4">
                             <img src="{{ asset('storage/images/' . $item->thumbnail_arsip) }}" class="w-25 rounded"

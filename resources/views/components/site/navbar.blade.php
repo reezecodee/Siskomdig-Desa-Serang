@@ -39,7 +39,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="d-flex flex-column pe-3 border-end border-primary">
+                    <div class="d-flex flex-column pe-3">
                         <span class="text-primary">Punya pertanyaan?</span>
                         <a href="#"><span class="text-secondary">Telp: + 0123 456 7890</span></a>
                     </div>

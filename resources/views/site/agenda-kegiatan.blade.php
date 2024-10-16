@@ -25,14 +25,20 @@
 
     <div class="container-fluid py-5">
         <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+            <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 700px;">
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
                     Jadwal Agenda</h4>
             </div>
             <div class="container">
-                <div class="mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 1100px;">
-                    <div class="d-flex justify-content-between align-items-center w-full">
-                        <span class="d-block fw-bold">Agenda Kegiatan: {{ $month }} {{ $year }}</span>
+                <div class="d-block d-sm-none mb-3 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="d-flex justify-content-center">
+                        <span class="fw-bold">Agenda Kegiatan: {{ $month }} {{ $year }}</span>
+                    </div>
+                </div>
+                <div class="mx-auto pb-5" style="max-width: 1100px;">
+                    <div class="d-flex justify-content-center justify-content-sm-between align-items-center w-full wow fadeInUp" data-wow-delay="0.3s">
+                        <span class="d-none d-sm-block fw-bold">Agenda Kegiatan: {{ $month }}
+                            {{ $year }}</span>
                         <form action="" method="GET" class="d-flex gap-2 mb-3">
                             @csrf
                             <input type="month" class="form-control w-100" value="{{ $search }}" name="s"
@@ -64,7 +70,7 @@
                             </table>
                         </div>
                     @else
-                        <div class="text-center">
+                        <div class="text-center wow fadeInUp" data-wow-delay="0.5s">
                             <div class="d-flex justify-content-center">
                                 <img src="https://www.svgrepo.com/show/87468/empty-box.svg" width="70" alt=""
                                     srcset="">
