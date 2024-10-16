@@ -36,7 +36,8 @@
                     </div>
                 </div>
                 <div class="mx-auto pb-5" style="max-width: 1100px;">
-                    <div class="d-flex justify-content-center justify-content-sm-between align-items-center w-full wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="d-flex justify-content-center justify-content-sm-between align-items-center w-full wow fadeInUp"
+                        data-wow-delay="0.3s">
                         <span class="d-none d-sm-block fw-bold">Agenda Kegiatan: {{ $month }}
                             {{ $year }}</span>
                         <form action="" method="GET" class="d-flex gap-2 mb-3">
@@ -47,8 +48,9 @@
                         </form>
                     </div>
                     @if (!$agendas->isEmpty())
-                        <div class="table-container">
-                            <table class="bordered-table">
+                        <div class="table-container overflow-x-auto wow fadeInUp" data-wow-delay="0.5s"
+                            style="max-width: 100%; overflow-x: auto;">
+                            <table class="bordered-table" style="white-space: nowrap;">
                                 <thead>
                                     <tr>
                                         <th>No</th>

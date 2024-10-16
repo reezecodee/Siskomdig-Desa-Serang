@@ -30,7 +30,10 @@
                     Struktur Organisasi</h4>
             </div>
             <div class="w-full wow fadeInUp" data-wow-delay="0.3s">
-                <img src="{{ asset('storage/images/') }}" alt="" srcset="" class="w-full">
+                <div class="d-flex justify-content-center">
+                    <img class="img-fluid" src="{{ $image ? asset('storage/images/' . $image) : 'https://media.kemenkeu.go.id/getmedia/3b77dba3-2f5e-4d82-8798-a37f578c8dfe/struktur-organisasi.jpg?width=1920&height=1396&ext=.jpg' }}"
+                        alt="" srcset="">
+                </div>
             </div>
         </div>
     </div>

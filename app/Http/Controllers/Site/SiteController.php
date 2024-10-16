@@ -30,10 +30,21 @@ class SiteController extends Controller
         $visi = $visiMision['visi'] ?? '';
         $mision = $visiMision['misi'] ?? '';
 
+
+        // uji coba
+        $visi = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ';
+
+        $mision = '
+            <ol>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, consectetur adipiscing elit, consectetur adipiscing elit, consectetur adipiscing elit, consectetur adipiscing elit,</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</li>
+            </ol>
+        ';
+
         return view('site.visi-misi', compact('title', 'visi', 'mision'));
     }
-
-    // Profile Komunitas
 
     public function organizationStructurePage()
     {
@@ -73,6 +84,27 @@ class SiteController extends Controller
             ->orderBy('tgl_pelaksanaan', 'asc')
             ->get();
 
+
+        // uji coba
+        $agendas = collect([
+            [
+                'judul_agenda' => 'Ini cuma test doang gak banyak-banyak paling cuma sedikit aja kok',
+                'bulan' => 'Oktober',
+                'tahun' => '2024',
+                'tgl_pelaksanaan' => '2024-10-10',
+                'keterangan' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...'
+            ],
+            [
+                'judul_agenda' => 'Ini cuma test lagi dengan judul yang berbeda',
+                'bulan' => 'November',
+                'tahun' => '2024',
+                'tgl_pelaksanaan' => '2024-11-12',
+                'keterangan' => 'Test keterangan kedua...'
+            ]
+        ])->map(function ($agenda) {
+            return (object) $agenda; // Mengubah setiap item menjadi object
+        });
+
         return view('site.agenda-kegiatan', compact('title', 'month', 'year', 'agendas', 'search'));
     }
 
@@ -81,6 +113,27 @@ class SiteController extends Controller
         $title = 'Arsip Kegiatan Komunitas Digital Desa Serang';
 
         $archives = Archive::latest()->paginate(10);
+
+        // uji coba
+
+        $archives = collect([
+            [
+                'id' => 'asijdhasd213',
+                'judul_arsip' => 'Ini cuma test doang gak banyak-banyak paling cuma sedikit aja kok',
+                'deskripsi' => 'Ini cuma test doang gak banyak-banyak paling cuma sedikit aja kok Ini cuma test doang gak banyak-banyak paling cuma sedikit aja kok Ini cuma test doang gak banyak-banyak paling cuma sedikit aja kok',
+                'file_zip' => 'acumalaka.zip',
+                'thumbnail_arsip' => null,
+            ],
+            [
+                'id' => 'askdkas83221',
+                'judul_arsip' => 'Ini cuma test lagi dengan judul yang berbeda Ini cuma test doang gak banyak-banyak paling cuma sedikit aja kok',
+                'deskripsi' => 'Ini cuma test doang gak banyak-banyak paling cuma sedikit aja kokIni cuma test doang gak banyak-banyak paling cuma sedikit aja kokIni cuma test doang gak banyak-banyak paling cuma sedikit aja kok',
+                'file_zip' => 'acumalaka.zip',
+                'thumbnail_arsip' => null,
+            ]
+        ])->map(function ($archives) {
+            return (object) $archives; // Mengubah setiap item menjadi object
+        });
 
         return view('site.arsip-kegiatan', compact('title', 'archives'));
     }
@@ -97,6 +150,27 @@ class SiteController extends Controller
     {
         $title = 'Informasi Terbaru Komunitas Digital Desa Serang';
         $informations = Information::with('users')->latest()->paginate(12);
+
+        $informations = collect([
+            [
+                'id' => 'asijdhasd213',
+                'judul' => 'Kelapa muda mas Amba asasd askda jasd asdbas jasd',
+                'admin' => 'Rusdi',
+                'tanggal' => '29 Nov 2023',
+                'thumbnail' => null,
+                'foto_admin' => null,
+            ],
+            [
+                'id' => 'asijdhasd214',
+                'judul' => 'Produk teh mas rusdi askdkas ashda uda asiad',
+                'admin' => 'Rusdi',
+                'tanggal' => '29 Nov 2023',
+                'thumbnail' => null,
+                'foto_admin' => null,
+            ]
+        ])->map(function ($informations) {
+            return (object) $informations; // Mengubah setiap item menjadi object
+        });
 
         return view('site.informasi', compact('title', 'informations'));
     }
@@ -116,6 +190,28 @@ class SiteController extends Controller
         $title = 'Anggota UMKM Komunitas Digital Desa Serang';
         $members = UmkmMember::latest()->paginate(12);
 
+        // uji coba
+        $members = collect([
+            [
+                'id' => 'asijdhasd213',
+                'nama' => 'Mas Ambatukam',
+                'jenis_usaha' => 'Petani handal',
+                'telepon' => '08129123112',
+                'email' => 'ajsdka@gmail.com',
+                'avatar' => null
+            ],
+            [
+                'id' => 'askdkas83221',
+                'nama' => 'Mas Rusdi',
+                'jenis_usaha' => 'Petani handal',
+                'telepon' => '08129123112',
+                'email' => 'ajsdka@gmail.com',
+                'avatar' => null
+            ]
+        ])->map(function ($members) {
+            return (object) $members; // Mengubah setiap item menjadi object
+        });
+
         return view('site.anggota-umkm', compact('title', 'members'));
     }
 
@@ -132,6 +228,28 @@ class SiteController extends Controller
     {
         $title = 'Produk Pelaku UMKM Komunitas Digital Desa Serang';
         $products = UmkmProduct::with('umkmMembers')->latest()->get();
+
+        // uji coba
+        $products = collect([
+            [
+                'id' => 'asijdhasd213',
+                'nama_produk' => 'Kelapa muda mas Amba',
+                'deskripsi' => 'Ini cuma test doang gak banyak-banyak paling cuma sedikit aja kokIni cuma test doang gak banyak-banyak paling cuma sedikit aja kokIni cuma test doang gak banyak-banyak paling cuma sedikit aja kok',
+                'harga' => '200000',
+                'foto_produk' => null,
+                'kategori' => 'Minuman'
+            ],
+            [
+                'id' => 'asijdhasd214',
+                'nama_produk' => 'Produk teh mas rusdi',
+                'deskripsi' => 'Ini cuma test doang gak banyak-banyak paling cuma sedikit aja kokIni cuma test doang gak banyak-banyak paling cuma sedikit aja kokIni cuma test doang gak banyak-banyak paling cuma sedikit aja kok',
+                'harga' => '200000',
+                'foto_produk' => null,
+                'kategori' => 'Minuman'
+            ]
+        ])->map(function ($products) {
+            return (object) $products; // Mengubah setiap item menjadi object
+        });
 
         return view('site.produk-umkm', compact('title', 'products'));
     }

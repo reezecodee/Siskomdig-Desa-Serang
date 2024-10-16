@@ -29,7 +29,7 @@
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
                     Visi Komunitas</h4>
             </div>
-            <div class="container wow fadeInUp" data-wow-delay="0.3s">
+            <div class="wow fadeInUp" data-wow-delay="0.3s">
                 <p class="text-center">{{ $visi }}</p>
             </div>
         </div>
@@ -42,8 +42,10 @@
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
                     Misi Komunitas</h4>
             </div>
-            <div class="container wow fadeInUp" data-wow-delay="0.7s">
-                {{ $mision }}
+            <div class="wow fadeInUp" data-wow-delay="0.7s">
+                <div class="d-flex justify-content-center">
+                    {!! $mision !!}
+                </div>
             </div>
         </div>
     </div>

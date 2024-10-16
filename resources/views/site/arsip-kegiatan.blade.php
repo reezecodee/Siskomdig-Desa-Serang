@@ -29,33 +29,30 @@
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
                     Arsip Kegiatan</h4>
             </div>
-            <div class="container">
+            <div>
                 <div class="text-start mx-auto pb-5 wow fadeInUp" data-wow-delay="0.3s" style="max-width: 1100px;">
                     @forelse ($archives as $item)
-                        <div class="d-flex gap-4 align-items-center mb-4">
-                            <img src="{{ asset('storage/images/' . $item->thumbnail_arsip) }}" class="w-25 rounded"
-                                alt="" srcset="">
-                            <div>
-                                <a href="{{ route('site.detailArsipKegiatan', $item->id) }}">
-                                    <h4 class="fw-bold">{{ $item->judul_arsip }}</h4>
-                                    <p class="fw-light">{{ truncateText($item->deskripsi) }}</p>
-                                </a>
-                                <a href="{{ asset('storage/archives/' . $item->file_zip) }}" download>
-                                    <button class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg" width="23" height="23">
-                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
-                                            </g>
-                                            <g id="SVGRepo_iconCarrier">
-                                                <path
-                                                    d="M17 17H17.01M17.4 14H18C18.9319 14 19.3978 14 19.7654 14.1522C20.2554 14.3552 20.6448 14.7446 20.8478 15.2346C21 15.6022 21 16.0681 21 17C21 17.9319 21 18.3978 20.8478 18.7654C20.6448 19.2554 20.2554 19.6448 19.7654 19.8478C19.3978 20 18.9319 20 18 20H6C5.06812 20 4.60218 20 4.23463 19.8478C3.74458 19.6448 3.35523 19.2554 3.15224 18.7654C3 18.3978 3 17.9319 3 17C3 16.0681 3 15.6022 3.15224 15.2346C3.35523 14.7446 3.74458 14.3552 4.23463 14.1522C4.60218 14 5.06812 14 6 14H6.6M12 15V4M12 15L9 12M12 15L15 12"
-                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round"></path>
-                                            </g>
-                                        </svg> Download arsip</button>
-                                </a>
-                            </div>
+                    <div class="row mb-4">
+                        <div class="col-12 col-sm-4 mb-3 mb-sm-0">
+                            <img src="{{ $item->thumbnail_arsip ? asset('storage/images/' . $item->thumbnail_arsip) : 'https://images.unsplash.com/photo-1728931710331-7f74dca643eb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}"
+                                class="img-fluid rounded" alt="" />
                         </div>
+                        <div class="col-12 col-sm-8">
+                            <a href="{{ route('site.detailArsipKegiatan', $item->id) }}">
+                                <h4 class="fw-bold">{{ truncateText($item->judul_arsip, 70) }}</h4>
+                                <p class="fw-light d-none d-sm-block">{{ truncateText($item->deskripsi, 110) }}</p>
+                            </a>
+                            <a href="{{ asset('storage/archives/' . $item->file_zip) }}" download>
+                                <button class="btn btn-primary mt-2 mt-sm-0">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="23" height="23">
+                                        <path d="M17 17H17.01M17.4 14H18C18.9319 14 19.3978 14 19.7654 14.1522C20.2554 14.3552 20.6448 14.7446 20.8478 15.2346C21 15.6022 21 16.0681 21 17C21 17.9319 21 18.3978 20.8478 18.7654C20.6448 19.2554 20.2554 19.6448 19.7654 19.8478C19.3978 20 18.9319 20 18 20H6C5.06812 20 4.60218 20 4.23463 19.8478C3.74458 19.6448 3.35523 19.2554 3.15224 18.7654C3 18.3978 3 17.9319 3 17C3 16.0681 3 15.6022 3.15224 15.2346C3.35523 14.7446 3.74458 14.3552 4.23463 14.1522C4.60218 14 5.06812 14 6 14H6.6M12 15V4M12 15L9 12M12 15L15 12"
+                                            stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    Download arsip
+                                </button>
+                            </a>
+                        </div>
+                    </div>
                     @empty
                         <div class="text-center">
                             <div class="d-flex justify-content-center">
@@ -66,9 +63,9 @@
                         </div>
                     @endforelse
                 </div>
-                <div class="d-flex justify-content-end">
+                {{-- <div class="d-flex justify-content-end">
                     {{ $archives->links('pagination::bootstrap-5') }}
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
