@@ -1,32 +1,29 @@
 @extends('layouts.site')
 @section('content')
     <style>
-        .bg-breadcrumb {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/images/banner/anggota-umkm.webp);
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.05)), url(/images/banner/anggota-umkm.webp);
             background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
-            padding: 140px 0 60px 0;
-            transition: 0.5s;
         }
     </style>
-    <div class="container-fluid position-relative p-0">
-        <x-site.navbar />
-        <!-- Header Start -->
-        <div class="container-fluid bg-breadcrumb">
-            <div class="container text-center py-5" style="max-width: 900px;">
-                <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Detail Anggota UMKM</h4>
-                <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
-                    <li class="breadcrumb-item"><a href="index.html">Mita Komunitas</a></li>
-                    <li class="breadcrumb-item"><a href="index.html">Anggota UMKM</a></li>
-                    <li class="breadcrumb-item active text-primary">Detail</li>
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center py-5">
+            <h1 class="display-2 text-white mb-4">Anggota UMKM</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="#">Mitra Komunitas</a></li>
+                    <li class="breadcrumb-item"><a href="#">Anggota UMKM</a></li>
+                    <li class="breadcrumb-item text-white" aria-current="page">Detail Anggota</li>
                 </ol>
-            </div>
+            </nav>
         </div>
-        <!-- Header End -->
     </div>
+    <!-- Page Header End -->
+
     <div class="container-fluid blog py-5">
         <div class="container py-5">
             <div class="mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 1100px;">
@@ -40,18 +37,24 @@
                         </div>
                         <!-- Detail Informasi Pengguna -->
                         <div class="col-md-8">
-                            <h2 class="mb-2">{{ $data->nama }}</h2>
-                            <p class="text-muted">Email: {{ $data->email }}</p>
-                            <p class="text-muted">Pekerjaan: {{ $data->jenis_usaha }}</p>
+                            <h2 class="mb-2 display-6">{{ $data->nama }}</h2>
+
+                            <span class="d-block"><span class="text-dark fw-bold d-block d-sm-inline">Pendapatan:</span> Rp.200.000 -
+                                Rp.300.000</span>
+                            <span class="d-block"><span class="text-dark fw-bold d-block d-sm-inline">Pekerjaan:</span> Kuli bangunan</span>
 
                             <!-- Deskripsi Singkat -->
-                            <p class="mt-3">
+                            <p class="mt-3" style="text-align: justify">
                                 {{ $data->deskripsi }}
                             </p>
 
                             <div class="mt-3">
+                                <a href="" class="d-block d-sm-inline mb-2 mb-sm-0">
+                                    <button class="btn btn-primary"><i class="fab fa-whatsapp"></i> Hubungi
+                                        WhatsApp</button>
+                                </a>
                                 <a href="">
-                                    <button class="btn btn-primary">Hubungi anggota</button>
+                                    <button class="btn btn-primary"><i class="fas fa-envelope"></i> Hubungi Email</button>
                                 </a>
                             </div>
                         </div>

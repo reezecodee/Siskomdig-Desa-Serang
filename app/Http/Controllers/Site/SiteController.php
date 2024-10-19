@@ -141,7 +141,15 @@ class SiteController extends Controller
     public function detailArchivePage($id)
     {
         $title = 'Detail Arsip Kegiatan';
-        $data = Archive::findOrFail($id);
+        // $data = Archive::findOrFail($id);
+
+        // uji coba
+        $data = (object) collect([
+            'judul_arsip' => 'Ini cuma test doang gak banyak-banyak paling cuma sedikit aja',
+            'deskripsi' => 'Ini cuma test doang gak banyak-banyak paling cuma sedikit aja kokIni cuma test doang gak banyak-banyak paling cuma sedikit aja Ini cuma test doang gak banyak-banyak paling cuma sedikit aja kokIni cuma test doang gak banyak-banyak paling cuma sedikit aja',
+            'file_zip' => 'acumalaka.zip',
+            'thumbnail_arsip' => null
+        ])->all();
 
         return view('site.detail-arsip', compact('title', 'data'));
     }
@@ -218,8 +226,40 @@ class SiteController extends Controller
     public function detailMemberUMKM($id)
     {
         $title = 'Detail Anggota UMKM Komunitas Digital Desa Serang';
-        $data = UmkmMember::findOrFail($id);
-        $products = UmkmProduct::with('umkmMembers')->where('anggota_id', $id)->latest()->get();
+        // $data = UmkmMember::findOrFail($id);
+        // $products = UmkmProduct::with('umkmMembers')->where('anggota_id', $id)->latest()->get();
+
+        // uji coba
+        $data = (object) collect([
+            'nama' => 'Mas Ambasingh',
+            'telepon' => '08129637232',
+            'email' => 'acumalaka@gmail.com',
+            'jenis_usaha' => 'Kuli bangunan',
+            'pendapatan' => '200000',
+            'pendapatan_tertinggi' => '200000',
+            'deskripsi' => 'Ini cuma test doang gak banyak-banyak paling cuma sedikit aja kokIni cuma test doang gak banyak-banyak paling cuma sedikit aja Ini cuma test doang gak banyak-banyak paling cuma sedikit aja kokIni cuma test doang gak banyak-banyak paling cuma sedikit aja',
+            'avatar' => null
+        ])->all();
+        $products = collect([
+            [
+                'id' => 'asijdhasd213',
+                'nama_produk' => 'Kelapa muda mas Amba',
+                'deskripsi' => 'Ini cuma test doang gak banyak-banyak paling cuma sedikit aja kokIni cuma test doang gak banyak-banyak paling cuma sedikit aja kokIni cuma test doang gak banyak-banyak paling cuma sedikit aja kok',
+                'harga' => '200000',
+                'foto_produk' => null,
+                'kategori' => 'Minuman'
+            ],
+            [
+                'id' => 'asijdhasd214',
+                'nama_produk' => 'Produk teh mas rusdi',
+                'deskripsi' => 'Ini cuma test doang gak banyak-banyak paling cuma sedikit aja kokIni cuma test doang gak banyak-banyak paling cuma sedikit aja kokIni cuma test doang gak banyak-banyak paling cuma sedikit aja kok',
+                'harga' => '200000',
+                'foto_produk' => null,
+                'kategori' => 'Minuman'
+            ]
+        ])->map(function ($products) {
+            return (object) $products; // Mengubah setiap item menjadi object
+        });
 
         return view('site.detail-anggota', compact('title', 'data', 'products'));
     }
@@ -257,7 +297,22 @@ class SiteController extends Controller
     public function detailProductUMKM($id)
     {
         $title = 'Detail Produk Pelaku UMKM Komunitas Digital Desa Serang';
-        $data = UmkmProduct::with(['umkmMembers', 'categories'])->findOrFail($id);
+        // $data = UmkmProduct::with(['umkmMembers', 'categories'])->findOrFail($id);
+
+        // uji coba
+        $data = (object) collect([
+            'id' => 'asijdhasd213',
+            'nama_produk' => 'Kelapa muda mas Amba',
+            'deskripsi' => 'Ini cuma test doang gak banyak-banyak paling cuma sedikit aja kokIni cuma test doang gak banyak-banyak paling cuma sedikit aja kokIni cuma test doang gak banyak-banyak paling cuma sedikit aja kok',
+            'harga' => '200000',
+            'foto_produk' => null,
+            'kategori' => 'Minuman',
+
+            'avatar' => null,
+            'nama' => 'Mas Ambatukam',
+            'telepon' => '0812982342341',
+            'email' => 'acumalaka@gmail.com'
+        ])->all();
 
         return view('site.detail-produk', compact('title', 'data'));
     }

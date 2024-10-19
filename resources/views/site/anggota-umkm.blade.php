@@ -34,10 +34,10 @@
                     <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
                         <div class="team-item border border-primary rounded overflow-hidden">
                             <img src="{{ $item->avatar ? asset('storage/profiles/'.$item->avatar) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTNLQ5ABENoVl16Inl_Zj86oCAGIZ41IETLg&s' }}" class="img-fluid w-100" alt="">
-                            <div class="team-icon d-flex align-items-center justify-content-center">
-                                <a class="share btn btn-primary btn-md-square text-white rounded-circle me-3"
+                            <div class="team-icon d-flex align-items-center justify-content-center mt-3">
+                                <a title="Hubungi via email" class="share btn btn-primary btn-md-square text-white rounded-circle me-3"
                                     href=""><i class="fas fa-envelope"></i></a>
-                                <a class="share-link btn btn-primary btn-md-square text-white rounded-circle me-3"
+                                <a title="Hubungi via Whatsapp" class="share-link btn btn-primary btn-md-square text-white rounded-circle me-3"
                                     href=""><i class="fab fa-whatsapp"></i></a>
                             </div>
                             <div class="team-content text-center py-3">

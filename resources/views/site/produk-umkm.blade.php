@@ -32,24 +32,23 @@
             <div class="row g-5 justify-content-center">
                 @foreach ($products as $item)
                     <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.1s">
-                        <a href="{{ route('site.detailProdukUMKM', $item->id) }}">
-                            <div class="events-item">
-                                <div class="events-inner position-relative">
-                                    <div class="overflow-hidden position-relative">
-                                        <img src="{{ $item->foto_produk ? asset('storage/images/' . $item->foto_produk) : 'https://images.unsplash.com/photo-1464297162577-f5295c892194?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}"
-                                            class="img-fluid" alt="Image" loading="lazy">
-                                    </div>
-                                    <div class="d-flex justify-content-between px-4 py-2 bg-secondary">
-                                        <small class="text-white">{{ idr($item->harga) }}</small>
-                                        <small class="text-white">{{ $item->kategori }}</small>
-                                    </div>
-                                </div>
-                                <div class="events-text p-4 border border-primary bg-white border-top-0 rounded-bottom">
-                                    <a href="#" class="h4">{{ truncateText($item->nama_produk, 30) }}</a>
-                                    <p class="mb-0 mt-3">{{ truncateText($item->deskripsi) }}</p>
+                        <div class="card">
+                            <!-- Gambar Produk -->
+                            <img src="{{ $item->foto_produk ? asset('storage/images/' . $item->foto_produk) : 'https://via.placeholder.com/300x200' }}"
+                                class="card-img-top" alt="Product Image">
+                            <!-- Body Card -->
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $item->nama_produk }}</h5>
+                                <p class="card-text text-muted">{{ idr($item->harga) }}</p>
+                                <p class="card-text">
+                                    {{ truncateText($item->deskripsi) }}
+                                </p>
+                                <div class="d-grid gap-2">
+                                    <a href="{{ route('site.detailProdukUMKM', $item->id) }}"
+                                        class="btn btn-outline-secondary">Lihat detail</a>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 @endforeach
             </div>
