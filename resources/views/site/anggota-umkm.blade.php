@@ -15,7 +15,7 @@
             <h1 class="display-2 text-white mb-4">Anggota UMKM</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="#">Mitra Komunitas</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Mitra Komunitas</a></li>
                     <li class="breadcrumb-item text-white" aria-current="page">Anggota UMKM</li>
                 </ol>
             </nav>
@@ -29,21 +29,44 @@
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
                     Anggota UMKM</h4>
             </div>
-            <div class="row g-5 justify-content-center">
+            <div class="d-flex justify-content-end align-items-center w-full mb-3">
+                <form action="" method="GET" class="d-flex gap-2 mb-3">
+                    @csrf
+                    <input type="search" class="form-control" value="" name="s"
+                        id="" placeholder="Cari anggota" autocomplete="off">
+                    <button type="submit" class="btn btn-primary">Cari</button>
+                </form>
+            </div>
+            <div class="row g-3 justify-content-center">
                 @foreach ($members as $item)
                     <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="team-item border border-primary rounded overflow-hidden">
-                            <img src="{{ $item->avatar ? asset('storage/profiles/'.$item->avatar) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTNLQ5ABENoVl16Inl_Zj86oCAGIZ41IETLg&s' }}" class="img-fluid w-100" alt="">
-                            <div class="team-icon d-flex align-items-center justify-content-center mt-3">
-                                <a title="Hubungi via email" class="share btn btn-primary btn-md-square text-white rounded-circle me-3"
-                                    href=""><i class="fas fa-envelope"></i></a>
-                                <a title="Hubungi via Whatsapp" class="share-link btn btn-primary btn-md-square text-white rounded-circle me-3"
-                                    href=""><i class="fab fa-whatsapp"></i></a>
+                        <div class="team-item border rounded shadow-sm overflow-hidden">
+                            <!-- Gambar dengan border radius -->
+                            <div class="team-img d-flex justify-content-center align-items-center" style="height: 200px;">
+                                <a href="{{ route('site.detailAnggotaUMKM', $item->id) }}">
+                                    <img src="{{ $item->avatar ? asset('storage/profiles/' . $item->avatar) : 'https:via.placeholder.com/150x150' }}"
+                                        class="img-fluid rounded-circle" alt="{{ $item->nama }}"
+                                        style="object-fit: cover; width: 150px; height: 150px;" loading="lazy">
+                                </a>
                             </div>
-                            <div class="team-content text-center py-3">
-                                <h4 class="text-primary">{{ $item->nama }}</h4>
-                                <p class="text-muted mb-2">{{ $item->jenis_usaha }}</p>
+                            <!-- Ikon Sosial dengan padding lebih baik -->
+                            <div class="team-icon d-flex justify-content-center py-2">
+                                <a class="share btn btn-primary btn-sm text-white rounded-circle mx-2" href="#"
+                                    title="Hubungi via email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                                <a class="share-link btn btn-success btn-sm text-white rounded-circle mx-2" href="#"
+                                    title="Hubungi via Whatsapp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
                             </div>
+                            <!-- Konten Informasi Anggota dengan warna latar belakang -->
+                            <a href="{{ route('site.detailAnggotaUMKM', $item->id) }}">
+                                <div class="team-content text-center p-3 bg-light">
+                                    <h5 class="text-dark mb-1">{{ $item->nama }}</h5>
+                                    <p class="text-muted small mb-0">{{ $item->jenis_usaha }}</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 @endforeach

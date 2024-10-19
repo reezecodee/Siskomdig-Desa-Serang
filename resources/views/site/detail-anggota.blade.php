@@ -15,8 +15,8 @@
             <h1 class="display-2 text-white mb-4">Anggota UMKM</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="#">Mitra Komunitas</a></li>
-                    <li class="breadcrumb-item"><a href="#">Anggota UMKM</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Mitra Komunitas</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('site.anggotaUMKM') }}">Anggota UMKM</a></li>
                     <li class="breadcrumb-item text-white" aria-current="page">Detail Anggota</li>
                 </ol>
             </nav>

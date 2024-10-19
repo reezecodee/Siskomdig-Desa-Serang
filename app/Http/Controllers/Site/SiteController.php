@@ -186,7 +186,17 @@ class SiteController extends Controller
     public function readInformationPage($id)
     {
         $title = 'Baca Informasi';
-        $data = Information::with('users')->findOrFail($id);
+        // $data = Information::with('users')->findOrFail($id);
+
+        // uji coba
+        $data = (object) collect([
+            'id' => 'asijdhasd213',
+            'admin' => 'Mas Amba',
+            'judul' => 'Viral Mas Ambatukam berhasil memcahkan rekor Muwani di Ngawi Selatan',
+            'konten_informasi' => 'Ini cuma test doang gak banyak-banyak paling cuma sedikit aja kokIni cuma test doang gak banyak-banyak paling cuma sedikit aja kokIni cuma test doang gak banyak-banyak paling cuma sedikit aja kok',
+            'thumbnail' => null,
+            'created_at' => '2024-10-19 19:47:12'
+        ])->all();
 
         return view('site.baca-informasi', compact('title', 'data'));
     }

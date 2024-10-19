@@ -15,7 +15,7 @@
             <h1 class="display-2 text-white mb-4">Struktur Organisasi</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="#">Profile Komunitas</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Profile Komunitas</a></li>
                     <li class="breadcrumb-item text-white" aria-current="page">Struktur Organisasi</li>
                 </ol>
             </nav>

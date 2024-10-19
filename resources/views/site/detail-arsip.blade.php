@@ -15,8 +15,8 @@
             <h1 class="display-2 text-white mb-4">Arsip Kegiatan</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="#">Profile Komunitas</a></li>
-                    <li class="breadcrumb-item"><a href="#">Arsip Kegiatan</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Profile Komunitas</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('site.arsipKegiatan') }}">Arsip Kegiatan</a></li>
                     <li class="breadcrumb-item text-white" aria-current="page">Detail Arsip</li>
                 </ol>
             </nav>
@@ -52,7 +52,7 @@
                         <!-- Tombol Kembali ke Daftar Arsip -->
                         <div class="mt-5">
                             <a href="{{ route('show.activityArchive') }}" class="btn btn-secondary">
-                                <i class="fas fa-arrow-left"></i> Kembali ke Daftar Artikel
+                                <i class="fas fa-arrow-left"></i> Kembali ke Arsip
                             </a>
                         </div>
                     </div>

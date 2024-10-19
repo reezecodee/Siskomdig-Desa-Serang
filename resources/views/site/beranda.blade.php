@@ -7,7 +7,8 @@
                 <div class="col-lg-7 col-md-12">
                     <h1 class="mb-5 display-2 text-white drop-shadow-header">Selamat Datang di Komunitas Digital Desa Serang
                     </h1>
-                    <a href="{{ route('show.login') }}" class="btn btn-primary px-4 py-3 px-md-5 me-4 btn-border-radius mb-3 mb-sm-0">Ayo
+                    <a href="{{ route('show.login') }}"
+                        class="btn btn-primary px-4 py-3 px-md-5 me-4 btn-border-radius mb-3 mb-sm-0">Ayo
                         mulai!</a>
                     <a href="{{ route('site.anggotaUMKM') }}"
                         class="btn btn-primary px-4 py-3 px-md-5 btn-border-radius">Explore anggota</a>
@@ -449,10 +450,22 @@
                     Terimakasih Kepada</h4>
             </div>
             <div class="d-flex gap-5 justify-content-around align-items-center">
-                <img src="/images/partner/kabupaten-tasikmalaya.webp" class="wow fadeInUp" data-wow-delay="0.3s" alt="" srcset="" width="50">
-                <img src="/images/partner/kementrian-desa.webp" class="wow fadeInUp" data-wow-delay="0.5s" alt="" srcset="" width="50">
-                <img src="/images/partner/univ-bsi.webp" class="wow fadeInUp" data-wow-delay="0.7s" alt="" srcset="" width="50">
-                <img src="/images/partner/smart-village.webp" class="wow fadeInUp" data-wow-delay="0.9s" alt="" srcset="" width="50">
+                <a href="https://tasikmalayakab.go.id/" title="Kabupaten Tasikmalaya">
+                    <img src="/images/partner/kabupaten-tasikmalaya.webp" class="wow fadeInUp" data-wow-delay="0.3s"
+                        alt="" srcset="" width="50">
+                </a>
+                <a href="https://www.kemendesa.go.id/" title="Kementerian Desa, Pembangunan Daerah Tertinggal, dan Transmigrasi">
+                    <img src="/images/partner/kementrian-desa.webp" class="wow fadeInUp" data-wow-delay="0.5s"
+                        alt="" srcset="" width="50">
+                </a>
+                <a href="https://www.bsi.ac.id/ubsi/index.js" title="Universitas Bina Sarana Informatika">
+                    <img src="/images/partner/univ-bsi.webp" class="wow fadeInUp" data-wow-delay="0.7s" alt=""
+                        srcset="" width="50">
+                </a>
+                <a href="http://www.smartvillage-kw.com/" title="Smart Village">
+                    <img src="/images/partner/smart-village.webp" class="wow fadeInUp" data-wow-delay="0.9s"
+                        alt="" srcset="" width="50">
+                </a>
             </div>
         </div>
     </div>
