@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Password\ChangePasswordRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,7 +17,7 @@ class ManagePasswordController extends Controller
         $user = User::find(Auth::user()->id);
 
         if (!Hash::check($validatedData['current_password'], $user->password)) {
-            return back()->withErrors(['error' => 'Password saat ini tidak sesuai.']);
+            return back()->withErrors(['current_password' => 'Password saat ini tidak sesuai.'])->withInput();
         }
 
         $user->password = bcrypt($validatedData['new_password']);

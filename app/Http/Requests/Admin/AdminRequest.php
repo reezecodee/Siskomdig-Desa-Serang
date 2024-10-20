@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Admin;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class AdminRequest extends FormRequest
 {
@@ -56,5 +58,14 @@ class AdminRequest extends FormRequest
             'password.min' => 'Password harus minimal 8 karakter.',
             'password.max' => 'Password tidak boleh lebih dari 255 karakter.',
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        session()->flash('failed', 'Gagal menambahkan Admin, silahkan cek kembali input Anda.');
+
+        throw new HttpResponseException(
+            redirect()->back()->withErrors($validator)->withInput()
+        );
     }
 }

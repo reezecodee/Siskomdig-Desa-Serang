@@ -17,7 +17,6 @@
     </div>
 @endsection
 @section('content')
-    <x-admin.alert.success :success="session('success')" />
     <form action="{{ route('update.visiMision') }}" method="POST" id="form-store">
         @csrf
         @method('PUT')

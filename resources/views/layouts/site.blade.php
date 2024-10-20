@@ -5,8 +5,10 @@
     <meta charset="utf-8">
     <title>{{ $title }}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="{{ $application->keyword ?? '' }}" name="keywords">
+    <meta content="{{ $application->deskripsi }} - {{ $application->nama_aplikasi }}" name="description">
+
+    <link rel="shortcut icon" href="/{{ $application->favicon ?? '' }}" type="image/x-icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Agenda;
 use App\Models\Archive;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -29,7 +28,7 @@ class ArchiveDatatablesController extends Controller
                             ' . method_field("DELETE") . '
                             <button type="button" class="btn btn-danger" onclick="deleteAlert(\'' . $archive->id . '\')">Hapus</button>
                         </form>
-                        <a href="" download>
+                        <a href="'. route('site.detailArsipKegiatan', $archive->id) .'">
                         <button class="btn btn-success show" data-id="' . $archive->id . '">Detail</button>
                         </a>
                     </div>

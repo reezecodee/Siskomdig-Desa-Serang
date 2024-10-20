@@ -24,7 +24,6 @@
     </div>
 @endsection
 @section('content')
-    <x-admin.alert.success :success="session('success')" />
     <form action="{{ route('update.information', $data->id) }}" method="POST" enctype="multipart/form-data" id="form-edit">
         @csrf
         @method('PUT')

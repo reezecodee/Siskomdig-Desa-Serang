@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Information;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class InformationRequest extends FormRequest
 {
@@ -44,5 +46,14 @@ class InformationRequest extends FormRequest
             'visibilitas.required' => 'Visibilitas wajib diisi.',
             'visibilitas.in' => 'Visibilitas harus salah satu dari: Publik atau Privasi.',
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        session()->flash('failed', 'Gagal menambahkan informasi, silahkan cek kembali input Anda.');
+
+        throw new HttpResponseException(
+            redirect()->back()->withErrors($validator)->withInput()
+        );
     }
 }

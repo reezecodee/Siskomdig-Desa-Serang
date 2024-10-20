@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Category;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class CategoryRequest extends FormRequest
 {
@@ -34,5 +36,14 @@ class CategoryRequest extends FormRequest
             'nama_kategori.max' => 'Nama kategori tidak boleh lebih dari :max karakter.',
             'nama_kategori.unique' => 'Nama kategori sudah terdaftar. Silakan gunakan nama kategori yang berbeda.',
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        session()->flash('failed', 'Gagal menambahkan kategori produk, silahkan cek kembali input Anda.');
+
+        throw new HttpResponseException(
+            redirect()->back()->withErrors($validator)->withInput()
+        );
     }
 }

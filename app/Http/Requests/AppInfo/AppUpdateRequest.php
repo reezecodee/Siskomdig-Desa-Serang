@@ -25,7 +25,7 @@ class AppUpdateRequest extends FormRequest
             'nama_aplikasi' => 'required|string|max:255',
             'keyword' => 'required|string|max:255',
             'deskripsi' => 'required|string',
-            'favicon' => 'nullable',
+            'favicon' => 'nullable|mimes:png,jpg,ico,jpeg',
             'telepon' => 'required|min:12|max:15',
             'email' => 'required|email|max:255',
             'alamat' => 'required|string',

@@ -28,7 +28,6 @@
     </div>
 @endsection
 @section('content')
-    <x-admin.alert.success :success="session('success')" />
     <form action="{{ route('update.agenda', $data->id) }}" method="POST" id="{{ $data->id }}">
         @csrf
         @method('PUT')

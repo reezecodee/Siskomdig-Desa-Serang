@@ -36,6 +36,6 @@ class ManageOrganizationController extends Controller
             OrganizationStructure::create($validatedData);
         }
 
-        return back()->with('success', 'Berhasil menyimpan gambar struktur organisasi komunitas');
+        return back()->withSuccess('Berhasil menyimpan gambar struktur organisasi komunitas');
     }
 }

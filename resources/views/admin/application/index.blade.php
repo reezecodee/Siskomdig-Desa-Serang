@@ -27,7 +27,6 @@
     </div>
 @endsection
 @section('content')
-    <x-admin.alert.success :success="session('success')" />
     <form action="{{ route('update.application') }}" method="POST" enctype="multipart/form-data" id="form-edit">
         @csrf
         @method('PUT')
@@ -38,8 +37,7 @@
                         <p class="fw-bold">Upload favicon</p>
                         <div class="text-center">
                             <div class="d-flex flex-column justify-content-center align-items-center">
-                                <img src="https://www.svgrepo.com/show/532809/file-zipper.svg" class="w-25 mx-auto"
-                                    alt="" id="previewExample"
+                                <img src="/{{ $data->favicon }}" class="w-25 mx-auto" alt="" id="previewExample"
                                     style="display: {{ $data->favicon ? 'block' : 'none' }};">
                             </div>
                             <div id="fileName" class="file-name mb-3"
@@ -47,8 +45,8 @@
                         </div>
                         <div class="form-group">
                             <div class="d-flex justify-content-center">
-                                <input type="file" id="fileInput" style="display: none;" accept=".ico" name="favicon"
-                                    value="{{ old('favicon', $data->favicon) }}">
+                                <input type="file" id="fileInput" style="display: none;" accept=".ico, .png, .jpg, .jpeg"
+                                    name="favicon" value="{{ old('favicon', $data->favicon) }}">
                                 <button type="button" class="btn btn-primary" id="uploadButton">Pilih favicon</button>
                             </div>
                             <div id="error-message" style="display:none; color: red;"></div>
@@ -127,7 +125,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Alamat</label>
                                     <input type="text" name="alamat"
@@ -145,7 +143,7 @@
                                     <label for="" class="form-label">HTML Google Maps</label>
                                     <textarea rows="7" type="text" name="google_maps"
                                         class="form-control @error('google_maps') is-invalid
-                                    @enderror"
+                                            @enderror"
                                         autocomplete="off" placeholder="Masukkan kode iframe HTML Google Maps">{{ old('google_maps', $data->google_maps) }}</textarea>
                                     @error('google_maps')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -188,11 +186,24 @@
             const file = event.target.files[0]; // Ambil file yang dipilih
 
             if (file) {
-                // Validasi jika file adalah gambar .ico
-                if (file.type !== 'image/x-icon' && file.name.split('.').pop() !== 'ico') {
+                const fileExtension = file.name.split('.').pop().toLowerCase(); // Mendapatkan ekstensi file
+
+                if (fileExtension === 'ico') {
+                    // Jika file adalah .ico, tampilkan gambar pratinjau default
+                    previewExample.src =
+                        'https://www.svgrepo.com/show/532809/file-zipper.svg'; // Ganti dengan path gambar default Anda
+                } else if (file.type.startsWith('image/')) {
+                    // Jika file adalah gambar, tampilkan pratinjau gambar yang dipilih
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewExample.src = e.target.result; // Menampilkan pratinjau gambar
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    // Jika bukan gambar atau .ico, tampilkan error
+                    errorMessage.textContent = 'Format file tidak didukung.';
                     errorMessage.style.display = 'block';
-                    errorMessage.textContent = 'Harap pilih file .ico (icon)';
-                    fileNameDisplay.style.display = 'none'; // Sembunyikan nama file jika tidak valid
+                    previewExample.style.display = 'none'; // Sembunyikan pratinjau jika format tidak didukung
                     return;
                 }
 

@@ -12,6 +12,7 @@
     <link href="/dist/css/tabler-payments.min.css?1684106062" rel="stylesheet" />
     <link href="/dist/css/tabler-vendors.min.css?1684106062" rel="stylesheet" />
     <link href="/dist/css/demo.min.css?1684106062" rel="stylesheet" />
+    <link rel="shortcut icon" href="/{{ $application->favicon ?? '' }}" type="image/x-icon">
     <style>
         @import url('https://rsms.me/inter/inter.css');
 
@@ -23,7 +24,7 @@
             font-feature-settings: "cv03", "cv04", "cv11";
         }
 
-        #fr-logo{
+        #fr-logo {
             display: none;
         }
     </style>
@@ -51,6 +52,8 @@
             <!-- Page body -->
             <div class="page-body">
                 <div class="container-xl">
+                    <x-admin.alert.success :success="session('success')" />
+                    <x-admin.alert.failed :failed="session('failed')" />
                     @yield('content')
                 </div>
             </div>
@@ -74,7 +77,7 @@
     @yield('script')
     <!-- Inisialisasi -->
     <script>
-         new FroalaEditor('#editor');
+        new FroalaEditor('#editor');
     </script>
     <script src="/js/sweetalert.js"></script>
     <!-- Tabler Core -->

@@ -32,7 +32,6 @@
     </div>
 @endsection
 @section('content')
-    <x-admin.alert.success :success="session('success')" />
     <div class="card">
         <div class="card-body">
             <table id="archives-table" class="display">
@@ -40,7 +39,6 @@
                     <tr>
                         <th>No</th>
                         <th>Judul arsip</th>
-                        <th>File zip arsip</th>
                         <th>Diarsipkan pada</th>
                         <th>Action</th>
                     </tr>
@@ -65,10 +63,6 @@
                     {
                         data: 'judul_arsip',
                         name: 'judul_arsip'
-                    },
-                    {
-                        data: 'file_zip',
-                        name: 'file_zip'
                     },
                     {
                         data: 'created_at',

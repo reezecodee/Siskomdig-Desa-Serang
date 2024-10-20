@@ -20,7 +20,7 @@ class InformationDatatablesController extends Controller
                 ->addColumn('action', function ($information) {
                     return '
                     <div class="d-flex gap-2">
-                        <a href="">
+                        <a href="'. route('site.bacaInformasi', $information->id) .'">
                         <button class="btn btn-success show" data-id="' . $information->id . '">Lihat informasi</button>
                         </a>
                     </div>
@@ -58,7 +58,7 @@ class InformationDatatablesController extends Controller
                         ' . method_field("DELETE") . '
                         <button type="button" class="btn btn-danger" onclick="deleteAlert(\'' . $information->id . '\')">Hapus</button>
                         </form>
-                        <a href="">
+                        <a href="'. route('site.bacaInformasi', $information->id) .'">
                         <button class="btn btn-success show" data-id="' . $information->id . '">Lihat informasi</button>
                         </a>
                     </div>

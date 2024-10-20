@@ -33,7 +33,6 @@
     </div>
 @endsection
 @section('content')
-    <x-admin.alert.success :success="session('success')" />
     <div class="card">
         <div class="card-body">
             <table id="user-table" class="display">
@@ -148,8 +147,8 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">Deskripsi pekerjaan</label>
-                                    <textarea rows="7" name="deskripsi" autocomplete="off" placeholder="Masukkan deskripsi pekerjaan"
+                                    <label for="" class="form-label">Deskripsi usaha</label>
+                                    <textarea rows="7" name="deskripsi" autocomplete="off" placeholder="Masukkan deskripsi usaha"
                                         class="form-control @error('deskripsi') is-invalid @enderror" required>{{ old('deskripsi') }}</textarea>
                                     @error('deskripsi')
                                         <span class="invalid-feedback">{{ $message }}</span>

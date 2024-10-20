@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Member;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class MemberRequest extends FormRequest
 {
@@ -66,5 +68,14 @@ class MemberRequest extends FormRequest
 
             'avatar.nullable' => 'Avatar bersifat opsional.',
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        session()->flash('failed', 'Gagal menambahkan anggota UMKM, silahkan cek kembali input Anda.');
+
+        throw new HttpResponseException(
+            redirect()->back()->withErrors($validator)->withInput()
+        );
     }
 }

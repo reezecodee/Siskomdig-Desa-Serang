@@ -21,8 +21,7 @@ class ManageArchiveController extends Controller
         $thumbnailFile->storeAs('images', $thumbnailFileName, 'public');
         $validatedData['thumbnail_arsip'] = $thumbnailFileName;
 
-        $slug = Str::slug($validatedData['judul_arsip'] ?? uniqid(), '-');
-        $validatedData['file_zip'] = $this->generateZIPFile($validatedData['files'], $slug);
+        $validatedData['file_zip'] = $this->generateZIPFile($validatedData['files'], uniqid());
 
         Archive::create($validatedData);
         return redirect()->route('show.activityArchive')->withSuccess('Berhasil menambahkan arsip baru baru.');

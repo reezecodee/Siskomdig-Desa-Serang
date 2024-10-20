@@ -23,7 +23,8 @@ class ChangePasswordRequest extends FormRequest
     {
         return [
             'current_password' => 'required|string',
-            'new_password' => 'required|string|min:8|confirmed',
+            'new_password' => 'required|min:8|different:current_password',
+            'confirm_password' => 'required|same:new_password',
         ];
     }
 
@@ -31,12 +32,13 @@ class ChangePasswordRequest extends FormRequest
     {
         return [
             'current_password.required' => 'Password saat ini wajib diisi.',
-            'current_password.string' => 'Password saat ini harus berupa string.',
 
             'new_password.required' => 'Password baru wajib diisi.',
-            'new_password.string' => 'Password baru harus berupa string.',
             'new_password.min' => 'Password baru harus memiliki minimal :min karakter.',
-            'new_password.confirmed' => 'Konfirmasi password baru tidak cocok.',
+            'new_password.different' => 'Password baru tidak boleh sama dengan password saat ini.',
+
+            'confirm_password.required' => 'Konfirmasi password wajib diisi.',
+            'confirm_password.same' => 'Konfirmasi password tidak cocok dengan password baru.',
         ];
     }
 }

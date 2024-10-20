@@ -17,7 +17,6 @@
     </div>
 @endsection
 @section('content')
-    <x-admin.alert.success :success="session('success')" />
     @if (auth()->check() && auth()->user()->avatar)
         <form action="{{ route('destroy.avatar', auth()->user()->id) }}" method="POST" id="delete-form-avatar">
             @csrf

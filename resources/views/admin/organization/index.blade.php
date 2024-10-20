@@ -22,7 +22,9 @@
         @method('PUT')
         <div class="card">
             <div class="card-body">
-                <img id="imagePreview" src="{{ $data->gambar ? asset('storage/images/'.$data->gambar) : '/unknown/unknown-structure.png' }}" class="w-full mb-3" alt="Preview Image">
+                <img id="imagePreview"
+                    src="{{ $data->gambar ? asset('storage/images/' . $data->gambar) : '/unknown/unknown-structure.png' }}"
+                    class="w-full mb-3" alt="Preview Image">
                 <div class="form-group">
                     <input type="file" name="gambar"
                         class="form-control @error('gambar') is-invalid

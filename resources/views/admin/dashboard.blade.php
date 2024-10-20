@@ -39,7 +39,6 @@
     </div>
 @endsection
 @section('content')
-    <x-admin.alert.success :success="session('success')" />
     <div class="row row-deck row-cards">
         <div class="col-sm-6 col-lg-3">
             <div class="card">
@@ -309,7 +308,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title">Traffic summary</h3>
@@ -317,7 +316,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <div class="row row-cards">
                 <div class="col-12">
                     <div class="card">

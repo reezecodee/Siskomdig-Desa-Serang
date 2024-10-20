@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Product;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class ProductRequest extends FormRequest
 {
@@ -48,5 +50,14 @@ class ProductRequest extends FormRequest
             'foto_produk.required' => 'Foto produk harus diunggah.',
             'foto_produk.mimes' => 'Foto produk harus berupa file dengan format: png, jpg, jpeg.'
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        session()->flash('failed', 'Gagal menambahkan produk UMKM, silahkan cek kembali input Anda.');
+
+        throw new HttpResponseException(
+            redirect()->back()->withErrors($validator)->withInput()
+        );
     }
 }

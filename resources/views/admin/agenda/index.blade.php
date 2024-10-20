@@ -32,7 +32,6 @@
     </div>
 @endsection
 @section('content')
-    <x-admin.alert.success :success="session('success')" />
     <div class="card">
         <div class="card-body">
             <table id="agenda-table" class="display">

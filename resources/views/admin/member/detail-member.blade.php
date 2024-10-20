@@ -31,8 +31,8 @@
                 <div class="col-md-4">
                     <p class="form-label">Foto anggota</p>
                     <div class="d-flex justify-content-center">
-                        <img src="{{ $data->avatar ? asset('storage/profiles/' . $data->avatar) : 'https://avatars.githubusercontent.com/u/159593076?v=4' }}" class="rounded-circle"
-                            width="200" id="imagePreview" alt="">
+                        <img src="{{ $data->avatar ? asset('storage/profiles/' . $data->avatar) : 'https://via.placeholder.com/300x300' }}"
+                            class="rounded-circle" width="200" id="imagePreview" alt="">
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -88,22 +88,24 @@
     <div class="card">
         <div class="card-body">
             <p class="fw-bold">Produk anggota</p>
-            <div class="row">
-                @foreach ($products as $item)
-                    <div class="col-md-3">
-                        <a href="{{ route('show.detailProductUMKM', $item->id) }}">
-                            <div class="text-center">
-                                <div class="d-flex justify-content-center mb-2">
-                                    <img src="https://images.unsplash.com/photo-1727112658582-fdb2e08878d4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                        alt="" srcset="" class="rounded" loading="lazy">
+            @if (!$products->isEmpty())
+                <div class="row">
+                    @foreach ($products as $item)
+                        <div class="col-md-3">
+                            <a href="{{ route('show.detailProductUMKM', $item->id) }}">
+                                <div class="text-center">
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <img src="{{ $item->foto_produk ? asset('storage/images/' . $item->foto_produk) : 'https://via.placeholder.com/1020x720' }}"
+                                            alt="" srcset="" class="rounded" loading="lazy">
+                                    </div>
+                                    <p>{{ $item->nama_produk }}</p>
                                 </div>
-                                <p>{{ $item->nama_produk }}</p>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-            @if ($products->isEmpty())
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+                {{ $products->links('pagination::bootstrap-5') }}
+            @else
                 <div class="text-center">
                     <div class="d-flex justify-content-center">
                         <img src="https://www.svgrepo.com/show/87468/empty-box.svg" width="70" alt=""
