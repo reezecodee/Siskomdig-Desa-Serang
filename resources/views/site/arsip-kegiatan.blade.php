@@ -34,8 +34,8 @@
                     @forelse ($archives as $item)
                         <div class="row mb-4">
                             <div class="col-12 col-sm-4 mb-3 mb-sm-0">
-                                <img src="{{ $item->thumbnail_arsip ? asset('storage/images/' . $item->thumbnail_arsip) : 'https://images.unsplash.com/photo-1728931710331-7f74dca643eb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}"
-                                    class="img-fluid rounded" alt="" />
+                                <img src="{{ $item->thumbnail_arsip ? asset('storage/images/' . $item->thumbnail_arsip) : 'https://via.placeholder.com/2070x1380' }}"
+                                    class="img-fluid rounded" alt="" loading="lazy"/>
                             </div>
                             <div class="col-12 col-sm-8">
                                 <a href="{{ route('site.detailArsipKegiatan', $item->id) }}">
@@ -66,9 +66,9 @@
                         </div>
                     @endforelse
                 </div>
-                {{-- <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-end">
                     {{ $archives->links('pagination::bootstrap-5') }}
-                </div> --}}
+                </div>
             </div>
         </div>
     </div>

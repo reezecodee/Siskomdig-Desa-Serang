@@ -7,6 +7,34 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+
+        /* Default: Table fits the container and wraps text */
+        .table-container {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .bordered-table {
+            width: 100%;
+            table-layout: fixed;
+            /* Memastikan tabel fit dengan container */
+            white-space: normal;
+            /* Konten dalam sel dapat dibungkus */
+            word-wrap: break-word;
+            /* Memastikan kata panjang terpotong di dalam sel */
+        }
+
+        /* Pada layar kecil (ponsel), aktifkan horizontal scrolling */
+        @media (max-width: 768px) {
+            .table-container {
+                overflow-x: auto;
+            }
+
+            .bordered-table {
+                table-layout: auto;
+                /* Menyesuaikan konten pada layar kecil */
+            }
+        }
     </style>
 
     <!-- Page Header Start -->
@@ -48,9 +76,8 @@
                         </form>
                     </div>
                     @if (!$agendas->isEmpty())
-                        <div class="table-container overflow-x-auto wow fadeInUp" data-wow-delay="0.5s"
-                            style="max-width: 100%; overflow-x: auto;">
-                            <table class="bordered-table" style="white-space: nowrap;">
+                        <div class="table-container wow fadeInUp" data-wow-delay="0.5s">
+                            <table class="bordered-table">
                                 <thead>
                                     <tr>
                                         <th>No</th>

@@ -49,7 +49,8 @@
                         <!-- Gambar Produk -->
                         <div class="col-md-6 text-center">
                             <img src="{{ $data->foto_produk ? asset('storage/images/' . $data->foto_produk) : 'https://via.placeholder.com/300x200' }}"
-                                alt="Gambar Produk" class="img-fluid rounded mb-3" style="max-width: 100%; height: auto;" loading="lazy">
+                                alt="Gambar Produk" class="img-fluid rounded mb-3" style="max-width: 100%; height: auto;"
+                                loading="lazy">
                         </div>
                         <!-- Detail Informasi Produk -->
                         <div class="col-md-6">
@@ -62,7 +63,7 @@
 
                             <!-- Tombol Tindakan -->
                             <div class="mt-4 d-flex gap-2">
-                                <a href="https://wa.me/628xxxxxx" target="_blank">
+                                <a href="https://wa.me/{{ $data->telepon }}" target="_blank">
                                     <button class="btn btn-primary flex-fill">Hubungi Penjual</button>
                                 </a>
                             </div>
@@ -73,27 +74,41 @@
 
             <div class="mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 1100px;">
                 <h3 class="mb-4 fw-bold">Rekomendasi Produk Serupa</h3>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <!-- Gambar Produk -->
-                            <img src="https://via.placeholder.com/300x200"
-                                class="card-img-top" alt="Product Image" loading="lazy">
-                            <!-- Body Card -->
-                            <div class="card-body">
-                                <h5 class="card-title">Lorem ipsum dolor sit amet.</h5>
-                                <p class="card-text text-muted">{{ idr('1000000') }}</p>
-                                <p class="card-text">
-                                    {{ truncateText('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique natus veritatis laboriosam pariatur amet ipsa, consequuntur ut fugit quasi quisquam!') }}
-                                </p>
-                                <div class="d-grid gap-2">
-                                    <a href=""
-                                        class="btn btn-outline-secondary">Lihat detail</a>
+                @if (!$products->isEmpty())
+                    <div class="row">
+                        @foreach ($products as $item)
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <!-- Gambar Produk -->
+                                    <img src="{{ $item->foto_produk ? asset('storage/images/'.$item->foto_produk) : 'https://via.placeholder.com/300x200' }}" class="card-img-top" alt="Product Image"
+                                        loading="lazy">
+                                    <!-- Body Card -->
+                                    <div class="card-body">
+                                        <h5 class="card-title">Lorem ipsum dolor sit amet.</h5>
+                                        <p class="card-text text-muted">{{ idr('1000000') }}</p>
+                                        <p class="card-text">
+                                            {{ truncateText('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique natus veritatis laboriosam pariatur amet ipsa, consequuntur ut fugit quasi quisquam!') }}
+                                        </p>
+                                        <div class="d-grid gap-2">
+                                            <a href="" class="btn btn-outline-secondary">Lihat detail</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                </div>
+                @else
+                    <div class="text-center">
+                        <div class="d-flex justify-content-center">
+                            <img src="https://www.svgrepo.com/show/87468/empty-box.svg" width="70" alt=""
+                                srcset="">
+                        </div>
+                        <h6>Produk rekomendasi tidak ditemukan</h6>
+                    </div>
+                @endif
+            </div>
+            <div class="d-flex justify-content-end">
+                {{ $products->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </div>

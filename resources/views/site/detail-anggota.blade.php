@@ -32,16 +32,16 @@
                     <div class="row g-4">
                         <!-- Foto Profil -->
                         <div class="col-md-4 text-center">
-                            <img src="https://via.placeholder.com/150" alt="Foto Profil"
+                            <img src="{{ $data ? asset('storage/profiles/'.$data->avatar) : 'https://via.placeholder.com/150' }}" alt="Foto Profil"
                                 class="img-fluid rounded-circle mb-3">
                         </div>
                         <!-- Detail Informasi Pengguna -->
                         <div class="col-md-8">
                             <h2 class="mb-2 display-6">{{ $data->nama }}</h2>
 
-                            <span class="d-block"><span class="text-dark fw-bold d-block d-sm-inline">Pendapatan:</span> Rp.200.000 -
-                                Rp.300.000</span>
-                            <span class="d-block"><span class="text-dark fw-bold d-block d-sm-inline">Pekerjaan:</span> Kuli bangunan</span>
+                            <span class="d-block"><span class="text-dark fw-bold d-block d-sm-inline">Pendapatan:</span> {{ idr($data->pendapatan) }} -
+                                {{ idr($data->pendapatan_tertinggi) }}</span>
+                            <span class="d-block"><span class="text-dark fw-bold d-block d-sm-inline">Jenis usaha:</span> {{ $data->jenis_usaha }}</span>
 
                             <!-- Deskripsi Singkat -->
                             <p class="mt-3" style="text-align: justify">
@@ -49,11 +49,11 @@
                             </p>
 
                             <div class="mt-3">
-                                <a href="" class="d-block d-sm-inline mb-2 mb-sm-0">
+                                <a href="https://wa.me/{{ $data->telepon }}" class="d-block d-sm-inline mb-2 mb-sm-0">
                                     <button class="btn btn-primary"><i class="fab fa-whatsapp"></i> Hubungi
                                         WhatsApp</button>
                                 </a>
-                                <a href="">
+                                <a href="mailto:{{ $data->email }}">
                                     <button class="btn btn-primary"><i class="fas fa-envelope"></i> Hubungi Email</button>
                                 </a>
                             </div>
@@ -95,6 +95,9 @@
                             <h6>Data produk milik anggota UMKM tidak ditemukan</h6>
                         </div>
                     @endif
+                </div>
+                <div class="d-flex justify-content-end">
+                    {{ $products->links('pagination::bootstrap-5') }}
                 </div>
             </div>
         </div>

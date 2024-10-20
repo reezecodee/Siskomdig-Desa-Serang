@@ -37,13 +37,13 @@
 
 
     <div class="container-fluid py-5">
-        <div class="container py-5">
+        <div class="container">
             <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.5s" style="max-width: 700px;">
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
                     Misi Komunitas</h4>
             </div>
             <div class="wow fadeInUp" data-wow-delay="0.7s">
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center" style="text-align: justify">
                     {!! $mision !!}
                 </div>
             </div>

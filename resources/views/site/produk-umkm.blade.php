@@ -25,32 +25,45 @@
 
     <div class="container-fluid py-5">
         <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+            <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 700px;">
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
                     Produk UMKM</h4>
             </div>
-            <div class="row g-5 justify-content-center">
-                @foreach ($products as $item)
-                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="card">
-                            <!-- Gambar Produk -->
-                            <img src="{{ $item->foto_produk ? asset('storage/images/' . $item->foto_produk) : 'https://via.placeholder.com/300x200' }}"
-                                class="card-img-top" alt="Product Image">
-                            <!-- Body Card -->
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $item->nama_produk }}</h5>
-                                <p class="card-text text-muted">{{ idr($item->harga) }}</p>
-                                <p class="card-text">
-                                    {{ truncateText($item->deskripsi) }}
-                                </p>
-                                <div class="d-grid gap-2">
-                                    <a href="{{ route('site.detailProdukUMKM', $item->id) }}"
-                                        class="btn btn-outline-secondary">Lihat detail</a>
+            @if (!$products->isEmpty())
+                <div class="row g-5 justify-content-center">
+                    @foreach ($products as $item)
+                        <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.{{ $loop->iteration }}s">
+                            <div class="card">
+                                <!-- Gambar Produk -->
+                                <img src="{{ $item->foto_produk ? asset('storage/images/' . $item->foto_produk) : 'https://via.placeholder.com/300x200' }}"
+                                    class="card-img-top" alt="Product Image">
+                                <!-- Body Card -->
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $item->nama_produk }}</h5>
+                                    <p class="card-text text-muted">{{ idr($item->harga) }}</p>
+                                    <p class="card-text">
+                                        {{ truncateText($item->deskripsi) }}
+                                    </p>
+                                    <div class="d-grid gap-2">
+                                        <a href="{{ route('site.detailProdukUMKM', $item->id) }}"
+                                            class="btn btn-outline-secondary">Lihat detail</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="text-center wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="d-flex justify-content-center">
+                        <img src="https://www.svgrepo.com/show/87468/empty-box.svg" width="70" alt=""
+                            srcset="">
                     </div>
-                @endforeach
+                    <h6>Data produk UMKM tidak ditemukan</h6>
+                </div>
+            @endif
+            <div class="d-flex justify-content-end">
+                {{ $products->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </div>

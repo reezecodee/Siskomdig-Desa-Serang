@@ -35,12 +35,12 @@
                         <!-- Gambar Utama -->
                         <div class="d-flex justify-content-center">
                             <img src="{{ $data->thumbnail_arsip ? asset('storage/images/' . $data->thumbnail_arsip) : 'https://via.placeholder.com/800x400' }}"
-                                class="img-fluid rounded mb-4 w-full" alt="Gambar">
+                                class="img-fluid rounded mb-4 w-full" alt="Gambar" loading="lazy">
                         </div>
 
                         <!-- Konten Arsip -->
                         <article class="mb-5">
-                            {{ $data->deskripsi }}
+                            {!! $data->deskripsi !!}
 
                             <div class="d-flex justify-content-center mt-5">
                                 <a href="{{ asset('storage/archives/' . $data->file_zip) }}" download>

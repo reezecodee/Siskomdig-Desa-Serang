@@ -29,47 +29,60 @@
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
                     Informasi</h4>
             </div>
-            <div class="row g-4 justify-content-center">
-                @foreach ($informations as $item)
-                    <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
-                        <a href="{{ route('site.bacaInformasi', $item->id) }}" class="text-decoration-none">
-                            <div class="blog-item rounded shadow-sm overflow-hidden bg-white">
-                                <!-- Gambar Artikel -->
-                                <div class="blog-img position-relative overflow-hidden">
-                                    <img src="{{ $item->thumbnail ? asset('storage/images/' . $item->thumbnail) : 'https://images.unsplash.com/photo-1464297162577-f5295c892194?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}"
-                                        class="img-fluid w-100" alt="Image" style="object-fit: cover; height: 200px;">
-                                </div>
-
-                                <!-- Tanggal dan Komentar -->
-                                <div class="d-flex justify-content-between px-4 py-2 border-bottom border-primary">
-                                    <small class="text-muted"><i
-                                            class="fas fa-calendar-alt me-1"></i>{{ $item->tanggal }}</small>
-                                </div>
-
-                                <!-- Konten Blog -->
-                                <div class="px-4 py-3">
-                                    <div class="blog-text-inner mb-2">
-                                        <h6 class="text-dark">{{ truncateText($item->judul) }}</h6>
+            @if (!$informations->isEmpty())
+                <div class="row g-4 justify-content-center">
+                    @foreach ($informations as $item)
+                        <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
+                            <a href="{{ route('site.bacaInformasi', $item->id) }}" class="text-decoration-none">
+                                <div class="blog-item rounded shadow-sm overflow-hidden bg-white">
+                                    <!-- Gambar Artikel -->
+                                    <div class="blog-img position-relative overflow-hidden">
+                                        <img src="{{ $item->thumbnail ? asset('storage/images/' . $item->thumbnail) : 'https://via.placeholder.com/2070x1380' }}"
+                                            class="img-fluid w-100" alt="Image"
+                                            style="object-fit: cover; height: 200px;">
                                     </div>
 
-                                    <!-- Informasi Admin -->
-                                    <div class="d-flex align-items-center">
-                                        <div class="overflow-hidden rounded-circle border border-primary">
-                                            <img src="{{ $item->foto_admin ? asset('storage/profiles/' . $item->foto_admin) : 'https://i.scdn.co/image/ab67616d00001e028f33770d5cb6b7bbbd59686a' }}"
-                                                class="img-fluid rounded-circle p-1" alt="Admin Image"
-                                                style="width: 50px; height: 50px; object-fit: cover;">
+                                    <!-- Tanggal dan Komentar -->
+                                    <div class="d-flex justify-content-between px-4 py-2 border-bottom border-primary">
+                                        <small class="text-muted"><i
+                                                class="fas fa-calendar-alt me-1"></i>{{ $item->tanggal }}</small>
+                                    </div>
+
+                                    <!-- Konten Blog -->
+                                    <div class="px-4 py-3">
+                                        <div class="blog-text-inner mb-2">
+                                            <h6 class="text-dark">{{ truncateText($item->judul) }}</h6>
                                         </div>
-                                        <div class="ms-3">
-                                            <h6 class="mb-0 text-primary">{{ $item->admin }}</h6>
+
+                                        <!-- Informasi Admin -->
+                                        <div class="d-flex align-items-center">
+                                            <div class="overflow-hidden rounded-circle border border-primary">
+                                                <img src="{{ $item->foto_admin ? asset('storage/profiles/' . $item->foto_admin) : 'https://via.placeholder.com/300x300' }}"
+                                                    class="img-fluid rounded-circle p-1" alt="Admin Image"
+                                                    style="width: 50px; height: 50px; object-fit: cover;">
+                                            </div>
+                                            <div class="ms-3">
+                                                <h6 class="mb-0 text-primary">{{ $item->admin }}</h6>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="text-center wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="d-flex justify-content-center">
+                        <img src="https://www.svgrepo.com/show/87468/empty-box.svg" width="70" alt=""
+                            srcset="">
                     </div>
-                @endforeach
+                    <h6>Informasi tidak ditemukan</h6>
+                </div>
+            @endif
+            <div class="d-flex justify-content-end">
+                {{ $informations->links('pagination::bootstrap-5') }}
             </div>
-
         </div>
     </div>
 @endsection
