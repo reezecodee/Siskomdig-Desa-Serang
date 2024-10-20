@@ -51,7 +51,7 @@
 
                         <!-- Tombol Kembali ke Daftar Arsip -->
                         <div class="mt-5">
-                            <a href="{{ route('show.activityArchive') }}" class="btn btn-secondary">
+                            <a href="{{ route('site.arsipKegiatan') }}" class="btn btn-secondary">
                                 <i class="fas fa-arrow-left"></i> Kembali ke Arsip
                             </a>
                         </div>

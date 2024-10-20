@@ -45,7 +45,7 @@
                                     <!-- Tanggal dan Komentar -->
                                     <div class="d-flex justify-content-between px-4 py-2 border-bottom border-primary">
                                         <small class="text-muted"><i
-                                                class="fas fa-calendar-alt me-1"></i>{{ $item->tanggal }}</small>
+                                                class="fas fa-calendar-alt me-1"></i>{{ $item->created_at->format('d M Y') }}</small>
                                     </div>
 
                                     <!-- Konten Blog -->
@@ -57,12 +57,12 @@
                                         <!-- Informasi Admin -->
                                         <div class="d-flex align-items-center">
                                             <div class="overflow-hidden rounded-circle border border-primary">
-                                                <img src="{{ $item->foto_admin ? asset('storage/profiles/' . $item->foto_admin) : 'https://via.placeholder.com/300x300' }}"
+                                                <img src="{{ $item->users->avatar ? asset('storage/profiles/' . $item->users->avatar) : 'https://via.placeholder.com/300x300' }}"
                                                     class="img-fluid rounded-circle p-1" alt="Admin Image"
                                                     style="width: 50px; height: 50px; object-fit: cover;">
                                             </div>
                                             <div class="ms-3">
-                                                <h6 class="mb-0 text-primary">{{ $item->admin }}</h6>
+                                                <h6 class="mb-0 text-primary">{{ $item->users->nama }}</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -80,7 +80,7 @@
                     <h6>Informasi tidak ditemukan</h6>
                 </div>
             @endif
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-end mt-5">
                 {{ $informations->links('pagination::bootstrap-5') }}
             </div>
         </div>

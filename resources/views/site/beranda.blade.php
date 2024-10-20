@@ -7,9 +7,14 @@
                 <div class="col-lg-7 col-md-12">
                     <h1 class="mb-5 display-2 text-white drop-shadow-header">Selamat Datang di Komunitas Digital Desa Serang
                     </h1>
-                    <a href="{{ route('show.login') }}"
-                        class="btn btn-primary px-4 py-3 px-md-5 me-4 btn-border-radius mb-3 mb-sm-0">Ayo
-                        mulai!</a>
+                    @auth
+                        <a href="{{ route('show.dashboardAdmin') }}"
+                            class="btn btn-primary px-4 py-3 px-md-5 me-4 btn-border-radius mb-3 mb-sm-0">Dashboard admin</a>
+                    @else
+                        <a href="{{ route('show.login') }}"
+                            class="btn btn-primary px-4 py-3 px-md-5 me-4 btn-border-radius mb-3 mb-sm-0">Ayo
+                            mulai!</a>
+                    @endauth
                     <a href="{{ route('site.anggotaUMKM') }}"
                         class="btn btn-primary px-4 py-3 px-md-5 btn-border-radius">Explore anggota</a>
                 </div>

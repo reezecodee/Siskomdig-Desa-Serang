@@ -74,7 +74,7 @@ class SiteController extends Controller
     public function activityArchivePage()
     {
         $title = 'Arsip Kegiatan Komunitas Digital Desa Serang';
-        $archives = Archive::latest()->paginate(10);
+        $archives = Archive::latest()->paginate(5);
 
         return view('site.arsip-kegiatan', compact('title', 'archives'));
     }
@@ -90,7 +90,7 @@ class SiteController extends Controller
     public function informationPage()
     {
         $title = 'Informasi Terbaru Komunitas Digital Desa Serang';
-        $informations = Information::with('users')->latest()->paginate(12);
+        $informations = Information::with('users')->latest()->paginate(8);
 
         return view('site.informasi', compact('title', 'informations'));
     }
@@ -106,7 +106,7 @@ class SiteController extends Controller
     public function memberUMKM()
     {
         $title = 'Anggota UMKM Komunitas Digital Desa Serang';
-        $members = UmkmMember::latest()->paginate(12);
+        $members = UmkmMember::latest()->paginate(8);
 
         return view('site.anggota-umkm', compact('title', 'members'));
     }
@@ -115,7 +115,7 @@ class SiteController extends Controller
     {
         $title = 'Detail Anggota UMKM Komunitas Digital Desa Serang';
         $data = UmkmMember::findOrFail($id);
-        $products = UmkmProduct::with('umkmMembers')->where('anggota_id', $id)->latest()->paginate(6);
+        $products = UmkmProduct::with('umkmMembers')->where('anggota_id', $data->id)->latest()->paginate(6);
 
         return view('site.detail-anggota', compact('title', 'data', 'products'));
     }
@@ -123,7 +123,7 @@ class SiteController extends Controller
     public function productUMKM()
     {
         $title = 'Produk Pelaku UMKM Komunitas Digital Desa Serang';
-        $products = UmkmProduct::with('umkmMembers')->latest()->paginate(12);
+        $products = UmkmProduct::with('umkmMembers')->latest()->paginate(9);
 
         return view('site.produk-umkm', compact('title', 'products'));
     }
@@ -132,8 +132,8 @@ class SiteController extends Controller
     {
         $title = 'Detail Produk Pelaku UMKM Komunitas Digital Desa Serang';
         $data = UmkmProduct::with(['umkmMembers', 'categories'])->findOrFail($id);
-        $products = UmkmProduct::where('kategori_id', $data->kategori_id)->paginate(6);
+        $products = UmkmProduct::with('categories')->where('kategori_id', $data->kategori_id)->paginate(6);
 
-        return view('site.detail-produk', compact('title', 'data'));
+        return view('site.detail-produk', compact('title', 'data', 'products'));
     }
 }

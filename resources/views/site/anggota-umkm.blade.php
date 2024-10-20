@@ -82,7 +82,7 @@
                     <h6>Data anggota UMKM tidak ditemukan</h6>
                 </div>
             @endif
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-end mt-5">
                 {{ $members->links('pagination::bootstrap-5') }}
             </div>
         </div>

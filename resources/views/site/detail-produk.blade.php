@@ -55,7 +55,7 @@
                         <!-- Detail Informasi Produk -->
                         <div class="col-md-6">
                             <h2 class="mb-2 fw-bold">{{ $data->nama_produk }}</h2>
-                            <p class="text-muted">Kategori: {{ $data->kategori }}</p>
+                            <p class="text-muted">Kategori: {{ $data->categories->nama_kategori }}</p>
                             <h4 class="text-danger mb-3">{{ idr($data->harga) }}</h4>
 
                             <!-- Deskripsi Produk -->
@@ -73,7 +73,7 @@
             </div>
 
             <div class="mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 1100px;">
-                <h3 class="mb-4 fw-bold">Rekomendasi Produk Serupa</h3>
+                <h3 class="mb-4 fw-bold">Rekomendasi Kategori Serupa</h3>
                 @if (!$products->isEmpty())
                     <div class="row">
                         @foreach ($products as $item)
@@ -84,10 +84,10 @@
                                         loading="lazy">
                                     <!-- Body Card -->
                                     <div class="card-body">
-                                        <h5 class="card-title">Lorem ipsum dolor sit amet.</h5>
-                                        <p class="card-text text-muted">{{ idr('1000000') }}</p>
+                                        <h5 class="card-title">{{ $item->nama_produk }}</h5>
+                                        <p class="card-text text-muted">{{ idr($item->harga) }}</p>
                                         <p class="card-text">
-                                            {{ truncateText('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique natus veritatis laboriosam pariatur amet ipsa, consequuntur ut fugit quasi quisquam!') }}
+                                            {{ truncateText($data->deskripsi) }}
                                         </p>
                                         <div class="d-grid gap-2">
                                             <a href="" class="btn btn-outline-secondary">Lihat detail</a>
@@ -96,6 +96,9 @@
                                 </div>
                             </div>
                         @endforeach
+                    </div>
+                    <div class="d-flex justify-content-end mt-5">
+                        {{ $products->links('pagination::bootstrap-5') }}
                     </div>
                 @else
                     <div class="text-center">
@@ -106,9 +109,6 @@
                         <h6>Produk rekomendasi tidak ditemukan</h6>
                     </div>
                 @endif
-            </div>
-            <div class="d-flex justify-content-end">
-                {{ $products->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </div>

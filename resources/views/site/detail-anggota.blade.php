@@ -32,7 +32,7 @@
                     <div class="row g-4">
                         <!-- Foto Profil -->
                         <div class="col-md-4 text-center">
-                            <img src="{{ $data ? asset('storage/profiles/'.$data->avatar) : 'https://via.placeholder.com/150' }}" alt="Foto Profil"
+                            <img src="{{ $data->avatar ? asset('storage/profiles/'.$data->avatar) : 'https://via.placeholder.com/300x300' }}" alt="Foto Profil"
                                 class="img-fluid rounded-circle mb-3">
                         </div>
                         <!-- Detail Informasi Pengguna -->
@@ -95,9 +95,9 @@
                             <h6>Data produk milik anggota UMKM tidak ditemukan</h6>
                         </div>
                     @endif
-                </div>
-                <div class="d-flex justify-content-end">
-                    {{ $products->links('pagination::bootstrap-5') }}
+                    <div class="d-flex justify-content-end mt-5">
+                        {{ $products->links('pagination::bootstrap-5') }}
+                    </div>
                 </div>
             </div>
         </div>

@@ -40,8 +40,8 @@
 
                         <!-- Info Penulis dan Tanggal -->
                         <div class="d-flex justify-content-between mb-3">
-                            <span class="text-muted">Ditulis oleh <strong>{{ $data->admin }}</strong></span>
-                            <span class="text-muted">{{ $data->created_at }}</span>
+                            <span class="text-muted">Ditulis oleh <strong>{{ $data->users->nama }}</strong></span>
+                            <span class="text-muted">{{ $data->created_at->format('d M Y') }}</span>
                         </div>
 
                         <!-- Garis Pembatas -->

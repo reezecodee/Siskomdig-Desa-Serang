@@ -4,10 +4,8 @@
         <div class="row g-5">
             <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="footer-item">
-                    <h2 class="fw-bold mb-3"><span class="text-primary mb-0">Baby</span><span
-                            class="text-secondary">Care</span></h2>
-                    <p class="mb-4">There cursus massa at urnaaculis estieSed aliquamellus vitae ultrs condmentum
-                        leo massamollis its estiegittis miristum.</p>
+                    <h2 class="fw-bold mb-3"><span class="text-primary mb-0">Logo</h2>
+                    <p class="mb-4">{{ $application->deskripsi ?? '' }}</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 col-xl-3">
@@ -16,12 +14,11 @@
                         class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
                         Lokasi kami</h4>
                     <div class="d-flex flex-column align-items-start">
-                        <a href="" class="text-body mb-4"><i class="fa fa-map-marker-alt text-primary me-2"></i> 104
-                            North tower New York, USA</a>
+                        <a href="" class="text-body mb-4"><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ $application->alamat }}</a>
                         <a href="" class="text-start rounded-0 text-body mb-4"><i
-                                class="fa fa-phone-alt text-primary me-2"></i> (+012) 3456 7890 123</a>
+                                class="fa fa-phone-alt text-primary me-2"></i> {{ $application->telepon ?? '' }}</a>
                         <a href="" class="text-start rounded-0 text-body mb-4"><i
-                                class="fas fa-envelope text-primary me-2"></i> exampleemail@gmail.com</a>
+                                class="fas fa-envelope text-primary me-2"></i> {{ $application->email ?? '' }}</a>
                     </div>
                 </div>
             </div>
@@ -65,12 +62,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Your Site
-                        Name</a>, All right reserved.</span>
+                <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>{{ $application->nama_aplikasi }}</a></span>
             </div>
             <div class="col-md-6 my-auto text-center text-md-end text-white">
-                Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a
-                    clas="border-bottom" href="https://themewagon.com">ThemeWagon</a>
+                Desa Serang, Kabupaten Tasikmalaya
             </div>
         </div>
     </div>
