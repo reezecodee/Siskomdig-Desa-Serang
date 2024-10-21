@@ -26,6 +26,7 @@ class AppUpdateRequest extends FormRequest
             'keyword' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'favicon' => 'nullable|mimes:png,jpg,ico,jpeg',
+            'logo' => 'nullable|mimes:png,jpg,jpeg',
             'telepon' => 'required|min:12|max:15',
             'email' => 'required|email|max:255',
             'alamat' => 'required|string',
@@ -49,6 +50,9 @@ class AppUpdateRequest extends FormRequest
 
             'favicon.mimes' => 'Kolom favicon harus berupa file dengan ekstensi: :values.',
             'favicon.mimetypes' => 'Kolom favicon harus bertipe file dengan ekstensi: :values.',
+
+            'logo.mimes' => 'Kolom logo harus berupa file dengan ekstensi: :values.',
+            'logo.mimetypes' => 'Kolom logo harus bertipe file dengan ekstensi: :values.',
 
             'telepon.required' => 'Kolom telepon harus diisi.',
             'telepon.min' => 'Kolom telepon harus memiliki minimal :min karakter.',

@@ -2,8 +2,8 @@
 <div class="container-fluid border-bottom wow fadeIn" data-wow-delay="0.1s">
     <div class="container px-0">
         <nav class="navbar navbar-light navbar-expand-xl py-3">
-            <a href="index.html" class="navbar-brand">
-                <h1 class="text-primary display-6">Logo</h1>
+            <a href="/" class="navbar-brand">
+                <img src="{{ $application->logo ? '/'.$application->logo : '' }}" width="160" alt="Logo" srcset="">
             </a>
             <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarCollapse">

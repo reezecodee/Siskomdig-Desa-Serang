@@ -30,7 +30,7 @@
                     Visi Komunitas</h4>
             </div>
             <div class="wow fadeInUp" data-wow-delay="0.3s">
-                <p class="text-center">{{ $visi }}</p>
+                <p class="text-center">{!! $visi !!}</p>
             </div>
         </div>
     </div>

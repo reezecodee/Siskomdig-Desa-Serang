@@ -31,6 +31,21 @@ class ManageApplicationController extends Controller
                 $validatedData['favicon'] = $faviconName;
             }
 
+            if ($request->hasFile('logo')) {
+                // Hapus logo lama jika ada
+                if ($application->logo && file_exists(public_path($application->logo))) {
+                    unlink(public_path($application->logo));
+                }
+
+                // Ambil ekstensi file yang diupload
+                $extension = $request->file('logo')->getClientOriginalExtension();
+                $logoName = 'logo.' . $extension;
+
+                // Simpan file dengan ekstensi yang sesuai
+                $logoPath = $request->file('logo')->move(public_path(), $logoName);
+                $validatedData['logo'] = $logoName; // Fix: harusnya $logoName, bukan $faviconName
+            }
+
             // Update data aplikasi
             $application->update($validatedData);
         } else {
@@ -42,6 +57,16 @@ class ManageApplicationController extends Controller
                 // Simpan file dengan ekstensi yang sesuai
                 $faviconPath = $request->file('favicon')->move(public_path(), $faviconName);
                 $validatedData['favicon'] = $faviconName;
+            }
+
+            if ($request->hasFile('logo')) {
+                // Ambil ekstensi file yang diupload
+                $extension = $request->file('logo')->getClientOriginalExtension();
+                $logoName = 'logo.' . $extension;
+
+                // Simpan file dengan ekstensi yang sesuai
+                $logoPath = $request->file('logo')->move(public_path(), $logoName);
+                $validatedData['logo'] = $logoName;
             }
 
             // Buat data aplikasi baru

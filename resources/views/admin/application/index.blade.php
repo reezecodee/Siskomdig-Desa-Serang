@@ -37,11 +37,11 @@
                         <p class="fw-bold">Upload favicon</p>
                         <div class="text-center">
                             <div class="d-flex flex-column justify-content-center align-items-center">
-                                <img src="/{{ $data->favicon }}" class="w-25 mx-auto" alt="" id="previewExample"
-                                    style="display: {{ $data->favicon ? 'block' : 'none' }};">
+                                <img src="{{ $data->favicon ? '/'.$data->favicon : 'https://www.svgrepo.com/show/532809/file-zipper.svg' }}" class="w-25 mx-auto" alt="" id="previewExample"
+                                    style="display: block">
                             </div>
                             <div id="fileName" class="file-name mb-3"
-                                style="display: {{ $data->favicon ? 'block' : 'none' }};">{{ $data->favicon }}</div>
+                                style="display: block">{{ $data->favicon }}</div>
                         </div>
                         <div class="form-group">
                             <div class="d-flex justify-content-center">
@@ -99,6 +99,28 @@
                         </div>
                         <p class="fw-bold">Informasi aplikasi</p>
                         <div class="row mb-3">
+                            <div class="col-md-12 mb-2">
+                                <p class="fw-bold">Upload logo</p>
+                                <div class="text-center">
+                                    <div class="d-flex flex-column justify-content-center align-items-center">
+                                        <img src="{{ $data->logo ? '/'.$data->logo : '' }}" class="mx-auto" alt="Logo" id="previewExampleLogo"
+                                            style="display: block">
+                                    </div>
+                                    <div id="fileNameLogo" class="file-name mb-3"
+                                        style="display: block">{{ $data->logo }}</div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="d-flex justify-content-center">
+                                        <input type="file" id="fileInputLogo" style="display: none;" accept=".png, .jpg, .jpeg"
+                                            name="logo" value="{{ old('logo', $data->logo) }}">
+                                        <button type="button" class="btn btn-primary" id="uploadButtonLogo">Pilih logo</button>
+                                    </div>
+                                    <div id="error-message-logo" style="display:none; color: red;"></div>
+                                    @error('logo')
+                                        <div style="color: red;">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Telepon</label>
@@ -125,7 +147,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group mb-2">
                                     <label for="" class="form-label">Alamat</label>
                                     <input type="text" name="alamat"
@@ -214,6 +236,55 @@
                 previewExample.style.display = 'block';
             } else {
                 fileNameDisplay.style.display = 'none'; // Sembunyikan nama file jika tidak ada file yang dipilih
+            }
+        });
+
+
+        // Ambil elemen
+        const uploadButtonLogo = document.getElementById('uploadButtonLogo');
+        const fileInputLogo = document.getElementById('fileInputLogo');
+        const previewExampleLogo = document.getElementById('previewExampleLogo');
+        const fileNameDisplayLogo = document.getElementById('fileNameLogo');
+        const errorMessageLogo = document.getElementById('error-message-logo');
+
+        // Saat tombol upload diklik
+        uploadButtonLogo.addEventListener('click', function() {
+            fileInputLogo.click(); // Memicu input file untuk terbuka
+        });
+
+        // Saat file dipilih
+        fileInputLogo.addEventListener('change', function(event) {
+            const file = event.target.files[0]; // Ambil file yang dipilih
+
+            if (file) {
+                const fileExtension = file.name.split('.').pop().toLowerCase(); // Mendapatkan ekstensi file
+
+                if (fileExtension === 'ico') {
+                    // Jika file adalah .ico, tampilkan gambar pratinjau default
+                    previewExampleLogo.src =
+                        'https://www.svgrepo.com/show/532809/file-zipper.svg'; // Ganti dengan path gambar default Anda
+                } else if (file.type.startsWith('image/')) {
+                    // Jika file adalah gambar, tampilkan pratinjau gambar yang dipilih
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewExampleLogo.src = e.target.result; // Menampilkan pratinjau gambar
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    // Jika bukan gambar atau .ico, tampilkan error
+                    errorMessageLogo.textContent = 'Format file tidak didukung.';
+                    errorMessageLogo.style.display = 'block';
+                    previewExampleLogo.style.display = 'none'; // Sembunyikan pratinjau jika format tidak didukung
+                    return;
+                }
+
+                // Tampilkan nama file dan sembunyikan error
+                errorMessageLogo.style.display = 'none';
+                fileNameDisplayLogo.textContent = `${file.name}`;
+                fileNameDisplayLogo.style.display = 'block';
+                previewExampleLogo.style.display = 'block';
+            } else {
+                fileNameDisplayLogo.style.display = 'none'; // Sembunyikan nama file jika tidak ada file yang dipilih
             }
         });
     </script>

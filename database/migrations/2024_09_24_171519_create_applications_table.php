@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('keyword');
             $table->text('deskripsi');
             $table->string('favicon')->nullable();
+            $table->string('logo')->nullable();
             $table->string('telepon');
             $table->string('email');
             $table->text('alamat');

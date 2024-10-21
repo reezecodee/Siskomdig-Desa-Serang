@@ -31,8 +31,8 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             $user = Auth::user(); // Ambil user yang baru saja login
 
-            // Cek apakah user sudah terverifikasi
-            if (!$user->is_verified) {
+            // Cek apakah user belum terverifikasi (cek kolom email_verified_at)
+            if (is_null($user->email_verified_at)) {
                 $user->update([
                     'is_verified' => true,
                     'email_verified_at' => now(), // Mengisi waktu saat ini
@@ -42,6 +42,7 @@ class AuthController extends Controller
                     ->withSuccess('Akun Anda telah terverifikasi. Selamat datang Admin.');
             }
 
+            // Jika sudah terverifikasi, lanjutkan ke dashboard
             $request->session()->regenerate();
             return redirect()->route('show.dashboardAdmin')
                 ->withSuccess('Login berhasil! Selamat datang Admin.');
