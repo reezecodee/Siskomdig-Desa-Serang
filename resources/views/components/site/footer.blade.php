@@ -4,7 +4,7 @@
         <div class="row g-5">
             <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="footer-item">
-                    <h2 class="fw-bold mb-3"><span class="text-primary mb-0">Logo</h2>
+                    <img src="{{ $application->logo ? '/'.$application->logo : '' }}" width="200" alt="Logo" srcset="" class="mb-3">
                     <p class="mb-4">{{ $application->deskripsi ?? '' }}</p>
                 </div>
             </div>
