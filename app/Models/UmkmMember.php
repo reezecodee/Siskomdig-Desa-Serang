@@ -14,6 +14,6 @@ class UmkmMember extends Model
 
     public function umkmProducts()
     {
-        return $this->hasMany(UmkmProduct::class, 'id');
+        return $this->hasMany(UmkmProduct::class, 'anggota_id', 'id');
     }
 }

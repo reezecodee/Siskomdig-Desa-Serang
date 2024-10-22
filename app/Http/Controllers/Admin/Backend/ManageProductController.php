@@ -19,8 +19,8 @@ class ManageProductController extends Controller
         $productFile->storeAs('images', $productFileName, 'public');
         $validatedData['foto_produk'] = $productFileName;
 
-        UmkmProduct::create($validatedData);
-        return back()->withSuccess('Berhasil menambahkan data produk');
+        $product = UmkmProduct::create($validatedData);
+        return back()->withSuccess("Berhasil menambahkan data produk \"{$product->nama_produk}\"");
     }
 
     public function editProduct(EditProductRequest $request, $id)
@@ -52,6 +52,6 @@ class ManageProductController extends Controller
         }
 
         $product->delete();
-        return back()->withSuccess('Berhasil menghapus data produk');
+        return back()->withSuccess("Berhasil menghapus data produk \"{$product->nama_produk}\"");
     }
 }

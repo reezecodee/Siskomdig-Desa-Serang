@@ -37,8 +37,8 @@ class ManageAgendaController extends Controller
     {
         $agenda = Agenda::where('bulan', $month)->where('tahun', $year);
 
-        if ($agenda->doesntExist()) {
-            abort(404);
+        if (!$agenda->exists()) {
+            return back()->with('failed', 'Data kegiatan yang ingin dihapus tidak ditemukan');
         }
 
         $agenda->delete();

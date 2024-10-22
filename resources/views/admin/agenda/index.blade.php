@@ -40,6 +40,7 @@
                         <th>No</th>
                         <th>Bulan</th>
                         <th>Tahun</th>
+                        <th>Total kegiatan</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -67,6 +68,10 @@
                     {
                         data: 'tahun',
                         name: 'tahun'
+                    },
+                    {
+                        data: 'total_kegiatan',
+                        name: 'total_kegiatan'
                     },
                     {
                         data: 'action', // Pastikan ini benar

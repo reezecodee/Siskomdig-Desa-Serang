@@ -40,7 +40,7 @@ class ManageArchiveController extends Controller
         }
 
         $archive->delete();
-        return back()->withSuccess('Berhasil menghapus data arsip');
+        return back()->withSuccess("Berhasil menghapus data arsip \"{$archive->judul_arsip}\"");
     }
 
     private function generateZIPFile($files, $zipName)

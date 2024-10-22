@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Member\MemberRequest;
 use App\Models\UmkmMember;
+use App\Models\UmkmProduct;
 use Illuminate\Support\Facades\Storage;
 
 class ManageMemberController extends Controller
@@ -20,8 +21,8 @@ class ManageMemberController extends Controller
             $validatedData['avatar'] = $avatarFileName;
         }
 
-        UmkmMember::create($validatedData);
-        return back()->withSuccess('Berhasil menambahkan anggota UMKM baru.');
+        $member = UmkmMember::create($validatedData);
+        return back()->withSuccess("Berhasil menambahkan anggota UMKM baru \"{$member->nama}\".");
     }
 
     public function editMember(MemberRequest $request, $id)
@@ -52,8 +53,17 @@ class ManageMemberController extends Controller
             Storage::disk('public')->delete('profiles/' . $member->avatar);
         }
 
+        $products = UmkmProduct::where('anggota_id', $member->id)->get();
+        foreach($products as $item){
+            if ($item->foto_produk && Storage::disk('public')->exists('images/' . $item->foto_produk)) {
+                Storage::disk('public')->delete('images/' . $item->foto_produk);
+            }
+
+            $item->delete();
+        }
+
         $member->delete();
 
-        return back()->withSuccess('Berhasil menghapus anggota UMKM.');
+        return back()->withSuccess("Berhasil menghapus anggota UMKM \"{$member->nama}\" beserta produknya.");
     }
 }

@@ -14,6 +14,6 @@ class Category extends Model
 
     public function umkmProducts()
     {
-        return $this->hasMany(UmkmProduct::class, 'id');
+        return $this->hasMany(UmkmProduct::class, 'kategori_id', 'id');
     }
 }

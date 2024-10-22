@@ -12,27 +12,27 @@ class AgendaDatatablesController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            // Menghindari duplikasi kolom 'bulan' dan 'tahun' di dalam SELECT
-            $agendas = Agenda::groupBy('bulan', 'tahun')
-                ->selectRaw('MIN(id) as id, bulan, tahun, COUNT(*) as total_agenda') // Mengambil ID dan jumlah agenda
+            $agendas = Agenda::selectRaw('bulan, tahun, COUNT(*) as total_agenda, COUNT(*) as total_kegiatan')
+                ->groupBy('bulan', 'tahun')
                 ->get();
 
             // Menggunakan DataTables untuk memproses data server-side
             return DataTables::of($agendas)
                 ->addIndexColumn()
                 ->addColumn('action', function ($agenda) {
+                    $unique = uniqid();
                     return '
-                    <div class="d-flex gap-2">
-                        <form method="POST" action="'. route('destroy.groupAgenda', ['month' => $agenda->bulan, 'year' => $agenda->tahun]) .'" id="delete-form-' . $agenda->id . '">
-                            ' . csrf_field() . '
-                            ' . method_field("DELETE") . '
-                            <button type="button" class="btn btn-danger" onclick="deleteAlert(\'' . $agenda->id . '\')">Hapus</button>
-                        </form>
-                        <a href="' . route('show.detailActivityAgenda', ['year' => $agenda->tahun, 'month' => $agenda->bulan]) . '">
-                        <button class="btn btn-success show" data-id="' . $agenda->id . '">Detail</button>
-                        </a>
-                    </div>
-                    ';
+                <div class="d-flex gap-2">
+                    <form method="POST" action="' . route('destroy.groupAgenda', ['month' => $agenda->bulan, 'year' => $agenda->tahun]) . '" id="delete-form-activity-' . $unique . '">
+                        ' . csrf_field() . '
+                        ' . method_field("DELETE") . '
+                        <button type="button" class="btn btn-danger" onclick="deleteAllArchive(\'' . $unique . '\', \'' . $agenda->bulan . '\', \'' . $agenda->tahun . '\')">Hapus semua</button>
+                    </form>
+                    <a href="' . route('show.detailActivityAgenda', ['year' => $agenda->tahun, 'month' => $agenda->bulan]) . '">
+                    <button class="btn btn-success show" data-id="' . $agenda->id . '">Lihat selengkapnya</button>
+                    </a>
+                </div>
+                ';
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -40,6 +40,7 @@ class AgendaDatatablesController extends Controller
 
         return back();
     }
+
 
     public function schedules(Request $request, $year, $month)
     {
@@ -56,7 +57,7 @@ class AgendaDatatablesController extends Controller
                     <a href="' . route('show.editActivityAgenda', $agenda->id) . '">
                     <button class="btn btn-success show" data-id="' . $agenda->id . '">Edit</button>
                     </a>
-                    <form method="POST" action="'. route('destroy.agenda', $agenda->id) .'" id="delete-form-' . $agenda->id . '">
+                    <form method="POST" action="' . route('destroy.agenda', $agenda->id) . '" id="delete-form-' . $agenda->id . '">
                         ' . csrf_field() . '
                         ' . method_field("DELETE") . '
                         <button type="button" class="btn btn-danger" onclick="deleteAlert(\'' . $agenda->id . '\')">Hapus</button>

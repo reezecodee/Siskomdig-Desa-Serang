@@ -12,8 +12,8 @@ class ManageCategoryController extends Controller
     {
         $validatedData = $request->validated();
 
-        Category::create($validatedData);
-        return back()->withSuccess('Berhasil menambahkan kategori produk UMKM baru');
+        $category = Category::create($validatedData);
+        return back()->withSuccess("Berhasil menambahkan kategori produk UMKM baru \"{$category->nama_kategori}\"");
     }
 
     public function editCategory(CategoryRequest $request, $id)
@@ -30,6 +30,6 @@ class ManageCategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
 
-        return back()->withSuccess('Berhasil menghapus kategori produk UMKM');
+        return back()->withSuccess("Berhasil menghapus kategori produk UMKM \"{$category->nama_kategori}\"");
     }
 }

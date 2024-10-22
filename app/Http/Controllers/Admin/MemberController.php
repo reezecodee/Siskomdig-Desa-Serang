@@ -11,16 +11,15 @@ class MemberController extends Controller
     public function memberPage()
     {
         $title = 'Anggota UMKM Terdaftar';
-        $members = UmkmMember::paginate(10);
 
-        return view('admin.member.index', compact('title', 'members'));
+        return view('admin.member.index', compact('title'));
     }
 
     public function detailMemberPage($id)
     {
         $title = 'Detail Anggota UMKM';
         $data = UmkmMember::findOrFail($id);
-        $products = UmkmProduct::where('anggota_id', $id)->paginate(10);
+        $products = UmkmProduct::where('anggota_id', $id)->paginate(8);
 
         return view('admin.member.detail-member', compact('title', 'data', 'products'));
     }

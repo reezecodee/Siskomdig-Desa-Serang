@@ -83,3 +83,53 @@ function confirmLogoutAlert(formID) {
         }
     });
 }
+
+// delete alert for archive (all)
+function deleteAllArchive(id, month, year) {
+    Swal.fire({
+        title: 'Hapus jadwal',
+        text: `Apakah kamu benar-benar ingin menghapus data kegiatan bulan ${month} ${year}? semua kegiatan bulan ${month} ${year} akan terhapus jika kamu menghapusnya.`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, hapus semuanya!',
+        cancelButtonText: 'Tidak!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Jika pengguna mengkonfirmasi, submit form
+            document.getElementById('delete-form-activity-' + id).submit(); // Submit form dengan ID yang sesuai
+        }
+    });
+}
+
+// alert doesn't delete category
+function alertInfoDeleteCategory() {
+    Swal.fire({
+        title: 'Informasi',
+        text: "Anda tidak dapat menghapus data ini dikarenakan ada produk UMKM yang terkait, jika Anda ingin menghapusnya Anda harus menghapus produk UMKM terkait satu per-satu.",
+        icon: 'warning',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Oke',
+    })
+}
+
+// delete member with his products
+function deleteMemberAlert(formID) {
+    Swal.fire({
+        title: 'Hapus anggota UMKM?',
+        text: "Jika Anda menghapus data anggota UMKM, semua produk yang dimilikinya akan juga ikut terhapus. Apakah Anda yakin ingin menghapusnya?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Hapus anggota beserta produknya',
+        cancelButtonText: 'Tidak'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Jika pengguna mengkonfirmasi, submit form
+            document.getElementById('delete-form-' + formID).submit(); // Submit form dengan ID yang sesuai
+        }
+    });
+}

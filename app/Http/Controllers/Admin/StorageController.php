@@ -62,7 +62,7 @@ class StorageController extends Controller
             }
         }
 
-        $perPage = 10; // Menentukan jumlah item per halaman
+        $perPage = 12; // Menentukan jumlah item per halaman
         $currentPage = Paginator::resolveCurrentPage() ?: 1; // Menentukan halaman saat ini
 
         // Menggunakan fungsi array_slice untuk mengambil data sesuai halaman
@@ -96,7 +96,7 @@ class StorageController extends Controller
             }
         }
 
-        $perPage = 10; // Menentukan jumlah item per halaman
+        $perPage = 12; // Menentukan jumlah item per halaman
         $currentPage = Paginator::resolveCurrentPage() ?: 1; // Menentukan halaman saat ini
 
         // Menggunakan fungsi array_slice untuk mengambil data sesuai halaman
@@ -145,20 +145,6 @@ class StorageController extends Controller
 
     public function getStorageUsage()
     {
-        // Menghitung ukuran file di direktori storage
-        // $directory = public_path('storage'); // Mendapatkan path ke direktori storage
-        // $directory = base_path(); // Mendapatkan path ke direktori storage
-        // $files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($directory));
-        // $usedSpace = 0;
-
-        // foreach ($files as $file) {
-        //     if ($file->isFile()) {
-        //         $usedSpace += $file->getSize(); // Menambahkan ukuran file
-        //     }
-        // }
-
-        // $usedSpaceGB = round($usedSpace / 1024 / 1024 / 1024, 2); // Menghitung ukuran dalam GB
-
         return $this->deviceStorageGB()['totalSpace'] - $this->deviceStorageGB()['freeSpace'];
     }
 

@@ -26,7 +26,7 @@ class MemberDatatablesController extends Controller
                         <form method="POST" action="' . route('destroy.member', $member->id) . '" id="delete-form-' . $member->id . '">
                             ' . csrf_field() . '
                             ' . method_field("DELETE") . '
-                            <button type="button" class="btn btn-danger" onclick="deleteAlert(\'' . $member->id . '\')">Hapus</button>
+                            <button type="button" class="btn btn-danger" onclick="deleteMemberAlert(\'' . $member->id . '\')">Hapus</button>
                         </form>
                         <a href="' . route('show.detailMemberUMKM', $member->id) . '">
                         <button class="btn btn-success show" data-id="' . $member->id . '">Detail</button>

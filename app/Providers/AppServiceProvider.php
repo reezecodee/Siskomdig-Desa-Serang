@@ -22,6 +22,20 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $application = Application::latest()->first();
+
+        if (is_null($application)) {
+            $application = new Application();
+            $application->nama_aplikasi = '';
+            $application->keyword = '';
+            $application->deskripsi = '';
+            $application->favicon = null;
+            $application->logo = null;
+            $application->telepon = '';
+            $application->email = '';
+            $application->alamat = '';
+            $application->google_maps = '';
+        }
+
         View::share('application', $application);
     }
 }

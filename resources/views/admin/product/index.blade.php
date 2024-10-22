@@ -40,9 +40,9 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Nama produk</th>
                         <th>Kategori</th>
                         <th>Pemilik</th>
-                        <th>Nama produk</th>
                         <th>Harga</th>
                         <th>Action</th>
                     </tr>
@@ -186,16 +186,16 @@
                         searchable: false
                     },
                     {
+                        data: 'nama_produk',
+                        name: 'nama_produk'
+                    },
+                    {
                         data: 'category_name',
                         name: 'category_name'
                     },
                     {
                         data: 'member_name',
                         name: 'member_name'
-                    },
-                    {
-                        data: 'nama_produk',
-                        name: 'nama_produk'
                     },
                     {
                         data: 'harga',
