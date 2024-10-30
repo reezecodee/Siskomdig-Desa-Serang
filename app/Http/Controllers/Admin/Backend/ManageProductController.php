@@ -12,6 +12,8 @@ class ManageProductController extends Controller
 {
     public function addProduct(ProductRequest $request)
     {
+        $this->checkDiskSpace();
+
         $validatedData = $request->validated();
 
         $productFile = $request->file('foto_produk');
@@ -25,6 +27,8 @@ class ManageProductController extends Controller
 
     public function editProduct(EditProductRequest $request, $id)
     {
+        $this->checkDiskSpace();
+
         $validatedData = $request->validated();
         $product = UmkmProduct::findOrFail($id);
 

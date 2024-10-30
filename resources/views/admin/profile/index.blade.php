@@ -45,7 +45,7 @@
                                 </a></div>
                             @if (auth()->check() && auth()->user()->avatar)
                                 <div class="col-auto">
-                                    <button type="button" onclick="deleteAlert('avatar')" class="btn btn-ghost-danger">
+                                    <button type="button" onclick="deleteAlert('avatar')" class="btn btn-danger">
                                         Hapus avatar
                                     </button>
                                 </div>

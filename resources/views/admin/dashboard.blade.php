@@ -40,152 +40,57 @@
 @endsection
 @section('content')
     <div class="row row-deck row-cards">
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-sm-6 col-lg-4">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
-                        <div class="subheader">Sales</div>
+                        <div class="subheader">Produk baru</div>
                         <div class="ms-auto lh-1">
                             <div class="dropdown">
-                                <a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">Last 7 days</a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item active" href="#">Last 7 days</a>
-                                    <a class="dropdown-item" href="#">Last 30 days</a>
-                                    <a class="dropdown-item" href="#">Last 3 months</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="h1 mb-3">75%</div>
-                    <div class="d-flex mb-2">
-                        <div>Conversion rate</div>
-                        <div class="ms-auto">
-                            <span class="text-green d-inline-flex align-items-center lh-1">
-                                7% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24"
-                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M3 17l6 -6l4 4l8 -8" />
-                                    <path d="M14 7l7 0l0 7" />
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="progress progress-sm">
-                        <div class="progress-bar bg-primary" style="width: 75%" role="progressbar" aria-valuenow="75"
-                            aria-valuemin="0" aria-valuemax="100" aria-label="75% Complete">
-                            <span class="visually-hidden">75% Complete</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="subheader">Revenue</div>
-                        <div class="ms-auto lh-1">
-                            <div class="dropdown">
-                                <a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">Last 7 days</a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item active" href="#">Last 7 days</a>
-                                    <a class="dropdown-item" href="#">Last 30 days</a>
-                                    <a class="dropdown-item" href="#">Last 3 months</a>
-                                </div>
+                                <a class="text-muted" href="#">7 hari terakhir</a>
                             </div>
                         </div>
                     </div>
                     <div class="d-flex align-items-baseline">
-                        <div class="h1 mb-0 me-2">$4,300</div>
-                        <div class="me-auto">
-                            <span class="text-green d-inline-flex align-items-center lh-1">
-                                8% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24"
-                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M3 17l6 -6l4 4l8 -8" />
-                                    <path d="M14 7l7 0l0 7" />
-                                </svg>
-                            </span>
-                        </div>
+                        <div class="h1 mb-0 me-2">{{ $countProductsSevenDaysAgo }}</div>
                     </div>
                 </div>
-                <div id="chart-revenue-bg" class="chart-sm"></div>
+                <div id="chart-revenue-bg" class="chart-sm" style="pointer-events: none;"></div>
             </div>
         </div>
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-sm-6 col-lg-4">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
-                        <div class="subheader">New clients</div>
+                        <div class="subheader">Anggota baru</div>
                         <div class="ms-auto lh-1">
                             <div class="dropdown">
-                                <a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">Last 7 days</a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item active" href="#">Last 7 days</a>
-                                    <a class="dropdown-item" href="#">Last 30 days</a>
-                                    <a class="dropdown-item" href="#">Last 3 months</a>
-                                </div>
+                                <a class="text-muted" href="#">7 hari terakhir</a>
                             </div>
                         </div>
                     </div>
                     <div class="d-flex align-items-baseline">
-                        <div class="h1 mb-3 me-2">6,782</div>
-                        <div class="me-auto">
-                            <span class="text-yellow d-inline-flex align-items-center lh-1">
-                                0% <!-- Download SVG icon from http://tabler-icons.io/i/minus -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24"
-                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M5 12l14 0" />
-                                </svg>
-                            </span>
-                        </div>
+                        <div class="h1 mb-3 me-2">{{ $countMembersSevenDaysAgo }}</div>
                     </div>
-                    <div id="chart-new-clients" class="chart-sm"></div>
+                    <div id="chart-new-clients" class="chart-sm" style="pointer-events: none;"></div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-sm-6 col-lg-4">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
-                        <div class="subheader">Active users</div>
+                        <div class="subheader">Kategori baru</div>
                         <div class="ms-auto lh-1">
                             <div class="dropdown">
-                                <a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">Last 7 days</a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item active" href="#">Last 7 days</a>
-                                    <a class="dropdown-item" href="#">Last 30 days</a>
-                                    <a class="dropdown-item" href="#">Last 3 months</a>
-                                </div>
+                                <a class="text-muted" href="#">7 hari terakhir</a>
                             </div>
                         </div>
                     </div>
                     <div class="d-flex align-items-baseline">
-                        <div class="h1 mb-3 me-2">2,986</div>
-                        <div class="me-auto">
-                            <span class="text-green d-inline-flex align-items-center lh-1">
-                                4% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24"
-                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M3 17l6 -6l4 4l8 -8" />
-                                    <path d="M14 7l7 0l0 7" />
-                                </svg>
-                            </span>
-                        </div>
+                        <div class="h1 mb-3 me-2">{{ $countCategoriesSevenDaysAgo }}</div>
                     </div>
-                    <div id="chart-active-users" class="chart-sm"></div>
+                    <div id="chart-active-users" class="chart-sm" style="pointer-events: none;"></div>
                 </div>
             </div>
         </div>
@@ -196,24 +101,21 @@
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col-auto">
-                                    <span
-                                        class="bg-primary text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/currency-dollar -->
+                                    <span class="bg-primary text-white avatar">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
-                                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path
-                                                d="M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2" />
-                                            <path d="M12 3v3m0 12v3" />
+                                            height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                            stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
                                         </svg>
                                     </span>
                                 </div>
                                 <div class="col">
                                     <div class="font-weight-medium">
-                                        132 Sales
+                                        {{ $countAllMembers }} Anggota
                                     </div>
                                     <div class="text-muted">
-                                        12 waiting payments
+                                        Anggota UMKM terdaftar
                                     </div>
                                 </div>
                             </div>
@@ -225,25 +127,21 @@
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col-auto">
-                                    <span
-                                        class="bg-green text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/shopping-cart -->
+                                    <span class="bg-green text-white avatar">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
-                                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                            <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                            <path d="M17 17h-11v-14h-2" />
-                                            <path d="M6 5l14 1l-1 7h-13" />
+                                            height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                            stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
                                         </svg>
                                     </span>
                                 </div>
                                 <div class="col">
                                     <div class="font-weight-medium">
-                                        78 Orders
+                                        {{ $countAllProducts }} Produk
                                     </div>
                                     <div class="text-muted">
-                                        32 shipped
+                                        Produk UMKM
                                     </div>
                                 </div>
                             </div>
@@ -255,23 +153,23 @@
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col-auto">
-                                    <span
-                                        class="bg-twitter text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/brand-twitter -->
+                                    <span class="bg-twitter text-white avatar">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
-                                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path
-                                                d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c0 -.249 1.51 -2.772 1.818 -4.013z" />
+                                            height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                            stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M6 6h.008v.008H6V6Z" />
                                         </svg>
                                     </span>
                                 </div>
                                 <div class="col">
                                     <div class="font-weight-medium">
-                                        623 Shares
+                                        {{ $countAllCategories }} Kategori
                                     </div>
                                     <div class="text-muted">
-                                        16 today
+                                        Kategori produk
                                     </div>
                                 </div>
                             </div>
@@ -283,36 +181,28 @@
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col-auto">
-                                    <span
-                                        class="bg-facebook text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/brand-facebook -->
+                                    <span class="bg-facebook text-white avatar">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
-                                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path
-                                                d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+                                            height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                            stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                         </svg>
                                     </span>
                                 </div>
                                 <div class="col">
                                     <div class="font-weight-medium">
-                                        132 Likes
+                                        {{ $countAllAdmins }} Admin
                                     </div>
                                     <div class="text-muted">
-                                        21 today
+                                        Admin terdaftar
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Traffic summary</h3>
-                    <div id="chart-mentions" class="chart-lg"></div>
                 </div>
             </div>
         </div>

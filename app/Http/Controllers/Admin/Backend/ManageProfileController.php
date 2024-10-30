@@ -11,6 +11,8 @@ class ManageProfileController extends Controller
 {
     public function editProfile(EditProfileRequest $request, $id)
     {
+        $this->checkDiskSpace();
+
         $validatedData = $request->validated();
         $user = User::findOrFail($id);
 

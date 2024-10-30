@@ -10,6 +10,8 @@ class ManageApplicationController extends Controller
 {
     public function updateAppInfo(AppUpdateRequest $request)
     {
+        $this->checkDiskSpace();
+
         $validatedData = $request->validated();
         $applicationsCount = Application::count();
 

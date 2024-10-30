@@ -10,6 +10,8 @@ class ManageAdminController extends Controller
 {
     public function addAdmin(AdminRequest $request)
     {
+        $this->checkDiskSpace();
+        
         $validatedData = $request->validated();
         $validatedData['password'] = bcrypt($validatedData['password']);
         User::create($validatedData);

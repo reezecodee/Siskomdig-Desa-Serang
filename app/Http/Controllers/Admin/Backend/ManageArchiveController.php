@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Archive\ArchiveRequest;
 use App\Models\Archive;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use ZipArchive;
@@ -14,6 +13,8 @@ class ManageArchiveController extends Controller
 {
     public function addArchive(ArchiveRequest $request)
     {
+        $this->checkDiskSpace();
+
         $validatedData = $request->validated();
 
         $thumbnailFile = $request->file('thumbnail_arsip');

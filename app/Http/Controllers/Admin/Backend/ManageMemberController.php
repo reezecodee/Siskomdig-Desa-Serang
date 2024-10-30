@@ -12,6 +12,8 @@ class ManageMemberController extends Controller
 {
     public function addMember(MemberRequest $request)
     {
+        $this->checkDiskSpace();
+
         $validatedData = $request->validated();
 
         if ($request->hasFile('avatar')) {
@@ -27,6 +29,8 @@ class ManageMemberController extends Controller
 
     public function editMember(MemberRequest $request, $id)
     {
+        $this->checkDiskSpace();
+
         $validatedData = $request->validated();
         $member = UmkmMember::findOrFail($id);
 

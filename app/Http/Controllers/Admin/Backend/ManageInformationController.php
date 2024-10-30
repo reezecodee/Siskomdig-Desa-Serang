@@ -13,6 +13,8 @@ class ManageInformationController extends Controller
 {
     public function addInformation(InformationRequest $request)
     {
+        $this->checkDiskSpace();
+
         $validatedData = $request->validated();
         $thumbnailFile = $request->file('thumbnail');
         $thumbnailFileName = uniqid() . '.' . $thumbnailFile->getClientOriginalExtension();
@@ -26,6 +28,8 @@ class ManageInformationController extends Controller
 
     public function editInformation(EditInformationRequest $request, $id)
     {
+        $this->checkDiskSpace();
+
         $validatedData = $request->validated();
         $information = Information::findOrFail($id);
 

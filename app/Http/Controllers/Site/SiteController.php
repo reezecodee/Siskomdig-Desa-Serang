@@ -90,7 +90,7 @@ class SiteController extends Controller
     public function informationPage()
     {
         $title = 'Informasi Terbaru Komunitas Digital Desa Serang';
-        $informations = Information::with('users')->latest()->paginate(8);
+        $informations = Information::with('users')->where('visibilitas', 'Publik')->latest()->paginate(8);
 
         return view('site.informasi', compact('title', 'informations'));
     }
@@ -103,10 +103,16 @@ class SiteController extends Controller
         return view('site.baca-informasi', compact('title', 'data'));
     }
 
-    public function memberUMKM()
+    public function memberUMKM(Request $request)
     {
         $title = 'Anggota UMKM Komunitas Digital Desa Serang';
-        $members = UmkmMember::latest()->paginate(8);
+        $search = $request->query('s');
+
+        $members = UmkmMember::latest()
+            ->when($search, function ($query, $search) {
+                return $query->where('nama', 'like', '%' . $search . '%');
+            })
+            ->paginate(8);
 
         return view('site.anggota-umkm', compact('title', 'members'));
     }

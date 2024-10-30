@@ -10,6 +10,8 @@ class ManageOrganizationController extends Controller
 {
     public function editOrganization(OrganizationRequest $request)
     {
+        $this->checkDiskSpace();
+
         $validatedData = $request->validated();
 
         $organizationStructure = OrganizationStructure::latest()->first();

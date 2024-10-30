@@ -10,6 +10,8 @@ class ManageVisiMisionController extends Controller
 {
     public function editVisiMision(VisiMisionRequest $request)
     {
+        $this->checkDiskSpace();
+
         $validatedData = $request->validated();
 
         $visiMisionCount = VisiMision::count();

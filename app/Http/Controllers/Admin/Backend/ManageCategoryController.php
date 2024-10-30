@@ -10,6 +10,8 @@ class ManageCategoryController extends Controller
 {
     public function addCategory(CategoryRequest $request)
     {
+        $this->checkDiskSpace();
+
         $validatedData = $request->validated();
 
         $category = Category::create($validatedData);
@@ -18,6 +20,8 @@ class ManageCategoryController extends Controller
 
     public function editCategory(CategoryRequest $request, $id)
     {
+        $this->checkDiskSpace();
+
         $validatedData = $request->validated();
         $category = Category::findOrFail($id);
         $category->update($validatedData);

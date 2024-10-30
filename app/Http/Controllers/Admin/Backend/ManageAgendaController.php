@@ -10,6 +10,8 @@ class ManageAgendaController extends Controller
 {
     public function addAgenda(AgendaRequest $request)
     {
+        $this->checkDiskSpace();
+
         $validatedData = $request->validated();
         $agenda = Agenda::create($validatedData);
 
@@ -18,6 +20,8 @@ class ManageAgendaController extends Controller
 
     public function editAgenda(AgendaRequest $request, $id)
     {
+        $this->checkDiskSpace();
+
         $validatedData = $request->validated();
         $agenda = Agenda::findOrFail($id);
         $agenda->update($validatedData);
