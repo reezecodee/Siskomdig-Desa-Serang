@@ -3,10 +3,10 @@
         <div class="row text-center align-items-center flex-row-reverse">
             <div class="col-lg-auto ms-lg-auto">
                 <ul class="list-inline list-inline-dots mb-0">
-                    <li class="list-inline-item"><a href="https://wa.me/6281298897305" target="_blank"
+                    {{-- <li class="list-inline-item"><a href="https://wa.me/6281298897305" target="_blank"
                             class="link-secondary" rel="noopener">Hubungi developer</a></li>
                     <li class="list-inline-item"><a href="https://github.com/reezecodee" target="_blank"
-                            class="link-secondary" rel="noopener">GitHub</a></li>
+                            class="link-secondary" rel="noopener">GitHub</a></li> --}}
                     <li class="list-inline-item">
                         <a href="https://maps.app.goo.gl/EeJrRqxHGHV8A9Aj7" target="_blank" class="link-secondary"
                             rel="noopener">
