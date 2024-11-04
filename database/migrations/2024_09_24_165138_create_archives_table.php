@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('judul_arsip');
             $table->text('deskripsi');
             $table->string('file_zip');
-            $table->string('gambar');
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }

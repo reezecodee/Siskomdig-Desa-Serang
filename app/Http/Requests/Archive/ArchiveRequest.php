@@ -22,7 +22,7 @@ class ArchiveRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'thumbnail_arsip' => 'required|mimes:png,jpg,jpeg',
+            'gambar' => 'nullable|mimes:png,jpg,jpeg',
             'judul_arsip' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'files' => 'required|array',
@@ -33,8 +33,7 @@ class ArchiveRequest extends FormRequest
     public function messages()
     {
         return [
-            'thumbnail_arsip.required' => 'Thumbnail arsip harus diunggah.',
-            'thumbnail_arsip.mimes' => 'Thumbnail arsip harus berupa file dengan format PNG, JPG, atau JPEG.',
+            'gambar.mimes' => 'Thumbnail arsip harus berupa file dengan format PNG, JPG, atau JPEG.',
             'judul_arsip.required' => 'Judul arsip harus diisi.',
             'judul_arsip.string' => 'Judul arsip harus berupa teks.',
             'judul_arsip.max' => 'Judul arsip tidak boleh lebih dari 255 karakter.',

@@ -17,10 +17,10 @@ class ManageArchiveController extends Controller
 
         $validatedData = $request->validated();
 
-        $thumbnailFile = $request->file('thumbnail_arsip');
-        $thumbnailFileName = uniqid() . '.' . $thumbnailFile->getClientOriginalExtension();
-        $thumbnailFile->storeAs('images', $thumbnailFileName, 'public');
-        $validatedData['thumbnail_arsip'] = $thumbnailFileName;
+        $gambarFile = $request->file('gambar');
+        $gambarFileName = uniqid() . '.' . $gambarFile->getClientOriginalExtension();
+        $gambarFile->storeAs('images', $gambarFileName, 'public');
+        $validatedData['gambar'] = $gambarFileName;
 
         $validatedData['file_zip'] = $this->generateZIPFile($validatedData['files'], uniqid());
 
@@ -32,8 +32,8 @@ class ManageArchiveController extends Controller
     {
         $archive = Archive::findOrFail($id);
 
-        if ($archive->thumbnail_arsip && Storage::disk('public')->exists('images/' . $archive->thumbnail_arsip)) {
-            Storage::disk('public')->delete('images/' . $archive->thumbnail_arsip);
+        if ($archive->gambar && Storage::disk('public')->exists('images/' . $archive->gambar)) {
+            Storage::disk('public')->delete('images/' . $archive->gambar);
         }
 
         if ($archive->file_zip && Storage::disk('public')->exists('archives/' . $archive->file_zip)) {

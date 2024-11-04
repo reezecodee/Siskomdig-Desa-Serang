@@ -24,7 +24,7 @@ class InformationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'thumbnail' => 'required|mimes:png,jpg,jpeg',
+            'gambar' => 'nullable|mimes:png,jpg,jpeg',
             'judul' => 'required|string|max:255',
             'konten_informasi' => 'required',
             'visibilitas' => 'required|in:Publik,Privasi'
@@ -34,7 +34,6 @@ class InformationRequest extends FormRequest
     public function messages()
     {
         return [
-            'thumbnail.required' => 'Thumbnail wajib diisi.',
             'thumbnail.mimes' => 'Harap gunakan format gambar png, jpg, atau jpeg.',
 
             'judul.required' => 'Judul informasi harus di isi.',

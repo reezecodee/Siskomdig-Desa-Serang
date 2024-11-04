@@ -16,10 +16,14 @@ class ManageInformationController extends Controller
         $this->checkDiskSpace();
 
         $validatedData = $request->validated();
-        $thumbnailFile = $request->file('thumbnail');
-        $thumbnailFileName = uniqid() . '.' . $thumbnailFile->getClientOriginalExtension();
-        $thumbnailFile->storeAs('images', $thumbnailFileName, 'public');
-        $validatedData['thumbnail'] = $thumbnailFileName;
+
+        if ($request->hasFile('gambar')) {
+            $gambarFile = $request->file('gambar');
+            $gambarFileName = uniqid() . '.' . $gambarFile->getClientOriginalExtension();
+            $gambarFile->storeAs('images', $gambarFileName, 'public');
+            $validatedData['gambar'] = $gambarFileName;
+        }
+
         $validatedData['admin_id'] = Auth::user()->id;
 
         Information::create($validatedData);
@@ -33,15 +37,15 @@ class ManageInformationController extends Controller
         $validatedData = $request->validated();
         $information = Information::findOrFail($id);
 
-        if ($request->hasFile('thumbnail')) {
-            if ($information->thumbnail && Storage::disk('public')->exists('images/' . $information->thumbnail)) {
-                Storage::disk('public')->delete('images/' . $information->thumbnail);
+        if ($request->hasFile('gambar')) {
+            if ($information->gambar && Storage::disk('public')->exists('images/' . $information->gambar)) {
+                Storage::disk('public')->delete('images/' . $information->gambar);
             }
 
-            $thumbnailFile = $request->file('thumbnail');
-            $thumbnailFileName = uniqid() . '.' . $thumbnailFile->getClientOriginalExtension();
-            $thumbnailFile->storeAs('images', $thumbnailFileName, 'public');
-            $validatedData['thumbnail'] = $thumbnailFileName;
+            $gambarFile = $request->file('gambar');
+            $gambarFileName = uniqid() . '.' . $gambarFile->getClientOriginalExtension();
+            $gambarFile->storeAs('images', $gambarFileName, 'public');
+            $validatedData['gambar'] = $gambarFileName;
         }
 
         $information->update($validatedData);
@@ -52,8 +56,8 @@ class ManageInformationController extends Controller
     {
         $information = Information::findOrFail($id);
 
-        if ($information->thumbnail && Storage::disk('public')->exists('images/' . $information->thumbnail)) {
-            Storage::disk('public')->delete('images/' . $information->thumbnail);
+        if ($information->gambar && Storage::disk('public')->exists('images/' . $information->gambar)) {
+            Storage::disk('public')->delete('images/' . $information->gambar);
         }
 
         $information->delete();

@@ -9,14 +9,14 @@ class MemberController extends Controller
 {
     public function memberPage()
     {
-        $title = 'Anggota UMKM Terdaftar';
+        $title = 'Anggota Komunitas';
 
         return view('admin.member.index', compact('title'));
     }
 
     public function detailMemberPage($id)
     {
-        $title = 'Detail Anggota UMKM';
+        $title = 'Detail Anggota Komunitas';
         $data = Member::findOrFail($id);
 
         return view('admin.member.detail-member', compact('title', 'data'));
@@ -24,7 +24,7 @@ class MemberController extends Controller
 
     public function editMemberPage($id)
     {
-        $title = 'Edit Anggota UMKM';
+        $title = 'Edit Anggota Komunitas';
         $data = Member::findOrFail($id);
 
         return view('admin.member.edit-member', compact('title', 'data'));

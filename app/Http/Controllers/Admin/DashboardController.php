@@ -19,7 +19,7 @@ class DashboardController extends Controller
             ->count();
         $countBusinessFieldSevenDaysAgo = BusinessField::whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])
             ->count();
-        $countInformationSevenDaysAgo = Information::whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])
+        $countInformationsSevenDaysAgo = Information::whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])
             ->count();
 
         $countAllMembers = Member::count();

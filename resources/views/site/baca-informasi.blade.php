@@ -31,7 +31,7 @@
                     <div class="card-body p-0 p-sm-5">
                         <!-- Gambar Artikel -->
                         <div class="d-flex justify-content-center">
-                            <img src="{{ $data->thumbnail ? asset('storage/images/' . $data->thumbnail) : 'https://via.placeholder.com/800x400' }}"
+                            <img src="{{ $data->gambar ? asset('storage/images/' . $data->gambar) : 'https://via.placeholder.com/800x400' }}"
                                 class="img-fluid w-full rounded mb-4" alt="Gambar Artikel">
                         </div>
 

@@ -22,7 +22,7 @@ class EditInformationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'thumbnail' => 'nullable|mimes:png,jpg,jpeg',
+            'gambar' => 'nullable|mimes:png,jpg,jpeg',
             'judul' => 'required|string|max:255',
             'konten_informasi' => 'required',
             'visibilitas' => 'required|in:Publik,Privasi'

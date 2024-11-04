@@ -30,17 +30,17 @@
         <div class="card">
             <div class="card-body">
                 <div class="form-group mb-3">
-                    <label class="form-label">Thumbnail</label>
+                    <label class="form-label">Gambar</label>
                     <div class="d-flex justify-content-center">
-                        <img src="{{ $data->thumbnail ? asset('storage/images/' . $data->thumbnail) : '' }}" class="my-2"
+                        <img src="{{ $data->gambar ? asset('storage/images/' . $data->gambar) : '' }}" class="my-2"
                             id="previewImage" alt="" srcset="">
                     </div>
                     <input type="file"
-                        class="form-control @error('thumbnail')
+                        class="form-control @error('gambar')
                         is-invalid
                     @enderror"
-                        name="thumbnail" id="inputImage" accept=".jpg, .png, .jpeg">
-                    @error('thumbnail')
+                        name="gambar" id="inputImage" accept=".jpg, .png, .jpeg">
+                    @error('gambar')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>

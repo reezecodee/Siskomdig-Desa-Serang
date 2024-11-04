@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-baseline">
-                        <div class="h1 mb-3 me-2">{{ $countInformationSevenDaysAgo }}</div>
+                        <div class="h1 mb-3 me-2">{{ $countInformationsSevenDaysAgo }}</div>
                     </div>
                     <div id="chart-active-users" class="chart-sm" style="pointer-events: none;"></div>
                 </div>
@@ -102,9 +102,9 @@
                             <div class="row align-items-center">
                                 <div class="col-auto">
                                     <span class="bg-primary text-white avatar">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
-                                            height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                            stroke="currentColor" class="size-6">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                            class="size-6">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
                                         </svg>
@@ -112,10 +112,10 @@
                                 </div>
                                 <div class="col">
                                     <div class="font-weight-medium">
-                                        {{ $countAllMembers }} Anggota
+                                        {{ $countAllMembers }}
                                     </div>
                                     <div class="text-muted">
-                                        Anggota komunitas terdaftar
+                                        Anggota komunitas
                                     </div>
                                 </div>
                             </div>
@@ -132,13 +132,13 @@
                                             height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                             stroke="currentColor" class="size-6">
                                             <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                                                d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" />
                                         </svg>
                                     </span>
                                 </div>
                                 <div class="col">
                                     <div class="font-weight-medium">
-                                        {{ $countAllBusinesses }} Bidang
+                                        {{ $countAllBusinesses }}
                                     </div>
                                     <div class="text-muted">
                                         Bidang usaha
@@ -158,18 +158,16 @@
                                             height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                             stroke="currentColor" class="size-6">
                                             <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M6 6h.008v.008H6V6Z" />
+                                                d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
                                         </svg>
                                     </span>
                                 </div>
                                 <div class="col">
                                     <div class="font-weight-medium">
-                                        {{ $countAllInformations }} Kategori
+                                        {{ $countAllInformations }}
                                     </div>
                                     <div class="text-muted">
-                                        Kategori produk
+                                        Informasi
                                     </div>
                                 </div>
                             </div>
@@ -232,7 +230,6 @@
                                         <th>No</th>
                                         <th>Nama</th>
                                         <th>Email</th>
-                                        <th>Telepon</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -276,16 +273,16 @@
                         @csrf
                         <div class="mb-3">
                             <div class="form-group">
-                                <label class="form-label">Thumbnail</label>
+                                <label class="form-label">Gambar</label>
                                 <div class="d-flex justify-content-center">
                                     <img src="" class="my-2" style="display: none" id="previewImage"
                                         alt="" srcset="">
                                 </div>
                                 <input type="file"
-                                    class="form-control @error('thumbnail') is-invalid
+                                    class="form-control @error('gambar') is-invalid
                             @enderror"
-                                    accept=".jpg, .png, .jpeg" name="thumbnail" id="inputImage">
-                                @error('thumbnail')
+                                    accept=".jpg, .png, .jpeg" name="gambar" id="inputImage">
+                                @error('gambar')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -409,19 +406,6 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <div class="form-group">
-                                        <label class="form-label">Telepon</label>
-                                        <input type="number" class="form-control @error('telepon') is-invalid @enderror"
-                                            name="telepon" placeholder="Masukkan nomor telepon"
-                                            value="{{ old('telepon') }}" autocomplete="off" required>
-                                        @error('telepon')
-                                            <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <div class="form-group">
                                         <label class="form-label">Email</label>
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
                                             name="email" placeholder="Masukkan email aktif"
@@ -432,7 +416,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <div class="form-group">
                                         <label class="form-label">Password sementara</label>
@@ -513,10 +497,6 @@
                     {
                         data: 'email',
                         name: 'email'
-                    },
-                    {
-                        data: 'telepon',
-                        name: 'telepon'
                     },
                     {
                         data: 'action', // Pastikan ini benar

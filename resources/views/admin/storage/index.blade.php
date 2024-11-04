@@ -91,7 +91,7 @@
         <div class="card-body">
             <p>File yang diupload</p>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <a href="{{ route('show.images', 'semua-gambar') }}">
                         <div class="card">
                             <div class="card-body">
@@ -108,7 +108,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <a href="{{ route('show.images', 'photo') }}">
                         <div class="card">
                             <div class="card-body">
@@ -125,7 +125,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <a href="{{ route('show.archives') }}">
                         <div class="card">
                             <div class="card-body">
@@ -136,23 +136,6 @@
                                                 class="w-50" srcset="" loading="lazy">
                                         </div>
                                         <p class="text-center">Arsip kegiatan</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="{{ url('/') . '/cpanel' }}">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-center">
-                                    <div>
-                                        <div class="d-flex justify-content-center">
-                                            <img src="https://www.svgrepo.com/show/286859/database.svg" alt=""
-                                                class="w-50" srcset="" loading="lazy">
-                                        </div>
-                                        <p class="text-center">Buka database</p>
                                     </div>
                                 </div>
                             </div>

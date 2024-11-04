@@ -33,24 +33,6 @@
                 <div class="col d-flex flex-column">
                     <div class="card-body">
                         <h3 class="card-title">Detail Profile</h3>
-                        <div class="row align-items-center">
-                            <div class="col-auto">
-                                <img src="{{ auth()->user()->avatar ? asset('storage/profiles/' . auth()->user()->avatar) : '/unknown/unknown_profile.webp' }}"
-                                    class="avatar avatar-xl" srcset="" id="imagePreview">
-                            </div>
-                            <input type="file" style="display: none" accept=".jpg, .png, .jpeg" name="avatar"
-                                id="inputImage">
-                            <div class="col-auto"><a href="#" class="btn" id="btn-upload">
-                                    Ganti avatar
-                                </a></div>
-                            @if (auth()->check() && auth()->user()->avatar)
-                                <div class="col-auto">
-                                    <button type="button" onclick="deleteAlert('avatar')" class="btn btn-danger">
-                                        Hapus avatar
-                                    </button>
-                                </div>
-                            @endif
-                        </div>
                         <div class="row g-3 my-3">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -76,20 +58,6 @@
                                         name="nama" value="{{ old('nama', auth()->user()->nama) }}"
                                         placeholder="Masukkan nama lengkap" required>
                                     @error('nama')
-                                        <span class="invalid-feedback">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <div class="form-label">Telepon</div>
-                                    <input type="number"
-                                        class="form-control @error('telepon')
-                                         is-invalid
-                                    @enderror"
-                                        name="telepon" value="{{ old('telepon', auth()->user()->telepon) }}"
-                                        placeholder="Masukkan nomor telepon" required>
-                                    @error('telepon')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -128,31 +96,4 @@
             </div>
         </div>
     </form>
-@endsection
-
-@section('script')
-    <script>
-        let imagePreview = document.getElementById('imagePreview');
-        let inputImage = document.getElementById('inputImage');
-        let btnUpload = document.getElementById('btn-upload');
-
-        // Saat tombol "Upload" diklik, membuka dialog input file
-        btnUpload.addEventListener('click', () => {
-            inputImage.click(); // Menggunakan click() untuk membuka dialog file
-        });
-
-        inputImage.addEventListener('change', function() {
-            const file = this.files[0]; // Mendapatkan file yang dipilih
-            if (file) {
-                const reader = new FileReader();
-
-                reader.onload = function(e) {
-                    imagePreview.src = e.target.result; // Mengganti src gambar dengan hasil file yang dibaca
-                    imagePreview.style.display = 'block'; // Menampilkan preview
-                }
-
-                reader.readAsDataURL(file); // Membaca file sebagai URL data
-            }
-        });
-    </script>
 @endsection

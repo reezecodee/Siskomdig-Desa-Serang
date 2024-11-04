@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AgendaController;
 use App\Http\Controllers\Admin\ApplicationController;
 use App\Http\Controllers\Admin\ArchiveController;
+use App\Http\Controllers\Admin\BusinessFieldController;
 use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InformationController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\Admin\OrganizationStructureController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SearchResultController;
 use App\Http\Controllers\Admin\StorageController;
+use App\Http\Controllers\Admin\UserFeedbackController;
 use App\Http\Controllers\Admin\VisiMisionController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Site\SiteController;
@@ -76,6 +78,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
             Route::get('/{id}/edit', 'editMemberPage')->name('show.editMemberUMKM');
             Route::get('/{id}/detail', 'detailMemberPage')->name('show.detailMemberUMKM');
         });
+    });
+
+    Route::controller(BusinessFieldController::class)->group(function () {
+        Route::get('/bidang-usaha', 'businessFieldPage')->name('show.businessField');
+    });
+
+    Route::controller(UserFeedbackController::class)->group(function () {
+        Route::get('/saran-masukan', 'userFeedbackPage')->name('show.userFeedback');
     });
 
     Route::controller(ProfileController::class)->group(function () {

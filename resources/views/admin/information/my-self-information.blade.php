@@ -65,16 +65,16 @@
                         @csrf
                         <div class="mb-3">
                             <div class="form-group">
-                                <label class="form-label">Thumbnail</label>
+                                <label class="form-label">Gambar</label>
                                 <div class="d-flex justify-content-center">
                                     <img src="" class="my-2" style="display: none" id="previewImage"
                                         alt="" srcset="">
                                 </div>
                                 <input type="file"
-                                    class="form-control @error('thumbnail') is-invalid
+                                    class="form-control @error('gambar') is-invalid
                             @enderror"
-                                    accept=".jpg, .png, .jpeg" name="thumbnail" id="inputImage">
-                                @error('thumbnail')
+                                    accept=".jpg, .png, .jpeg" name="gambar" id="inputImage">
+                                @error('gambar')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
                             </div>

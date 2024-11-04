@@ -51,16 +51,16 @@
                 <div class="row mb-3">
                     <div class="col-md-12">
                         <div class="form-group mb-2">
-                            <label for="" class="form-label">Thumbnail arsip</label>
+                            <label for="" class="form-label">Gambar</label>
                             <div class="d-flex justify-content-center">
                                 <img src="" id="imagePreview" alt="" srcset="" class="my-2"
                                     style="display: none">
                             </div>
                             <input type="file"
-                                class="form-control @error('thumbnail_arsip') is-invalid
+                                class="form-control @error('gambar') is-invalid
                             @enderror"
-                                name="thumbnail_arsip" id="imageInput" accept=".jpg, .png, .jpeg">
-                            @error('thumbnail_arsip')
+                                name="gambar" id="imageInput" accept=".jpg, .png, .jpeg">
+                            @error('gambar')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
                         </div>
