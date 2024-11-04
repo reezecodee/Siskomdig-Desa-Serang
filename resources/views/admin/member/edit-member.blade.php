@@ -34,7 +34,7 @@
                     <div class="col-md-4">
                         <p class="form-label">Foto anggota</p>
                         <div class="d-flex justify-content-center mb-3">
-                            <img src="{{ $data->avatar ? asset('storage/profiles/' . $data->avatar) : 'https://avatars.githubusercontent.com/u/159593076?v=4' }}"
+                            <img src="{{ $data->avatar ? asset('storage/profiles/' . $data->avatar) : 'https://via.placeholder.com/300x300' }}"
                                 class="rounded-circle" width="200" height="200" id="imagePreview" alt="">
                             <input type="file" accept=".jpg, .png, .jpeg" name="avatar" id="inputImage"
                                 style="display: none">
@@ -47,9 +47,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">Nama anggota UMKM</label>
+                                    <label for="" class="form-label">Nama anggota</label>
                                     <input type="text" value="{{ old('nama', $data->nama) }}" name="nama"
-                                        placeholder="Masukkan nama anggota UMKM"
+                                        placeholder="Masukkan nama anggota"
                                         class="form-control @error('nama') is-invalid @enderror">
                                     @error('nama')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -58,9 +58,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">Telepon (WhatsApp)</label>
+                                    <label for="" class="form-label">Telepon (WhatsApp/HP/Telp)</label>
                                     <input type="text" value="{{ old('telepon', $data->telepon) }}" name="telepon"
-                                        placeholder="Masukkan nomor telepon pelaku UMKM (WhatsApp)"
+                                        placeholder="Masukkan nomor telepon"
                                         class="form-control @error('telepon') is-invalid @enderror">
                                     @error('telepon')
                                         <span class="invalid-feedback">{{ $message }}</span>
@@ -69,55 +69,80 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">Email</label>
-                                    <input type="email" value="{{ old('email', $data->email) }}" name="email"
-                                        placeholder="Masukkan email pelaku UMKM"
-                                        class="form-control @error('email') is-invalid @enderror">
-                                    @error('email')
+                                    <label for="" class="form-label">Kampung</label>
+                                    <input type="kampung" value="{{ old('kampung', $data->kampung) }}" name="kampung"
+                                        placeholder="Masukkan kampung anggota"
+                                        class="form-control @error('kampung') is-invalid @enderror">
+                                    @error('kampung')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">Pendapatan</label>
-                                    <input type="number" value="{{ old('pendapatan', $data->pendapatan) }}"
-                                        name="pendapatan" placeholder="Masukkan pendapatan anggota"
-                                        class="form-control @error('pendapatan') is-invalid @enderror">
-                                    @error('pendapatan')
+                                    <label for="" class="form-label">Rukun tetangga (RT)</label>
+                                    <input type="number" value="{{ old('rt', $data->rt) }}" name="rt"
+                                        placeholder="Masukkan rt anggota"
+                                        class="form-control @error('rt') is-invalid @enderror">
+                                    @error('rt')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">Pendapatan tertinggi</label>
-                                    <input type="number"
-                                        value="{{ old('pendapatan_tertinggi', $data->pendapatan_tertinggi) }}"
-                                        name="pendapatan_tertinggi" placeholder="Masukkan pendapatan tertinggi anggota"
-                                        class="form-control @error('pendapatan_tertinggi') is-invalid @enderror">
-                                    @error('pendapatan_tertinggi')
+                                    <label for="" class="form-label">Rukun warga (RW)</label>
+                                    <input type="number" value="{{ old('rw', $data->rw) }}" name="rw"
+                                        placeholder="Masukkan pendapatan tertinggi anggota"
+                                        class="form-control @error('rw') is-invalid @enderror">
+                                    @error('rw')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">Jenis usaha</label>
-                                    <input type="text" value="{{ old('jenis_usaha', $data->jenis_usaha) }}"
-                                        name="jenis_usaha" placeholder="Masukkan jenis usaha anggota"
-                                        class="form-control @error('jenis_usaha') is-invalid @enderror">
-                                    @error('jenis_usaha')
+                                    <label for="" class="form-label">Bidang usaha</label>
+                                    <select name="business_id"
+                                        class="form-select @error('business_id') is-invalid @enderror" id="">
+                                        <option selected disabled>Pilih bidang usaha</option>
+                                        @foreach ($businessFields as $item)
+                                            <option value="{{ $item->id }}"
+                                                {{ old('business_id', $data->businessFields->id) == $item->id ? 'selected' : '' }}>
+                                                {{ $item->nama_bidang_usaha }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('business_id')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">Deskripsi pekerjaan</label>
-                                    <textarea rows="7" name="deskripsi" placeholder="Masukkan deskripsi tentang pekerjaan anggota"
-                                        class="form-control @error('deskripsi') is-invalid @enderror">{{ old('deskripsi', $data->deskripsi) }}</textarea>
-                                    @error('deskripsi')
+                                    <label for="" class="form-label">NIB/SKU</label>
+                                    <input type="text" value="{{ old('nib_sku', $data->nib_sku) }}" name="nib_sku"
+                                        placeholder="Masukkan pendapatan tertinggi anggota"
+                                        class="form-control @error('nib_sku') is-invalid @enderror">
+                                    @error('nib_sku')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="" class="form-label">Status keanggotaan</label>
+                                    <select name="status" class="form-select @error('status') is-invalid @enderror"
+                                        id="">
+                                        <option selected disabled>Pilih status</option>
+                                        <option value="Aktif"
+                                            {{ old('status', $data->status) == 'Aktif' ? 'selected' : '' }}>Aktif
+                                        </option>
+                                        <option value="Tidak aktif"
+                                            {{ old('status', $data->status) == 'Tidak aktif' ? 'selected' : '' }}>Tidak
+                                            aktif</option>
+                                    </select>
+                                    @error('status')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>

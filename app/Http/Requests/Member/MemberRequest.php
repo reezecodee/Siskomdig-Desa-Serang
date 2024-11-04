@@ -26,12 +26,13 @@ class MemberRequest extends FormRequest
         $memberID = $this->route('id');
         return [
             'nama' => 'required|string|max:255',
-            'telepon' => 'required|unique:umkm_members,telepon,'.$memberID,
-            'email' => 'required|unique:umkm_members,email,'.$memberID,
-            'jenis_usaha' => 'required|string|max:255',
-            'pendapatan' => 'required|max:255',
-            'pendapatan_tertinggi' => 'required|max:255',
-            'deskripsi' => 'required|string',
+            'business_id' => 'required|exists:business_fields,id',
+            'kampung' => 'required|string|max:255',
+            'rt' => 'required|string|max:10',
+            'rw' => 'required|string|max:10',
+            'nib_sku' => 'required|string|max:255',
+            'telepon' => 'required|unique:members,telepon,'.$memberID,
+            'status' => 'required|in:Aktif,Tidak aktif',
             'avatar' => 'nullable'
         ];
     }
@@ -43,36 +44,38 @@ class MemberRequest extends FormRequest
             'nama.string' => 'Nama harus berupa teks.',
             'nama.max' => 'Nama tidak boleh lebih dari 255 karakter.',
 
-            'telepon.required' => 'Nomor telepon harus diisi.',
-            'telepon.unique' => 'Nomor telepon ini sudah terdaftar, silakan gunakan nomor yang berbeda.',
+            'business_id.required' => 'Bidang usaha wajib dipilih.',
+            'business_id.exists' => 'Bidang usaha yang dipilih tidak valid.',
 
-            'email.required' => 'Alamat email harus diisi.',
-            'email.unique' => 'Alamat email ini sudah terdaftar, silakan gunakan email yang berbeda.',
+            'kampung.required' => 'Kampung wajib diisi.',
+            'kampung.string' => 'Kampung harus berupa teks.',
+            'kampung.max' => 'Kampung tidak boleh lebih dari 255 karakter.',
 
-            'usia.required' => 'Usia wajib diisi.',
-            'usia.integer' => 'Usia harus berupa angka.',
-            'usia.max' => 'Usia tidak boleh lebih dari 3 digit.',
+            'rt.required' => 'RT wajib diisi.',
+            'rt.string' => 'RT harus berupa teks.',
+            'rt.max' => 'RT tidak boleh lebih dari 10 karakter.',
 
-            'jenis_usaha.required' => 'Jenis usaha wajib diisi.',
-            'jenis_usaha.string' => 'Jenis usaha harus berupa teks.',
-            'jenis_usaha.max' => 'Jenis usaha tidak boleh lebih dari 255 karakter.',
+            'rw.required' => 'RW wajib diisi.',
+            'rw.string' => 'RW harus berupa teks.',
+            'rw.max' => 'RW tidak boleh lebih dari 10 karakter.',
 
-            'pendapatan.required' => 'Pendapatan wajib diisi.',
-            'pendapatan.max' => 'Pendapatan tidak boleh lebih dari 255 karakter.',
+            'nib_sku.required' => 'NIB/SKU wajib diisi.',
+            'nib_sku.string' => 'NIB/SKU harus berupa teks.',
+            'nib_sku.max' => 'NIB/SKU tidak boleh lebih dari 255 karakter.',
 
-            'pendapatan_tertinggi.required' => 'Pendapatan tertinggi wajib diisi.',
-            'pendapatan_tertinggi.max' => 'Pendapatan tertinggi tidak boleh lebih dari 255 karakter.',
+            'telepon.required' => 'Nomor telepon wajib diisi.',
+            'telepon.unique' => 'Nomor telepon sudah terdaftar.',
 
-            'deskripsi.required' => 'Deskripsi wajib diisi.',
-            'deskripsi.string' => 'Deskripsi harus berupa teks.',
+            'status.required' => 'Status wajib diisi.',
+            'status.in' => 'Status harus berupa "Aktif" atau "Tidak aktif".',
 
-            'avatar.nullable' => 'Avatar bersifat opsional.',
+            'avatar.nullable' => 'Avatar tidak wajib diisi.',
         ];
     }
 
     protected function failedValidation(Validator $validator)
     {
-        session()->flash('failed', 'Gagal menambahkan anggota UMKM, silahkan cek kembali input Anda.');
+        session()->flash('failed', 'Gagal menambahkan anggota komunitas, silahkan cek kembali input Anda.');
 
         throw new HttpResponseException(
             redirect()->back()->withErrors($validator)->withInput()

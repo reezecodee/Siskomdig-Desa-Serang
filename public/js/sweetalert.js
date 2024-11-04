@@ -34,6 +34,30 @@ function deleteAlert(formID) {
     });
 }
 
+function changeStatus(formID, status) {
+    let text = 'Apakah kamu ingin mengubah status keanggotaan anggota ini menjadi <b>Tidak aktif</b>?';
+
+    if(status == 'active'){
+        text = 'Apakah kamu ingin mengubah status keanggotaan anggota ini menjadi <b>Aktif</b>?'
+    }
+
+    Swal.fire({
+        title: 'Apakah kamu yakin?',
+        html: text,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, tentu!',
+        cancelButtonText: 'Tidak'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Jika pengguna mengkonfirmasi, submit form
+            document.getElementById(`${formID}-${status}`).submit(); // Submit form dengan ID yang sesuai
+        }
+    });
+}
+
 function editAlert(formID) {
     // Ambil data awal dari elemen tabel
     const currentName = document.getElementById('name-input-' + formID).value;

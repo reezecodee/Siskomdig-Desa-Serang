@@ -192,7 +192,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="font-weight-medium">
-                                        {{ $countAllAdmins }} Admin
+                                        {{ $countAllAdmins }}
                                     </div>
                                     <div class="text-muted">
                                         Admin terdaftar
@@ -228,6 +228,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Username</th>
                                         <th>Nama</th>
                                         <th>Email</th>
                                         <th>Action</th>
@@ -489,6 +490,10 @@
                         name: 'DT_RowIndex',
                         orderable: false,
                         searchable: false
+                    },
+                    {
+                        data: 'username',
+                        name: 'username'
                     },
                     {
                         data: 'nama',

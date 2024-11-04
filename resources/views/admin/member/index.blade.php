@@ -40,9 +40,9 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
-                        <th>Jenis usaha</th>
-                        <th>Pendapatan</th>
-                        <th>Pendapatan tertinggi</th>
+                        <th>Bidang usaha</th>
+                        <th>NIB/SKU</th>
+                        <th>Telepon</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -54,7 +54,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Tambah anggota UMKM</h5>
+                    <h5 class="modal-title">Tambah anggota komunitas</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -62,8 +62,8 @@
                         @csrf
                         <div class="text-center mb-3">
                             <div class="d-flex justify-content-center mx-auto mb-3">
-                                <img src="/unknown/unknown_profile.webp" class="rounded-circle"
-                                    width="150" height="150" id="imagePreview" alt="">
+                                <img src="/unknown/unknown_profile.webp" class="rounded-circle" width="150"
+                                    height="150" id="imagePreview" alt="">
                                 <input type="file" id="inputImage" style="display: none" accept=".png, .jpg, .jpeg"
                                     name="avatar">
                             </div>
@@ -75,9 +75,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">Nama pelaku UMKM</label>
+                                    <label for="" class="form-label">Nama anggota</label>
                                     <input type="text" name="nama" autocomplete="off"
-                                        placeholder="Masukkan nama pelaku UMKM"
+                                        placeholder="Masukkan nama anggota"
                                         class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}"
                                         required>
                                     @error('nama')
@@ -87,11 +87,11 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">Telepon (WhatsApp)</label>
+                                    <label for="" class="form-label">Telepon (WhatsApp/HP/Telp)</label>
                                     <input type="number" name="telepon" autocomplete="off"
-                                        placeholder="Masukkan nomor telepon pelaku UMKM (WhatsApp)"
-                                        class="form-control @error('telepon') is-invalid @enderror" value="{{ old('telepon') }}"
-                                        required>
+                                        placeholder="Masukkan nomor telepon"
+                                        class="form-control @error('telepon') is-invalid @enderror"
+                                        value="{{ old('telepon') }}" required>
                                     @error('telepon')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -99,58 +99,82 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">Email</label>
-                                    <input type="email" name="email" autocomplete="off"
-                                        placeholder="Masukkan email pelaku UMKM"
-                                        class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}"
+                                    <label for="" class="form-label">Kampung</label>
+                                    <input type="text" name="kampung" autocomplete="off"
+                                        placeholder="Masukkan kampung anggota"
+                                        class="form-control @error('kampung') is-invalid @enderror"
+                                        value="{{ old('kampung') }}" required>
+                                    @error('kampung')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="" class="form-label">Rukun tetangga (RT)</label>
+                                    <input type="number" name="rt" autocomplete="off"
+                                        placeholder="Masukkan RT anggota"
+                                        class="form-control @error('rt') is-invalid @enderror" value="{{ old('rt') }}"
                                         required>
-                                    @error('email')
+                                    @error('rt')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">Pendapatan</label>
-                                    <input type="number" name="pendapatan" autocomplete="off"
-                                        placeholder="Masukkan pendapatan"
-                                        class="form-control @error('pendapatan') is-invalid @enderror"
-                                        value="{{ old('pendapatan') }}" required>
-                                    @error('pendapatan')
+                                    <label for="" class="form-label">Rukun warga (RW)</label>
+                                    <input type="number" name="rw" autocomplete="off"
+                                        placeholder="Masukkan RW anggota"
+                                        class="form-control @error('rw') is-invalid @enderror"
+                                        value="{{ old('rw') }}" required>
+                                    @error('rw')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">Pendapatan tertinggi</label>
-                                    <input type="number" name="pendapatan_tertinggi" autocomplete="off"
-                                        placeholder="Masukkan pendapatan tertinggi"
-                                        class="form-control @error('pendapatan_tertinggi') is-invalid @enderror"
-                                        value="{{ old('pendapatan_tertinggi') }}" required>
-                                    @error('pendapatan_tertinggi')
+                                    <label for="" class="form-label">Bidang usaha</label>
+                                    <select name="business_id"
+                                        class="form-select @error('business_id') is-invalid @enderror" id="">
+                                        <option selected disabled>Pilih bidang usaha</option>
+                                        @foreach ($businessFields as $item)
+                                            <option value="{{ $item->id }}"
+                                                {{ old('business_id') == $item->id ? 'selected' : '' }}>
+                                                {{ $item->nama_bidang_usaha }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('business_id')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">Jenis usaha</label>
-                                    <input type="text" name="jenis_usaha" autocomplete="off"
-                                        placeholder="Masukkan jenis usaha anggota"
-                                        class="form-control @error('jenis_usaha') is-invalid @enderror"
-                                        value="{{ old('jenis_usaha') }}" required>
-                                    @error('jenis_usaha')
+                                    <label for="" class="form-label">NIB/SKU</label>
+                                    <input type="text" name="nib_sku" autocomplete="off"
+                                        placeholder="Masukkan NIB/SKU anggota"
+                                        class="form-control @error('nib_sku') is-invalid @enderror"
+                                        value="{{ old('nib_sku') }}" required>
+                                    @error('nib_sku')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">Deskripsi usaha</label>
-                                    <textarea rows="7" name="deskripsi" autocomplete="off" placeholder="Masukkan deskripsi usaha"
-                                        class="form-control @error('deskripsi') is-invalid @enderror" required>{{ old('deskripsi') }}</textarea>
-                                    @error('deskripsi')
+                                    <label for="" class="form-label">Status keanggotaan</label>
+                                    <select name="status" class="form-select @error('status') is-invalid @enderror"
+                                        id="">
+                                        <option selected disabled>Pilih status</option>
+                                        <option value="Aktif" {{ old('status') == 'Aktif' ? 'selected' : '' }}>Aktif
+                                        </option>
+                                        <option value="Tidak aktif"
+                                            {{ old('status') == 'Tidak aktif' ? 'selected' : '' }}>Tidak aktif</option>
+                                    </select>
+                                    @error('status')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -197,16 +221,16 @@
                         name: 'nama'
                     },
                     {
-                        data: 'jenis_usaha',
-                        name: 'jenis_usaha'
+                        data: 'bidang_usaha',
+                        name: 'bidang_usaha'
                     },
                     {
-                        data: 'pendapatan',
-                        name: 'pendapatan'
+                        data: 'nib_sku',
+                        name: 'nib_sku'
                     },
                     {
-                        data: 'pendapatan_tertinggi',
-                        name: 'pendapatan_tertinggi'
+                        data: 'telepon',
+                        name: 'telepon'
                     },
                     {
                         data: 'action', // Pastikan ini benar

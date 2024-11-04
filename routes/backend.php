@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::controller(ManageMemberController::class)->group(function () {
         Route::post('/add-anggota-baru', 'addMember')->name('store.member');
         Route::put('/update-anggota/{id}', 'editMember')->name('update.member');
-        Route::delete('/delete-anggota/{id}', 'deleteMember')->name('destroy.member');
+        Route::put('/update-status/anggota/{id}', 'editStatus')->name('update.memberStatus');
     });
 
     Route::controller(ManageBussinessFieldController::class)->group(function(){

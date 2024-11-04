@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('kampung');
             $table->string('rt');
             $table->string('rw');
+            $table->string('nib_sku');
             $table->string('telepon')->unique();
             $table->enum('status', ['Aktif', 'Tidak aktif']);
             $table->string('avatar')->nullable();

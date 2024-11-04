@@ -51,69 +51,44 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
-                                <label for="" class="form-label">Email</label>
-                                <input type="text" value="{{ $data->email }}" class="form-control" readonly>
+                                <label for="" class="form-label">Kampung</label>
+                                <input type="text" value="{{ $data->kampung }}" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
-                                <label for="" class="form-label">Pendapatan</label>
-                                <input type="text" value="{{ idr($data->pendapatan) }}" class="form-control" readonly>
+                                <label for="" class="form-label">Rukun tetangga (RT)</label>
+                                <input type="text" value="{{ $data->rt }}" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
-                                <label for="" class="form-label">Pendapatan tertinggi</label>
-                                <input type="text" value="{{ idr($data->pendapatan_tertinggi) }}" class="form-control"
+                                <label for="" class="form-label">Rukun warga</label>
+                                <input type="text" value="{{ $data->rw }}" class="form-control"
                                     readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
-                                <label for="" class="form-label">Jenis usaha</label>
-                                <input type="text" value="{{ $data->jenis_usaha }}" class="form-control" readonly>
+                                <label for="" class="form-label">Bidang usaha</label>
+                                <input type="text" value="{{ $data->businessFields->nama_bidang_usaha }}" class="form-control" readonly>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="form-group mb-2">
-                                <label for="" class="form-label">Deskripsi pekerjaan</label>
-                                <textarea rows="7" class="form-control" readonly>{{ $data->deskripsi }}</textarea>
+                                <label for="" class="form-label">NIB/SKU</label>
+                                <input type="text" value="{{ $data->nib_sku }}" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-2">
+                                <label for="" class="form-label">Status keanggotaan</label>
+                                <input type="text" value="{{ $data->status }}" class="form-control" readonly>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-body">
-            <p class="fw-bold">Produk anggota</p>
-            @if (!$products->isEmpty())
-                <div class="row">
-                    @foreach ($products as $item)
-                        <div class="col-md-3">
-                            <a href="{{ route('show.detailProductUMKM', $item->id) }}">
-                                <div class="text-center">
-                                    <div class="d-flex justify-content-center mb-2">
-                                        <img src="{{ $item->foto_produk ? asset('storage/images/' . $item->foto_produk) : 'https://via.placeholder.com/1020x720' }}"
-                                            alt="" srcset="" class="rounded" loading="lazy">
-                                    </div>
-                                    <p>{{ $item->nama_produk }}</p>
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-                {{ $products->links('pagination::bootstrap-5') }}
-            @else
-                <div class="text-center">
-                    <div class="d-flex justify-content-center">
-                        <img src="https://www.svgrepo.com/show/87468/empty-box.svg" width="70" alt=""
-                            srcset="">
-                    </div>
-                    <h3>Anggota ini belum memiliki produk</h3>
-                </div>
-            @endif
         </div>
     </div>
 @endsection

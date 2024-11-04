@@ -24,7 +24,6 @@ class RegisterRequest extends FormRequest
         return [
             'username' => 'required|unique:users,username|max:10',
             'nama' => 'required|string|max:255',
-            'telepon' => 'required|unique:users,telepon|min:12|max:15',
             'email' => 'required|email|unique:users,email|max:255',
             'password' => 'required|string|min:8|max:255',
             'confirm_password' => 'required|string|same:password'
@@ -41,11 +40,6 @@ class RegisterRequest extends FormRequest
             'nama.required' => 'Nama wajib diisi.',
             'nama.string' => 'Nama harus berupa teks.',
             'nama.max' => 'Nama tidak boleh lebih dari 255 karakter.',
-
-            'telepon.required' => 'Nomor telepon wajib diisi.',
-            'telepon.unique' => 'Nomor telepon ini sudah digunakan. Silakan masukkan nomor telepon lain.',
-            'telepon.min' => 'Nomor telepon harus minimal 12 karakter.',
-            'telepon.max' => 'Nomor telepon tidak boleh lebih dari 15 karakter.',
 
             'email.required' => 'Email wajib diisi.',
             'email.email' => 'Format email tidak valid.',
