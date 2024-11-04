@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('information', function (Blueprint $table) {
+        Schema::create('user_feedback', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('admin_id')->constrained('users');
-            $table->string('judul');
-            $table->string('gambar')->nullable();
-            $table->text('konten_informasi');
-            $table->enum('visibilitas', ['Publik', 'Privasi']);
+            $table->string('nama_pengguna');
+            $table->string('email');
+            $table->text('saran_masukan');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('informations');
+        Schema::dropIfExists('user_feedback');
     }
 };

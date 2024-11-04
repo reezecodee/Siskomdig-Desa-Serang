@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\UmkmMember;
-use App\Models\UmkmProduct;
+use App\Models\Member;
 
 class MemberController extends Controller
 {
@@ -18,16 +17,15 @@ class MemberController extends Controller
     public function detailMemberPage($id)
     {
         $title = 'Detail Anggota UMKM';
-        $data = UmkmMember::findOrFail($id);
-        $products = UmkmProduct::where('anggota_id', $id)->paginate(8);
+        $data = Member::findOrFail($id);
 
-        return view('admin.member.detail-member', compact('title', 'data', 'products'));
+        return view('admin.member.detail-member', compact('title', 'data'));
     }
 
     public function editMemberPage($id)
     {
         $title = 'Edit Anggota UMKM';
-        $data = UmkmMember::findOrFail($id);
+        $data = Member::findOrFail($id);
 
         return view('admin.member.edit-member', compact('title', 'data'));
     }

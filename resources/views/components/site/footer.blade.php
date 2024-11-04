@@ -32,8 +32,8 @@
                         <a href="{{ route('site.visiMisi') }}" class="text-start rounded-0 text-body mb-4">Visi & Misi</a>
                         <a href="{{ route('site.agendaKegiatan') }}" class="text-start rounded-0 text-body mb-4">Agenda Kegiatan</a>
                         <a href="{{ route('site.arsipKegiatan') }}" class="text-start rounded-0 text-body mb-4">Arsip Kegiatan</a>
-                        <a href="{{ route('site.anggotaUMKM') }}" class="text-start rounded-0 text-body mb-4">Anggota UMKM</a>
-                        <a href="{{ route('site.produkUMKM') }}" class="text-start rounded-0 text-body mb-4">Produk UMKM</a>
+                        <a href="{{ route('site.anggotaUMKM') }}" class="text-start rounded-0 text-body mb-4">Anggota Komunitas</a>
+                        <a href="{{ route('site.businessField') }}" class="text-start rounded-0 text-body mb-4">Bidang Usaha</a>
                         <a href="{{ route('site.informasi') }}" class="text-start rounded-0 text-body mb-4">Informasi</a>
                     </div>
                 </div>

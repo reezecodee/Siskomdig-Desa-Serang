@@ -37,30 +37,6 @@
                         </a>
                     </div>
                 </div>
-                {{-- <div class="d-none d-md-flex">
-                    <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom">
-                        <!-- Download SVG icon from http://tabler-icons.io/i/moon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
-                        </svg>
-                    </a>
-                    <a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom">
-                        <!-- Download SVG icon from http://tabler-icons.io/i/sun -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-                            <path
-                                d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
-                        </svg>
-                    </a>
-                </div> --}}
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
                         aria-label="Open user menu">
@@ -192,7 +168,7 @@
                             </div>
                         </li>
                         <li
-                            class="nav-item dropdown {{ Request::is('admin/anggota-umkm*') || Request::is('admin/produk-umkm*') ? 'active' : '' }}">
+                            class="nav-item dropdown {{ Request::is('admin/anggota-umkm*') || Request::is('admin/bidang-usaha*') ? 'active' : '' }}">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
                                 data-bs-auto-close="outside" role="button" aria-expanded="false">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block"><svg
@@ -216,15 +192,15 @@
                                             href="{{ route('show.memberUMKM') }}">
                                             Anggota UMKM
                                         </a>
-                                        <a class="dropdown-item {{ Request::is('admin/produk-umkm*') ? 'active' : '' }}"
-                                            href="{{ route('show.productUMKM') }}">
-                                            Produk UMKM
+                                        <a class="dropdown-item {{ Request::is('admin/bidang-usaha*') ? 'active' : '' }}"
+                                            href="{{ route('show.businessField') }}">
+                                            Bidang Usaha
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item {{ Request::is('admin/kategori-produk') ? 'active' : '' }}">
+                        <li class="nav-item {{ Request::is('admin/saran-masukan') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('show.category') }}">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                                     <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -241,7 +217,7 @@
                                     </span>
                                 </span>
                                 <span class="nav-link-title">
-                                    Buat Kategori
+                                    Saran Masukan
                                 </span>
                             </a>
                         </li>

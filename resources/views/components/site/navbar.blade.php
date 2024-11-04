@@ -38,10 +38,9 @@
                         <div class="dropdown-menu m-0 rounded-0">
                             <a href="{{ route('site.anggotaUMKM') }}"
                                 class="dropdown-item {{ Request::is('mitra-komunitas/anggota-umkm*') ? 'active' : '' }}">Anggota
-                                UMKM</a>
-                            <a href="{{ route('site.produkUMKM') }}"
-                                class="dropdown-item {{ Request::is('mitra-komunitas/produk-umkm*') ? 'active' : '' }}">Produk
-                                UMKM</a>
+                                Komunitas</a>
+                            <a href="{{ route('site.businessField') }}"
+                                class="dropdown-item {{ Request::is('mitra-komunitas/bidang-usaha*') ? 'active' : '' }}">Bidang Usaha</a>
                         </div>
                     </div>
                     <a href="{{ route('site.informasi') }}"

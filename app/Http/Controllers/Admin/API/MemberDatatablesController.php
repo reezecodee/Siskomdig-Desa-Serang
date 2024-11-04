@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\UmkmMember;
+use App\Models\Member;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -12,7 +12,7 @@ class MemberDatatablesController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $members = UmkmMember::query()->latest();
+            $members = Member::query()->latest();
 
             // Menggunakan DataTables untuk memproses data server-side
             return DataTables::of($members)
@@ -33,12 +33,6 @@ class MemberDatatablesController extends Controller
                         </a>
                     </div>
                     ';
-                })
-                ->editColumn('pendapatan', function($member){
-                    return idr($member->pendapatan);
-                })
-                ->editColumn('pendapatan_tertinggi', function($member){
-                    return idr($member->pendapatan_tertinggi);
                 })
                 ->rawColumns(['action'])
                 ->make(true);

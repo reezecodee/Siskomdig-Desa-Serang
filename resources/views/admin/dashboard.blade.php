@@ -44,7 +44,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
-                        <div class="subheader">Produk baru</div>
+                        <div class="subheader">Bidang usaha baru</div>
                         <div class="ms-auto lh-1">
                             <div class="dropdown">
                                 <a class="text-muted" href="#">7 hari terakhir</a>
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-baseline">
-                        <div class="h1 mb-0 me-2">{{ $countProductsSevenDaysAgo }}</div>
+                        <div class="h1 mb-0 me-2">{{ $countBusinessFieldSevenDaysAgo }}</div>
                     </div>
                 </div>
                 <div id="chart-revenue-bg" class="chart-sm" style="pointer-events: none;"></div>
@@ -80,7 +80,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
-                        <div class="subheader">Kategori baru</div>
+                        <div class="subheader">Informasi baru</div>
                         <div class="ms-auto lh-1">
                             <div class="dropdown">
                                 <a class="text-muted" href="#">7 hari terakhir</a>
@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-baseline">
-                        <div class="h1 mb-3 me-2">{{ $countCategoriesSevenDaysAgo }}</div>
+                        <div class="h1 mb-3 me-2">{{ $countInformationSevenDaysAgo }}</div>
                     </div>
                     <div id="chart-active-users" class="chart-sm" style="pointer-events: none;"></div>
                 </div>
@@ -115,7 +115,7 @@
                                         {{ $countAllMembers }} Anggota
                                     </div>
                                     <div class="text-muted">
-                                        Anggota UMKM terdaftar
+                                        Anggota komunitas terdaftar
                                     </div>
                                 </div>
                             </div>
@@ -138,10 +138,10 @@
                                 </div>
                                 <div class="col">
                                     <div class="font-weight-medium">
-                                        {{ $countAllProducts }} Produk
+                                        {{ $countAllBusinesses }} Bidang
                                     </div>
                                     <div class="text-muted">
-                                        Produk UMKM
+                                        Bidang usaha
                                     </div>
                                 </div>
                             </div>
@@ -166,7 +166,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="font-weight-medium">
-                                        {{ $countAllCategories }} Kategori
+                                        {{ $countAllInformations }} Kategori
                                     </div>
                                     <div class="text-muted">
                                         Kategori produk

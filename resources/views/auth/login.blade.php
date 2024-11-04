@@ -10,10 +10,6 @@
                                 class="leading-none px-2 inline-block text-gray-600 bg-white transform translate-y-1/2 text-2xl font-bold mb-2">
                                 Login ke Aplikasi
                             </div>
-                            <div
-                                class="leading-none px-2 inline-block text-gray-600 bg-white transform translate-y-1/2 text-sm font-medium">
-                                Masukkan data akun kamu untuk melanjutkan.
-                            </div>
                         </div>
 
                         <x-auth.alert.success :success="session('success')" />

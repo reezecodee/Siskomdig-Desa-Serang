@@ -4,25 +4,19 @@ use App\Http\Controllers\Admin\Backend\ManageAdminController;
 use App\Http\Controllers\Admin\Backend\ManageAgendaController;
 use App\Http\Controllers\Admin\Backend\ManageApplicationController;
 use App\Http\Controllers\Admin\Backend\ManageArchiveController;
-use App\Http\Controllers\Admin\Backend\ManageCategoryController;
+use App\Http\Controllers\Admin\Backend\ManageBussinessFieldController;
 use App\Http\Controllers\Admin\Backend\ManageInformationController;
 use App\Http\Controllers\Admin\Backend\ManageMemberController;
 use App\Http\Controllers\Admin\Backend\ManageOrganizationController;
 use App\Http\Controllers\Admin\Backend\ManagePasswordController;
-use App\Http\Controllers\Admin\Backend\ManageProductController;
 use App\Http\Controllers\Admin\Backend\ManageProfileController;
+use App\Http\Controllers\Admin\Backend\ManageUserFeedbackController;
 use App\Http\Controllers\Admin\Backend\ManageVisiMisionController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     Route::controller(ManageApplicationController::class)->group(function () {
         Route::put('/update-info-aplikasi', 'updateAppInfo')->name('update.application');
-    });
-
-    Route::controller(ManageCategoryController::class)->group(function () {
-        Route::post('/add-kategori-baru', 'addCategory')->name('store.category');
-        Route::put('/update-kategori/{id}', 'editCategory')->name('update.category');
-        Route::delete('/delete-kategori/{id}', 'deleteCategory')->name('destroy.category');
     });
 
     Route::controller(ManageVisiMisionController::class)->group(function () {
@@ -51,10 +45,12 @@ Route::middleware('auth')->group(function () {
         Route::delete('/delete-anggota/{id}', 'deleteMember')->name('destroy.member');
     });
 
-    Route::controller(ManageProductController::class)->group(function () {
-        Route::post('/add-produk', 'addProduct')->name('store.product');
-        Route::put('/update-produk/{id}', 'editProduct')->name('update.product');
-        Route::delete('/delete-produk/{id}', 'deleteProduct')->name('destroy.product');
+    Route::controller(ManageBussinessFieldController::class)->group(function(){
+
+    });
+
+    Route::controller(ManageUserFeedbackController::class)->group(function(){
+
     });
 
     Route::controller(ManageInformationController::class)->group(function () {

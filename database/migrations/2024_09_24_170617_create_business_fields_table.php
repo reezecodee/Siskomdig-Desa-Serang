@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('information', function (Blueprint $table) {
+        Schema::create('business_fields', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('admin_id')->constrained('users');
-            $table->string('judul');
-            $table->string('gambar')->nullable();
-            $table->text('konten_informasi');
-            $table->enum('visibilitas', ['Publik', 'Privasi']);
+            $table->string('nama_bidang_usaha');
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('informations');
+        Schema::dropIfExists('business_fields');
     }
 };

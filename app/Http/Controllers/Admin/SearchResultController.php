@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\UmkmMember;
+use App\Models\Member;
 use Illuminate\Http\Request;
 
 class SearchResultController extends Controller
@@ -14,7 +14,7 @@ class SearchResultController extends Controller
         $search = $request->query('s');
         if (!empty($search)) {
             // Jika ada nilai search, lakukan query dengan pagination
-            $members = UmkmMember::where('nama', 'like', "%{$search}%")
+            $members = Member::where('nama', 'like', "%{$search}%")
                 ->paginate(9)
                 ->appends(['s' => $search]);
         } else {

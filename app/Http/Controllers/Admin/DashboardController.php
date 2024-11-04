@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\UmkmMember;
-use App\Models\UmkmProduct;
+use App\Models\BusinessField;
+use App\Models\Information;
+use App\Models\Member;
 use App\Models\User;
 use Carbon\Carbon;
 
@@ -15,18 +15,18 @@ class DashboardController extends Controller
     {
         $title = 'Dashboard Admin';
 
-        $countMembersSevenDaysAgo = UmkmMember::whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])
+        $countMembersSevenDaysAgo = Member::whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])
             ->count();
-        $countProductsSevenDaysAgo = UmkmProduct::whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])
+        $countBusinessFieldSevenDaysAgo = BusinessField::whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])
             ->count();
-        $countCategoriesSevenDaysAgo = Category::whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])
+        $countInformationSevenDaysAgo = Information::whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()])
             ->count();
 
-        $countAllMembers = UmkmMember::count();
-        $countAllProducts = UmkmProduct::count();
-        $countAllCategories = Category::count();
+        $countAllMembers = Member::count();
+        $countAllBusinesses = BusinessField::count();
+        $countAllInformations = Information::count();
         $countAllAdmins = User::count();
 
-        return view('admin.dashboard', compact('title', 'countMembersSevenDaysAgo', 'countProductsSevenDaysAgo', 'countCategoriesSevenDaysAgo', 'countAllMembers', 'countAllProducts', 'countAllCategories', 'countAllAdmins'));
+        return view('admin.dashboard', compact('title', 'countMembersSevenDaysAgo', 'countBusinessFieldSevenDaysAgo', 'countInformationsSevenDaysAgo', 'countAllMembers', 'countAllBusinesses', 'countAllInformations', 'countAllAdmins'));
     }
 }

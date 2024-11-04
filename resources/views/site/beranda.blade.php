@@ -51,8 +51,6 @@
                         bidang sewa ke internet dan Pamsimas yang disebar ke masyarakatnya sehingga dapat membantu Aktivitas
                         keseharian masyarakat desa.
                     </p>
-                    <a href="{{ route('site.informasi') }}" class="btn btn-primary px-5 py-3 btn-border-radius">Lihat
-                        informasi</a>
                 </div>
             </div>
         </div>
@@ -77,152 +75,68 @@
     </div>
     <!-- About End -->
 
-
-    <!-- Service Start -->
-    <div class="container-fluid service gradient-green py-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
-                    Bagaimana Kami Bekerja?</h4>
-                <p class="mb-5 text-dark">Untuk menggambarkan bagaimana cara kami bekerja, kami selalu menerapkan
-                    nilai-nilai seperti Inovasi, Kolaborasi, dan Digitalisasi.</p>
-            </div>
-            <div class="row">
-                <div class="col-md-4 mb-3 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="card w-full">
-                        <img src="/images/action/inovasi.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">Kami memberikan informasi inovasi bagaimana cara memajukan UMKM di
-                                berbagai sektor.</p>
-                        </div>
-                    </div>
+    @if (!$informations->isEmpty())
+        <div class="container-fluid py-5">
+            <div class="container py-5">
+                <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+                    <h4
+                        class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
+                        Informasi Terbaru Kami</h4>
                 </div>
-                <div class="col-md-4 mb-3 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="card w-full">
-                        <img src="/images/action/kolaborasi.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">Berkolaborasi dengan Universitas Bina Sarana Informatika, guna belajar
-                                informasi akademik dan dunia informatika.</p>
+                <div class="row g-4 justify-content-center mt-3">
+                    @foreach ($informations as $item)
+                        <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
+                            <a href="{{ route('site.bacaInformasi', $item->id) }}" class="text-decoration-none">
+                                <div class="blog-item rounded shadow-sm overflow-hidden bg-white">
+                                    <!-- Gambar Artikel -->
+                                    <div class="blog-img position-relative overflow-hidden">
+                                        <img src="{{ $item->thumbnail ? asset('storage/images/' . $item->thumbnail) : 'https://via.placeholder.com/2070x1380' }}"
+                                            class="img-fluid w-100" alt="Image"
+                                            style="object-fit: cover; height: 200px;">
+                                    </div>
+
+                                    <!-- Tanggal dan Komentar -->
+                                    <div class="d-flex justify-content-between px-4 py-2 border-bottom border-primary">
+                                        <small class="text-muted"><i
+                                                class="fas fa-calendar-alt me-1"></i>{{ $item->created_at->format('d M Y') }}</small>
+                                    </div>
+
+                                    <!-- Konten Blog -->
+                                    <div class="px-4 py-3">
+                                        <div class="blog-text-inner mb-2">
+                                            <h6 class="text-dark">{{ truncateText($item->judul) }}</h6>
+                                        </div>
+
+                                        <!-- Informasi Admin -->
+                                        <div class="d-flex align-items-center">
+                                            <div class="overflow-hidden rounded-circle border border-primary">
+                                                <img src="{{ $item->users->avatar ? asset('storage/profiles/' . $item->users->avatar) : 'https://via.placeholder.com/300x300' }}"
+                                                    class="img-fluid rounded-circle p-1" alt="Admin Image"
+                                                    style="width: 50px; height: 50px; object-fit: cover;">
+                                            </div>
+                                            <div class="ms-3">
+                                                <h6 class="mb-0 text-primary">{{ $item->users->nama }}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-                <div class="col-md-4 mb-3 wow fadeIn" data-wow-delay="0.7s">
-                    <div class="card w-full">
-                        <img src="/images/action/digitalisasi.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">Membimbing pelaku UMKM untuk memanfaatkan E-commerce sebagai sarana
-                                perluasan jangkauan pasar.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Service End -->
-
-
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
-                    Timeline Perjalanan Kami</h4>
-            </div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-10 col-12">
-                        <div class="timeline timeline-line-solid">
-                            <div class="timeline-item wow fadeIn" data-wow-delay="0.3s">
-                                <div class="timeline-point"></div>
-                                <div class="timeline-event">
-                                    <div class="widget has-shadow">
-                                        <div class="widget-body">
-                                            <img src="https://images.unsplash.com/photo-1719937206094-8de79c912f40?q=80&amp;w=2070&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                class="w-100" alt="" srcset="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="timeline-item wow fadeIn" data-wow-delay="0.3s">
-                                <div class="timeline-event">
-                                    <div class="widget has-shadow">
-                                        <div class="widget-body">
-                                            <p class="fw-bold">1 Januari 2024</p>
-                                            <p>
-                                                Kami membentuk tim dengan yang berfokus memajukan pelaku UMKM Desa
-                                                Serang, Kabupaten Tasikmalaya. l
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="timeline-item wow fadeIn" data-wow-delay="0.5s">
-                                <div class="timeline-point"></div>
-                                <div class="timeline-event">
-                                    <div class="widget has-shadow">
-                                        <div class="widget-body">
-                                            <img src="https://images.unsplash.com/photo-1719937206094-8de79c912f40?q=80&amp;w=2070&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                class="w-100" alt="" srcset="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="timeline-item wow fadeIn" data-wow-delay="0.5s">
-                                <div class="timeline-event">
-                                    <div class="widget has-shadow">
-                                        <div class="widget-body">
-                                            <p class="fw-bold">20 Mei 2024</p>
-                                            <p>
-                                                Berkolaborasi dengan Univesitas Bina Sarana Informatika Kota
-                                                Tasikmalaya, untuk mengedukasi pelaku UMKM Desa Serang tentang strategi
-                                                membangun bisnis di E-commerce.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="timeline-item wow fadeIn" data-wow-delay="0.7s">
-                                <div class="timeline-point"></div>
-                                <div class="timeline-event">
-                                    <div class="widget has-shadow">
-                                        <div class="widget-body">
-                                            <img src="https://images.unsplash.com/photo-1719937206094-8de79c912f40?q=80&amp;w=2070&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                class="w-100" alt="" srcset="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="timeline-item wow fadeIn" data-wow-delay="0.7s">
-                                <div class="timeline-event">
-                                    <div class="widget has-shadow">
-                                        <div class="widget-body">
-                                            <p class="fw-bold">16 Oktober 2024</p>
-                                            <p>
-                                                Membangun aplikasi SISKOMDES berbasis web bersama Univesitas Bina Sarana
-                                                Informatika Kota Tasikmalaya, guna sebagai sarana informasi pelaku UMKM
-                                                Desa Serang
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="d-flex justify-content-end wow fadeInUp" data-wow-delay="0.3s">
+                    <a href="{{ route('site.informasi') }}" class="btn btn-primary px-5 py-3 mt-3">Lihat
+                        lebih banyak...</a>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
 
     <div>
         <blockquote class="quote-box">
             <div class="container p-5">
                 <span class="quotation-mark display-3">
-                    <img src="https://www.svgrepo.com/show/500981/quote.svg" width="90" alt=""
-                        srcset=""
+                    <img src="https://www.svgrepo.com/show/500981/quote.svg" width="90" alt="" srcset=""
                         style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(360deg) brightness(100%) contrast(100%);">
                 </span>
                 <p class="quote-text display-6">
@@ -233,138 +147,6 @@
             </div>
         </blockquote>
     </div>
-
-
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
-                    Pertanyaan yang Sering Ditanyakan</h4>
-            </div>
-            <div class="container overflow-hidden">
-                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s"
-                    style="max-width: 800px; visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                    <p class="text-dark mb-0">Berikut ini merupakan pertanyaan yang sering ditanyakan oleh para pelaku
-                        UMKM Desa
-                        Serang.
-                    </p>
-                </div>
-                <div class="row g-5 align-items-center">
-                    <div class="col-lg-6 order-2 order-md-1 wow fadeInLeft" data-wow-delay="0.2s"
-                        style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
-                        <div class="accordion accordion-flush bg-light rounded p-0 p-sm-5" id="accordionFlushSection">
-                            <div class="accordion-item rounded-top">
-                                <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button rounded-top collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                        aria-expanded="false" aria-controls="flush-collapseOne">
-                                        What Does This Tool Do?
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushSection">
-                                    <div class="accordion-body">Placeholder content for this accordion, which is
-                                        intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.</div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                        aria-controls="flush-collapseTwo">
-                                        What Are The Disadvantages Of Online Trading?
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushSection">
-                                    <div class="accordion-body">Placeholder content for this accordion, which is
-                                        intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the second item's
-                                        accordion body. Let's imagine this being filled with some actual content.</div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseThree" aria-expanded="false"
-                                        aria-controls="flush-collapseThree">
-                                        Is Online Trading Safe?
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseThree" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushSection">
-                                    <div class="accordion-body">Placeholder content for this accordion, which is
-                                        intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the second item's
-                                        accordion body. Let's imagine this being filled with some actual content.</div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingFour">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseFour" aria-expanded="false"
-                                        aria-controls="flush-collapseFour">
-                                        What Is Online Trading, And How Dose It Work?
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseFour" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushSection">
-                                    <div class="accordion-body">Placeholder content for this accordion, which is
-                                        intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the second item's
-                                        accordion body. Let's imagine this being filled with some actual content.</div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingFive">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseFive" aria-expanded="false"
-                                        aria-controls="flush-collapseFive">
-                                        Which App Is Best For Online Trading?
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseFive" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushSection">
-                                    <div class="accordion-body">Placeholder content for this accordion, which is
-                                        intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the second item's
-                                        accordion body. Let's imagine this being filled with some actual content.</div>
-                                </div>
-                            </div>
-                            <div class="accordion-item rounded-bottom">
-                                <h2 class="accordion-header" id="flush-headingSix">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseSix" aria-expanded="false"
-                                        aria-controls="flush-collapseSix">
-                                        How To Create A Trading Account?
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseSix" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushSection">
-                                    <div class="accordion-body">Placeholder content for this accordion, which is
-                                        intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the third item's
-                                        accordion body. Nothing more exciting happening here in terms of content, but
-                                        just
-                                        filling up the space to make it look, at least at first glance, a bit more
-                                        representative of how this would look in a real-world application.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 order-1 order-md-2 wow fadeInRight" data-wow-delay="0.2s"
-                        style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInRight;">
-                        <div class="">
-                            <img src="/images/any/faq.png" class="img-fluid w-100" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <div class="container-fluid py-5 gradient-green">
         <div class="container py-5">

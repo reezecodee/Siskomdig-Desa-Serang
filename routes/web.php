@@ -3,13 +3,11 @@
 use App\Http\Controllers\Admin\AgendaController;
 use App\Http\Controllers\Admin\ApplicationController;
 use App\Http\Controllers\Admin\ArchiveController;
-use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InformationController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\OrganizationStructureController;
-use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SearchResultController;
 use App\Http\Controllers\Admin\StorageController;
@@ -80,19 +78,6 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         });
     });
 
-    Route::controller(ProductController::class)->group(function () {
-        Route::prefix('produk-umkm')->group(function () {
-            Route::get('/', 'productPage')->name('show.productUMKM');
-            Route::get('/{id}/edit', 'editProductPage')->name('show.editProductUMKM');
-            Route::get('/{id}/detail', 'detailProductPage')->name('show.detailProductUMKM');
-        });
-    });
-
-    Route::controller(CategoryController::class)->group(function () {
-        Route::get('/kategori-produk', 'categoryPage')->name('show.category');
-        Route::get('/detail-kategori/{id}', 'detailCategoryPage')->name('show.detailCategory');
-    });
-
     Route::controller(ProfileController::class)->group(function () {
         Route::get('/profile-saya', 'profilePage')->name('show.profile');
     });
@@ -131,11 +116,11 @@ Route::controller(SiteController::class)->group(function () {
     Route::get('/informasi/{id}/baca', 'readInformationPage')->name('site.bacaInformasi');
 
     Route::prefix('mitra-komunitas')->group(function () {
-        Route::get('/anggota-umkm', 'memberUMKM')->name('site.anggotaUMKM');
-        Route::get('/anggota-umkm/{id}/detail', 'detailMemberUMKM')->name('site.detailAnggotaUMKM');
+        Route::get('/anggota-umkm', 'memberUMKMPage')->name('site.anggotaUMKM');
+        Route::get('/anggota-umkm/{id}/detail', 'detailMemberUMKMPage')->name('site.detailAnggotaUMKM');
 
-        Route::get('/produk-umkm', 'productUMKM')->name('site.produkUMKM');
-        Route::get('/produk-umkm/{id}/detail', 'detailProductUMKM')->name('site.detailProdukUMKM');
+        Route::get('/bidang-usaha', 'businessFieldPage')->name('site.businessField');
+        Route::get('/bidang-usaha/{id}/detail', 'detailBusinessFieldPage')->name('site.detailBusinessField');
     });
 });
 
