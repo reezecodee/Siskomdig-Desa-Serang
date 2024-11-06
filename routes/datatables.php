@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\API\ArchiveDatatablesController;
 use App\Http\Controllers\Admin\API\BusinessFieldDatatablesController;
 use App\Http\Controllers\Admin\API\InformationDatatablesController;
 use App\Http\Controllers\Admin\API\MemberDatatablesController;
+use App\Http\Controllers\Admin\API\UserFeedbackDatatablesController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
@@ -24,6 +25,10 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(BusinessFieldDatatablesController::class)->group(function () {
         Route::get('/api/business-fields', 'index')->name('api.businessField');
+    });
+
+    Route::controller(UserFeedbackDatatablesController::class)->group(function () {
+        Route::get('/api/user-feedback', 'index')->name('api.userFeedback');
     });
 
     Route::controller(InformationDatatablesController::class)->group(function () {

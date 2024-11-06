@@ -87,6 +87,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::controller(UserFeedbackController::class)->group(function () {
         Route::get('/saran-masukan', 'userFeedbackPage')->name('show.userFeedback');
+        Route::get('/detail-saran-masukan/{id}', 'detailUserFeedbackPage')->name('show.detailUserFeedback');
     });
 
     Route::controller(ProfileController::class)->group(function () {

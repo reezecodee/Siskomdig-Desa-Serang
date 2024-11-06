@@ -52,7 +52,8 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::controller(ManageUserFeedbackController::class)->group(function(){
-
+        Route::post('/add-user-feedback', 'addUserFeedback')->name('store.userFeedback');
+        Route::delete('/delete-user-feedback/{id}', 'deleteUserFeedback')->name('destroy.userFeedback');
     });
 
     Route::controller(ManageInformationController::class)->group(function () {
