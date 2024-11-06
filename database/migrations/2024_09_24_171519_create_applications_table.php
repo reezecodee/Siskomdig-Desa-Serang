@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('email');
             $table->text('alamat');
             $table->text('google_maps');
+            $table->string('pembuat_kutipan');
+            $table->text('kutipan_motivasi');
             $table->timestamps();
         });
     }

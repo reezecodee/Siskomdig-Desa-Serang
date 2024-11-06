@@ -32,6 +32,11 @@ class ManageBussinessFieldController extends Controller
     public function deleteBusinessField($id)
     {
         $business = BusinessField::findOrFail($id);
+
+        if ($business->members()->exists()) {
+            return back()->with('failed', "Bidang usaha \"{$business->nama_bidang_usaha}\" tidak bisa dihapus karena memiliki relasi.");
+        }
+
         $business->delete();
 
         return back()->withSuccess("Berhasil bidang usaha \"{$business->nama_bidang_usaha}\" dari daftar.");

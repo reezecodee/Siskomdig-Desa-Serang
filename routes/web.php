@@ -134,6 +134,9 @@ Route::controller(SiteController::class)->group(function () {
         Route::get('/bidang-usaha', 'businessFieldPage')->name('site.businessField');
         Route::get('/bidang-usaha/{id}/detail', 'detailBusinessFieldPage')->name('site.detailBusinessField');
     });
+
+    Route::get('/syarat-ketentuan', 'termsAndConditions')->name('site.syaratKetentuan');
+    Route::get('/kebijakan-privasi', 'privacyPolicy')->name('site.kebijakanPrivasi');
 });
 
 require __DIR__ . '/datatables.php';

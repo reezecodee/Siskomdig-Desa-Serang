@@ -27,10 +27,12 @@ class AppUpdateRequest extends FormRequest
             'deskripsi' => 'required|string',
             'favicon' => 'nullable|mimes:png,jpg,ico,jpeg',
             'logo' => 'nullable|mimes:png,jpg,jpeg',
-            'telepon' => 'required|min:12|max:15',
+            'telepon' => 'required|min:12|max:20',
             'email' => 'required|email|max:255',
             'alamat' => 'required|string',
-            'google_maps' => 'required'
+            'google_maps' => 'required',
+            'pembuat_kutipan' => 'required|string|max:255',
+            'kutipan_motivasi' => 'required'
         ];
     }
 
@@ -66,6 +68,12 @@ class AppUpdateRequest extends FormRequest
             'alamat.string' => 'Kolom alamat harus berupa teks.',
 
             'google_maps.required' => 'Kolom Google Maps harus diisi.',
+
+            'pembuat_kutipan.required' => 'Nama pembuat kutipan wajib diisi.',
+            'pembuat_kutipan.string' => 'Nama pembuat kutipan harus berupa teks.',
+            'pembuat_kutipan.max' => 'Nama pembuat kutipan maksimal 255 karakter.',
+
+            'kutipan_motivasi.required' => 'Kutipan motivasi wajib diisi.',
         ];
     }
 }

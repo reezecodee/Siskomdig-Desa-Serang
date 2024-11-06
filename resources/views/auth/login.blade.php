@@ -78,11 +78,11 @@
                             </form>
                             <p class="mt-6 text-xs text-gray-600 text-center">
                                 Dengan melakukan login saya setuju terhadap
-                                <a href="#" class="border-b border-gray-500 border-dotted">
+                                <a href="{{ route('site.syaratKetentuan') }}" class="border-b border-gray-500 border-dotted">
                                     Syarat & Ketentuan
                                 </a>
                                 dan
-                                <a href="#" class="border-b border-gray-500 border-dotted">
+                                <a href="{{ route('site.kebijakanPrivasi') }}" class="border-b border-gray-500 border-dotted">
                                     Kebijakan Privasi
                                 </a>
                                 aplikasi komunitas digital Desa Serang.

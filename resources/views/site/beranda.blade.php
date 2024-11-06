@@ -27,53 +27,18 @@
     <div class="container-fluid py-5 about bg-light">
         <div class="container py-5">
             <div class="row g-5 align-items-center">
-                <div class="col-lg-5 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="video border">
-                        <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                            data-src="https://www.youtube.com/embed/o3x0idBuLT8?si=t4jBB70rlr1qWjpS"
-                            data-bs-target="#videoModal">
-                            <span></span>
-                        </button>
-                    </div>
-                </div>
-                <div class="col-lg-7 wow fadeIn" data-wow-delay="0.3s">
+                <div class="col-lg-12 wow fadeIn" data-wow-delay="0.3s">
                     <h4
                         class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
                         Tentang Desa Serang</h4>
                     <h1 class="text-dark mb-4 display-6">Detail informasi tentang Desa Serang</h1>
-                    <p class="text-dark mb-4">Desa Serang adalah desa yang terletak di kecamatan Salawu Kabupaten
-                        Tasikmalaya. Desa Serang memiliki sumber daya alam yang melimpah dan pemandangan yang indah serta
-                        masyarakatnya yang Harmoni aman dan tentram. Jumlah penduduk desa Serang 4632 jiwa 1468 kepala
-                        keluarga. Batas Desa Serang sebelah utara dengan Kecamatan Cigalontang sebelah barat dengan desa
-                        karyamukti sebelah selatan dengan Desta margalaksana dan sebelah timur dengan Desa salebu. Mayoritas
-                        penduduk desa Serang bermata pencaharian sebagai petani. Selain itu ada juga yang berprofesi sebagai
-                        pedagang dan peternak seperti ikan ayam sapi atau kerbau dan domba. Desa Serang memiliki usaha di
-                        bidang sewa ke internet dan Pamsimas yang disebar ke masyarakatnya sehingga dapat membantu Aktivitas
-                        keseharian masyarakat desa.
+                    <p class="text-dark mb-4">
+                        {!! $application->deskripsi !!}
                     </p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Modal Video -->
-    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content rounded-0">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- 16:9 aspect ratio -->
-                    <div class="ratio ratio-16x9">
-                        <iframe class="embed-responsive-item" src="" id="video" allowfullscreen
-                            allowscriptaccess="always" allow="autoplay"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- About End -->
 
     @if (!$informations->isEmpty())
         <div class="container-fluid py-5">
@@ -140,10 +105,9 @@
                         style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(360deg) brightness(100%) contrast(100%);">
                 </span>
                 <p class="quote-text display-6">
-                    Kami memahami setiap langkah dalam proses akan membantu menemukan jalan tercepat dan paling
-                    efisien untuk mencapai tujuan kami.
+                    {{ $application->kutipan_motivasi }}
                 </p>
-                <p>- Kepala Desa Serang</p>
+                <p>- {{ $application->pembuat_kutipan }}</p>
             </div>
         </blockquote>
     </div>

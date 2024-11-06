@@ -34,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
             $application->email = '';
             $application->alamat = '';
             $application->google_maps = '';
+            $application->pembuat_kutipan = '';
+            $application->kutipan_motivasi = '';
         }
 
         View::share('application', $application);

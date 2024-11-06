@@ -8,6 +8,7 @@ use App\Models\Archive;
 use App\Models\Information;
 use App\Models\Member;
 use App\Models\OrganizationStructure;
+use App\Models\Policy;
 use App\Models\UmkmMember;
 use App\Models\VisiMision;
 use Carbon\Carbon;
@@ -126,9 +127,35 @@ class SiteController extends Controller
         return view('site.detail-anggota', compact('title', 'data'));
     }
 
-    public function businessFieldPage(){
+    public function businessFieldPage()
+    {
         $title = 'Bidang Usaha Yang Ada Di Desa Serang';
 
         return view('site.bidang-usaha', compact('title'));
+    }
+
+    public function termsAndConditions()
+    {
+        $title = 'Syarat dan Ketentuan';
+        $termsAndConditions = Policy::latest()->first();
+
+
+        if (!$termsAndConditions) {
+            $termsAndConditions = new Policy();
+        }
+
+        return view('site.syarat-ketentuan', compact('title', 'termsAndConditions'));
+    }
+
+    public function privacyPolicy()
+    {
+        $title = 'Kebijakan Privasi';
+        $privacyPolicy = Policy::latest()->first();
+
+
+        if (!$privacyPolicy) {
+            $privacyPolicy = new Policy();
+        }
+        return view('site.kebijakan-privasi', compact('title', 'privacyPolicy'));
     }
 }

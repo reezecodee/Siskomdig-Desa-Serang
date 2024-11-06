@@ -5,7 +5,7 @@
             <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="footer-item">
                     <img src="{{ $application->logo ? '/'.$application->logo : '' }}" width="200" alt="Logo" srcset="" class="mb-3">
-                    <p class="mb-4">{{ $application->deskripsi ?? '' }}</p>
+                    <p class="mb-4"></p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 col-xl-3">
@@ -44,10 +44,8 @@
                         class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
                         Kebijakan</h4>
                     <div class="d-flex flex-column align-items-start">
-                        <a href="" class="text-body mb-4">Syarat & Ketentuan</a>
-                        <a href="" class="text-start rounded-0 text-body mb-4">Kebijakan Privasi</a>
-                        <a href="" class="text-start rounded-0 text-body mb-4">Tentang Kami</a>
-                        <a href="" class="text-start rounded-0 text-body mb-4">Tentang Aplikasi</a>
+                        <a href="{{ route('site.syaratKetentuan') }}" class="text-body mb-4">Syarat & Ketentuan</a>
+                        <a href="{{ route('site.kebijakanPrivasi') }}" class="text-start rounded-0 text-body mb-4">Kebijakan Privasi</a>
                     </div>
                 </div>
             </div>
@@ -62,10 +60,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>{{ $application->nama_aplikasi }}</a></span>
-            </div>
-            <div class="col-md-6 my-auto text-center text-md-end text-white">
-                Desa Serang, Kabupaten Tasikmalaya
+                <span class="text-light"><a href="#">{{ $application->nama_aplikasi }}</a></span>
             </div>
         </div>
     </div>

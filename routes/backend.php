@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Backend\ManageInformationController;
 use App\Http\Controllers\Admin\Backend\ManageMemberController;
 use App\Http\Controllers\Admin\Backend\ManageOrganizationController;
 use App\Http\Controllers\Admin\Backend\ManagePasswordController;
+use App\Http\Controllers\Admin\Backend\ManagePolicyController;
 use App\Http\Controllers\Admin\Backend\ManageProfileController;
 use App\Http\Controllers\Admin\Backend\ManageUserFeedbackController;
 use App\Http\Controllers\Admin\Backend\ManageVisiMisionController;
@@ -45,13 +46,13 @@ Route::middleware('auth')->group(function () {
         Route::put('/update-status/anggota/{id}', 'editStatus')->name('update.memberStatus');
     });
 
-    Route::controller(ManageBussinessFieldController::class)->group(function(){
+    Route::controller(ManageBussinessFieldController::class)->group(function () {
         Route::post('/add-bidang-usaha', 'addBusinessField')->name('store.businessField');
         Route::put('/update-bidang-usaha/{id}', 'editBusinessField')->name('update.businessField');
         Route::delete('/delete-business-field/{id}', 'deleteBusinessField')->name('destroy.businessField');
     });
 
-    Route::controller(ManageUserFeedbackController::class)->group(function(){
+    Route::controller(ManageUserFeedbackController::class)->group(function () {
         Route::post('/add-user-feedback', 'addUserFeedback')->name('store.userFeedback');
         Route::delete('/delete-user-feedback/{id}', 'deleteUserFeedback')->name('destroy.userFeedback');
     });
@@ -74,5 +75,9 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(ManagePasswordController::class)->group(function () {
         Route::post('/change-password', 'changePassword')->name('change.password');
+    });
+
+    Route::controller(ManagePolicyController::class)->group(function () {
+        Route::put('/add-policy', 'configPolicy')->name('config.policy');
     });
 });
