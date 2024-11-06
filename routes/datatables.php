@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\API\AdminDatatablesController;
 use App\Http\Controllers\Admin\API\AgendaDatatablesController;
 use App\Http\Controllers\Admin\API\ArchiveDatatablesController;
+use App\Http\Controllers\Admin\API\BusinessFieldDatatablesController;
 use App\Http\Controllers\Admin\API\InformationDatatablesController;
 use App\Http\Controllers\Admin\API\MemberDatatablesController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,10 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(MemberDatatablesController::class)->group(function () {
         Route::get('/api/members', 'index')->name('api.members');
+    });
+
+    Route::controller(BusinessFieldDatatablesController::class)->group(function () {
+        Route::get('/api/business-fields', 'index')->name('api.businessField');
     });
 
     Route::controller(InformationDatatablesController::class)->group(function () {

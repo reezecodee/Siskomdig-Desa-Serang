@@ -46,7 +46,9 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::controller(ManageBussinessFieldController::class)->group(function(){
-
+        Route::post('/add-bidang-usaha', 'addBusinessField')->name('store.businessField');
+        Route::put('/update-bidang-usaha/{id}', 'editBusinessField')->name('update.businessField');
+        Route::delete('/delete-business-field/{id}', 'deleteBusinessField')->name('destroy.businessField');
     });
 
     Route::controller(ManageUserFeedbackController::class)->group(function(){

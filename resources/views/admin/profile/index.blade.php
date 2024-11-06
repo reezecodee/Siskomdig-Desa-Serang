@@ -33,7 +33,7 @@
                 <div class="col d-flex flex-column">
                     <div class="card-body">
                         <h3 class="card-title">Detail Profile</h3>
-                        <div class="row g-3 my-3">
+                        <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="form-label">Username</div>

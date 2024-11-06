@@ -64,11 +64,11 @@ function editAlert(formID) {
 
     // Tampilkan SweetAlert dengan input field
     Swal.fire({
-        title: 'Edit nama kategori',
+        title: 'Edit nama bidang usaha',
         input: 'text',
         inputValue: currentName,
         showCancelButton: true,
-        confirmButtonText: 'Ganti nama kategori',
+        confirmButtonText: 'Ganti nama bidang usaha',
         cancelButtonText: 'Batalkan',
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
@@ -76,7 +76,7 @@ function editAlert(formID) {
             if (newName) {
                 return newName;
             } else {
-                Swal.showValidationMessage('Nama kategori tidak boleh kosong');
+                Swal.showValidationMessage('Nama bidang usaha tidak boleh kosong');
             }
         }
     }).then((result) => {
@@ -128,10 +128,10 @@ function deleteAllArchive(id, month, year) {
 }
 
 // alert doesn't delete category
-function alertInfoDeleteCategory() {
+function alertDontDelete() {
     Swal.fire({
         title: 'Informasi',
-        text: "Anda tidak dapat menghapus data ini dikarenakan ada produk UMKM yang terkait, jika Anda ingin menghapusnya Anda harus menghapus produk UMKM terkait satu per-satu.",
+        text: "Anda tidak dapat menghapus data ini dikarenakan sudah ada anggota yang terkait dengan bidang ini.",
         icon: 'warning',
         showCancelButton: false,
         confirmButtonColor: '#3085d6',

@@ -24,10 +24,10 @@
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
                                             <span class="avatar me-3 rounded"
-                                                style="background-image: url(https://avatars.githubusercontent.com/u/159593076?v=4)"></span>
+                                                style="background-image: url({{ $item->avatar ? asset('/storage/profiles/'.$item->avatar) : '/unknown/unknown_profile.webp' }})"></span>
                                             <div>
                                                 <div>{{ $item->nama }}</div>
-                                                <div class="text-muted small">Jenis usaha: {{ $item->jenis_usaha }}</div>
+                                                <div class="text-muted small">Bidang usaha: {{ $item->businessFields->nama_bidang_usaha }}</div>
                                             </div>
                                         </div>
                                     </div>

@@ -82,6 +82,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::controller(BusinessFieldController::class)->group(function () {
         Route::get('/bidang-usaha', 'businessFieldPage')->name('show.businessField');
+        Route::get('/detail-bidang-usaha/{id}', 'detailBusinessFieldPage')->name('show.detailBusinessField');
     });
 
     Route::controller(UserFeedbackController::class)->group(function () {

@@ -14,7 +14,7 @@ class SearchResultController extends Controller
         $search = $request->query('s');
         if (!empty($search)) {
             // Jika ada nilai search, lakukan query dengan pagination
-            $members = Member::where('nama', 'like', "%{$search}%")
+            $members = Member::with('businessFields')->where('nama', 'like', "%{$search}%")
                 ->paginate(9)
                 ->appends(['s' => $search]);
         } else {
