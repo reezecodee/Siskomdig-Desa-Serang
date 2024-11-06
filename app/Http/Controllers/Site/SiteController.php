@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Models\Agenda;
 use App\Models\Archive;
+use App\Models\BusinessField;
 use App\Models\Information;
 use App\Models\Member;
 use App\Models\OrganizationStructure;
@@ -110,7 +111,7 @@ class SiteController extends Controller
         $title = 'Anggota UMKM Komunitas Digital Desa Serang';
         $search = $request->query('s');
 
-        $members = Member::latest()
+        $members = Member::with('businessFields')->latest()
             ->when($search, function ($query, $search) {
                 return $query->where('nama', 'like', '%' . $search . '%');
             })
@@ -119,19 +120,21 @@ class SiteController extends Controller
         return view('site.anggota-umkm', compact('title', 'members'));
     }
 
-    public function detailMemberUMKMPage($id)
-    {
-        $title = 'Detail Anggota UMKM Komunitas Digital Desa Serang';
-        $data = Member::findOrFail($id);
-
-        return view('site.detail-anggota', compact('title', 'data'));
-    }
-
     public function businessFieldPage()
     {
         $title = 'Bidang Usaha Yang Ada Di Desa Serang';
+        $businesses = BusinessField::withCount('members')->has('members')->latest()->paginate(9);
 
-        return view('site.bidang-usaha', compact('title'));
+        return view('site.bidang-usaha', compact('title', 'businesses'));
+    }
+
+    public function detailBusinessFieldPage($id)
+    {
+        $data = BusinessField::findOrFail($id);
+        $title = "Detail Bidang Usaha {$data->nama_bidang_usaha}";
+        $members = Member::with('businessFields')->where('business_id', $id)->latest()->paginate(8);
+
+        return view('site.detail-bidang-usaha', compact('title', 'data', 'members'));
     }
 
     public function termsAndConditions()

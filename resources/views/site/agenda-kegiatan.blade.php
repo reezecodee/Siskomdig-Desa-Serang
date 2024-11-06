@@ -91,7 +91,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->judul_agenda }}</td>
-                                            <td>{{ $item->tgl_pelaksanaan }}</td>
+                                            <td>{{ formattedDate($item->tgl_pelaksanaan) }}</td>
                                             <td>{{ $item->keterangan }}</td>
                                         </tr>
                                     @endforeach

@@ -34,7 +34,7 @@
                     @forelse ($archives as $item)
                         <div class="row mb-4">
                             <div class="col-12 col-sm-4 mb-3 mb-sm-0">
-                                <img src="{{ $item->gambar ? asset('storage/images/' . $item->gambar) : 'https://via.placeholder.com/2070x1380' }}"
+                                <img src="{{ $item->gambar ? asset('storage/images/' . $item->gambar) : '/unknown/unknown-archive.png' }}"
                                     class="img-fluid rounded" alt="" loading="lazy"/>
                             </div>
                             <div class="col-12 col-sm-8">

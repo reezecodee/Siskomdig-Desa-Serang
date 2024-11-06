@@ -129,7 +129,6 @@ Route::controller(SiteController::class)->group(function () {
 
     Route::prefix('mitra-komunitas')->group(function () {
         Route::get('/anggota-umkm', 'memberUMKMPage')->name('site.anggotaUMKM');
-        Route::get('/anggota-umkm/{id}/detail', 'detailMemberUMKMPage')->name('site.detailAnggotaUMKM');
 
         Route::get('/bidang-usaha', 'businessFieldPage')->name('site.businessField');
         Route::get('/bidang-usaha/{id}/detail', 'detailBusinessFieldPage')->name('site.detailBusinessField');

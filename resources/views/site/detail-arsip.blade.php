@@ -34,8 +34,7 @@
 
                         <!-- Gambar Utama -->
                         <div class="d-flex justify-content-center">
-                            <img src="{{ $data->gambar ? asset('storage/images/' . $data->gambar) : 'https://via.placeholder.com/800x400' }}"
-                                class="img-fluid rounded mb-4 w-full" alt="Gambar" loading="lazy">
+                            <img src="{{ $data->gambar ? asset('storage/images/' . $data->gambar) : '' }}" class="img-fluid rounded mb-4 w-full" loading="lazy">
                         </div>
 
                         <!-- Konten Arsip -->

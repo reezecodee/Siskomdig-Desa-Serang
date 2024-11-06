@@ -10,3 +10,12 @@ function truncateText($text, $maxLength = 47) {
     }
     return $text;
 }
+
+function whatsapp($phone) {
+    if (substr($phone, 0, 2) === '08') {
+        $phone = '62' . substr($phone, 1);
+    }
+
+    return $phone;
+}
+

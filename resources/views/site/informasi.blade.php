@@ -30,22 +30,22 @@
                     Informasi</h4>
             </div>
             @if (!$informations->isEmpty())
-                <div class="row g-4 justify-content-center">
+                <div class="row g-4 justify-content-start">
                     @foreach ($informations as $item)
                         <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
                             <a href="{{ route('site.bacaInformasi', $item->id) }}" class="text-decoration-none">
                                 <div class="blog-item rounded shadow-sm overflow-hidden bg-white">
                                     <!-- Gambar Artikel -->
                                     <div class="blog-img position-relative overflow-hidden">
-                                        <img src="{{ $item->thumbnail ? asset('storage/images/' . $item->thumbnail) : 'https://via.placeholder.com/2070x1380' }}"
+                                        <img src="{{ $item->thumbnail ? asset('storage/images/' . $item->thumbnail) : '/unknown/unknown-archive.png' }}"
                                             class="img-fluid w-100" alt="Image"
-                                            style="object-fit: cover; height: 200px;">
+                                            style="object-fit: cover; height: 200px;" loading="lazy">
                                     </div>
 
                                     <!-- Tanggal dan Komentar -->
                                     <div class="d-flex justify-content-between px-4 py-2 border-bottom border-primary">
                                         <small class="text-muted"><i
-                                                class="fas fa-calendar-alt me-1"></i>{{ $item->created_at->format('d M Y') }}</small>
+                                                class="fas fa-calendar-alt me-1"></i>{{ formattedDate($item->created_at->format('Y-m-d')) }}</small>
                                     </div>
 
                                     <!-- Konten Blog -->
@@ -57,9 +57,9 @@
                                         <!-- Informasi Admin -->
                                         <div class="d-flex align-items-center">
                                             <div class="overflow-hidden rounded-circle border border-primary">
-                                                <img src="{{ $item->users->avatar ? asset('storage/profiles/' . $item->users->avatar) : 'https://via.placeholder.com/300x300' }}"
+                                                <img src="{{ $item->users->avatar ? asset('storage/profiles/' . $item->users->avatar) : '/unknown/unknown_profile.webp' }}"
                                                     class="img-fluid rounded-circle p-1" alt="Admin Image"
-                                                    style="width: 50px; height: 50px; object-fit: cover;">
+                                                    style="width: 50px; object-fit: cover;">
                                             </div>
                                             <div class="ms-3">
                                                 <h6 class="mb-0 text-primary">{{ $item->users->nama }}</h6>

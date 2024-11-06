@@ -34,7 +34,7 @@
                     <div class="col-md-4">
                         <p class="form-label">Foto anggota</p>
                         <div class="d-flex justify-content-center mb-3">
-                            <img src="{{ $data->avatar ? asset('storage/profiles/' . $data->avatar) : 'https://via.placeholder.com/300x300' }}"
+                            <img src="{{ $data->avatar ? asset('storage/profiles/' . $data->avatar) : '/unknown/unknown_profile.webp' }}"
                                 class="rounded-circle" width="200" height="200" id="imagePreview" alt="">
                             <input type="file" accept=".jpg, .png, .jpeg" name="avatar" id="inputImage"
                                 style="display: none">

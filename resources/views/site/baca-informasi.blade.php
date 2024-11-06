@@ -31,8 +31,8 @@
                     <div class="card-body p-0 p-sm-5">
                         <!-- Gambar Artikel -->
                         <div class="d-flex justify-content-center">
-                            <img src="{{ $data->gambar ? asset('storage/images/' . $data->gambar) : 'https://via.placeholder.com/800x400' }}"
-                                class="img-fluid w-full rounded mb-4" alt="Gambar Artikel">
+                            <img src="{{ $data->gambar ? asset('storage/images/' . $data->gambar) : '' }}"
+                                class="img-fluid w-full rounded mb-4">
                         </div>
 
                         <!-- Judul Artikel -->
@@ -41,7 +41,7 @@
                         <!-- Info Penulis dan Tanggal -->
                         <div class="d-flex justify-content-between mb-3">
                             <span class="text-muted">Ditulis oleh <strong>{{ $data->users->nama }}</strong></span>
-                            <span class="text-muted">{{ $data->created_at->format('d M Y') }}</span>
+                            <span class="text-muted">{{ formattedDate($data->created_at->format('Y-m-d')) }}</span>
                         </div>
 
                         <!-- Garis Pembatas -->

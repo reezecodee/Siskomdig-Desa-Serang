@@ -83,7 +83,7 @@
                                 class="form-control @error('tahun')
                             is-invalid
                             @enderror"
-                                value="{{ old('tahun') }}" autocomplete="off" placeholder="Masukkan tahun agenda kegiatan"
+                                value="{{ old('tahun', date('Y')) }}" autocomplete="off" placeholder="Masukkan tahun agenda kegiatan"
                                 required>
                             @error('tahun')
                                 <span class="invalid-feedback">{{ $message }}</span>
