@@ -2,7 +2,8 @@
 @section('content')
     <div class="container-fluid py-5">
         <div class="container py-5">
-            pppp
+            <h3 class="fw-bold">Kebijakan privasi</h3>
+            {!! $privacyPolicy ?? '' !!}
         </div>
     </div>
 @endsection

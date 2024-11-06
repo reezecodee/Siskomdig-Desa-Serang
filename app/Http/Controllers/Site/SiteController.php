@@ -138,11 +138,8 @@ class SiteController extends Controller
     {
         $title = 'Syarat dan Ketentuan';
         $termsAndConditions = Policy::latest()->first();
+        $termsAndConditions = $termsAndConditions->syarat_ketentuan ?? '';
 
-
-        if (!$termsAndConditions) {
-            $termsAndConditions = new Policy();
-        }
 
         return view('site.syarat-ketentuan', compact('title', 'termsAndConditions'));
     }
@@ -151,11 +148,8 @@ class SiteController extends Controller
     {
         $title = 'Kebijakan Privasi';
         $privacyPolicy = Policy::latest()->first();
+        $privacyPolicy = $privacyPolicy->kebijakan_privasi ?? '';
 
-
-        if (!$privacyPolicy) {
-            $privacyPolicy = new Policy();
-        }
         return view('site.kebijakan-privasi', compact('title', 'privacyPolicy'));
     }
 }

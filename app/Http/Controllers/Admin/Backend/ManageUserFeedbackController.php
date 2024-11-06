@@ -3,14 +3,18 @@
 namespace App\Http\Controllers\Admin\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Feedback\UserFeedbackRequest;
 use App\Models\UserFeedback;
 use Illuminate\Http\Request;
 
 class ManageUserFeedbackController extends Controller
 {
-    // public function addUserFeedback(UserFee){
-
-    // }
+    public function addUserFeedback(UserFeedbackRequest $request)
+    {
+        $validatedData = $request->validated();
+        UserFeedback::create($validatedData);
+        return back()->withSuccess('Berhasil mengirimkan saran');
+    }
 
     public function deleteUserFeedback($id)
     {

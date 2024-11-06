@@ -2,7 +2,8 @@
 @section('content')
     <div class="container-fluid py-5">
         <div class="container py-5">
-pppp
+            <h3 class="fw-bold">Syarat dan ketentuan</h3>
+            {!! $termsAndConditions ?? '' !!}
         </div>
     </div>
 @endsection

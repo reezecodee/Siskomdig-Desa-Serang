@@ -53,7 +53,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::controller(ManageUserFeedbackController::class)->group(function () {
-        Route::post('/add-user-feedback', 'addUserFeedback')->name('store.userFeedback');
+        Route::post('/add-user-feedback', 'addUserFeedback')->name('store.userFeedback')->middleware('throttle:3,15');
         Route::delete('/delete-user-feedback/{id}', 'deleteUserFeedback')->name('destroy.userFeedback');
     });
 

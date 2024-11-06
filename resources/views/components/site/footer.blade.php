@@ -5,7 +5,7 @@
             <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="footer-item">
                     <img src="{{ $application->logo ? '/'.$application->logo : '' }}" width="200" alt="Logo" srcset="" class="mb-3">
-                    <p class="mb-4"></p>
+                    <p class="mb-4">Memberikan kemudahan akses informasi dan layanan bagi masyarakat desa melalui platform digital yang terintegrasi.</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 col-xl-3">
@@ -60,7 +60,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                <span class="text-light"><a href="#">{{ $application->nama_aplikasi }}</a></span>
+                <span class="text-light">&copy; {{ date('Y') }} {{ $application->nama_aplikasi }}. All rights reserved.</span>
             </div>
         </div>
     </div>

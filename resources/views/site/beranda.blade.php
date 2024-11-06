@@ -116,7 +116,7 @@
         <div class="container py-5">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
-                    Kontak dan Lokasi Kami</h4>
+                    Beri kami saran</h4>
             </div>
             <div class="container overflow-hidden">
                 <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s"
@@ -162,21 +162,53 @@
                     <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.2s"
                         style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
                         <div class="accordion accordion-flush rounded" id="accordionFlushSection">
-                            <div class="form-group mb-3">
-                                <label for="" class="form-label">Email</label>
-                                <input type="email" class="form-control" name="" id="">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="" class="form-label">Telepon</label>
-                                <input type="number" class="form-control" name="" id="">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="" class="form-label">Alamat</label>
-                                <textarea rows="7" name="" class="form-control" id=""></textarea>
-                            </div>
-                            <div class="form-group mb-3">
-                                <button type="submit" class="btn btn-primary">Kirim pesan</button>
-                            </div>
+                            @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
+                            <form action="{{ route('store.userFeedback') }}" method="post">
+                                @csrf
+                                <div class="form-group mb-3">
+                                    <label for="" class="form-label">Nama pengirim</label>
+                                    <input type="text"
+                                        class="form-control @error('nama_pengguna')
+                                        is-invalid
+                                    @enderror"
+                                        name="nama_pengguna" value="{{ old('nama_pengguna') }}" autocomplete="off"
+                                        required>
+                                    @error('nama_pengguna')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="" class="form-label">Email</label>
+                                    <input type="email"
+                                        class="form-control @error('email')
+                                        is-invalid
+                                    @enderror"
+                                        name="email" value="{{ old('email') }}" autocomplete="off" required>
+                                    @error('email')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="" class="form-label">Pesan saran</label>
+                                    <textarea rows="7" name="saran_masukan"
+                                        class="form-control @error('saran_masukan')
+                                        is-invalid
+                                    @enderror"
+                                        autocomplete="off" required>{{ old('saran_masukan') }}</textarea>
+                                    @error('saran_masukan')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group mb-3">
+                                    <button type="submit" class="btn btn-primary">Kirim masukkan</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.2s"
