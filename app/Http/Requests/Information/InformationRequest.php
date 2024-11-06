@@ -34,7 +34,7 @@ class InformationRequest extends FormRequest
     public function messages()
     {
         return [
-            'thumbnail.mimes' => 'Harap gunakan format gambar png, jpg, atau jpeg.',
+            'gambar.mimes' => 'Harap gunakan format gambar png, jpg, atau jpeg.',
 
             'judul.required' => 'Judul informasi harus di isi.',
             'judul.string' => 'Judul informasi harus berupa teks',

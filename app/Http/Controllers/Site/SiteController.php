@@ -83,8 +83,8 @@ class SiteController extends Controller
 
     public function detailArchivePage($id)
     {
-        $title = 'Detail Arsip Kegiatan';
         $data = Archive::findOrFail($id);
+        $title = $data->judul_arsip;
 
         return view('site.detail-arsip', compact('title', 'data'));
     }
@@ -99,8 +99,8 @@ class SiteController extends Controller
 
     public function readInformationPage($id)
     {
-        $title = 'Baca Informasi';
         $data = Information::with('users')->findOrFail($id);
+        $title = $data->judul;
 
         return view('site.baca-informasi', compact('title', 'data'));
     }

@@ -17,10 +17,12 @@ class ManageArchiveController extends Controller
 
         $validatedData = $request->validated();
 
-        $gambarFile = $request->file('gambar');
-        $gambarFileName = uniqid() . '.' . $gambarFile->getClientOriginalExtension();
-        $gambarFile->storeAs('images', $gambarFileName, 'public');
-        $validatedData['gambar'] = $gambarFileName;
+        if ($request->hasFile('gambar')) {
+            $gambarFile = $request->file('gambar');
+            $gambarFileName = uniqid() . '.' . $gambarFile->getClientOriginalExtension();
+            $gambarFile->storeAs('images', $gambarFileName, 'public');
+            $validatedData['gambar'] = $gambarFileName;
+        }
 
         $validatedData['file_zip'] = $this->generateZIPFile($validatedData['files'], uniqid());
 

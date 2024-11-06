@@ -12,7 +12,7 @@
                 <div class="footer-item">
                     <h4
                         class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
-                        Lokasi kami</h4>
+                        Kontak kami</h4>
                     <div class="d-flex flex-column align-items-start">
                         <a href="" class="text-body mb-4"><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ $application->alamat }}</a>
                         <a href="" class="text-start rounded-0 text-body mb-4"><i
