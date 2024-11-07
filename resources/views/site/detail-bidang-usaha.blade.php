@@ -69,6 +69,11 @@
             <div class="d-flex justify-content-end mt-5">
                 {{ $members->links('pagination::bootstrap-5') }}
             </div>
+            <div class="mt-4 wow fadeInUp" data-wow-delay="0.7s">
+                <a href="{{ route('site.businessField') }}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Bidang Usaha
+                </a>
+            </div>
         </div>
     </div>
 @endsection
