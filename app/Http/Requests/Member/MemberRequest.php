@@ -30,7 +30,7 @@ class MemberRequest extends FormRequest
             'kampung' => 'required|string|max:255',
             'rt' => 'required|string|max:10',
             'rw' => 'required|string|max:10',
-            'nib_sku' => 'required|string|max:255',
+            'nib_sku' => 'nullable|string|max:255',
             'telepon' => 'required|unique:members,telepon,'.$memberID,
             'status' => 'required|in:Aktif,Tidak aktif',
             'avatar' => 'nullable'
@@ -59,7 +59,6 @@ class MemberRequest extends FormRequest
             'rw.string' => 'RW harus berupa teks.',
             'rw.max' => 'RW tidak boleh lebih dari 10 karakter.',
 
-            'nib_sku.required' => 'NIB/SKU wajib diisi.',
             'nib_sku.string' => 'NIB/SKU harus berupa teks.',
             'nib_sku.max' => 'NIB/SKU tidak boleh lebih dari 255 karakter.',
 

@@ -153,11 +153,11 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                    <label for="" class="form-label">NIB/SKU</label>
+                                    <label for="" class="form-label">NIB/SKU (opsional)</label>
                                     <input type="text" name="nib_sku" autocomplete="off"
                                         placeholder="Masukkan NIB/SKU anggota"
                                         class="form-control @error('nib_sku') is-invalid @enderror"
-                                        value="{{ old('nib_sku') }}" required>
+                                        value="{{ old('nib_sku') }}">
                                     @error('nib_sku')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
